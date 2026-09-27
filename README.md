@@ -21,10 +21,12 @@ content before running Astro. CI initializes the submodule in both workflows.
 
 ## Content and translations
 
-The only article source is the pinned `vendor/OmniRoute/` checkout. Selected
-English source paths and site slugs are listed in `scripts/upstream-topics.mjs`;
-see `docs/upstream-route-map.md` for retired routes. The importer
-(`npm run import:upstream`) reads these sources and their available translations,
+The only article source is the pinned `vendor/OmniRoute/` checkout at the
+`release/v3.8.51` revision. The importer recursively publishes every English
+Markdown file under upstream `docs/` (excluding translated-language
+subdirectories under `docs/i18n/`), plus the root `README.md` as the home page. Existing canonical slugs
+are preserved by `scripts/upstream-topics.mjs`; see `docs/upstream-route-map.md`
+for the complete route rule. `npm run import:upstream` reads these files and their available translations,
 validates local references and markup, rewrites selected links to site routes,
 and copies local assets. It produces locale homes and topics under
 `src/content/docs/`, with a visible English fallback where no translation
@@ -33,7 +35,8 @@ broken reference, or changed generated page fails instead of publishing
 unreviewed content.
 
 To update upstream content, update the submodule pin, read the selected English
-documents and their supported-language translations, then refresh
+documents and their supported-language translations, then run
+`npm run update:translation-reviews` to refresh
 `src/content/upstream-translation-reviews.json` with the new revision, SHA-256
 hashes of English files **with real translations**, and the list of actual
 translated `<site-locale>/<English-source-path>` pairs. Do not list English
