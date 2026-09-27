@@ -53,13 +53,15 @@ footer links, content-width control, script-independent HagiCode article
 introduction, and optional browser-loaded campaign banner. OmniRoute Docs keeps
 its fallback-aware title and content wrappers, English-source links, and
 localized OmniRoute-specific link destinations in `astro.config.mjs`.
+Hagilight injects both analytics providers; Starlight owns canonical,
+alternate-language, and social metadata, including on English-fallback routes.
 
 The article introduction remains available without JavaScript. The floating
 campaign banner has no local fallback and stays hidden unless eligible remote
-campaign data is available. Google Analytics and 51LA are explicitly disabled;
-legacy `PUBLIC_OMNIROUTE_GA_ID` and `PUBLIC_OMNIROUTE_51LA_ID` variables do not
-enable tracking. Do not add analytics until a privacy-compatible integration
-has been reviewed and approved.
+campaign data is available. Google Analytics (`G-EN03FMT2Q4`) and 51LA
+(`L6b88a5yK4h2Xnci`) run on production pages. Hagilight 0.2.1 enables 51LA
+screen recording. Review applicable privacy, consent, and hosting requirements
+before publishing.
 
 CI runs the same check/build/test gate on pull requests and main. A successful
 main-branch publication assembles `dist/`, `esa.jsonc`, and `wrangler.jsonc`
