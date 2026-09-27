@@ -3,6 +3,10 @@
 Standalone Astro/Starlight documentation for OmniRoute. The canonical URL is
 `https://omniroute.hagicode.com`; publishing a build does not itself activate
 that hostname or configure DNS.
+The all-languages documentation feed is available at
+`https://omniroute.hagicode.com/rss.xml` and is linked from each page's metadata.
+Per-language feeds use `https://omniroute.hagicode.com/rss.<locale>.xml` (for
+example, `rss.en-US.xml`).
 
 ## Local development
 
