@@ -1,14 +1,7 @@
+import { locales as HAGILIGHT_LOCALES } from "@hagicode/hagilight-starlight/locales";
+
 export const LANGUAGE_OPTIONS = /** @type {const} */ ([
-  { code: "zh-CN", label: "简体中文", lang: "zh-CN" },
-  { code: "en-US", label: "English", lang: "en-US" },
-  { code: "zh-Hant", label: "繁體中文", lang: "zh-Hant" },
-  { code: "ja-JP", label: "日本語", lang: "ja-JP" },
-  { code: "ko-KR", label: "한국어", lang: "ko-KR" },
-  { code: "de-DE", label: "Deutsch", lang: "de-DE" },
-  { code: "fr-FR", label: "Français", lang: "fr-FR" },
-  { code: "es-ES", label: "Español", lang: "es-ES" },
-  { code: "pt-BR", label: "Português (Brasil)", lang: "pt-BR" },
-  { code: "ru-RU", label: "Русский", lang: "ru-RU" },
+  ...Object.values(HAGILIGHT_LOCALES).map(({ lang, label }) => ({ code: lang, label, lang })),
 ]);
 
 export const SITE_COPY = {

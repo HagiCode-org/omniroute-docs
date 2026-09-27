@@ -82,20 +82,10 @@ test("localized shared shell retains links, language switching, and reading cont
   assert.doesNotMatch(config, /analytics:/u);
   assert.doesNotMatch(config, /StarlightHead/u);
   assert.doesNotMatch(config, /PUBLIC_OMNIROUTE_(?:GA|51LA)_ID/u);
+  assert.doesNotMatch(config, /\b(?:overrides|extraLinks):/u);
 
   for (const { code } of LANGUAGE_OPTIONS) {
     const html = await page(`${code}/${sourceTopic}`);
-    const productDocsUrl = `https://docs.hagicode.com/${code === "zh-CN" ? "" : `${code}/`}`;
-    for (const [url, label] of [
-      ["https://www.hagicode.com/", SITE_COPY[code].websiteLabel],
-      [productDocsUrl, SITE_COPY[code].productDocsLabel],
-      ["https://tasks.hagicode.com/", SITE_COPY[code].hagiTaskLabel],
-      ["https://github.com/HagiCode-org/omniroute-docs", SITE_COPY[code].sourceLabel],
-      ["https://github.com/HagiCode-org/omniroute-docs/issues", SITE_COPY[code].issuesLabel],
-    ]) {
-      assert.ok(html.includes(url), `${code} has ${url}`);
-      assert.ok(html.includes(label), `${code} has localized label ${label}`);
-    }
     assert.match(html, /hagilight-site-links/u);
     assert.ok(html.includes("https://newbe.hagicode.com/"), `${code} renders Hagilight's built-in ecosystem links`);
     assert.match(html, /<site-search/u);
