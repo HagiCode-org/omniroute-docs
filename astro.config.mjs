@@ -1,6 +1,19 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import starlight from "@astrojs/starlight";
+import hagilight from "@hagicode/hagilight-starlight";
+import { SITE_COPY } from "./src/i18n/site-copy.mjs";
+
+const localizedCopy = (key) => Object.fromEntries(
+  Object.entries(SITE_COPY).map(([locale, copy]) => [locale, copy[key]]),
+);
+const productDocsUrls = Object.fromEntries(
+  Object.keys(SITE_COPY).map((locale) => [
+    locale,
+    `https://docs.hagicode.com/${locale === "zh-CN" ? "" : `${locale}/`}`,
+  ]),
+);
+const docsRepo = "https://github.com/HagiCode-org/omniroute-docs";
 
 export default defineConfig({
   site: "https://omniroute.hagicode.com",
@@ -24,15 +37,68 @@ export default defineConfig({
       },
       components: {
         Head: "./src/components/StarlightHead.astro",
-        Header: "./src/components/StarlightHeader.astro",
-        Footer: "./src/components/StarlightFooter.astro",
-        LanguageSelect: "./src/components/StarlightLanguageSelect.astro",
         MarkdownContent: "./src/components/EnglishFallbackMarkdownContent.astro",
         PageTitle: "./src/components/EnglishFallbackPageTitle.astro",
       },
-      customCss: ["./src/styles/site.css"],
       social: [
         { icon: "github", label: "OmniRoute source", href: "https://github.com/diegosouzapw/OmniRoute" },
+      ],
+      plugins: [
+        hagilight({
+          links: {
+            siteId: "omniroute-docs",
+            siteUrl: "https://omniroute.hagicode.com/",
+            relatedSites: [],
+            overrides: {
+              home: {
+                label: localizedCopy("websiteLabel"),
+                href: "https://www.hagicode.com/",
+                external: true,
+              },
+              productDocs: {
+                label: localizedCopy("productDocsLabel"),
+                href: productDocsUrls,
+                external: true,
+              },
+              github: {
+                label: localizedCopy("sourceLabel"),
+                href: docsRepo,
+                external: true,
+              },
+              issueFeedback: {
+                label: localizedCopy("issuesLabel"),
+                href: `${docsRepo}/issues`,
+                external: true,
+              },
+            },
+            extraLinks: {
+              header: [{
+                label: localizedCopy("productDocsLabel"),
+                href: productDocsUrls,
+                external: true,
+              }],
+              quick: [{
+                label: localizedCopy("hagiTaskLabel"),
+                href: "https://tasks.hagicode.com/",
+                external: true,
+              }],
+            },
+          },
+          promoto: { enabled: true },
+          analytics: {
+            googleAnalytics: { enabled: false },
+            fiftyOneLa: { enabled: false },
+          },
+          aiDisclosures: {
+            isAITranslation: false,
+            isAIAuthor: false,
+            sourceLocale: "en-US",
+          },
+          contentComponents: {
+            pageTitle: false,
+            markdownContent: false,
+          },
+        }),
       ],
     }),
     sitemap(),
