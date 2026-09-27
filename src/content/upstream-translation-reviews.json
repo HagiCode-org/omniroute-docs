@@ -1,0 +1,37 @@
+{
+  "revision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+  "sources": {
+    "README.md": "ac9dd2dadf033818d837f02a550fc3d2eb994771be75b2b553994406d7897423",
+    "docs/getting-started/QUICK-START.md": "ee65b3f0ec8185f56eb4a73c32d4fd54330ae340430fdb7783790c73b8937492",
+    "docs/guides/USER_GUIDE.md": "3bc70f92e67d31767a677a11735ed1ad60f5aee28f916ca27a698d63014a994d"
+  },
+  "translations": [
+    "zh-CN/README.md",
+    "zh-CN/docs/getting-started/QUICK-START.md",
+    "zh-CN/docs/guides/USER_GUIDE.md",
+    "zh-Hant/README.md",
+    "zh-Hant/docs/getting-started/QUICK-START.md",
+    "zh-Hant/docs/guides/USER_GUIDE.md",
+    "ja-JP/README.md",
+    "ja-JP/docs/getting-started/QUICK-START.md",
+    "ja-JP/docs/guides/USER_GUIDE.md",
+    "ko-KR/README.md",
+    "ko-KR/docs/getting-started/QUICK-START.md",
+    "ko-KR/docs/guides/USER_GUIDE.md",
+    "de-DE/README.md",
+    "de-DE/docs/getting-started/QUICK-START.md",
+    "de-DE/docs/guides/USER_GUIDE.md",
+    "fr-FR/README.md",
+    "fr-FR/docs/getting-started/QUICK-START.md",
+    "fr-FR/docs/guides/USER_GUIDE.md",
+    "es-ES/README.md",
+    "es-ES/docs/getting-started/QUICK-START.md",
+    "es-ES/docs/guides/USER_GUIDE.md",
+    "pt-BR/README.md",
+    "pt-BR/docs/getting-started/QUICK-START.md",
+    "pt-BR/docs/guides/USER_GUIDE.md",
+    "ru-RU/README.md",
+    "ru-RU/docs/getting-started/QUICK-START.md",
+    "ru-RU/docs/guides/USER_GUIDE.md"
+  ]
+}
