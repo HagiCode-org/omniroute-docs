@@ -9,31 +9,37 @@ that hostname or configure DNS.
 Use Node.js 22 and npm from this repository:
 
 ```sh
+git submodule update --init vendor/OmniRoute
 npm ci
 npm run dev
 ```
 
 Before opening a pull request, run `npm run check`, `npm run build`, and
 `npm test`. `npm run preview` serves a completed production build locally.
-The check and build scripts import English content before running Astro.
+The check and build scripts verify the pinned upstream translations and import
+content before running Astro. CI initializes the submodule in both workflows.
 
 ## Content and translations
 
-Edit the revision-controlled OmniRoute Markdown in `content-source/en-US/`,
-not the generated English files under `src/content/docs/en-US/`. The importer
-(`npm run import:english`) validates sources, copies local assets, rewrites
-relative topic links, and generates English pages and non-English fallbacks.
-Generated pages are ignored by Git; locale homes and authored translations
-under `src/content/docs/` are committed and must never be overwritten by
-the importer. A missing source or referenced asset fails import.
+The only article source is the pinned `vendor/OmniRoute/` checkout. Selected
+English source paths and site slugs are listed in `scripts/upstream-topics.mjs`;
+see `docs/upstream-route-map.md` for retired routes. The importer
+(`npm run import:upstream`) reads these sources and their available translations,
+validates local references and markup, rewrites selected links to site routes,
+and copies local assets. It produces locale homes and topics under
+`src/content/docs/`, with a visible English fallback where no translation
+exists. Generated pages and assets are ignored by Git. An absent checkout,
+broken reference, or changed generated page fails instead of publishing
+unreviewed content.
 
-All ten locale homes are authored. The 26 Simplified Chinese topic shells are
-authored pages; the other locale topics show marked English content until
-translated. To add or revise an authored topic translation, compare it to
-the current English source, update the translated Markdown, then update its
-reviewed source hash in `src/content/translation-baselines.json`.
-`npm run check:translation-baselines` rejects missing or stale baselines.
-Homes and generated fallbacks do not require review baselines.
+To update upstream content, update the submodule pin, read the selected English
+documents and their supported-language translations, then refresh
+`src/content/upstream-translation-reviews.json` with the new revision, SHA-256
+hashes of English files **with real translations**, and the list of actual
+translated `<site-locale>/<English-source-path>` pairs. Do not list English
+fallbacks. `npm run check:translation-reviews` rejects changed or missing
+review relationships. Commit the new submodule pin and review metadata
+together; do not edit generated pages.
 
 ## Integrations and publication
 
