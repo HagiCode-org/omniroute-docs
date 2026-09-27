@@ -1,12 +1,37 @@
 import { LANGUAGE_OPTIONS } from "../src/i18n/site-copy.mjs";
+import { readdir } from "node:fs/promises";
+import path from "node:path";
 
-// Reviewed reader-facing subset. Paths are relative to the OmniRoute checkout.
-export const TOPICS = {
+// Preserve existing published routes while exposing the full English docs tree.
+const ROUTE_OVERRIDES = {
   "README.md": "",
   "docs/getting-started/QUICK-START.md": "getting-started/quick-start",
   "docs/getting-started/SELF_HOST_GUIDE.md": "getting-started/self-hosting",
   "docs/guides/USER_GUIDE.md": "guides/user-guide",
 };
+
+export async function discoverTopics(sourceDir) {
+  const topics = { "README.md": "" };
+  async function walk(directory) {
+    for (const entry of await readdir(path.join(sourceDir, directory), { withFileTypes: true })) {
+      if (directory === "docs" && entry.name === "i18n") {
+        if ((await readdir(path.join(sourceDir, "docs/i18n"))).includes("README.md")) {
+          topics["docs/i18n/README.md"] = "i18n";
+        }
+        continue;
+      }
+      const relative = path.posix.join(directory, entry.name);
+      if (entry.isDirectory()) await walk(relative);
+      else if (entry.isFile() && entry.name.endsWith(".md")) {
+        const stem = relative.slice("docs/".length, -".md".length).toLowerCase().replaceAll("_", "-");
+        const slug = stem === "readme" ? "docs" : stem.replace(/\/readme$/u, "");
+        topics[relative] = ROUTE_OVERRIDES[relative] ?? slug;
+      }
+    }
+  }
+  await walk("docs");
+  return topics;
+}
 
 export const UPSTREAM_LOCALES = {
   "zh-CN": "zh-CN",

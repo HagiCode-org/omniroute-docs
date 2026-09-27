@@ -3,20 +3,25 @@ import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { SITE_COPY, LANGUAGE_OPTIONS } from "../src/i18n/site-copy.mjs";
-import { TOPICS } from "../scripts/upstream-topics.mjs";
+import { discoverTopics } from "../scripts/upstream-topics.mjs";
 
 const page = (route) => readFile(new URL(`../dist/${route}index.html`, import.meta.url), "utf8");
 
-test("selected upstream routes alone are built in all ten locales", async () => {
+test("every English upstream docs page and locale counterpart is built", async () => {
+  const topics = await discoverTopics(new URL("../vendor/OmniRoute", import.meta.url).pathname);
   const english = await readdir(new URL("../dist/en-US/", import.meta.url), { recursive: true });
-  assert.equal(english.filter((file) => file.endsWith("index.html")).length, Object.keys(TOPICS).length);
+  assert.ok(Object.keys(topics).length >= 164);
+  assert.equal(english.filter((file) => file.endsWith("index.html")).length, Object.keys(topics).length);
   for (const { code } of LANGUAGE_OPTIONS) {
     const home = await page(`${code}/`);
     assert.ok(home.includes(`<html lang="${code}"`));
     assert.ok(home.includes(`https://omniroute.hagicode.com/${code}/`));
     assert.ok(home.includes(SITE_COPY[code].languageLabel));
     assert.match(home, /OmniRoute/u);
-    for (const slug of Object.values(TOPICS).filter(Boolean)) {
+    const sidebar = home.match(/<nav class="sidebar [\s\S]*?<\/nav>/u)?.[0];
+    assert.ok(sidebar, `${code} has a sidebar`);
+    for (const slug of Object.values(topics).filter(Boolean)) {
+      assert.ok(sidebar.includes(`href="/${code}/${slug}/"`), `${code} sidebar links ${slug}`);
       const topic = await page(`${code}/${slug}/`);
       assert.ok(topic.includes('data-hagicode-end-card'));
       assert.ok(topic.includes('data-hagicode-promotion'));
@@ -77,6 +82,7 @@ test("selected topic links and copied assets resolve in every locale; source lin
       assert.ok(html.includes(`https://github.com/diegosouzapw/OmniRoute/blob/${JSON.parse(revision).revision}/`));
       const article = html.match(/<main[\s\S]*?<\/main>/u)?.[0] ?? "";
       for (const [, href] of article.matchAll(/(?:href|src)="([^"]+)"/gu)) {
+        if (/^https?:/iu.test(href) && !href.startsWith("https://omniroute.hagicode.com/")) continue;
         const target = new URL(href.replaceAll("&amp;", "&"), `https://omniroute.hagicode.com/${code}/${file.replace(/index\.html$/u, "")}`);
         if (target.origin !== "https://omniroute.hagicode.com") continue;
         const pathname = decodeURIComponent(target.pathname).replace(/^\/+/u, "");

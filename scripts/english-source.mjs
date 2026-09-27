@@ -4,7 +4,7 @@ import { copyFile, mkdir, readFile, rm, stat, writeFile } from "node:fs/promises
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { LANGUAGE_OPTIONS, SITE_COPY } from "../src/i18n/site-copy.mjs";
-import { TOPICS, translatedSource } from "./upstream-topics.mjs";
+import { discoverTopics, translatedSource } from "./upstream-topics.mjs";
 
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
 const SOURCE = path.join(ROOT, "vendor/OmniRoute");
@@ -35,6 +35,7 @@ const isDirectory = async (file) => {
 };
 const inside = (root, file) => file.startsWith(`${root}${path.sep}`) || file === root;
 const route = (locale, slug) => `/${locale}/${slug ? `${slug}/` : ""}`;
+const FENCED_CODE = /^[ \t]{0,3}(```|~~~)[^\n]*\n[\s\S]*?^[ \t]{0,3}\1[ \t]*(?=\n|$)/gmu;
 
 function parseDocument(original, file) {
   let body = original.replace(/\r\n?/gu, "\n");
@@ -45,7 +46,7 @@ function parseDocument(original, file) {
     if (!frontmatter) throw new Error(`Unterminated frontmatter in ${file}`);
     for (const line of frontmatter[1].split("\n")) {
       if (!line.trim()) continue;
-      const field = line.match(/^(title|description|version|lastUpdated):\s*(.*)$/u);
+      const field = line.match(/^([\w-]+):\s*(.*)$/u);
       if (!field) throw new Error(`Unsupported frontmatter in ${file}: ${line}`);
       if (field[1] === "title" || field[1] === "description") {
         const value = field[2].trim();
@@ -69,7 +70,12 @@ function parseDocument(original, file) {
   body = body.replace(/<div align="center">\s*<b>🌐 [^<]*<\/b>[\s\S]*?<\/div>/gu, "");
   body = body.replace(/<code>([\s\S]*?)<\/code>/gu, (_, text) =>
     `<code>${text.replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</code>`);
-  const withoutCode = body.replace(/(^|\n)(```|~~~)[^\n]*\n[\s\S]*?\n\2[ \t]*(?=\n|$)/gu, "$1")
+  const allowed = new Set(["a", "b", "br", "code", "details", "div", "h3", "i", "img", "p", "picture", "source", "strong", "sub", "summary", "table", "td", "th", "tr"]);
+  body = body.replace(/<([a-z][\w-]*)>/gu, (tag, name) =>
+    !allowed.has(name) && !body.includes(`</${name}>`) && !["script", "style", "iframe"].includes(name)
+      ? `&lt;${name}&gt;` : tag);
+  body = body.replace(/<([a-z][\w-]* [a-z][\w-]*)>/gu, "&lt;$1&gt;");
+  const withoutCode = body.replace(FENCED_CODE, "")
     .replace(/`+[^`\n]+`+/gu, "");
   if (/^\s*(?:import|export)\s.+$/mu.test(withoutCode)) {
     throw new Error(`MDX imports/exports are not supported in ${file}`);
@@ -80,26 +86,24 @@ function parseDocument(original, file) {
   if (/<[a-z][^>]*\b(?:src|href)\s*=\s*(?!["'])\S+/iu.test(withoutCode)) {
     throw new Error(`Unquoted HTML links are not supported in ${file}`);
   }
-  const allowed = new Set(["a", "b", "br", "code", "details", "div", "h3", "i", "img", "p", "picture", "source", "strong", "sub", "summary", "table", "td", "th", "tr"]);
   for (const match of withoutCode.matchAll(/<\/?([A-Za-z][\w.-]*)(?=[\s/>])/gu)) {
     if (!allowed.has(match[1])) {
       throw new Error(`Unsupported HTML or MDX element <${match[1]}> in ${file}`);
     }
   }
   const heading = body.match(/^#\s+(.+?)\s*#*\s*$/mu);
-  title ??= heading?.[1];
-  if (!title) throw new Error(`Missing title or H1 in ${file}`);
+  title ??= heading?.[1] ?? path.basename(file, ".md").replaceAll(/[-_]/gu, " ");
   if (heading?.[1] === title) body = body.replace(/^#\s+.+?\s*#*\s*$/mu, "");
   return { title, description, body: body.trimStart() };
 }
 
 async function rewriteTargets(body, transform) {
   const protectedCode = [];
-  let result = body.replace(/(^|\n)(```|~~~)[^\n]*\n[\s\S]*?\n\2[ \t]*(?=\n|$)/gu, (text) => {
+  let result = body.replace(FENCED_CODE, (text) => {
     protectedCode.push(text);
     return `OMNIROUTE_CODE_${protectedCode.length - 1}_TOKEN`;
   });
-  result = result.replace(/(`+)(?!`)([\s\S]*?[^`])\1(?!`)/gu, (text) => {
+  result = result.replace(/(`+)(?!`)([^\n]*?)\1(?!`)/gu, (text) => {
     protectedCode.push(text);
     return `OMNIROUTE_CODE_${protectedCode.length - 1}_TOKEN`;
   });
@@ -127,17 +131,23 @@ async function rewriteTargets(body, transform) {
 export async function createImportPlan({
   sourceDir = SOURCE,
   revision,
-  topics = TOPICS,
+  topics,
   locales = LANGUAGE_OPTIONS.map(({ code }) => code),
 } = {}) {
   sourceDir = path.resolve(sourceDir);
   if (!await exists(path.join(sourceDir, "README.md"))) {
     throw new Error(`OmniRoute checkout missing or uninitialized at ${sourceDir}; run git submodule update --init vendor/OmniRoute`);
   }
+  topics ??= await discoverTopics(sourceDir);
   revision ??= sourceDir === SOURCE
     ? execFileSync("git", ["-C", sourceDir, "rev-parse", "HEAD"], { encoding: "utf8" }).trim()
     : "fixture";
   const selected = new Map(Object.entries(topics).map(([file, slug]) => [path.resolve(sourceDir, file), slug]));
+  const routes = new Set();
+  for (const slug of selected.values()) {
+    if (routes.has(slug)) throw new Error(`Duplicate site topic route: ${slug}`);
+    routes.add(slug);
+  }
   for (const english of selected.keys()) {
     if (!inside(sourceDir, english) || !english.endsWith(".md") || !await exists(english)) {
       throw new Error(`Selected English source is missing: ${english}`);
@@ -178,13 +188,23 @@ export async function createImportPlan({
         } catch {
           throw new Error(`Invalid encoded reference ${target} in ${relative}`);
         }
-        const resolved = path.resolve(path.dirname(file), decoded);
+        const resolved = decoded.startsWith("/") ? path.resolve(sourceDir, `.${decoded}`) : path.resolve(path.dirname(file), decoded);
         if (!inside(sourceDir, resolved)) throw new Error(`Local reference escapes upstream checkout: ${target} in ${relative}`);
         let actual = resolved;
         if (!await exists(actual) && !await isDirectory(actual) && translated) {
           const englishEquivalent = path.resolve(path.dirname(english), decoded);
           if (inside(sourceDir, englishEquivalent)
             && (await exists(englishEquivalent) || await isDirectory(englishEquivalent))) actual = englishEquivalent;
+          else {
+            const sharedAsset = path.resolve(sourceDir, "docs", decoded.replace(/^(?:\.\.\/)+/u, ""));
+            if (inside(sourceDir, sharedAsset)
+              && (await exists(sharedAsset) || await isDirectory(sharedAsset))) actual = sharedAsset;
+            else {
+              const sharedRoot = path.resolve(sourceDir, decoded.replace(/^(?:\.\.\/)+/u, ""));
+              if (inside(sourceDir, sharedRoot)
+                && (await exists(sharedRoot) || await isDirectory(sharedRoot))) actual = sharedRoot;
+            }
+          }
         }
         if (!await exists(actual) && !await isDirectory(actual)) throw new Error(`Missing local reference ${target} in ${relative}`);
         const selectedSlug = selected.get(actual);
@@ -194,6 +214,9 @@ export async function createImportPlan({
         const sourcePath = posix(path.relative(sourceDir, actual));
         if (await isDirectory(actual)) return `${UPSTREAM}/${revision}/${encode(sourcePath)}${match[2]}`;
         if (actual.endsWith(".md")) return `${UPSTREAM}/${revision}/${encode(sourcePath)}${match[2]}`;
+        if (!/\.(?:avif|gif|ico|jpe?g|png|svg|webp|pdf|mp4|webm)$/iu.test(actual)) {
+          return `${UPSTREAM}/${revision}/${encode(sourcePath)}${match[2]}`;
+        }
         const assetPath = `${locale}/${sourcePath}`;
         assets.set(assetPath, actual);
         return `/upstream-assets/${encode(assetPath)}${match[2]}`;
@@ -279,7 +302,7 @@ export async function importEnglishDocs(options = {}) {
   return plan;
 }
 
-export async function checkTranslationBaselines({ sourceDir = SOURCE, manifestPath = BASELINES, topics = TOPICS, locales, revision } = {}) {
+export async function checkTranslationBaselines({ sourceDir = SOURCE, manifestPath = BASELINES, topics, locales, revision } = {}) {
   const plan = await createImportPlan({ sourceDir, topics, locales, revision });
   const reviewed = JSON.parse(await readFile(manifestPath, "utf8"));
   const messages = [];

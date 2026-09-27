@@ -43,6 +43,20 @@ test("ten-site-locale mapping and translated home paths are exact", () => {
   assert.throws(() => translatedSource("README.md", "it-IT"), RangeError);
 });
 
+test("discovers English docs recursively without publishing other-language trees", async (t) => {
+  const { sourceDir, options } = await fixture(t);
+  await writeFile(path.join(sourceDir, "docs/README.md"), "# Docs index\n");
+  await writeFile(path.join(sourceDir, "docs/guides/ANOTHER_GUIDE.md"), "# More docs\n");
+  await mkdir(path.join(sourceDir, "docs/i18n/zh-CN"), { recursive: true });
+  await writeFile(path.join(sourceDir, "docs/i18n/README.md"), "# Translation index\n");
+  await writeFile(path.join(sourceDir, "docs/i18n/zh-CN/README.md"), "# 翻译\n");
+  const plan = await createImportPlan({ ...options, topics: undefined });
+  assert.ok(plan.documents.has("en-US/guides/another-guide/index.md"));
+  assert.ok(plan.documents.has("en-US/i18n/index.md"));
+  assert.ok(plan.documents.has("en-US/index.md"));
+  assert.ok(!plan.documents.has("en-US/i18n/zh-cn/index.md"));
+});
+
 test("translated pages and homes link to selected routes; missing pages are marked fallbacks", async (t) => {
   const { sourceDir, contentRoot, assetsDir, options } = await fixture(t);
   const translatedHome = path.join(sourceDir, "docs/i18n/zh-TW/README.md");
@@ -119,4 +133,16 @@ test("broken links, missing assets, unsupported markup and missing selected sour
   }
   await rm(guide);
   await assert.rejects(importEnglishDocs(options), /Selected English source is missing/u);
+});
+
+test("linked source files stay upstream; only media files are copied into public", async (t) => {
+  const { sourceDir, assetsDir, options } = await fixture(t);
+  await writeFile(path.join(sourceDir, "secrets.env"), "NOT_FOR_PUBLICATION=1");
+  await writeFile(path.join(sourceDir, "docs/guides/GUIDE.md"),
+    "# Guide\n\n[Config](../../secrets.env) ![Icon](../../icon.svg)\n");
+  const plan = await importEnglishDocs(options);
+  const page = plan.documents.get("en-US/guides/guide/index.md").rendered;
+  assert.match(page, /github.com\/diegosouzapw\/OmniRoute\/blob\/pinned\/secrets.env/u);
+  assert.ok(!await exists(path.join(assetsDir, "en-US/secrets.env")));
+  assert.ok(await exists(path.join(assetsDir, "en-US/icon.svg")));
 });
