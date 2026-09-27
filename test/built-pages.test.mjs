@@ -6,7 +6,8 @@ import { LANGUAGE_OPTIONS, SITE_COPY } from "../src/i18n/site-copy.mjs";
 import { discoverTopics } from "../scripts/upstream-topics.mjs";
 
 const page = (route) => readFile(new URL(`../dist/${route}index.html`, import.meta.url), "utf8");
-const trackingScripts = /<script[^>]+src="[^"]*(?:googletagmanager\.com\/gtag\/js|sdk\.51\.la\/js-sdk)/u;
+const googleAnalyticsScript = /<script[^>]+src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-EN03FMT2Q4"/u;
+const fiftyOneLaScript = /<script[^>]+src="https:\/\/sdk\.51\.la\/js-sdk-pro\.min\.js"/u;
 const sourceTopic = "getting-started/self-hosting/";
 
 test("all upstream topics retain one article promotion and no empty campaign fallback", async () => {
@@ -26,16 +27,17 @@ test("all upstream topics retain one article promotion and no empty campaign fal
     for (const slug of Object.values(topics).filter(Boolean)) {
       assert.ok(sidebar.includes(`href="/${code}/${slug}/"`), `${code} sidebar links ${slug}`);
       const topic = await page(`${code}/${slug}/`);
-      const isFallback = topic.includes("english-fallback-notice");
-      const canonicalLocale = isFallback ? "en-US" : code;
       const banner = topic.match(/<hagilight-promoto-banner[^>]*>/u)?.[0];
       assert.ok(banner, `${code}/${slug} includes the shared campaign component`);
       assert.match(banner, /\bhidden/u);
       assert.equal(topic.split('class="hagilight-article-promotion ').length - 1, 1, `${code}/${slug} has one article introduction`);
       assert.equal(topic.split("<hagilight-promoto-banner").length - 1, 1, `${code}/${slug} has one remote campaign component`);
-      assert.ok(topic.includes(`<link rel="canonical" href="https://omniroute.hagicode.com/${canonicalLocale}/${slug}/"`));
+      assert.ok(topic.includes(`<link rel="canonical" href="https://omniroute.hagicode.com/${code}/${slug}/"`));
       assert.doesNotMatch(topic, /data-fallback=|data-hagicode-promotion|data-hagicode-end-card|\/img\/hagicode\/light-main\.png/u);
-      assert.doesNotMatch(topic, trackingScripts);
+      assert.match(topic, googleAnalyticsScript);
+      assert.match(topic, fiftyOneLaScript);
+      assert.match(topic, /const siteId = "L6b88a5yK4h2Xnci"/u);
+      assert.match(topic, /screenRecord:\s*true/u);
     }
 
     await assert.rejects(stat(new URL(`../dist/${code}/stores-beta/user-guide/index.html`, import.meta.url)), { code: "ENOENT" });
@@ -57,15 +59,14 @@ test("translated pages and English fallbacks expose consistent locale metadata",
 
   for (const { code } of LANGUAGE_OPTIONS.filter(({ code }) => code !== "en-US")) {
     const fallback = await page(`${code}/${sourceTopic}`);
-    const canonical = `https://omniroute.hagicode.com/en-US/${sourceTopic}`;
+    const canonical = `https://omniroute.hagicode.com/${code}/${sourceTopic}`;
     assert.ok(fallback.includes(SITE_COPY[code].englishFallbackNotice), `${code} shows a localized fallback notice`);
     assert.ok(fallback.includes(`href="/en-US/${sourceTopic}"`), `${code} links to the English source`);
     assert.ok(fallback.includes('lang="en-US"'), `${code} marks fallback text as English`);
-    assert.ok(fallback.includes(`<link rel="canonical" href="${canonical}"`), `${code} canonicalizes to its English source`);
-    assert.ok(fallback.includes(`<meta property="og:url" content="${canonical}"`), `${code} uses the English canonical for social sharing`);
-    assert.deepEqual(fallback.match(/<link rel="alternate"/gu), null);
-    assert.equal(fallback.match(/<meta property="og:locale"[^>]*>/gu)?.length, 1);
-    assert.match(fallback, /<meta property="og:locale" content="en_US"/u);
+    assert.ok(fallback.includes(`<link rel="canonical" href="${canonical}"`), `${code} retains Starlight's locale canonical`);
+    assert.ok(fallback.includes(`<meta property="og:url" content="${canonical}"`), `${code} retains Starlight's locale social URL`);
+    assert.ok(fallback.includes(`<link rel="alternate" hreflang="en-US" href="https://omniroute.hagicode.com/en-US/${sourceTopic}"`));
+    assert.ok(fallback.includes(`<meta property="og:locale" content="${code}"`));
   }
 
   const chineseHome = await page("zh-CN/");
@@ -77,8 +78,10 @@ test("localized shared shell retains links, language switching, and reading cont
   const root = await page("");
   const config = await readFile(new URL("../astro.config.mjs", import.meta.url), "utf8");
   assert.ok(root.includes('href="/en-US/"'));
-  assert.match(config, /googleAnalytics:\s*\{\s*enabled:\s*false\s*\}/u);
-  assert.match(config, /fiftyOneLa:\s*\{\s*enabled:\s*false\s*\}/u);
+  assert.match(config, /googleAnalytics:\s*\{\s*enabled:\s*true,\s*measurementId:\s*"G-EN03FMT2Q4"\s*\}/u);
+  assert.match(config, /fiftyOneLa:\s*\{\s*enabled:\s*true,\s*siteId:\s*fiftyOneLaSiteId\s*\}/u);
+  assert.match(config, /fiftyOneLaSiteId = "L6b88a5yK4h2Xnci"/u);
+  assert.doesNotMatch(config, /StarlightHead/u);
   assert.doesNotMatch(config, /PUBLIC_OMNIROUTE_(?:GA|51LA)_ID/u);
 
   for (const { code } of LANGUAGE_OPTIONS) {
@@ -109,7 +112,7 @@ test("localized shared shell retains links, language switching, and reading cont
   }
 });
 
-test("upstream links resolve for every locale and tracking scripts stay absent", async () => {
+test("upstream links resolve for every locale with both analytics providers enabled", async () => {
   const revision = JSON.parse(await readFile(new URL("../src/content/upstream-translation-reviews.json", import.meta.url), "utf8")).revision;
   const home = await page("en-US/");
   assert.match(home, /\/en-US\/getting-started\/quick-start\//u);
@@ -122,7 +125,8 @@ test("upstream links resolve for every locale and tracking scripts stay absent",
     for (const file of pages.filter((name) => name.endsWith("index.html"))) {
       const html = await readFile(new URL(`../dist/${code}/${file}`, import.meta.url), "utf8");
       assert.ok(html.includes(`https://github.com/diegosouzapw/OmniRoute/blob/${revision}/`));
-      assert.doesNotMatch(html, trackingScripts, `${code}/${file} has no analytics script`);
+      assert.match(html, googleAnalyticsScript, `${code}/${file} loads Google Analytics`);
+      assert.match(html, fiftyOneLaScript, `${code}/${file} loads 51LA`);
       const article = html.match(/<main[\s\S]*?<\/main>/u)?.[0] ?? "";
       for (const [, href] of article.matchAll(/(?:href|src)="([^"]+)"/gu)) {
         if (/^https?:/iu.test(href) && !href.startsWith("https://omniroute.hagicode.com/")) continue;
