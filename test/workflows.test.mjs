@@ -9,6 +9,8 @@ async function read(path) {
 test("CI and publication run the same verification gate", async () => {
   const ci = await read("../.github/workflows/docs-ci.yml");
   const deploy = await read("../.github/workflows/docs-deploy-gh-pages.yml");
+  assert.match(ci, /submodules: true/u);
+  assert.match(deploy, /submodules: true/u);
   for (const command of ["npm ci", "npm run check", "npm run build", "npm test"]) {
     assert.ok(ci.includes(`- run: ${command}`), `CI: ${command}`);
     assert.ok(deploy.includes(`- run: ${command}`), `publish: ${command}`);

@@ -3,45 +3,51 @@ import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { SITE_COPY, LANGUAGE_OPTIONS } from "../src/i18n/site-copy.mjs";
+import { TOPICS } from "../scripts/upstream-topics.mjs";
 
-async function page(route) {
-  return readFile(new URL(`../dist/${route}index.html`, import.meta.url), "utf8");
-}
+const page = (route) => readFile(new URL(`../dist/${route}index.html`, import.meta.url), "utf8");
 
-test("all ten locale homes and 26 topic routes per locale are built under OmniRoute canonicals", async () => {
+test("selected upstream routes alone are built in all ten locales", async () => {
   const english = await readdir(new URL("../dist/en-US/", import.meta.url), { recursive: true });
-  assert.equal(english.filter((file) => file.endsWith("index.html")).length, 27);
+  assert.equal(english.filter((file) => file.endsWith("index.html")).length, Object.keys(TOPICS).length);
   for (const { code } of LANGUAGE_OPTIONS) {
     const home = await page(`${code}/`);
     assert.ok(home.includes(`<html lang="${code}"`));
     assert.ok(home.includes(`https://omniroute.hagicode.com/${code}/`));
     assert.ok(home.includes(SITE_COPY[code].languageLabel));
-    const topic = await page(`${code}/getting-started/`);
-    assert.ok(topic.includes('data-hagicode-end-card'));
-    assert.ok(topic.includes('data-hagicode-promotion'));
-    assert.ok(topic.includes(`/${code}/stores-beta/user-guide/`), `nested topic is navigable from ${code}`);
-    await stat(new URL(`../dist/${code}/stores-beta/user-guide/index.html`, import.meta.url));
+    assert.match(home, /OmniRoute/u);
+    for (const slug of Object.values(TOPICS).filter(Boolean)) {
+      const topic = await page(`${code}/${slug}/`);
+      assert.ok(topic.includes('data-hagicode-end-card'));
+      assert.ok(topic.includes('data-hagicode-promotion'));
+      assert.ok(topic.includes(`https://omniroute.hagicode.com/${code}/${slug}/`));
+    }
+    await assert.rejects(stat(new URL(`../dist/${code}/stores-beta/user-guide/index.html`, import.meta.url)), { code: "ENOENT" });
+    await assert.rejects(stat(new URL(`../dist/${code}/installation/index.html`, import.meta.url)), { code: "ENOENT" });
   }
 });
 
-test("authored Chinese topics and marked English fallback differ", async () => {
-  const zh = await page("zh-CN/getting-started/");
-  const ja = await page("ja-JP/getting-started/");
-  const en = await page("en-US/getting-started/");
-  assert.ok(zh.includes('https://omniroute.hagicode.com/zh-CN/getting-started/'));
-  assert.ok(en.includes('https://omniroute.hagicode.com/en-US/getting-started/'));
+test("real translations and locale homes contrast with honest English fallbacks", async () => {
+  const zh = await page("zh-CN/getting-started/quick-start/");
+  const traditional = await page("zh-Hant/getting-started/quick-start/");
+  const en = await page("en-US/getting-started/quick-start/");
+  const fallback = await page("ja-JP/getting-started/self-hosting/");
+  assert.match(zh, /安装|安装 OmniRoute|安装 OmniRoute/u);
   assert.doesNotMatch(zh, /english-fallback-notice/u);
-  assert.ok(ja.includes(SITE_COPY["ja-JP"].englishFallbackNotice));
-  assert.ok(ja.includes('href="/en-US/getting-started/"'));
-  assert.ok(ja.includes('lang="en-US"'));
-  assert.ok(ja.includes('https://omniroute.hagicode.com/en-US/getting-started/'));
+  assert.doesNotMatch(traditional, /english-fallback-notice/u);
+  assert.match(traditional, /zh-Hant\/getting-started\/quick-start/u);
+  assert.match(en, /Quick Start/u);
+  assert.ok(fallback.includes(SITE_COPY["ja-JP"].englishFallbackNotice));
+  assert.ok(fallback.includes('href="/en-US/getting-started/self-hosting/"'));
+  assert.ok(fallback.includes('lang="en-US"'));
+  assert.match(await page("zh-CN/"), /免费|免費/u);
+  assert.doesNotMatch(await page("zh-CN/"), /english-fallback-notice/u);
 });
 
-test("root entry and responsive site shell preserve required interactions and links", async () => {
+test("root entry and site shell retain navigation, search, and theme controls", async () => {
   const root = await page("");
-  const html = await page("en-US/getting-started/");
+  const html = await page("en-US/getting-started/quick-start/");
   assert.ok(root.includes('href="/en-US/"'));
-  assert.ok(root.includes("OmniRoute"));
   for (const url of [
     "https://www.hagicode.com/", "https://docs.hagicode.com/en-US/",
     "https://tasks.hagicode.com/", "https://github.com/HagiCode-org/omniroute-docs",
@@ -52,29 +58,35 @@ test("root entry and responsive site shell preserve required interactions and li
   assert.match(html, /<starlight-theme-select/u);
   assert.match(html, /data-language-chooser/u);
   assert.match(html, /data-promotion-dismiss/u);
-  assert.match(html, /data-hagicode-feature/u);
   assert.ok(!html.includes("openspec.hagicode.com"));
-  assert.ok(!html.includes("data-openspec-analytics"));
   const image = await readFile(new URL("../dist/img/hagicode/light-main.png", import.meta.url));
   assert.ok(image.length > 0);
 });
 
-test("local article links resolve to built pages", async () => {
-  const english = await readdir(new URL("../dist/en-US/", import.meta.url), { recursive: true });
+test("selected topic links and copied assets resolve in every locale; source links cite the pinned revision", async () => {
+  const revision = (await readFile(new URL("../src/content/upstream-translation-reviews.json", import.meta.url), "utf8"));
+  const home = await page("en-US/");
+  assert.match(home, /\/en-US\/getting-started\/quick-start\//u);
+  assert.match(home, /\/upstream-assets\/en-US\//u);
+  assert.ok(home.includes(`https://github.com/diegosouzapw/OmniRoute/blob/${JSON.parse(revision).revision}/`));
   const missing = [];
-  for (const file of english.filter((name) => name.endsWith("index.html"))) {
-    const html = await readFile(new URL(`../dist/en-US/${file}`, import.meta.url), "utf8");
-    const article = html.match(/<main[\s\S]*?<\/main>/u)?.[0] ?? "";
-    for (const [, href] of article.matchAll(/href="([^"]+)"/gu)) {
-      const target = new URL(href.replaceAll("&amp;", "&"), `https://omniroute.hagicode.com/en-US/${file.replace(/index\.html$/u, "")}`);
-      if (target.origin !== "https://omniroute.hagicode.com") continue;
-      const pathname = decodeURIComponent(target.pathname).replace(/^\/+/u, "");
-      const relative = pathname.endsWith("/") ? `${pathname}index.html` : pathname;
-      try {
-        await stat(new URL(`../dist/${path.posix.normalize(relative)}`, import.meta.url));
-      } catch (error) {
-        if (error.code !== "ENOENT") throw error;
-        missing.push(`${file}: ${href}`);
+  for (const { code } of LANGUAGE_OPTIONS) {
+    const pages = await readdir(new URL(`../dist/${code}/`, import.meta.url), { recursive: true });
+    for (const file of pages.filter((name) => name.endsWith("index.html"))) {
+      const html = await readFile(new URL(`../dist/${code}/${file}`, import.meta.url), "utf8");
+      assert.ok(html.includes(`https://github.com/diegosouzapw/OmniRoute/blob/${JSON.parse(revision).revision}/`));
+      const article = html.match(/<main[\s\S]*?<\/main>/u)?.[0] ?? "";
+      for (const [, href] of article.matchAll(/(?:href|src)="([^"]+)"/gu)) {
+        const target = new URL(href.replaceAll("&amp;", "&"), `https://omniroute.hagicode.com/${code}/${file.replace(/index\.html$/u, "")}`);
+        if (target.origin !== "https://omniroute.hagicode.com") continue;
+        const pathname = decodeURIComponent(target.pathname).replace(/^\/+/u, "");
+        const relative = pathname.endsWith("/") ? `${pathname}index.html` : pathname;
+        try {
+          await stat(new URL(`../dist/${path.posix.normalize(relative)}`, import.meta.url));
+        } catch (error) {
+          if (error.code !== "ENOENT") throw error;
+          missing.push(`${code}/${file}: ${href}`);
+        }
       }
     }
   }
