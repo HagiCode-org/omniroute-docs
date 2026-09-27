@@ -1,5 +1,25 @@
 ---
+import ContentLayoutToggle from "@hagicode/hagilight-starlight/ContentLayoutToggle";
 import PageTitle from "@astrojs/starlight/components/PageTitle.astro";
 const fallback = Astro.locals.starlightRoute?.entry.data.isEnglishFallback === true;
 ---
-{fallback ? <div lang="en-US"><PageTitle /></div> : <PageTitle />}
+<div class="page-title-with-layout">
+  {fallback ? <div lang="en-US"><PageTitle /></div> : <PageTitle />}
+  <ContentLayoutToggle />
+</div>
+
+<style>
+  .page-title-with-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  @media (max-width: 40rem) {
+    .page-title-with-layout {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>
