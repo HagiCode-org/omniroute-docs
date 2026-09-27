@@ -46,13 +46,20 @@ together; do not edit generated pages.
 
 ## Integrations and publication
 
-The article-end HagiCode introduction is rendered without JavaScript.
-The floating promotion also starts with local content; optional browser-only
-campaign data may replace it when valid. Analytics is disabled by default:
-`.env.example` leaves `PUBLIC_OMNIROUTE_GA_ID` and
-`PUBLIC_OMNIROUTE_51LA_ID` blank. Only enable site-owned IDs after confirming
-hosting and privacy requirements. Even when configured, provider requests
-run only on `omniroute.hagicode.com`, never in local previews.
+The shared Starlight integration is pinned to `@hagicode/hagilight` and
+`@hagicode/hagilight-starlight` 0.2.1; this published version is the
+compatibility boundary for the site. Hagilight owns the header, locale chooser,
+footer links, content-width control, script-independent HagiCode article
+introduction, and optional browser-loaded campaign banner. OmniRoute Docs keeps
+its fallback-aware title and content wrappers, English-source links, and
+localized OmniRoute-specific link destinations in `astro.config.mjs`.
+
+The article introduction remains available without JavaScript. The floating
+campaign banner has no local fallback and stays hidden unless eligible remote
+campaign data is available. Google Analytics and 51LA are explicitly disabled;
+legacy `PUBLIC_OMNIROUTE_GA_ID` and `PUBLIC_OMNIROUTE_51LA_ID` variables do not
+enable tracking. Do not add analytics until a privacy-compatible integration
+has been reviewed and approved.
 
 CI runs the same check/build/test gate on pull requests and main. A successful
 main-branch publication assembles `dist/`, `esa.jsonc`, and `wrangler.jsonc`
