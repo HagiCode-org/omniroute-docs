@@ -1,1 +1,0 @@
-import{n as e,t}from"./locale-navigation.DVlSm1pG.js";var n=e()??`en-US`;window.location.replace(t(`/${n}/`,new URL(window.location.href)));
