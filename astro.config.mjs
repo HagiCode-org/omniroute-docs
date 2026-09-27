@@ -32,7 +32,7 @@ export default defineConfig({
       },
       customCss: ["./src/styles/site.css"],
       social: [
-        { icon: "github", label: "OmniRoute source", href: "https://github.com/HagiCode-org/omniroute-docs" },
+        { icon: "github", label: "OmniRoute source", href: "https://github.com/diegosouzapw/OmniRoute" },
       ],
     }),
     sitemap(),

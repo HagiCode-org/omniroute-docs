@@ -4,12 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "import:english": "node scripts/import-english.mjs",
-    "dev": "npm run import:english && astro dev",
-    "build": "npm run import:english && astro build",
+    "import:upstream": "node scripts/import-english.mjs",
+    "dev": "npm run import:upstream && astro dev",
+    "build": "npm run import:upstream && astro build",
     "preview": "astro preview",
-    "check": "npm run import:english && npm run check:translation-baselines && astro check",
-    "check:translation-baselines": "node scripts/check-translation-baselines.mjs",
+    "check": "npm run import:upstream && astro check",
+    "check:translation-reviews": "node scripts/check-translation-baselines.mjs",
     "test": "node --test test/*.test.mjs"
   },
   "dependencies": {
