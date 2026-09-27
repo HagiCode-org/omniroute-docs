@@ -14,7 +14,6 @@ const productDocsUrls = Object.fromEntries(
   ]),
 );
 const docsRepo = "https://github.com/HagiCode-org/omniroute-docs";
-const fiftyOneLaSiteId = "L6b88a5yK4h2Xnci";
 
 export default defineConfig({
   site: "https://omniroute.hagicode.com",
@@ -48,7 +47,6 @@ export default defineConfig({
           links: {
             siteId: "omniroute-docs",
             siteUrl: "https://omniroute.hagicode.com/",
-            relatedSites: [],
             overrides: {
               home: {
                 label: localizedCopy("websiteLabel"),
@@ -85,10 +83,6 @@ export default defineConfig({
             },
           },
           promoto: { enabled: true },
-          analytics: {
-            googleAnalytics: { enabled: true, measurementId: "G-EN03FMT2Q4" },
-            fiftyOneLa: { enabled: true, siteId: fiftyOneLaSiteId },
-          },
           aiDisclosures: {
             isAITranslation: false,
             isAIAuthor: false,

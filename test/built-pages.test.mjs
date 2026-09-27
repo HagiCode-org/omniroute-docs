@@ -78,9 +78,8 @@ test("localized shared shell retains links, language switching, and reading cont
   const root = await page("");
   const config = await readFile(new URL("../astro.config.mjs", import.meta.url), "utf8");
   assert.ok(root.includes('href="/en-US/"'));
-  assert.match(config, /googleAnalytics:\s*\{\s*enabled:\s*true,\s*measurementId:\s*"G-EN03FMT2Q4"\s*\}/u);
-  assert.match(config, /fiftyOneLa:\s*\{\s*enabled:\s*true,\s*siteId:\s*fiftyOneLaSiteId\s*\}/u);
-  assert.match(config, /fiftyOneLaSiteId = "L6b88a5yK4h2Xnci"/u);
+  assert.doesNotMatch(config, /G-EN03FMT2Q4|L6b88a5yK4h2Xnci/u);
+  assert.doesNotMatch(config, /analytics:/u);
   assert.doesNotMatch(config, /StarlightHead/u);
   assert.doesNotMatch(config, /PUBLIC_OMNIROUTE_(?:GA|51LA)_ID/u);
 
@@ -97,6 +96,8 @@ test("localized shared shell retains links, language switching, and reading cont
       assert.ok(html.includes(url), `${code} has ${url}`);
       assert.ok(html.includes(label), `${code} has localized label ${label}`);
     }
+    assert.match(html, /hagilight-site-links/u);
+    assert.ok(html.includes("https://newbe.hagicode.com/"), `${code} renders Hagilight's built-in ecosystem links`);
     assert.match(html, /<site-search/u);
     assert.match(html, /<starlight-theme-select/u);
     assert.equal(html.split('data-hagilight-content-width-choice="wide"').length - 1, 1);
@@ -108,7 +109,7 @@ test("localized shared shell retains links, language switching, and reading cont
         `${code} can switch to ${target} while preserving this topic`,
       );
     }
-    assert.ok(!html.includes("openspec.hagicode.com"));
+    assert.ok(html.includes("https://openspec.hagicode.com/"), `${code} retains built-in ecosystem destinations`);
   }
 });
 
