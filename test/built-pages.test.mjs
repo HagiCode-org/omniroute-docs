@@ -10,6 +10,28 @@ const googleAnalyticsScript = /<script[^>]+src="https:\/\/www\.googletagmanager\
 const fiftyOneLaScript = /<script[^>]+src="https:\/\/sdk\.51\.la\/js-sdk-pro\.min\.js"/u;
 const sourceTopic = "getting-started/self-hosting/";
 
+test("all-language and locale-specific RSS feeds are published and advertised", async () => {
+  const [home, feed] = await Promise.all([
+    page("en-US/"),
+    readFile(new URL("../dist/rss.xml", import.meta.url), "utf8"),
+  ]);
+  const topics = await discoverTopics(new URL("../vendor/OmniRoute", import.meta.url).pathname);
+  assert.match(home, /rel="alternate"[^>]*type="application\/rss\+xml"[^>]*href="\/rss\.xml"/u);
+  const items = [...feed.matchAll(/<item>([\s\S]*?)<\/item>/gu)].map(([, item]) => item);
+  assert.ok(items.length >= Object.keys(topics).length - 1);
+  assert.ok(items.every((item) => {
+    const locale = item.match(/<language>([^<]+)<\/language>/u)?.[1];
+    return LANGUAGE_OPTIONS.some(({ code }) => code === locale)
+      && item.includes(`https://omniroute.hagicode.com/${locale}/`)
+      && !item.includes(`https://omniroute.hagicode.com/${locale}/</link>`);
+  }));
+  for (const { code } of LANGUAGE_OPTIONS) {
+    const localeFeed = await readFile(new URL(`../dist/rss.${code}.xml`, import.meta.url), "utf8");
+    assert.ok([...localeFeed.matchAll(/<item>([\s\S]*?)<\/item>/gu)].every(([, item]) =>
+      item.includes(`<language>${code}</language>`) && item.includes(`https://omniroute.hagicode.com/${code}/`)));
+  }
+});
+
 test("all upstream topics retain one article promotion and no empty campaign fallback", async () => {
   const topics = await discoverTopics(new URL("../vendor/OmniRoute", import.meta.url).pathname);
   const english = await readdir(new URL("../dist/en-US/", import.meta.url), { recursive: true });
