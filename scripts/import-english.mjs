@@ -1,3 +1,4 @@
-import { importEnglishDocs } from "./english-source.mjs";
+import { checkTranslationBaselines, importEnglishDocs } from "./english-source.mjs";
 
+await checkTranslationBaselines();
 await importEnglishDocs();

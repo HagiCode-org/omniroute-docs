@@ -1,327 +1,263 @@
 import { createHash } from "node:crypto";
-import {
-  copyFile,
-  mkdir,
-  readdir,
-  readFile,
-  rm,
-  stat,
-  writeFile,
-} from "node:fs/promises";
+import { execFileSync } from "node:child_process";
+import { copyFile, mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { generatedFallbackPaths, writeEnglishFallbacks } from "./english-fallbacks.mjs";
-import { LANGUAGE_OPTIONS } from "../src/i18n/site-copy.mjs";
+import { LANGUAGE_OPTIONS, SITE_COPY } from "../src/i18n/site-copy.mjs";
+import { TOPICS, translatedSource } from "./upstream-topics.mjs";
 
-const REPO_ROOT = fileURLToPath(new URL("../", import.meta.url));
-const SOURCE_DOCS = path.join(REPO_ROOT, "content-source/en-US");
-const GENERATED_DOCS = path.join(REPO_ROOT, "src/content/docs/en-US");
-const GENERATED_ASSETS = path.join(REPO_ROOT, "public/en-US/assets");
-const BASELINES_FILE = path.join(REPO_ROOT, "src/content/translation-baselines.json");
+const ROOT = fileURLToPath(new URL("../", import.meta.url));
+const SOURCE = path.join(ROOT, "vendor/OmniRoute");
+const CONTENT = path.join(ROOT, "src/content/docs");
+const ASSETS = path.join(ROOT, "public/upstream-assets");
+const BASELINES = path.join(ROOT, "src/content/upstream-translation-reviews.json");
+const MANIFEST = ".generated-upstream.json";
+const UPSTREAM = "https://github.com/diegosouzapw/OmniRoute/blob";
 
-function posixPath(value) {
-  return value.split(path.sep).join("/");
-}
-
-function encodePath(value) {
-  return value.split("/").map(encodeURIComponent).join("/");
-}
-
-function hash(value) {
-  return createHash("sha256").update(value).digest("hex");
-}
-
-function decodeTitle(value, file) {
-  const title = value.trim();
-  if (title.startsWith('"')) {
-    try {
-      return JSON.parse(title);
-    } catch {
-      throw new Error(`Invalid quoted title in ${file}`);
-    }
+const hash = (value) => createHash("sha256").update(value).digest("hex");
+const posix = (value) => value.split(path.sep).join("/");
+const encode = (value) => value.split("/").map(encodeURIComponent).join("/");
+const exists = async (file) => {
+  try {
+    return (await stat(file)).isFile();
+  } catch (error) {
+    if (error.code === "ENOENT") return false;
+    throw error;
   }
-  if (title.startsWith("'") && title.endsWith("'")) {
-    return title.slice(1, -1).replaceAll("''", "'");
+};
+const isDirectory = async (file) => {
+  try {
+    return (await stat(file)).isDirectory();
+  } catch (error) {
+    if (error.code === "ENOENT") return false;
+    throw error;
   }
-  if (/[:#\[\]{}]/u.test(title)) {
-    throw new Error(`Unsupported YAML title syntax in ${file}; quote the title`);
-  }
-  return title;
-}
+};
+const inside = (root, file) => file.startsWith(`${root}${path.sep}`) || file === root;
+const route = (locale, slug) => `/${locale}/${slug ? `${slug}/` : ""}`;
 
-function decodeDescription(value, file) {
-  const description = value.trim();
-  if (description.startsWith('"') || description.startsWith("'")) return decodeTitle(description, file);
-  return description;
-}
-
-function parseFrontmatter(source, file) {
-  if (!source.startsWith("---\n") && !source.startsWith("---\r\n")) {
-    return { title: undefined, description: undefined, body: source };
-  }
-
-  const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/u);
-  if (!match) {
-    throw new Error(`Unterminated frontmatter in ${file}`);
-  }
-
+function parseDocument(original, file) {
+  let body = original.replace(/\r\n?/gu, "\n");
   let title;
   let description;
-  for (const line of match[1].split(/\r?\n/u)) {
-    if (!line.trim()) continue;
-    const field = line.match(/^(title|description):\s*(.*?)\s*$/u);
-    if (!field) {
-      throw new Error(`Unsupported frontmatter in ${file}: ${line}`);
-    }
-    const value = field[1] === "title"
-      ? decodeTitle(field[2], file)
-      : decodeDescription(field[2], file);
-    if (!value) throw new Error(`Empty ${field[1]} in ${file}`);
-    if (field[1] === "title") title = value;
-    else description = value;
-  }
-
-  return { title, description, body: source.slice(match[0].length) };
-}
-
-function removeCodeFences(source) {
-  return source.replace(/(^|\n)(```|~~~)[^\n]*\n[\s\S]*?\n\2[ \t]*(?=\n|$)/gu, "$1");
-}
-
-function assertSupportedMarkdown(source, file) {
-  const prose = removeCodeFences(source);
-  if (/^\s*(?:import|export)\s.+$/mu.test(prose)) {
-    throw new Error(`MDX imports/exports are not supported in ${file}; use Markdown only`);
-  }
-  if (/<[A-Z][A-Za-z0-9.]*(?:\s|\/?>)/u.test(prose)) {
-    throw new Error(`MDX components are not supported in ${file}; use standard Markdown`);
-  }
-}
-
-async function walkMarkdown(directory) {
-  const found = [];
-  for (const entry of await readdir(directory, { withFileTypes: true })) {
-    const absolute = path.join(directory, entry.name);
-    if (entry.isDirectory()) {
-      found.push(...await walkMarkdown(absolute));
-    } else if (entry.isFile() && /\.mdx?$/iu.test(entry.name)) {
-      if (!/\.md$/u.test(entry.name)) {
-        throw new Error(`Unsupported source file ${absolute}; only .md pages can be imported`);
+  if (body.startsWith("---\n")) {
+    const frontmatter = body.match(/^---\n([\s\S]*?)\n---\n/u);
+    if (!frontmatter) throw new Error(`Unterminated frontmatter in ${file}`);
+    for (const line of frontmatter[1].split("\n")) {
+      if (!line.trim()) continue;
+      const field = line.match(/^(title|description|version|lastUpdated):\s*(.*)$/u);
+      if (!field) throw new Error(`Unsupported frontmatter in ${file}: ${line}`);
+      if (field[1] === "title" || field[1] === "description") {
+        const value = field[2].trim();
+        if (!value) throw new Error(`Empty ${field[1]} in ${file}`);
+        let parsed;
+        try {
+          parsed = value.startsWith('"') ? JSON.parse(value)
+            : value.startsWith("'") && value.endsWith("'") ? value.slice(1, -1) : value;
+        } catch {
+          throw new Error(`Malformed ${field[1]} in ${file}`);
+        }
+        if (typeof parsed !== "string") throw new Error(`Malformed ${field[1]} in ${file}`);
+        if (field[1] === "title") title = parsed;
+        else description = parsed;
       }
-      found.push(absolute);
+    }
+    body = body.slice(frontmatter[0].length);
+  }
+  // Upstream's 67-language index is not the site's ten-language selector.
+  body = body.replace(/^.*🌐 \*\*Languages:\*\*.*\n/gmu, "");
+  body = body.replace(/<div align="center">\s*<b>🌐 [^<]*<\/b>[\s\S]*?<\/div>/gu, "");
+  body = body.replace(/<code>([\s\S]*?)<\/code>/gu, (_, text) =>
+    `<code>${text.replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</code>`);
+  const withoutCode = body.replace(/(^|\n)(```|~~~)[^\n]*\n[\s\S]*?\n\2[ \t]*(?=\n|$)/gu, "$1")
+    .replace(/`+[^`\n]+`+/gu, "");
+  if (/^\s*(?:import|export)\s.+$/mu.test(withoutCode)) {
+    throw new Error(`MDX imports/exports are not supported in ${file}`);
+  }
+  if (/<[a-z][^>]*\son[a-z]+\s*=/iu.test(withoutCode)) {
+    throw new Error(`HTML event handlers are not supported in ${file}`);
+  }
+  if (/<[a-z][^>]*\b(?:src|href)\s*=\s*(?!["'])\S+/iu.test(withoutCode)) {
+    throw new Error(`Unquoted HTML links are not supported in ${file}`);
+  }
+  const allowed = new Set(["a", "b", "br", "code", "details", "div", "h3", "i", "img", "p", "picture", "source", "strong", "sub", "summary", "table", "td", "th", "tr"]);
+  for (const match of withoutCode.matchAll(/<\/?([A-Za-z][\w.-]*)(?=[\s/>])/gu)) {
+    if (!allowed.has(match[1])) {
+      throw new Error(`Unsupported HTML or MDX element <${match[1]}> in ${file}`);
     }
   }
-  return found.sort();
+  const heading = body.match(/^#\s+(.+?)\s*#*\s*$/mu);
+  title ??= heading?.[1];
+  if (!title) throw new Error(`Missing title or H1 in ${file}`);
+  if (heading?.[1] === title) body = body.replace(/^#\s+.+?\s*#*\s*$/mu, "");
+  return { title, description, body: body.trimStart() };
 }
 
-function outputRelativePath(sourceRelativePath) {
-  const segments = sourceRelativePath.split("/");
-  const filename = segments.pop();
-  const stem = filename.replace(/\.md$/u, "");
-  segments.push(stem.toLowerCase() === "readme" ? "index.md" : `${stem}.md`);
-  return segments.join("/");
-}
-
-function pageRoute(sourceRelativePath) {
-  const output = outputRelativePath(sourceRelativePath).replace(/\.md$/u, "");
-  return output === "index" || output.endsWith("/index")
-    ? output.replace(/(?:^|\/)index$/u, "")
-    : output;
-}
-
-function splitTarget(target) {
-  const match = target.match(/^([^?#]*)(\?[^#]*)?(#.*)?$/u);
-  return { pathname: match?.[1] ?? target, suffix: `${match?.[2] ?? ""}${match?.[3] ?? ""}` };
-}
-
-function isExternalTarget(target) {
-  return /^(?:[a-z][a-z\d+.-]*:|\/\/)/iu.test(target);
-}
-
-async function replaceMarkdownTargets(body, transform) {
-  const protectedSegments = [];
-  let result = body.replace(/(^|\n)(```|~~~)[^\n]*\n[\s\S]*?\n\2[ \t]*(?=\n|$)/gu, (whole) => {
-    const token = `OMNIROUTE_CODE_BLOCK_${protectedSegments.length}_TOKEN`;
-    protectedSegments.push(whole);
-    return token;
+async function rewriteTargets(body, transform) {
+  const protectedCode = [];
+  let result = body.replace(/(^|\n)(```|~~~)[^\n]*\n[\s\S]*?\n\2[ \t]*(?=\n|$)/gu, (text) => {
+    protectedCode.push(text);
+    return `OMNIROUTE_CODE_${protectedCode.length - 1}_TOKEN`;
   });
-  result = result.replace(/(`+)(?!`)([\s\S]*?[^`])\1(?!`)/gu, (whole) => {
-    const token = `OMNIROUTE_INLINE_CODE_${protectedSegments.length}_TOKEN`;
-    protectedSegments.push(whole);
-    return token;
+  result = result.replace(/(`+)(?!`)([\s\S]*?[^`])\1(?!`)/gu, (text) => {
+    protectedCode.push(text);
+    return `OMNIROUTE_CODE_${protectedCode.length - 1}_TOKEN`;
   });
-
   const replacements = [];
-  const patterns = [
+  for (const { regex, group } of [
+    { regex: /(\[!\[[^\]]*\]\([^)]+\)\]\()([^\s)]+)(\))/gu, group: 2 },
     { regex: /(!?\[[^\]]*\]\()(<[^>]+>|[^\s)]+)(\s+(?:"[^"]*"|'[^']*'))?(\))/gu, group: 2 },
     { regex: /^(\s*\[[^\]]+\]:\s*)(<?)(\S+?)(>?)(\s+(?:"[^"]*"|'[^']*'))?\s*$/gmu, group: 3 },
     { regex: /\b(src|href)=(["'])([^"']+)\2/giu, group: 3 },
-  ];
-  for (const { regex, group } of patterns) {
+  ]) {
     for (const match of result.matchAll(regex)) {
-      const whole = match[0];
       const target = match[group];
-      const offset = match.index + match[0].indexOf(target);
-      const value = target.startsWith("<") && target.endsWith(">")
-        ? `<${await transform(target.slice(1, -1), whole)}>`
-        : await transform(target, whole);
-      replacements.push({ start: offset, end: offset + target.length, value });
+      const offset = match.index + match[0].indexOf(target, match[1].length);
+      const transformed = target.startsWith("<") && target.endsWith(">")
+        ? `<${await transform(target.slice(1, -1))}>` : await transform(target);
+      replacements.push({ start: offset, end: offset + target.length, value: transformed });
     }
   }
-  for (const replacement of replacements.sort((left, right) => right.start - left.start)) {
-    result = `${result.slice(0, replacement.start)}${replacement.value}${result.slice(replacement.end)}`;
+  for (const { start, end, value } of replacements.sort((a, b) => b.start - a.start)) {
+    result = `${result.slice(0, start)}${value}${result.slice(end)}`;
   }
-  return result.replace(/OMNIROUTE_(?:CODE_BLOCK|INLINE_CODE)_(\d+)_TOKEN/gu, (token, index) =>
-    protectedSegments[Number(index)] ?? token);
-}
-
-async function readSourceFiles(sourceDir) {
-  try {
-    const sourceStat = await stat(sourceDir);
-    if (!sourceStat.isDirectory()) throw new Error("not a directory");
-  } catch {
-    throw new Error(
-      `English source is missing at ${sourceDir}. Restore content-source/en-US from version control`,
-    );
-  }
-
-  const files = await walkMarkdown(sourceDir);
-  if (!files.includes(path.join(sourceDir, "README.md"))) {
-    throw new Error(`Required English home page is missing: ${path.join(sourceDir, "README.md")}`);
-  }
-  return files;
+  return result.replace(/OMNIROUTE_CODE_(\d+)_TOKEN/gu, (token, index) => protectedCode[Number(index)] ?? token);
 }
 
 export async function createImportPlan({
-  sourceDir: requestedSourceDir = SOURCE_DOCS,
-  revision = "site-owned",
+  sourceDir = SOURCE,
+  revision,
+  topics = TOPICS,
+  locales = LANGUAGE_OPTIONS.map(({ code }) => code),
 } = {}) {
-  const sourceDir = path.resolve(requestedSourceDir);
-  const sourceFiles = await readSourceFiles(sourceDir);
-  const sourceSet = new Set(sourceFiles);
+  sourceDir = path.resolve(sourceDir);
+  if (!await exists(path.join(sourceDir, "README.md"))) {
+    throw new Error(`OmniRoute checkout missing or uninitialized at ${sourceDir}; run git submodule update --init vendor/OmniRoute`);
+  }
+  revision ??= sourceDir === SOURCE
+    ? execFileSync("git", ["-C", sourceDir, "rev-parse", "HEAD"], { encoding: "utf8" }).trim()
+    : "fixture";
+  const selected = new Map(Object.entries(topics).map(([file, slug]) => [path.resolve(sourceDir, file), slug]));
+  for (const english of selected.keys()) {
+    if (!inside(sourceDir, english) || !english.endsWith(".md") || !await exists(english)) {
+      throw new Error(`Selected English source is missing: ${english}`);
+    }
+  }
+  const selectedTranslations = new Map();
+  for (const [english, slug] of selected) {
+    for (const locale of locales.filter((code) => code !== "en-US")) {
+      selectedTranslations.set(path.join(sourceDir, translatedSource(posix(path.relative(sourceDir, english)), locale)), { locale, slug });
+    }
+  }
   const documents = new Map();
-  const outputs = new Map();
+  const translations = new Map();
   const assets = new Map();
-  const pending = [];
+  for (const [english, slug] of selected) {
+    const englishRelative = posix(path.relative(sourceDir, english));
+    const englishSource = await readFile(english, "utf8");
+    for (const locale of locales) {
+      const candidate = path.join(sourceDir, translatedSource(englishRelative, locale));
+      const translated = locale !== "en-US" && await exists(candidate);
+      const file = translated ? candidate : english;
+      const relative = posix(path.relative(sourceDir, file));
+      const original = translated ? await readFile(file, "utf8") : englishSource;
+      const parsed = parseDocument(original, relative);
+      const output = `${locale}/${slug ? `${slug}/index.md` : "index.md"}`;
+      if (documents.has(output)) throw new Error(`Duplicate output route: ${output}`);
+      if (translated) translations.set(`${locale}/${englishRelative}`, { source: englishRelative, sha256: hash(englishSource), revision });
 
-  for (const absolute of sourceFiles) {
-    const relative = posixPath(path.relative(sourceDir, absolute));
-    const output = outputRelativePath(relative);
-    const outputKey = output.toLowerCase();
-    if (outputs.has(outputKey)) {
-      throw new Error(`English source path collision: ${relative} and ${outputs.get(outputKey)} both map to ${output}`);
-    }
-    outputs.set(outputKey, relative);
-
-    const original = await readFile(absolute, "utf8");
-    assertSupportedMarkdown(original, relative);
-    const parsed = parseFrontmatter(original, relative);
-    let title = parsed.title;
-    let body = parsed.body.replace(/\r\n?/gu, "\n");
-    const firstContentLine = body.split("\n").find((line) => line.trim());
-    if (!title) {
-      const heading = firstContentLine?.match(/^#\s+(.+?)\s*#*\s*$/u);
-      if (!heading) {
-        throw new Error(`Missing frontmatter title or leading H1 in ${relative}`);
+      async function transform(target) {
+        if (/^(?:javascript|data|vbscript):/iu.test(target)) {
+          throw new Error(`Unsupported URL scheme ${target} in ${relative}`);
+        }
+        if (!target || target.startsWith("#") || /^(?:[a-z][\w+.-]*:|\/\/)/iu.test(target)) return target;
+        const match = target.match(/^([^?#]*)(.*)$/u);
+        let decoded;
+        try {
+          decoded = decodeURIComponent(match[1]);
+        } catch {
+          throw new Error(`Invalid encoded reference ${target} in ${relative}`);
+        }
+        const resolved = path.resolve(path.dirname(file), decoded);
+        if (!inside(sourceDir, resolved)) throw new Error(`Local reference escapes upstream checkout: ${target} in ${relative}`);
+        let actual = resolved;
+        if (!await exists(actual) && !await isDirectory(actual) && translated) {
+          const englishEquivalent = path.resolve(path.dirname(english), decoded);
+          if (inside(sourceDir, englishEquivalent)
+            && (await exists(englishEquivalent) || await isDirectory(englishEquivalent))) actual = englishEquivalent;
+        }
+        if (!await exists(actual) && !await isDirectory(actual)) throw new Error(`Missing local reference ${target} in ${relative}`);
+        const selectedSlug = selected.get(actual);
+        if (selectedSlug !== undefined) return `${route(locale, selectedSlug)}${match[2]}`;
+        const localized = selectedTranslations.get(actual);
+        if (localized) return `${route(localized.locale, localized.slug)}${match[2]}`;
+        const sourcePath = posix(path.relative(sourceDir, actual));
+        if (await isDirectory(actual)) return `${UPSTREAM}/${revision}/${encode(sourcePath)}${match[2]}`;
+        if (actual.endsWith(".md")) return `${UPSTREAM}/${revision}/${encode(sourcePath)}${match[2]}`;
+        const assetPath = `${locale}/${sourcePath}`;
+        assets.set(assetPath, actual);
+        return `/upstream-assets/${encode(assetPath)}${match[2]}`;
       }
-      title = heading[1].trim();
-    }
-    if (!title.trim()) throw new Error(`Empty title in ${relative}`);
-    if (firstContentLine?.match(/^#\s+(.+?)\s*#*\s*$/u)?.[1]?.trim() === title.trim()) {
-      body = body.replace(/^\s*#\s+.+?\s*#*\s*(?:\n|$)/u, "");
-    }
 
-    const metadata = [
-      `title: ${JSON.stringify(title)}`,
-      ...(parsed.description ? [`description: ${JSON.stringify(parsed.description)}`] : []),
-    ];
-    documents.set(relative, {
-      output,
-      source: original,
-      sha256: hash(original),
-      rendered: `---\n${metadata.join("\n")}\n---\n\n${body.trimStart()}`,
-    });
-    pending.push({ absolute, relative, output });
+      const body = await rewriteTargets(parsed.body, transform);
+      const metadata = [
+        `title: ${JSON.stringify(parsed.title)}`,
+        ...(parsed.description ? [`description: ${JSON.stringify(parsed.description)}`] : []),
+        ...(locale !== "en-US" && !translated ? ["isEnglishFallback: true"] : []),
+      ];
+      documents.set(output, {
+        rendered: `---\n${metadata.join("\n")}\n---\n\n${body.trimEnd()}\n\n---\n\n[${SITE_COPY[locale].omniRouteSourceLabel} (${revision.slice(0, 12)})](${UPSTREAM}/${revision}/${encode(relative)})\n`,
+        source: englishRelative,
+        translation: translated ? relative : null,
+      });
+    }
   }
-
-  async function resolveTarget(target, sourceRelative) {
-    if (!target || target.startsWith("#") || isExternalTarget(target)) return target;
-    const { pathname, suffix } = splitTarget(target);
-    if (!pathname) return target;
-
-    let decoded;
-    try {
-      decoded = decodeURIComponent(pathname);
-    } catch {
-      throw new Error(`Invalid encoded link ${target} in ${sourceRelative}`);
-    }
-    const resolved = path.resolve(sourceDir, path.dirname(sourceRelative), decoded);
-    const insideDocs = resolved === sourceDir || resolved.startsWith(`${sourceDir}${path.sep}`);
-
-    if (/\.md$/iu.test(decoded)) {
-      if (insideDocs && sourceSet.has(resolved)) {
-        const route = pageRoute(posixPath(path.relative(sourceDir, resolved)));
-        return `/en-US/${route ? `${encodePath(route)}/` : ""}${suffix}`;
-      }
-      throw new Error(`Broken or unsupported Markdown link ${target} in ${sourceRelative}`);
-    }
-
-    if (!insideDocs) {
-      throw new Error(`Referenced asset is outside English source: ${target} in ${sourceRelative}`);
-    }
-    try {
-      const assetStat = await stat(resolved);
-      if (!assetStat.isFile()) throw new Error("not a file");
-    } catch {
-      throw new Error(`Missing local asset ${target} referenced by ${sourceRelative}`);
-    }
-    const assetRelative = posixPath(path.relative(sourceDir, resolved));
-    const assetKey = assetRelative.toLowerCase();
-    if (assets.has(assetKey) && assets.get(assetKey).source !== resolved) {
-      throw new Error(`English asset path collision: ${assetRelative}`);
-    }
-    if (!assets.has(assetKey)) assets.set(assetKey, { source: resolved, relative: assetRelative });
-    return `/en-US/assets/${encodePath(assetRelative)}${suffix}`;
-  }
-
-  const plan = [];
-  for (const item of pending) {
-    const document = documents.get(item.relative);
-    const body = document.rendered.slice(document.rendered.indexOf("\n\n") + 2);
-    const rewritten = await replaceMarkdownTargets(body, (target) => resolveTarget(target, item.relative));
-    const rendered = `${document.rendered.slice(0, document.rendered.indexOf("\n\n") + 2)}${rewritten}`;
-    plan.push({ ...item, rendered });
-  }
-
-  for (const [relative, document] of documents) {
-    document.rendered = plan.find((item) => item.relative === relative).rendered;
-  }
-
-  return {
-    revision,
-    documents,
-    assets,
-  };
+  return { revision, documents, assets, translations };
 }
 
-export async function writeImportPlan(plan, {
-  outputDir = GENERATED_DOCS,
-  assetsDir = GENERATED_ASSETS,
-  locales,
-} = {}) {
-  await rm(outputDir, { recursive: true, force: true });
-  await rm(assetsDir, { recursive: true, force: true });
-  for (const { output, rendered } of plan.documents.values()) {
-    const destination = path.join(outputDir, ...output.split("/"));
+async function generatedFiles(contentRoot) {
+  const manifestPath = path.join(contentRoot, MANIFEST);
+  let manifest;
+  try {
+    manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+  } catch (error) {
+    if (error.code === "ENOENT") return {};
+    throw new Error(`Invalid generated content manifest ${manifestPath}: ${error.message}`);
+  }
+  if (!manifest || typeof manifest !== "object" || Array.isArray(manifest)) {
+    throw new Error(`Invalid generated content manifest ${manifestPath}`);
+  }
+  for (const [relative, expected] of Object.entries(manifest)) {
+    if (!/^(?:zh-CN|en-US|zh-Hant|ja-JP|ko-KR|de-DE|fr-FR|es-ES|pt-BR|ru-RU)\/(?:[\w-]+\/)*index\.md$/u.test(relative)
+      || !/^[a-f\d]{64}$/u.test(expected)) throw new Error(`Invalid generated path or hash: ${relative}`);
+  }
+  return manifest;
+}
+
+export async function writeImportPlan(plan, { contentRoot = CONTENT, assetsDir = ASSETS } = {}) {
+  const previous = await generatedFiles(contentRoot);
+  const next = {};
+  for (const [relative, { rendered }] of plan.documents) next[relative] = hash(rendered);
+  for (const relative of new Set([...Object.keys(previous), ...Object.keys(next)])) {
+    const destination = path.join(contentRoot, relative);
+    if (!await exists(destination)) continue;
+    if (!previous[relative] || hash(await readFile(destination)) !== previous[relative]) {
+      throw new Error(`Preserving non-generated or edited content: ${destination}`);
+    }
+  }
+  for (const relative of Object.keys(previous)) await rm(path.join(contentRoot, relative), { force: true });
+  for (const [relative, { rendered }] of plan.documents) {
+    const destination = path.join(contentRoot, relative);
     await mkdir(path.dirname(destination), { recursive: true });
     await writeFile(destination, rendered, "utf8");
   }
-  for (const { source, relative } of plan.assets.values()) {
-    const destination = path.join(assetsDir, ...relative.split("/"));
+  await rm(assetsDir, { recursive: true, force: true });
+  for (const [relative, source] of plan.assets) {
+    const destination = path.join(assetsDir, relative);
     await mkdir(path.dirname(destination), { recursive: true });
     await copyFile(source, destination);
   }
-  await writeEnglishFallbacks(plan, { contentRoot: path.dirname(outputDir), locales });
+  await writeFile(path.join(contentRoot, MANIFEST), `${JSON.stringify(next, null, 2)}\n`);
 }
 
 export async function importEnglishDocs(options = {}) {
@@ -329,118 +265,37 @@ export async function importEnglishDocs(options = {}) {
   try {
     plan = await createImportPlan(options);
   } catch (error) {
-    const outputDir = options.outputDir ?? GENERATED_DOCS;
-    await rm(outputDir, { recursive: true, force: true });
-    await rm(options.assetsDir ?? GENERATED_ASSETS, { recursive: true, force: true });
-    await writeEnglishFallbacks({ documents: new Map() }, {
-      contentRoot: path.dirname(outputDir),
-      locales: options.locales,
-    });
+    const contentRoot = options.contentRoot ?? CONTENT;
+    const previous = await generatedFiles(contentRoot);
+    for (const relative of Object.keys(previous)) {
+      const destination = path.join(contentRoot, relative);
+      if (await exists(destination) && hash(await readFile(destination)) === previous[relative]) await rm(destination);
+    }
+    await rm(path.join(contentRoot, MANIFEST), { force: true });
+    await rm(options.assetsDir ?? ASSETS, { recursive: true, force: true });
     throw error;
   }
   await writeImportPlan(plan, options);
   return plan;
 }
 
-function contentTopic(relative) {
-  const topic = posixPath(relative).replace(/\.(?:md|mdx)$/u, "");
-  return topic === "index" || topic.endsWith("/index")
-    ? topic.replace(/(?:^|\/)index$/u, "")
-    : topic;
-}
-
-async function listContentPages(contentRoot, directory = contentRoot) {
-  const pages = [];
-  for (const entry of await readdir(directory, { withFileTypes: true })) {
-    const absolute = path.join(directory, entry.name);
-    if (entry.isDirectory()) pages.push(...await listContentPages(contentRoot, absolute));
-    else if (entry.isFile() && /\.(?:md|mdx)$/u.test(entry.name)) pages.push(absolute);
-  }
-  return pages;
-}
-
-export async function checkTranslationBaselines({
-  sourceDir: requestedSourceDir = SOURCE_DOCS,
-  contentRoot = path.join(REPO_ROOT, "src/content/docs"),
-  manifestPath = BASELINES_FILE,
-  revision = "site-owned",
-} = {}) {
-  const sourceDir = path.resolve(requestedSourceDir);
-  const files = await readSourceFiles(sourceDir);
-  const sourceByTopic = new Map();
-  for (const absolute of files) {
-    const relative = posixPath(path.relative(sourceDir, absolute));
-    const topic = pageRoute(relative);
-    sourceByTopic.set(topic, {
-      source: relative,
-      sha256: hash(await readFile(absolute)),
-    });
-  }
-
-  let manifest;
-  try {
-    manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-  } catch (error) {
-    throw new Error(`Unable to read translation baseline manifest ${manifestPath}: ${error.message}`);
-  }
-  if (!manifest || typeof manifest !== "object" || Array.isArray(manifest)) {
-    throw new Error(`Translation baseline manifest must be an object: ${manifestPath}`);
-  }
-
+export async function checkTranslationBaselines({ sourceDir = SOURCE, manifestPath = BASELINES, topics = TOPICS, locales, revision } = {}) {
+  const plan = await createImportPlan({ sourceDir, topics, locales, revision });
+  const reviewed = JSON.parse(await readFile(manifestPath, "utf8"));
   const messages = [];
-  const pages = await listContentPages(contentRoot);
-  const generatedPages = await generatedFallbackPaths(contentRoot);
-  const translatedTopics = new Set();
-  for (const page of pages) {
-    const relative = posixPath(path.relative(contentRoot, page));
-    if (generatedPages.has(relative)) continue;
-    const segments = relative.split("/");
-    if (segments[0] === "en-US") continue;
-    let locale = "zh-CN";
-    let topicPath = relative;
-    if (LANGUAGE_OPTIONS.some(({ code }) => code === segments[0]) && segments.length > 1) {
-      [locale] = segments;
-      topicPath = segments.slice(1).join("/");
-    }
-    const topic = contentTopic(topicPath);
-    if (!topic) continue;
-    translatedTopics.add(`${locale}/${topic}`);
-    if (!sourceByTopic.has(topic)) {
-      messages.push(`${locale}/${topic}: English source is missing`);
-      continue;
-    }
-    if (!manifest[locale]?.[topic]) {
-      messages.push(`${locale}/${topic}: translation has no reviewed English source baseline`);
+  if (reviewed.revision !== plan.revision) messages.push("Pinned upstream revision changed; review selected translations");
+  for (const [key, value] of plan.translations) {
+    if (reviewed.sources?.[value.source] !== value.sha256) messages.push(`${key}: English source changed; review the translation`);
+    if (!reviewed.translations?.includes(key)) messages.push(`${key}: translation has no reviewed English source baseline`);
+  }
+  for (const key of reviewed.translations ?? []) {
+    if (!plan.translations.has(key)) messages.push(`${key}: reviewed translation or English source was removed`);
+  }
+  for (const source of Object.keys(reviewed.sources ?? {})) {
+    if (![...plan.translations.values()].some((entry) => entry.source === source)) {
+      messages.push(`${source}: reviewed English source was removed`);
     }
   }
-
-  for (const [locale, topics] of Object.entries(manifest)) {
-    if (!topics || typeof topics !== "object" || Array.isArray(topics)) {
-      messages.push(`${locale}: expected a topic-to-baseline object`);
-      continue;
-    }
-    for (const [topic, baseline] of Object.entries(topics)) {
-      const source = sourceByTopic.get(topic);
-      if (!source) {
-        messages.push(`${locale}/${topic}: English source was removed`);
-        continue;
-      }
-      if (baseline?.source !== source.source) {
-        messages.push(`${locale}/${topic}: source identity changed (${baseline?.source ?? "missing"} -> ${source.source})`);
-      } else if (baseline?.sha256 !== source.sha256) {
-        messages.push(`${locale}/${topic}: English source changed; review the translation`);
-      }
-      if (!baseline?.sha256 || !baseline?.source || !baseline?.revision) {
-        messages.push(`${locale}/${topic}: baseline requires source, sha256, and revision`);
-      }
-      if (!translatedTopics.has(`${locale}/${topic}`)) {
-        messages.push(`${locale}/${topic}: translation page is missing`);
-      }
-    }
-  }
-
-  if (messages.length) {
-    throw new Error(`Translation baseline review required:\n${messages.map((message) => `- ${message}`).join("\n")}`);
-  }
-  return { revision, checkedTranslations: Object.values(manifest).reduce((count, topics) => count + Object.keys(topics).length, 0) };
+  if (messages.length) throw new Error(`Translation review required:\n- ${messages.join("\n- ")}`);
+  return { revision: plan.revision, checkedTranslations: plan.translations.size };
 }
