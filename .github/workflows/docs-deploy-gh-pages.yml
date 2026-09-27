@@ -1,0 +1,60 @@
+name: Publish OmniRoute Docs
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: omniroute-docs-gh-pages
+  cancel-in-progress: false
+
+env:
+  PUBLICATION_DIR: .deploy/gh-pages
+
+jobs:
+  build:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+      - run: npm test
+      - name: Assemble publication payload
+        run: |
+          mkdir -p "$PUBLICATION_DIR/dist"
+          cp .github/gh-pages/esa.jsonc "$PUBLICATION_DIR/esa.jsonc"
+          cp .github/gh-pages/wrangler.jsonc "$PUBLICATION_DIR/wrangler.jsonc"
+          cp -R dist/. "$PUBLICATION_DIR/dist/"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: omniroute-docs-dist
+          path: .deploy/gh-pages/
+          if-no-files-found: error
+          retention-days: 1
+
+  publish:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: omniroute-docs-dist
+          path: .deploy/gh-pages/
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./.deploy/gh-pages
+          publish_branch: gh-pages
