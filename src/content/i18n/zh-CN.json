@@ -1,0 +1,9 @@
+{
+  "builtWithStarlight.label": "使用 Starlight 构建",
+  "search.label": "搜索",
+  "themeSelect.accessibleLabel": "选择主题",
+  "languageSelect.accessibleLabel": "选择语言",
+  "menuButton.accessibleLabel": "打开导航菜单",
+  "sidebarNav.accessibleLabel": "主导航",
+  "tableOfContents.onThisPage": "本页内容"
+}

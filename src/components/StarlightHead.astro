@@ -1,0 +1,35 @@
+---
+import Head from "@astrojs/starlight/components/Head.astro";
+import { getAnalyticsIdentifiers } from "../lib/analytics-config.mjs";
+import { getEnglishTopicHref } from "../lib/locale-navigation.mjs";
+
+const route = Astro.locals.starlightRoute;
+const fallback = route?.entry.data.isEnglishFallback === true;
+if (fallback) {
+  const canonical = new URL(getEnglishTopicHref(Astro.url.pathname), Astro.site ?? Astro.url).href;
+  let found = false;
+  route.head = route.head.filter(({ tag, attrs }) => !(tag === "link" && attrs?.rel === "alternate")).map((item) => {
+    if (item.tag !== "link" || item.attrs?.rel !== "canonical") return item;
+    found = true;
+    return { ...item, attrs: { ...item.attrs, href: canonical } };
+  });
+  if (!found) route.head.push({ tag: "link", attrs: { rel: "canonical", href: canonical } });
+}
+const analytics = getAnalyticsIdentifiers(
+  import.meta.env.PROD,
+  import.meta.env.PUBLIC_OMNIROUTE_GA_ID,
+  import.meta.env.PUBLIC_OMNIROUTE_51LA_ID,
+);
+---
+<Head />
+{fallback && <meta property="og:locale" content="en_US" />}
+{analytics && <script type="application/json" data-omniroute-analytics data-google-id={analytics.googleId} data-51la-id={analytics.fiftyOneLaId} />}
+<script>
+  import { initializeAnalytics } from "../lib/analytics-client.mjs";
+  const configuration = document.querySelector("[data-omniroute-analytics]");
+  if (configuration) initializeAnalytics({
+    hostname: window.location.hostname,
+    googleId: configuration.getAttribute("data-google-id") ?? "",
+    fiftyOneLaId: configuration.getAttribute("data-51la-id") ?? "",
+  }, window);
+</script>

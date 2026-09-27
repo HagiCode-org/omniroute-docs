@@ -1,0 +1,30 @@
+{
+  "zh-CN": {
+    "api-keys": { "source": "api-keys.md", "sha256": "dbaba02ae5d13bc20251a2911fe53d1dba270ff15434564f2eef7e2e695a9e73", "revision": "site-owned" },
+    "client-integration": { "source": "client-integration.md", "sha256": "0556baf16e6e1ee360cbbbf2d770bc4ee54dab63c329db0e47170003180a3f0b", "revision": "site-owned" },
+    "concepts": { "source": "concepts.md", "sha256": "99400978e8ea7de44852ab041551efc333562e0a706591d963f16b9bd78b622a", "revision": "site-owned" },
+    "configuration": { "source": "configuration.md", "sha256": "66ae8aad7569a181a90d4cfb06f67229543132ae866b0c735f552926a07b81cb", "revision": "site-owned" },
+    "deployment": { "source": "deployment.md", "sha256": "daf1672114e37fa196165649bb52f491356622f93bb2ca3a1badf41b664f8b78", "revision": "site-owned" },
+    "fallback-routing": { "source": "fallback-routing.md", "sha256": "d95631026e7f91d082882fe8c8c3f32e96e83f960468f35e60bf376e4444eb74", "revision": "site-owned" },
+    "faq": { "source": "faq.md", "sha256": "1ed959b6585dcf87f6f4fecf402148bd03341ca61c84b277e17be9e8b5ef90e8", "revision": "site-owned" },
+    "getting-started": { "source": "getting-started.md", "sha256": "ad8ef6afe730c7af433e52af83773226f5eb03a7fbe7bd03a15f9c236dd44b10", "revision": "site-owned" },
+    "glossary": { "source": "glossary.md", "sha256": "7907784995951186bd3286329444ce1484f3ae7e0be4ae47b8ee928428a2b047", "revision": "site-owned" },
+    "health-checks": { "source": "health-checks.md", "sha256": "704b6e21d3ec8aa3a7fc7d2946ed48246202b24b68d6edfc67a168a0102be0f5", "revision": "site-owned" },
+    "installation": { "source": "installation.md", "sha256": "dbee0cd6f8198781ddf088554f5fac31bea33d500d9ce49b76d458c3072c2ae4", "revision": "site-owned" },
+    "load-balancing": { "source": "load-balancing.md", "sha256": "5180975e879349a2453cee31b98905cc5857f2683a33cdbcc9451908e0b7dfbe", "revision": "site-owned" },
+    "model-routing": { "source": "model-routing.md", "sha256": "0c2395f1c6b76a520b50e30facf73e55504ff63ae16f794d550b9113921ec279", "revision": "site-owned" },
+    "monitoring": { "source": "monitoring.md", "sha256": "64d05f8c4585ba6c667060ab0cf7950157e988273e4b32b9b07ab601148d65d0", "revision": "site-owned" },
+    "openai-compatible-api": { "source": "openai-compatible-api.md", "sha256": "045eff8bf6e9087797bd83f5e9e64306643117927a3bd8c973b379154dbda9b8", "revision": "site-owned" },
+    "overview": { "source": "overview.md", "sha256": "9edd820146cdcb3214cd4db0a77fbea2b6853e431310218b7d442056a4953cc7", "revision": "site-owned" },
+    "provider-setup": { "source": "provider-setup.md", "sha256": "5687843ff9c40792a3548203899abf6df3caf772cdbc08fb401a8d99da289cd1", "revision": "site-owned" },
+    "rate-limits": { "source": "rate-limits.md", "sha256": "dda24a7dbc1f2d228b1130783bcf49aa7daf00d35df6c3644ef31c1ae288358d", "revision": "site-owned" },
+    "request-format": { "source": "request-format.md", "sha256": "a0290a5293a248665ea3147b96132c3f3e09145ceaf852ef6610b08b63b6f871", "revision": "site-owned" },
+    "response-format": { "source": "response-format.md", "sha256": "41cd02a0ebe149b2b32bbe58153e16102a414da8cf9b35215b1b760fec37bc5e", "revision": "site-owned" },
+    "routing-rules": { "source": "routing-rules.md", "sha256": "b2ca3167c0cb69974bf84802c0ce0a61be7a057f914ec476cf2e9fd8579543a8", "revision": "site-owned" },
+    "security": { "source": "security.md", "sha256": "e9f1beea4b41248ab062bc8afcb172c672e3e748430f3786202d08ca11c0f26c", "revision": "site-owned" },
+    "stores-beta/user-guide": { "source": "stores-beta/user-guide.md", "sha256": "057d5f160987decfb408cc3abdb79829d319093d5de0cc4a97aec88b5fed96c2", "revision": "site-owned" },
+    "streaming": { "source": "streaming.md", "sha256": "63467b0cbe1a2411adf50c9b918a2a07fde05c17a82d30a84ae1b5892b53d222", "revision": "site-owned" },
+    "troubleshooting": { "source": "troubleshooting.md", "sha256": "2e6cbda57d96d50c98afaff1c43ee1683022ddaede815eac97bcd9aa87b0bfcf", "revision": "site-owned" },
+    "usage-and-costs": { "source": "usage-and-costs.md", "sha256": "2f46121ef183da050c57d4dfd581e0ce262756fdda63bf6ee06ea7456e516542", "revision": "site-owned" }
+  }
+}

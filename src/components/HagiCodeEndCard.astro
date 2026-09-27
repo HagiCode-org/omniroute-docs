@@ -1,0 +1,18 @@
+---
+import { isSiteLocale, SITE_COPY } from "../i18n/site-copy.mjs";
+const requested = Astro.locals.starlightRoute?.locale;
+const locale = isSiteLocale(requested) ? requested : "en-US";
+const copy = SITE_COPY[locale];
+---
+<section class="hagicode-end-card" aria-labelledby="hagicode-end-card-title" data-hagicode-end-card>
+  <div>
+    <h2 id="hagicode-end-card-title">{copy.hagicodeTitle}</h2>
+    <p>{copy.hagicodeLead}</p>
+    <p>{copy.hagicodeSubheadline}</p>
+  </div>
+  <img src="/img/hagicode/light-main.png" alt={copy.hagicodeImageAlt} width="3137" height="1235" loading="lazy" decoding="async" />
+  <ul aria-label={copy.hagicodeTitle}>
+    {copy.hagicodeFeatures.map((feature) => <li data-hagicode-feature><strong>{feature.label}</strong><span>{feature.description}</span></li>)}
+  </ul>
+  <a href="https://www.hagicode.com/">{copy.hagicodeVisitLabel}</a>
+</section>
