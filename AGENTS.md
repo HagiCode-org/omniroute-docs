@@ -4,7 +4,7 @@ Standalone Astro/Starlight documentation site for OmniRoute. English content is 
 
 ## Scope and ownership
 
-- Package `@hagicode/omniroute-docs` (private). Built with Astro + Starlight; shared shell from `@hagicode/hagilight` / `@hagicode/hagilight-starlight` pinned to `0.2.2` (the compatibility boundary — do not bump casually).
+- Package `@hagicode/omniroute-docs` (private). Built with Astro + Starlight; shared shell from `@hagicode/hagilight` / `@hagicode/hagilight-starlight` pinned to `0.2.3` (the compatibility boundary — do not bump casually).
 - This repository is **documentation-maintenance scope only** for agent edits: modify `AGENTS.md` as instructed. Treat source, generated, and cache files as read-only unless the user expands scope.
 
 ## Commands
@@ -36,7 +36,7 @@ Before a pull request: `npm run check`, `npm run build`, `npm test`.
 - Do **not** edit generated `src/content/docs/` pages; import upstream instead. An absent checkout, broken reference, or changed generated page fails the build rather than publishing unreviewed content.
 - To update content: bump the submodule pin, read the selected English docs and their translations, then `npm run update:translation-reviews` to refresh `src/content/upstream-translation-reviews.json` (new revision, SHA-256 of English files **with real translations**, and actual `<site-locale>/<English-source-path>` pairs — never English fallbacks). Commit the pin and review metadata together.
 - `npm run check:translation-reviews` rejects changed or missing review relationships.
-- Canonical URL `https://omniroute.hagicode.com` (publishing a build does not activate DNS). All-language feed at `/rss.xml`; per-language at `/rss.<locale>.xml`.
+- Canonical URL `https://omniroute.hagicode.com` (publishing a build does not activate DNS). English feed at `/rss.xml`, all-language feed at `/rss.all.xml`, and per-language feeds at `/rss.<locale>.xml`.
 - Hagilight owns header, locale chooser, footer links, content-width control, article introduction, and the optional campaign banner; OmniRoute Docs keeps fallback-aware title/content wrappers and English-source links. Analytics: GA `G-EN03FMT2Q4`, 51LA `L6b88a5yK4h2Xnci` (51LA screen recording enabled) — review privacy/consent before publishing.
 
 ## Testing
