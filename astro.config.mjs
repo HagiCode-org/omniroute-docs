@@ -12,15 +12,6 @@ export default defineConfig({
       title: "OmniRoute Docs",
       description: "OmniRoute provider and model routing documentation",
       defaultLocale: "en-US",
-      head: [{
-        tag: "link",
-        attrs: {
-          rel: "alternate",
-          type: "application/rss+xml",
-          title: "OmniRoute Docs",
-          href: "/rss.xml",
-        },
-      }],
       locales: Object.fromEntries(
         Object.values(hagilightLocales).map((locale) => [locale.lang, locale]),
       ),
@@ -36,6 +27,12 @@ export default defineConfig({
           links: {
             siteId: "omniroute-docs",
             siteUrl: "https://omniroute.hagicode.com/",
+          },
+          rss: { includeDocs: true, includeBlog: true },
+          seo: {
+            title: "OmniRoute Docs",
+            description: "OmniRoute provider and model routing documentation",
+            organization: { name: "HagiCode", url: "https://www.hagicode.com/" },
           },
           aiDisclosures: {
             sourceLocale: "en-US",

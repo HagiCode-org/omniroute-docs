@@ -10,14 +10,20 @@ const googleAnalyticsScript = /<script[^>]+src="https:\/\/www\.googletagmanager\
 const fiftyOneLaScript = /<script[^>]+src="https:\/\/sdk\.51\.la\/js-sdk-pro\.min\.js"/u;
 const sourceTopic = "getting-started/self-hosting/";
 
-test("all-language and locale-specific RSS feeds are published and advertised", async () => {
-  const [home, feed] = await Promise.all([
+test("localized RSS feeds and the all-language feed are published", async () => {
+  const [home, englishFeed, allLanguagesFeed] = await Promise.all([
     page("en-US/"),
     readFile(new URL("../dist/rss.xml", import.meta.url), "utf8"),
+    readFile(new URL("../dist/rss.all.xml", import.meta.url), "utf8"),
   ]);
   const topics = await discoverTopics(new URL("../vendor/OmniRoute", import.meta.url).pathname);
-  assert.match(home, /rel="alternate"[^>]*type="application\/rss\+xml"[^>]*href="\/rss\.xml"/u);
-  const items = [...feed.matchAll(/<item>([\s\S]*?)<\/item>/gu)].map(([, item]) => item);
+  assert.match(home, /rel="alternate"[^>]*type="application\/rss\+xml"[^>]*href="https:\/\/omniroute\.hagicode\.com\/rss\.xml"/u);
+  assert.match(englishFeed, /<language>en-US<\/language>/u);
+  const englishItems = [...englishFeed.matchAll(/<item>([\s\S]*?)<\/item>/gu)].map(([, item]) => item);
+  assert.ok(englishItems.length >= Object.keys(topics).length - 1);
+  assert.ok(englishItems.every((item) => item.includes("https://omniroute.hagicode.com/en-US/")));
+
+  const items = [...allLanguagesFeed.matchAll(/<item>([\s\S]*?)<\/item>/gu)].map(([, item]) => item);
   assert.ok(items.length >= Object.keys(topics).length - 1);
   assert.ok(items.every((item) => {
     const locale = item.match(/<language>([^<]+)<\/language>/u)?.[1];
@@ -26,9 +32,15 @@ test("all-language and locale-specific RSS feeds are published and advertised", 
       && !item.includes(`https://omniroute.hagicode.com/${locale}/</link>`);
   }));
   for (const { code } of LANGUAGE_OPTIONS) {
-    const localeFeed = await readFile(new URL(`../dist/rss.${code}.xml`, import.meta.url), "utf8");
-    assert.ok([...localeFeed.matchAll(/<item>([\s\S]*?)<\/item>/gu)].every(([, item]) =>
-      item.includes(`<language>${code}</language>`) && item.includes(`https://omniroute.hagicode.com/${code}/`)));
+    const filename = code === "en-US" ? "en" : code;
+    const localeFeed = await readFile(new URL(`../dist/rss.${filename}.xml`, import.meta.url), "utf8");
+    assert.match(localeFeed, new RegExp(`<language>${code}</language>`, "u"));
+    const localeItems = [...localeFeed.matchAll(/<item>([\s\S]*?)<\/item>/gu)].map(([, item]) => item);
+    assert.ok(localeItems.length > 0);
+    assert.ok(localeItems.every((item) => item.includes(`https://omniroute.hagicode.com/${code}/`)));
+    if (code !== "en-US") {
+      assert.ok(localeItems.every((item) => !item.includes(`/${code}/${sourceTopic}`)));
+    }
   }
 });
 
@@ -77,6 +89,9 @@ test("translated pages and English fallbacks expose consistent locale metadata",
   assert.match(traditional, /zh-Hant\/getting-started\/quick-start/u);
   assert.match(english, /Quick Start/u);
   assert.ok(english.includes('<link rel="canonical" href="https://omniroute.hagicode.com/en-US/getting-started/quick-start/"'));
+  assert.match(english, /"@type":"BreadcrumbList"/u);
+  assert.match(english, /<meta property="og:description"/u);
+  assert.match(await page("en-US/"), /"@type":"Organization","name":"HagiCode"/u);
   assert.ok(english.includes('<link rel="alternate" hreflang="zh-CN"'));
 
   for (const { code } of LANGUAGE_OPTIONS.filter(({ code }) => code !== "en-US")) {
@@ -109,6 +124,9 @@ test("localized shared shell retains links, language switching, and reading cont
   for (const { code } of LANGUAGE_OPTIONS) {
     const html = await page(`${code}/${sourceTopic}`);
     assert.match(html, /hagilight-site-links/u);
+    if (code !== "en-US") {
+      assert.ok(html.includes(`/rss.${code}.xml`), `${code} links its current-language feed`);
+    }
     assert.ok(html.includes("https://newbe.hagicode.com/"), `${code} renders Hagilight's built-in ecosystem links`);
     assert.match(html, /<site-search/u);
     assert.match(html, /<starlight-theme-select/u);

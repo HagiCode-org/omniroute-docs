@@ -226,7 +226,7 @@ export async function createImportPlan({
       const metadata = [
         `title: ${JSON.stringify(parsed.title)}`,
         ...(parsed.description ? [`description: ${JSON.stringify(parsed.description)}`] : []),
-        ...(locale !== "en-US" && !translated ? ["isEnglishFallback: true"] : []),
+        ...(locale !== "en-US" && !translated ? ["isEnglishFallback: true", "rss: false"] : []),
       ];
       documents.set(output, {
         rendered: `---\n${metadata.join("\n")}\n---\n\n${body.trimEnd()}\n\n---\n\n[${SITE_COPY[locale].omniRouteSourceLabel} (${revision.slice(0, 12)})](${UPSTREAM}/${revision}/${encode(relative)})\n`,
