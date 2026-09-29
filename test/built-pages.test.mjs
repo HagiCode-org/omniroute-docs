@@ -10,11 +10,10 @@ const googleAnalyticsScript = /<script[^>]+src="https:\/\/www\.googletagmanager\
 const fiftyOneLaScript = /<script[^>]+src="https:\/\/sdk\.51\.la\/js-sdk-pro\.min\.js"/u;
 const sourceTopic = "getting-started/self-hosting/";
 
-test("localized RSS feeds and the all-language feed are published", async () => {
-  const [home, englishFeed, allLanguagesFeed] = await Promise.all([
+test("localized RSS feeds are published without an all-language feed", async () => {
+  const [home, englishFeed] = await Promise.all([
     page("en-US/"),
     readFile(new URL("../dist/rss.xml", import.meta.url), "utf8"),
-    readFile(new URL("../dist/rss.all.xml", import.meta.url), "utf8"),
   ]);
   const topics = await discoverTopics(new URL("../vendor/OmniRoute", import.meta.url).pathname);
   assert.match(home, /rel="alternate"[^>]*type="application\/rss\+xml"[^>]*href="https:\/\/omniroute\.hagicode\.com\/rss\.xml"/u);
@@ -23,14 +22,8 @@ test("localized RSS feeds and the all-language feed are published", async () => 
   assert.ok(englishItems.length >= Object.keys(topics).length - 1);
   assert.ok(englishItems.every((item) => item.includes("https://omniroute.hagicode.com/en-US/")));
 
-  const items = [...allLanguagesFeed.matchAll(/<item>([\s\S]*?)<\/item>/gu)].map(([, item]) => item);
-  assert.ok(items.length >= Object.keys(topics).length - 1);
-  assert.ok(items.every((item) => {
-    const locale = item.match(/<language>([^<]+)<\/language>/u)?.[1];
-    return LANGUAGE_OPTIONS.some(({ code }) => code === locale)
-      && item.includes(`https://omniroute.hagicode.com/${locale}/`)
-      && !item.includes(`https://omniroute.hagicode.com/${locale}/</link>`);
-  }));
+  await assert.rejects(stat(new URL("../dist/rss.all.xml", import.meta.url)), { code: "ENOENT" });
+
   for (const { code } of LANGUAGE_OPTIONS) {
     const filename = code === "en-US" ? "en" : code;
     const localeFeed = await readFile(new URL(`../dist/rss.${filename}.xml`, import.meta.url), "utf8");
@@ -114,7 +107,9 @@ test("translated pages and English fallbacks expose consistent locale metadata",
 test("localized shared shell retains links, language switching, and reading controls", async () => {
   const root = await page("");
   const config = await readFile(new URL("../astro.config.mjs", import.meta.url), "utf8");
+  const sharedFavicon = "https://cdn.jsdelivr.net/npm/@hagicode/hagilight@0.2.5/favicon.ico";
   assert.ok(root.includes('href="/en-US/"'));
+  assert.ok(config.includes(`favicon: "${sharedFavicon}"`));
   assert.doesNotMatch(config, /G-EN03FMT2Q4|L6b88a5yK4h2Xnci/u);
   assert.doesNotMatch(config, /analytics:/u);
   assert.doesNotMatch(config, /StarlightHead/u);
@@ -123,6 +118,11 @@ test("localized shared shell retains links, language switching, and reading cont
 
   for (const { code } of LANGUAGE_OPTIONS) {
     const html = await page(`${code}/${sourceTopic}`);
+    const faviconLinks = [...html.matchAll(/<link\b([^>]*)>/gu)]
+      .filter(([, attrs]) => /\brel="(?:icon|shortcut icon)"/u.test(attrs))
+      .map(([, attrs]) => attrs.match(/\bhref="([^"]+)"/u)?.[1]);
+    assert.ok(faviconLinks.length > 0);
+    assert.deepEqual(new Set(faviconLinks), new Set([sharedFavicon]));
     assert.match(html, /hagilight-site-links/u);
     if (code !== "en-US") {
       assert.ok(html.includes(`/rss.${code}.xml`), `${code} links its current-language feed`);
