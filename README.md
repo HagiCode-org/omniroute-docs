@@ -6,8 +6,7 @@ that hostname or configure DNS.
 The English documentation feed is available at
 `https://omniroute.hagicode.com/rss.xml`. Per-language feeds use
 `https://omniroute.hagicode.com/rss.<locale>.xml` (for example,
-`rss.zh-CN.xml`); the complete all-languages feed is at
-`https://omniroute.hagicode.com/rss.all.xml`.
+`rss.zh-CN.xml`).
 
 ## Local development
 
@@ -52,21 +51,23 @@ together; do not edit generated pages.
 ## Integrations and publication
 
 The shared Starlight integration is pinned to `@hagicode/hagilight` and
-`@hagicode/hagilight-starlight` 0.2.3; this published version is the
-compatibility boundary for the site. Hagilight owns the header, locale chooser,
+`@hagicode/hagilight-starlight` 0.2.5. Both shared packages supply the same
+Hagilight favicon and shared chrome across locales; Starlight's favicon option
+and Hagilight's plugin point at that same package asset. Hagilight generates
+localized RSS feeds from this site's docs; there is no all-languages feed.
+This published version is the compatibility boundary for the site. Hagilight owns the header, locale chooser,
 footer links, content-width control, script-independent HagiCode article
 introduction, and optional browser-loaded campaign banner. OmniRoute Docs keeps
 its fallback-aware title and content wrappers and English-source links.
-Hagilight injects both analytics providers, localized RSS feeds, and composed SEO
-metadata with structured data; Starlight provides canonical and alternate-language
-metadata, including on English-fallback routes. The all-languages RSS feed remains
-available at `/rss.all.xml`.
+Hagilight injects both analytics providers, localized docs RSS feeds, and
+composed SEO metadata with structured data; Starlight provides canonical and
+alternate-language metadata, including on English-fallback routes.
 
 The article introduction remains available without JavaScript. The article
 promotion and floating campaign banner are enabled by default. The banner has no
 local fallback and stays hidden unless eligible remote campaign data is
 available. Google Analytics (`G-EN03FMT2Q4`) and 51LA (`L6b88a5yK4h2Xnci`) run
-on production pages. Hagilight 0.2.3 enables 51LA screen recording. Review
+on production pages. Hagilight 0.2.5 enables 51LA screen recording. Review
 applicable privacy, consent, and hosting requirements before publishing.
 
 CI runs the same check/build/test gate on pull requests and main. A successful
