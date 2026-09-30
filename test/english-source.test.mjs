@@ -74,6 +74,7 @@ test("translated pages and homes link to selected routes; missing pages are mark
   assert.match(guide, /\/upstream-assets\/zh-Hant\/icon\.svg/u);
   assert.doesNotMatch(guide, /isEnglishFallback/u);
   assert.match(fallback, /isEnglishFallback: true/u);
+  assert.match(fallback, /^rss: false$/mu);
   assert.match(fallback, /\[Home\]\(\/fr-FR\/\)/u);
   assert.ok(await exists(path.join(assetsDir, "zh-Hant/icon.svg")));
   assert.ok((await createImportPlan(options)).translations.has("zh-Hant/docs/guides/GUIDE.md"));

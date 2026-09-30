@@ -37,3 +37,19 @@ test("root redirect keeps query and fragment context", () => {
     "https://omniroute.hagicode.com/zh-CN/?mode=compact#setup",
   );
 });
+
+test("root redirect defaults to English when browser storage is blocked", () => {
+  const previous = Object.getOwnPropertyDescriptor(globalThis, "localStorage");
+  try {
+    Object.defineProperty(globalThis, "localStorage", {
+      configurable: true,
+      get() {
+        throw new Error("storage blocked");
+      },
+    });
+    assert.equal(readBrowserLocalePreference(), null);
+  } finally {
+    if (previous) Object.defineProperty(globalThis, "localStorage", previous);
+    else delete globalThis.localStorage;
+  }
+});
