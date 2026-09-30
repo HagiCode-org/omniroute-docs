@@ -104,11 +104,37 @@ test("translated pages and English fallbacks expose consistent locale metadata",
   assert.doesNotMatch(chineseHome, /english-fallback-notice/u);
 });
 
+test("localized homes receive scoped styling and retain imported documentation links", async () => {
+  const [englishHome, topic, css, config] = await Promise.all([
+    page("en-US/"),
+    page(`en-US/${sourceTopic}`),
+    readFile(new URL("../src/styles/site.css", import.meta.url), "utf8"),
+    readFile(new URL("../astro.config.mjs", import.meta.url), "utf8"),
+  ]);
+
+  for (const { code } of LANGUAGE_OPTIONS) {
+    const home = await page(`${code}/`);
+    assert.match(home, /class="[^"]*\bdocumentation-home-marker\b[^"]*"/u, `${code} home has the style marker`);
+  }
+
+  assert.match(englishHome, /href="\/en-US\/getting-started\/quick-start\/"/u);
+  assert.doesNotMatch(topic, /documentation-home-marker/u);
+  assert.match(config, /customCss:\s*\["\.\/src\/styles\/site\.css"\]/u);
+  assert.match(css, /\.sl-markdown-content:has\(> \.documentation-home-marker\)/u);
+  assert.match(css, /:focus-visible/u);
+  assert.match(css, /@media \(max-width: 30rem\)/u);
+});
+
 test("localized shared shell retains links, language switching, and reading controls", async () => {
   const root = await page("");
   const config = await readFile(new URL("../astro.config.mjs", import.meta.url), "utf8");
-  const sharedFavicon = "https://cdn.jsdelivr.net/npm/@hagicode/hagilight@0.2.5/favicon.ico";
+  const entrySource = await readFile(new URL("../src/pages/index.astro", import.meta.url), "utf8");
+  const sharedFavicon = "https://cdn.jsdelivr.net/npm/@hagicode/hagilight@0.3.1/favicon.ico";
   assert.ok(root.includes('href="/en-US/"'));
+  assert.doesNotMatch(root, /http-equiv="refresh"/u);
+  assert.match(entrySource, /readBrowserLocalePreference\(\)\s*\?\?\s*"en-US"/u);
+  assert.match(entrySource, /preserveUrlContext/u);
+  assert.match(entrySource, /window\.location\.replace/u);
   assert.ok(config.includes(`favicon: "${sharedFavicon}"`));
   assert.doesNotMatch(config, /G-EN03FMT2Q4|L6b88a5yK4h2Xnci/u);
   assert.doesNotMatch(config, /analytics:/u);

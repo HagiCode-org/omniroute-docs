@@ -5,6 +5,8 @@ import { getEnglishTopicHref } from "../lib/locale-navigation.mjs";
 
 const route = Astro.locals.starlightRoute;
 const locale = isSiteLocale(route?.locale) ? route.locale : "en-US";
+const isLocaleHome = isSiteLocale(locale)
+  && route?.entry.id.replace(/\.(?:md|mdx)$/u, "") === `${locale}/index`;
 const fallback = route?.entry.data.isEnglishFallback === true;
 const aiDisclosures = {
   isAITranslation: false,
@@ -13,6 +15,7 @@ const aiDisclosures = {
 };
 ---
 <MarkdownContent aiDisclosures={aiDisclosures}>
+  {isLocaleHome && <span class="documentation-home-marker" hidden aria-hidden="true" />}
   {fallback && <aside class="english-fallback-notice">
     <p>{SITE_COPY[locale].englishFallbackNotice} <a href={getEnglishTopicHref(Astro.url.pathname)}>{SITE_COPY[locale].englishFallbackLinkLabel}</a></p>
   </aside>}
