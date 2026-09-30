@@ -16,6 +16,7 @@ npm run dev                  # import:upstream + astro dev
 npm run build                # import:upstream + astro build
 npm run preview              # serve the production build
 npm run check                # import:upstream + astro check
+npm run test:fast             # no-build first pass; delegates to npm run check
 npm run check:translation-reviews        # verify review metadata
 npm run update:translation-reviews --reviewed  # refresh review metadata
 npm test                    # node --test test/*.test.mjs
@@ -42,7 +43,8 @@ Before a pull request: `npm run check`, `npm run build`, `npm test`.
 ## Testing
 
 - `npm test` runs `node --test test/*.test.mjs`, exercising built pages, the English importer, locale navigation, and CI workflows.
-- Run tests against a completed build (`npm run build` first) since some suites assert on built output.
+- Use `npm run test:fast` as a no-build first pass for imported source and Astro checks; it does not validate built pages or production output.
+- Run tests against a completed build (`npm run build` first) since some suites assert on built output. Keep the full build and test sequence for pre-PR verification.
 
 ## Deployment / Publishing
 
