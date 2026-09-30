@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import starlight from "@astrojs/starlight";
 import hagilight from "@hagicode/hagilight-starlight";
+import { hagilight as hagilightDiscovery } from "@hagicode/hagilight/integration";
 import { locales as hagilightLocales } from "@hagicode/hagilight-starlight/locales";
 
 export default defineConfig({
@@ -11,7 +12,7 @@ export default defineConfig({
     starlight({
       title: "OmniRoute Docs",
       description: "OmniRoute provider and model routing documentation",
-      favicon: "https://cdn.jsdelivr.net/npm/@hagicode/hagilight@0.3.1/favicon.ico",
+      favicon: "https://cdn.jsdelivr.net/npm/@hagicode/hagilight-core@0.4.0/favicon.ico",
       defaultLocale: "en-US",
       locales: Object.fromEntries(
         Object.values(hagilightLocales).map((locale) => [locale.lang, locale]),
@@ -30,7 +31,6 @@ export default defineConfig({
             siteId: "omniroute-docs",
             siteUrl: "https://omniroute.hagicode.com/",
           },
-          rss: { includeDocs: true, includeBlog: true },
           seo: {
             title: "OmniRoute Docs",
             description: "OmniRoute provider and model routing documentation",
@@ -47,5 +47,6 @@ export default defineConfig({
       ],
     }),
     sitemap(),
+    hagilightDiscovery(),
   ],
 });

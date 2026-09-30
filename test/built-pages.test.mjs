@@ -129,7 +129,7 @@ test("localized shared shell retains links, language switching, and reading cont
   const root = await page("");
   const config = await readFile(new URL("../astro.config.mjs", import.meta.url), "utf8");
   const entrySource = await readFile(new URL("../src/pages/index.astro", import.meta.url), "utf8");
-  const sharedFavicon = "https://cdn.jsdelivr.net/npm/@hagicode/hagilight@0.3.1/favicon.ico";
+  const sharedFavicon = "https://cdn.jsdelivr.net/npm/@hagicode/hagilight-core@0.4.0/favicon.ico";
   assert.ok(root.includes('href="/en-US/"'));
   assert.doesNotMatch(root, /http-equiv="refresh"/u);
   assert.match(entrySource, /readBrowserLocalePreference\(\)\s*\?\?\s*"en-US"/u);
