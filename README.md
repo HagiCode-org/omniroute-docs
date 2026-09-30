@@ -68,7 +68,7 @@ The article introduction remains available without JavaScript. The article
 promotion and floating campaign banner are enabled by default. The banner has no
 local fallback and stays hidden unless eligible remote campaign data is
 available. Google Analytics (`G-EN03FMT2Q4`) and 51LA (`L6b88a5yK4h2Xnci`) run
-on production pages. Hagilight 0.3.1 enables 51LA screen recording. Review
+on production pages. Hagilight 0.4.0 enables 51LA screen recording. Review
 applicable privacy, consent, and hosting requirements before publishing.
 
 CI runs the same check/build/test gate on pull requests and main. A successful

@@ -4,7 +4,7 @@ Standalone Astro/Starlight documentation site for OmniRoute. English content is 
 
 ## Scope and ownership
 
-- Package `@hagicode/omniroute-docs` (private). Built with Astro + Starlight; shared shell from `@hagicode/hagilight` / `@hagicode/hagilight-starlight` pinned to `0.3.1` (the compatibility boundary — do not bump casually).
+- Package `@hagicode/omniroute-docs` (private). Built with Astro + Starlight; shared shell from `@hagicode/hagilight` / `@hagicode/hagilight-starlight` pinned to `0.4.0` (the compatibility boundary — do not bump casually).
 - This repository is **documentation-maintenance scope only** for agent edits: modify `AGENTS.md` as instructed. Treat source, generated, and cache files as read-only unless the user expands scope.
 
 ## Commands
