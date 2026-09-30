@@ -9,6 +9,7 @@
     "build": "npm run import:upstream && astro build",
     "preview": "astro preview",
     "check": "npm run import:upstream && astro check",
+    "test:fast": "npm run check",
     "check:translation-reviews": "node scripts/check-translation-baselines.mjs",
     "update:translation-reviews": "node scripts/update-translation-reviews.mjs --reviewed",
     "test": "node --test test/*.test.mjs"
