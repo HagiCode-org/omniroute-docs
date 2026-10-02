@@ -12,7 +12,7 @@ export default defineConfig({
     starlight({
       title: "OmniRoute Docs",
       description: "OmniRoute provider and model routing documentation",
-      favicon: "https://cdn.jsdelivr.net/npm/@hagicode/hagilight-core@0.4.0/favicon.ico",
+      favicon: "https://cdn.jsdelivr.net/npm/@hagicode/hagilight-core@0.5.0/favicon.ico",
       defaultLocale: "en-US",
       locales: Object.fromEntries(
         Object.values(hagilightLocales).map((locale) => [locale.lang, locale]),
