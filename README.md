@@ -52,7 +52,7 @@ together; do not edit generated pages.
 ## Integrations and publication
 
 The shared Starlight integration is pinned to `@hagicode/hagilight` and
-`@hagicode/hagilight-starlight` 0.3.1. Both shared packages supply the same
+`@hagicode/hagilight-starlight` 0.5.0. Both shared packages supply the same
 Hagilight favicon and shared chrome across locales; Starlight's favicon option
 and Hagilight's plugin point at that same package asset. Hagilight generates
 localized RSS feeds from this site's docs; there is no all-languages feed.
@@ -68,7 +68,7 @@ The article introduction remains available without JavaScript. The article
 promotion and floating campaign banner are enabled by default. The banner has no
 local fallback and stays hidden unless eligible remote campaign data is
 available. Google Analytics (`G-EN03FMT2Q4`) and 51LA (`L6b88a5yK4h2Xnci`) run
-on production pages. Hagilight 0.4.0 enables 51LA screen recording. Review
+on production pages. Hagilight 0.5.0 enables 51LA screen recording. Review
 applicable privacy, consent, and hosting requirements before publishing.
 
 CI runs the same check/build/test gate on pull requests and main. A successful
