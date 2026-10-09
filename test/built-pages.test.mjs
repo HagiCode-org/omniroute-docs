@@ -176,7 +176,7 @@ test("localized shared shell retains links, language switching, and reading cont
     }
     assert.ok(html.includes("https://newbe.hagicode.com/"), `${code} renders Hagilight's built-in ecosystem links`);
     assert.match(html, /<site-search/u);
-    assert.match(html, /<starlight-theme-select/u);
+    assert.match(html, /<hagilight-theme-select/u);
     assert.equal(html.split('data-hagilight-content-width-choice="wide"').length - 1, 1);
     assert.equal(html.split('data-hagilight-content-width-choice="narrow"').length - 1, 1);
     assert.match(html, /<hagilight-language-chooser/u);
