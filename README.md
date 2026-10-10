@@ -75,3 +75,10 @@ CI runs the same check/build/test gate on pull requests and main. A successful
 main-branch publication assembles `dist/`, `esa.jsonc`, and `wrangler.jsonc`
 at the `gh-pages` branch root. That branch is a publication artifact only;
 hosting and custom-domain activation are separate operations.
+
+Each publication overwrites `gh-pages` with a single, latest commit
+(`force_orphan: true`), so the branch holds only the newest snapshot and is not
+a rollback source. To roll back a bad release, revert the offending source
+commit on `main` so the publication workflow runs again; do not revert or reset
+`gh-pages` history. Treat `gh-pages` as write-only for CI, because local clones
+will see non-fast-forward updates.
