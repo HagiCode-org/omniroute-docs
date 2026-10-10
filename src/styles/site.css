@@ -70,3 +70,22 @@
     margin-block-start: 2rem;
   }
 }
+
+/*
+ * Shared promotion card (hagilight-core PromotoBanner) contrast. The core CTA hard-codes white text on
+ * --sl-color-accent, which is unreadable on the bright accents of the dark palettes, and its control hover
+ * reads --sl-color-text-high, which Starlight does not define. Reuse the Starlight primary-button pairing.
+ */
+.hagilight-promoto {
+  --sl-color-text-high: var(--sl-color-white);
+}
+
+.hagilight-promoto .hagilight-promoto__cta {
+  background: var(--sl-color-text-accent);
+  color: var(--sl-color-black);
+}
+
+.hagilight-promoto .hagilight-promoto__cta:hover,
+.hagilight-promoto .hagilight-promoto__cta:focus-visible {
+  background: color-mix(in srgb, var(--sl-color-text-accent) 82%, var(--sl-color-white));
+}
