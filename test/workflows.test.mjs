@@ -20,6 +20,8 @@ test("CI and publication run the same verification gate", async () => {
   assert.match(deploy, /contents: read[\s\S]*contents: write/u);
   assert.match(deploy, /cp -R dist\/\. "\$PUBLICATION_DIR\/dist\/"/u);
   assert.match(deploy, /publish_branch: gh-pages/u);
+  assert.match(deploy, /force_orphan: true/u);
+  assert.match(deploy, /enable_jekyll: false/u);
 });
 
 test("publication payload includes OmniRoute-owned assets configuration", async () => {
