@@ -17,8 +17,8 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.1",
     "@astrojs/starlight": "^0.42.4",
-    "@hagicode/hagilight": "0.8.0",
-    "@hagicode/hagilight-starlight": "0.8.0",
+    "@hagicode/hagilight": "0.9.1",
+    "@hagicode/hagilight-starlight": "0.9.1",
     "astro": "^7.3.8"
   },
   "devDependencies": {
