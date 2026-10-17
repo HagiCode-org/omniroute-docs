@@ -1,5 +1,8 @@
 # OmniRoute documentation
 
+[![last commit](https://img.shields.io/github/last-commit/HagiCode-org/omniroute-docs)](https://github.com/HagiCode-org/omniroute-docs/commits/main)
+[![website](https://img.shields.io/website?url=https%3A%2F%2Fomniroute.hagicode.com&label=website)](https://omniroute.hagicode.com)
+
 Standalone Astro/Starlight documentation for OmniRoute. The canonical URL is
 `https://omniroute.hagicode.com`; publishing a build does not itself activate
 that hostname or configure DNS.
