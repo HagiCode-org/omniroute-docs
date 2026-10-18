@@ -4,7 +4,7 @@ Standalone Astro/Starlight documentation site for OmniRoute. English content is 
 
 ## Scope and ownership
 
-- Package `@hagicode/omniroute-docs` (private). Built with Astro + Starlight; shared shell from `@hagicode/hagilight` / `@hagicode/hagilight-starlight` pinned to published `0.5.0` (the current compatibility boundary).
+- Package `@hagicode/omniroute-docs` (private). Built with Astro + Starlight; shared shell from `@hagicode/hagilight` / `@hagicode/hagilight-starlight` pinned to an exact published version in `package.json` (the current compatibility boundary).
 - This repository is **documentation-maintenance scope only** for agent edits: modify `AGENTS.md` as instructed. Treat source, generated, and cache files as read-only unless the user expands scope.
 
 ## Commands
@@ -29,7 +29,7 @@ Before a pull request: `npm run check`, `npm run build`, `npm test`.
 - `vendor/OmniRoute/` — git submodule pinned at revision `release/v3.8.51`. The only article source. The importer publishes every English Markdown under upstream `docs/` (excluding `docs/i18n/` translated subdirs) plus the root `README.md` as the home page; canonical slugs preserved by `scripts/upstream-topics.mjs` (see `docs/upstream-route-map.md`).
 - `scripts/import-english.mjs` → `english-source.mjs` (import/validate/rewrite/copy), `upstream-topics.mjs` (route map), `check-translation-baselines.mjs` / `update-translation-reviews.mjs` (review metadata in `src/content/upstream-translation-reviews.json`).
 - `src/` — site-owned Starlight config (`content.config.ts`, `hagilight.d.ts`), `components/`, `content/`, `i18n/`, `lib/`, `pages/`, `styles/`. Generated pages and assets land under `src/content/docs/` and are Git-ignored.
-- `test/` — `built-pages.test.mjs`, `english-source.test.mjs`, `locale-navigation.test.mjs`, `workflows.test.mjs`.
+- `test/` — `built-pages.test.mjs`, `english-source.test.mjs`, `hagilight-discovery.test.mjs` (robots, sitemap and RSS in `dist/`), `locale-navigation.test.mjs`, `workflows.test.mjs`.
 - `.github/gh-pages/` — `esa.jsonc`, `wrangler.jsonc` deployment configs.
 
 ## Conventions
@@ -48,5 +48,5 @@ Before a pull request: `npm run check`, `npm run build`, `npm test`.
 
 ## Deployment / Publishing
 
-- CI (`.github/workflows/docs-ci.yml`) runs the same check/build/test gate on pull requests and `main`.
+- CI (`.github/workflows/docs-ci.yml`) runs the same check/build/test gate on pull requests, pushes to `main` and a weekly schedule, on Node.js 22 (the deploy workflow also uses 22).
 - `docs-deploy-gh-pages.yml` publishes a successful `main` build, assembling `dist/`, `esa.jsonc`, and `wrangler.jsonc` at the `gh-pages` branch root. The `gh-pages` branch is a publication artifact only; hosting and custom-domain activation are separate operations.
