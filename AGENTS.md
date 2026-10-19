@@ -49,4 +49,4 @@ Before a pull request: `npm run check`, `npm run build`, `npm test`.
 ## Deployment / Publishing
 
 - CI (`.github/workflows/docs-ci.yml`) runs the same check/build/test gate on pull requests, pushes to `main` and a weekly schedule, on Node.js 22 (the deploy workflow also uses 22).
-- `docs-deploy-gh-pages.yml` publishes a successful `main` build, assembling `dist/`, `esa.jsonc`, and `wrangler.jsonc` at the `gh-pages` branch root. The `gh-pages` branch is a publication artifact only; hosting and custom-domain activation are separate operations.
+- `docs-deploy-gh-pages.yml` publishes a successful `main` build, assembling `dist/`, `esa.jsonc`, and `wrangler.jsonc` at the `gh-pages` branch root. The branch is force-pushed as a fresh orphan commit each time with Jekyll disabled (`force_orphan`, `enable_jekyll: false`), so it keeps no history; the payload is built in `.deploy/gh-pages` and uploaded with hidden files included. The `gh-pages` branch is a publication artifact only; hosting and custom-domain activation are separate operations.
