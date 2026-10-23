@@ -13,31 +13,3 @@ export function getEnglishTopicHref(pathname) {
   const topic = topicParts(pathname);
   return topic ? `/en-US/${topic}/` : "/en-US/";
 }
-
-export function preserveUrlContext(href, currentUrl) {
-  const target = new URL(href, currentUrl);
-  target.search = currentUrl.search;
-  target.hash = currentUrl.hash;
-  return target.toString();
-}
-
-function getPreferredLocale(value) {
-  if (typeof value !== "string") return null;
-  let preference;
-  try {
-    preference = JSON.parse(value);
-  } catch {
-    return null;
-  }
-  if (!preference || typeof preference !== "object" || Array.isArray(preference)) return null;
-  if (preference.lang === "root") return "en-US";
-  return SUPPORTED_LOCALES.includes(preference.lang) ? preference.lang : null;
-}
-
-export function readBrowserLocalePreference() {
-  try {
-    return getPreferredLocale(globalThis.localStorage.getItem("starlight-route"));
-  } catch {
-    return null;
-  }
-}
