@@ -27,7 +27,7 @@ Before a pull request: `npm run check`, `npm run build`, `npm test`.
 
 - `vendor/OmniRoute/` — git submodule pinned at revision `release/v3.8.51`. The only article source. The importer publishes every English Markdown under upstream `docs/` (excluding `docs/i18n/` translated subdirs) plus the root `README.md` as the home page; canonical slugs preserved by `scripts/upstream-topics.mjs` (see `docs/upstream-route-map.md`).
 - `scripts/import-english.mjs` → `english-source.mjs` (import/validate/rewrite/copy), `upstream-topics.mjs` (route map), `check-translation-baselines.mjs` / `update-translation-reviews.mjs` (review metadata in `src/content/upstream-translation-reviews.json`).
-- `src/` — site-owned Starlight config (`content.config.ts`, `hagilight.d.ts`), `components/`, `content/`, `i18n/`, `lib/`, `pages/`, `styles/`. Generated pages and assets land under `src/content/docs/` and are Git-ignored.
+- `src/` — site-owned Starlight config (`content.config.ts`), `components/`, `content/`, `i18n/`, `lib/`, `pages/`, `styles/`. Generated pages and assets land under `src/content/docs/` and are Git-ignored.
 - `test/` — `built-pages.test.mjs`, `english-source.test.mjs`, `hagilight-discovery.test.mjs` (robots, sitemap and RSS in `dist/`), `locale-navigation.test.mjs`, `workflows.test.mjs`.
 - `.github/gh-pages/` — `esa.jsonc`, `wrangler.jsonc` deployment configs.
 
@@ -41,7 +41,6 @@ Before a pull request: `npm run check`, `npm run build`, `npm test`.
 
 ## Testing
 
-- `npm test` runs `node --test test/*.test.mjs`, exercising built pages, the English importer, locale navigation, and CI workflows.
 - Use `npm run test:fast` as a no-build first pass for imported source and Astro checks; it does not validate built pages or production output.
 - Run tests against a completed build (`npm run build` first) since some suites assert on built output. Keep the full build and test sequence for pre-PR verification.
 
