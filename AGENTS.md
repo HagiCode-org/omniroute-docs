@@ -41,8 +41,7 @@ Before a pull request: `npm run check`, `npm run build`, `npm test`.
 
 ## Testing
 
-- Use `npm run test:fast` as a no-build first pass for imported source and Astro checks; it does not validate built pages or production output.
-- Run tests against a completed build (`npm run build` first) since some suites assert on built output. Keep the full build and test sequence for pre-PR verification.
+- `npm run test:fast` does not validate built pages or production output; run `npm test` against a completed build (`npm run build` first) since some suites assert on built output.
 
 ## Deployment / Publishing
 
