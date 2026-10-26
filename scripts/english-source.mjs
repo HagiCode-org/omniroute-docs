@@ -36,6 +36,59 @@ const isDirectory = async (file) => {
 const inside = (root, file) => file.startsWith(`${root}${path.sep}`) || file === root;
 const route = (locale, slug) => `/${locale}/${slug ? `${slug}/` : ""}`;
 const FENCED_CODE = /^[ \t]{0,3}(```|~~~)[^\n]*\n[\s\S]*?^[ \t]{0,3}\1[ \t]*(?=\n|$)/gmu;
+// Upstream titles end with the locale's own name, e.g. "README (中文 (简体))".
+const NATIVE_TITLE_SUFFIX = {
+  "zh-CN": /\s*\(中文\s*[(（]简体[)）]\)$/u,
+  "zh-Hant": /\s*\(中文\s*[(（]繁體[)）]\)$/u,
+  "ja-JP": /\s*\(日本語\)$/u,
+  "ko-KR": /\s*\(한국어\)$/u,
+  "de-DE": /\s*\(Deutsch\)$/u,
+  "fr-FR": /\s*\(Français\)$/u,
+  "es-ES": /\s*\(Español\)$/u,
+  "pt-BR": /\s*\(Português \(Brasil\)\)$/u,
+  "ru-RU": /\s*\(Русский\)$/u,
+};
+const localeTitle = (title, locale) => {
+  const suffix = NATIVE_TITLE_SUFFIX[locale];
+  return suffix ? title.replace(suffix, "") || title : title;
+};
+// CommonMark only opens or closes "**" when the neighbouring characters allow it, and it counts symbols as
+// punctuation for that test. Pairs it cannot open or close (typical for CJK prose) show literal asterisks, so
+// they are rewritten as <strong>, which renders the same text.
+const STRONG_PAIR = /\*\*((?:(?!\*\*)(?!\n\s*(?:\n|\|))[\s\S])+?)\*\*/gu;
+const CODE_TOKEN_START = /^OMNIROUTE_CODE_\d+_TOKEN/u;
+const CODE_TOKEN_END = /OMNIROUTE_CODE_\d+_TOKEN$/u;
+const isBlank = (char) => !char || /\s/u.test(char);
+const isPunctuation = (char) => Boolean(char) && /[\p{P}\p{S}]/u.test(char);
+
+function strongEmphasis(text) {
+  return text.replace(STRONG_PAIR, (match, inner, offset) => {
+    // Spaces just inside the markers ("**text **") cannot close emphasis, so they move outside the element.
+    const [, lead, core, trail] = inner.match(/^(\s*)([\s\S]*?)(\s*)$/u);
+    if (!core) return match;
+    if (lead || trail) return `${lead}<strong>${core}</strong>${trail}`;
+    const before = text.slice(0, offset);
+    const after = text.slice(offset + match.length);
+    // A masked inline code span stands in for a backtick-delimited span, which is punctuation.
+    const previous = CODE_TOKEN_END.test(before) ? "`" : before.slice(-1);
+    const following = CODE_TOKEN_START.test(after) ? "`" : after.charAt(0);
+    const first = CODE_TOKEN_START.test(inner) ? "`" : inner[0];
+    const last = CODE_TOKEN_END.test(inner) ? "`" : inner.at(-1);
+    const canOpen = previous !== "*" && (!isPunctuation(first) || isBlank(previous) || isPunctuation(previous));
+    const canClose = following !== "*" && (!isPunctuation(last) || isBlank(following) || isPunctuation(following));
+    return canOpen && canClose ? match : `<strong>${inner}</strong>`;
+  });
+}
+
+function outsideCode(body, transform) {
+  const protectedCode = [];
+  const hold = (text) => {
+    protectedCode.push(text);
+    return `OMNIROUTE_CODE_${protectedCode.length - 1}_TOKEN`;
+  };
+  const masked = body.replace(FENCED_CODE, hold).replace(/(`+)(?!`)([^\n]*?)\1(?!`)/gu, hold);
+  return transform(masked).replace(/OMNIROUTE_CODE_(\d+)_TOKEN/gu, (token, index) => protectedCode[Number(index)] ?? token);
+}
 
 function parseDocument(original, file) {
   let body = original.replace(/\r\n?/gu, "\n");
@@ -65,6 +118,8 @@ function parseDocument(original, file) {
     }
     body = body.slice(frontmatter[0].length);
   }
+  // Upstream translations open with a generated "# README (<locale name>)" line before their real heading.
+  body = body.replace(/^\s*#\s+README\s+\((?:[^()\n]|\([^()\n]*\))*\)[ \t]*\n/u, "");
   // Upstream's 67-language index is not the site's ten-language selector.
   body = body.replace(/^.*🌐 \*\*Languages:\*\*.*\n/gmu, "");
   body = body.replace(/<div align="center">\s*<b>🌐 [^<]*<\/b>[\s\S]*?<\/div>/gu, "");
@@ -74,7 +129,8 @@ function parseDocument(original, file) {
   body = body.replace(/<([a-z][\w-]*)>/gu, (tag, name) =>
     !allowed.has(name) && !body.includes(`</${name}>`) && !["script", "style", "iframe"].includes(name)
       ? `&lt;${name}&gt;` : tag);
-  body = body.replace(/<([a-z][\w-]* [a-z][\w-]*)>/gu, "&lt;$1&gt;");
+  body = body.replace(/<([a-z][\w-]*)( [a-z][\w-]*)>/gu, (tag, name, attribute) =>
+    allowed.has(name) ? tag : `&lt;${name}${attribute}&gt;`);
   const withoutCode = body.replace(FENCED_CODE, "")
     .replace(/`+[^`\n]+`+/gu, "");
   if (/^\s*(?:import|export)\s.+$/mu.test(withoutCode)) {
@@ -91,6 +147,7 @@ function parseDocument(original, file) {
       throw new Error(`Unsupported HTML or MDX element <${match[1]}> in ${file}`);
     }
   }
+  body = outsideCode(body, strongEmphasis);
   const heading = body.match(/^#\s+(.+?)\s*#*\s*$/mu);
   title ??= heading?.[1] ?? path.basename(file, ".md").replaceAll(/[-_]/gu, " ");
   if (heading?.[1] === title) body = body.replace(/^#\s+.+?\s*#*\s*$/mu, "");
@@ -224,7 +281,7 @@ export async function createImportPlan({
 
       const body = await rewriteTargets(parsed.body, transform);
       const metadata = [
-        `title: ${JSON.stringify(parsed.title)}`,
+        `title: ${JSON.stringify(localeTitle(parsed.title, locale))}`,
         ...(parsed.description ? [`description: ${JSON.stringify(parsed.description)}`] : []),
         ...(locale !== "en-US" && !translated ? ["isEnglishFallback: true", "rss: false"] : []),
       ];
