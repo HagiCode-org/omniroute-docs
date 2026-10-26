@@ -82,7 +82,7 @@ export function protectMarkdown(source) {
   }
   text = links + text.slice(offset);
   text = text.replace(/\]\[[^\]\n]*\]/gu, keep("reference_suffix"));
-  text = text.replace(/<!--[\s\S]*?-->|<\/?[A-Za-z][\w:-]*(?:\s+(?:[^<>"']|"[^"]*"|'[^']*')*)?\s*\/?>|<https?:\/\/[^<>\n]+>/gu, keep("html"));
+  text = text.replace(/<!--[\s\S]*?-->|<code\b[^>]*>[\s\S]*?<\/code>|<\/?[A-Za-z][\w:-]*(?:\s+(?:[^<>"']|"[^"]*"|'[^']*')*)?\s*\/?>|<https?:\/\/[^<>\n]+>/gu, keep("html"));
   text = text.replace(/\{\{[^{}\n]+\}\}|\$\{[^{}\n]+\}|%(?:\d+\$)?[sd]|https?:\/\/[^\s<>"'`]+/gu, keep("template_or_url"));
 
   const markerPattern = new RegExp(`⟦${prefix}\\d+⟧`, "gu");
@@ -105,16 +105,23 @@ export function protectMarkdown(source) {
   };
 }
 
+// Longer spellings claim their text first, so "API key" does not also select "key"
+// and "access token" does not also select "token".
 export function selectTerms(source, glossary) {
-  const visible = protectMarkdown(source).visibleText;
+  let visible = protectMarkdown(source).visibleText;
+  const candidates = glossary.terms.flatMap((term) => {
+    if (term.contextAny && !term.contextAny.some((context) => wordPattern(context).test(visible))) return [];
+    return [term.source, ...(term.aliases ?? [])].map((spelling) => ({ term, spelling }));
+  }).sort((a, b) => b.spelling.length - a.spelling.length || a.spelling.localeCompare(b.spelling));
   const selected = [];
-  for (const term of glossary.terms) {
-    if (term.contextAny && !term.contextAny.some((context) => wordPattern(context).test(visible))) continue;
-    for (const spelling of [term.source, ...(term.aliases ?? [])]) {
-      if (wordPattern(spelling).test(visible)) selected.push({ source: spelling, target: term.target, ...(term.background ? { background: term.background } : {}) });
-    }
+  for (const { term, spelling } of candidates) {
+    const pattern = wordPattern(spelling);
+    if (!pattern.test(visible)) continue;
+    visible = visible.replace(new RegExp(pattern.source, "giu"), " ");
+    selected.push({ source: spelling, target: term.target,
+      ...(term.avoid ? { avoid: term.avoid } : {}), ...(term.background ? { background: term.background } : {}) });
   }
-  return selected.sort((a, b) => b.source.length - a.source.length || a.source.localeCompare(b.source));
+  return selected;
 }
 
 export function buildPrompt(source, { glossary, terminology = true, protect = true, background = true, language = "zh" } = {}) {
@@ -158,12 +165,13 @@ export function checkStructure(source, output) {
 export async function translateWithOllama(source, {
   glossary, terminology = true, protect = true, background = true, language = "zh",
   endpoint = process.env.OLLAMA_HOST ?? "http://127.0.0.1:11434",
-  model = "hy-mt2:1.8b", fetchImpl = fetch,
+  model = "hy-mt2:1.8b", fetchImpl = fetch, seed,
 } = {}) {
   glossary ??= JSON.parse(await readFile(GLOSSARY_URL, "utf8"));
   endpoint = (endpoint.includes("://") ? endpoint : `http://${endpoint}`).replace(/\/$/u, "");
   const prepared = buildPrompt(source, { glossary, terminology, protect, background, language });
-  const request = { model, messages: [{ role: "user", content: prepared.prompt }], stream: false, options: { ...OLLAMA_OPTIONS } };
+  const request = { model, messages: [{ role: "user", content: prepared.prompt }], stream: false,
+    options: { ...OLLAMA_OPTIONS, ...(seed === undefined ? {} : { seed }) } };
   const start = performance.now();
   const response = await fetchImpl(`${endpoint}/api/chat`, {
     method: "POST", headers: { "Content-Type": "application/json" },

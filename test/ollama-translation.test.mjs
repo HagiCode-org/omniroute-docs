@@ -47,10 +47,10 @@ test("glossary disambiguates credentials, mapping keys and token units without m
   const auth = selectTerms('From [API Keys](/keys), create a new key. An access token is not an input token.', glossary);
   assert.ok(auth.some((t) => t.source === 'key' && t.target === '密钥'));
   assert.ok(auth.some((t) => t.source === 'access token' && t.target === '访问令牌'));
-  assert.ok(auth.some((t) => t.source === 'input token' && t.target === '输入词元'));
+  assert.ok(auth.some((t) => t.source === 'input token' && t.target === '输入令牌'));
   const mapping = selectTerms('Merge the per-key configuration. `API key` https://example.com/provider', glossary);
   assert.ok(!mapping.some((t) => ['key', 'API key', 'provider'].includes(t.source)));
-  assert.ok(!glossary.terms.some((t) => t.source === 'token'));
+  assert.ok(!auth.some((t) => t.source === 'token'), 'token inside a longer term is not selected twice');
 });
 
 test("uses the supplied official Chinese and English prompt formats and contextual references", () => {
@@ -107,4 +107,10 @@ test("structure checks detect dropped headings, table rows and changed executabl
   assert.equal(checkStructure(source, source.replace('# Guide', '指南')).heading_levels_exact, false);
   assert.equal(checkStructure(source, source.replace('"auto"', '“auto”')).inline_code_exact, false);
   assert.equal(checkStructure(source, source.split('\n').slice(0, -1).join('\n')).table_shape_exact, false);
+});
+
+test("keeps the text inside inline HTML code elements out of the model", () => {
+  const html = protectMarkdown('Frozen at <code>release/v3.8.50</code> tip <code>dafb4ae808</code>.');
+  assert.ok(!html.visibleText.includes('release'));
+  assert.equal(html.restore(html.text), 'Frozen at <code>release/v3.8.50</code> tip <code>dafb4ae808</code>.');
 });
