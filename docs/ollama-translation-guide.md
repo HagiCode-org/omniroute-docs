@@ -2,7 +2,7 @@
 
 本指南说明如何使用仓库已有的 Ollama 翻译工具，将英文技术文档翻译为简体中文，包括运行评估、翻译单篇短文、维护术语及检查输出。默认模型为 `hy-mt2:1.8b`，默认服务地址为 `http://127.0.0.1:11434`。
 
-当前工具用于生成和评估翻译初稿。它已经实现术语参考、背景信息、代码保护及格式检查；全站分块、自动重试和发布接入尚未实现。
+当前工具用于生成和评估翻译初稿。它已经实现术语参考、背景信息、代码保护、格式检查，以及整篇文档的分块、换种子重试和术语违规检查；全站批量翻译和发布接入尚未实现。
 
 ## 1. 确认运行环境
 
@@ -66,7 +66,7 @@ if (!result.accepted_structure || !result.output) {
 JS
 ```
 
-将 `source` 换成需要翻译的英文片段即可。长文应先按段落拆分，保持代码块和表格完整；当前函数不会自动分块。
+将 `source` 换成需要翻译的英文片段即可。`translateWithOllama` 本身不分块；整篇文档请用下面的脚本。
 
 调用返回的主要字段如下：
 
@@ -80,6 +80,17 @@ JS
 部分结构变化会保留 `output`，同时返回 `accepted_structure: false`，因此不能只判断译文是否为空。HTTP 错误、超时、空响应或未正常结束的生成会抛出异常。
 
 `accepted_structure: true` 只证明通过了当前格式检查。发布前仍需对照源文确认术语、条件、否定和技术行为。
+
+### 整篇文档
+
+```sh
+node scripts/translate-document-ollama.mjs vendor/OmniRoute/README.md docs/translation-evaluations/<目录名>
+node scripts/evaluate-translated-document.mjs vendor/OmniRoute/README.md <目录名>/README.zh-CN.md [上游中文版]
+```
+
+翻译脚本按空行把文档拆成块：代码块、徽章图、纯标记块（国旗图标、贡献者链接表）不交给模型；其余正文按约 300 词合并成分块，过大的表格按行拆分并重复表头。每个分块最多用 3 个种子重试，仍失败则逐块再试，最后保留英文并写入日志。输出目录包含 `README.zh-CN.md`、`summary.json` 和逐次尝试的 `translation-log.jsonl`。输出目录不能已存在日志文件。
+
+评估脚本对整篇译文运行结构检查、统计术语落地、禁用译法和仍为英文的正文块；传入上游中文版时一并输出对照。这些都是机器检查，语义仍需对照英文校审。保留英文的块、HTML 表格中的文字和 frontmatter 需要另行处理。
 
 ## 4. 使用的提示词与推理参数
 
@@ -136,9 +147,11 @@ cooldown 翻译成 冷却期
 }
 ```
 
-字段含义：`source` 为英文术语，`aliases` 为可选别名，`target` 为参考译法；可选的 `contextAny` 限定使用语境，`background` 提供领域解释。
+字段含义：`source` 为英文术语，`aliases` 为可选别名，`target` 为参考译法；可选的 `contextAny` 限定使用语境，`background` 提供领域解释，`avoid` 列出禁用译法（只用于译后检查，不发给模型）。`source` 与 `target` 相同的条目用于产品名和功能名（如 `Combo`、`Claude Code`），防止被误译。
 
 维护时遵循以下规则：
+
+0. 与上游已有简体中文保持一致：先统计上游 `docs/i18n/zh-CN` 的现有用法再定译法（例如 provider 用“提供者”，token 用“令牌”，dashboard 用“仪表板”）。较长的词优先匹配，`API key` 不会同时选中 `key`。
 
 1. 区分 `API key`（API 密钥）、`access token`（访问令牌）和 `input token`（输入词元），不要给所有 `token` 设置同一种译法。
 2. 使用具体术语及必要语境，避免无条件把配置中的 key 也译成密钥。现有规则会排除 `per-key` 对独立 key 的匹配。
