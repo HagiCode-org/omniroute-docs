@@ -4,6 +4,11 @@ import starlight from "@astrojs/starlight";
 import hagilight from "@hagicode/hagilight-starlight";
 import { hagilight as hagilightDiscovery } from "@hagicode/hagilight/integration";
 import { locales as hagilightLocales } from "@hagicode/hagilight-starlight/locales";
+import { fileURLToPath } from "node:url";
+import { discoverTopics } from "./scripts/upstream-topics.mjs";
+import { sidebarFromTopics } from "./src/lib/sidebar.mjs";
+
+const topics = await discoverTopics(fileURLToPath(new URL("./vendor/OmniRoute", import.meta.url)));
 
 export default defineConfig({
   site: "https://omniroute.hagicode.com",
@@ -18,6 +23,7 @@ export default defineConfig({
         Object.values(hagilightLocales).map((locale) => [locale.lang, locale]),
       ),
       customCss: ["./src/styles/site.css"],
+      sidebar: sidebarFromTopics(Object.values(topics)),
       components: {
         MarkdownContent: "./src/components/EnglishFallbackMarkdownContent.astro",
         PageTitle: "./src/components/EnglishFallbackPageTitle.astro",
