@@ -1,7 +1,7 @@
 # Repository profile for the `doc-translation` skill (field meanings: <skill>/references/profile-spec.md).
 # Human-owned: the runs never edit this file.
 schema: 1
-repo: repos/omniroute-docs                 # relative to the monorepo root, where runs start
+repo: repos/omniroute-docs                 # relative to RUN_DIR (the monorepo root, where runs start); every other path below is relative to this repo
 translationsRoot: translations
 defaultLocale: zh-CN
 locales:
@@ -16,7 +16,7 @@ sources:
     `vendor/OmniRoute` submodule plus its root `README.md` (the same set the site publishes; see
     `docs/upstream-route-map.md`).
   discovery:
-    cwd: repos/omniroute-docs
+    cwd: .                                 # relative to the repo
     command: node translations/discover.mjs --locale {locale}
   extensions: [.md]
 
@@ -56,7 +56,7 @@ budgets:
 commit:
   enabled: true
   messagePrefix: "docs(translation)"
-  trailer: ""                              # empty: use the attribution the invoking session requires
+  trailer: "Co-Authored-By: Hagicode <noreply@hagicode.com>"   # what this repo's own history uses; the commit-msg hook that rejects AI attribution lives only inside vendor/OmniRoute and does not apply here
 
 timezone: America/Los_Angeles
 
@@ -69,3 +69,5 @@ rules:
     - Do not add the upstream language-switcher bar or a "(中文 (简体))" suffix to titles.
     - Node commands use NODE_OPTIONS=--max-old-space-size=24576; anything that may hang runs under `timeout -k 30 <seconds>`.
     - Other sessions may share this worktree and git index; run `git status` first and only ever touch `translations/`.
+    - Scratch files go to the session scratchpad (or a `mktemp -d` outside the repo), never into the repo or `vendor/OmniRoute/_artifacts/`.
+    - Running the skill's own `scripts/selftest.mjs` is allowed; it is not a repository build or test.
