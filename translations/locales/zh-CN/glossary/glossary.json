@@ -1,0 +1,457 @@
+{
+  "schema": 1,
+  "version": 2,
+  "updatedAt": "2026-10-27T06:37:13Z",
+  "doNotTranslate": [
+    {
+      "term": "OmniRoute",
+      "note": "产品名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "HagiCode",
+      "note": "产品名(profile 种子)",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Aider",
+      "note": "第三方 CLI 名(外部译文原样保留)",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Anthropic",
+      "note": "供应商名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Antigravity",
+      "note": "第三方 CLI/产品名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Claude",
+      "note": "模型/产品名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Codex",
+      "note": "CLI/产品名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Copilot",
+      "note": "产品名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Cursor",
+      "note": "产品名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Docker",
+      "note": "产品名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Gemini",
+      "note": "模型/产品名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Goose",
+      "note": "第三方 CLI 名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Kiro",
+      "note": "产品名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "LiteLLM",
+      "note": "产品名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Ollama",
+      "note": "产品名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "OpenAI",
+      "note": "供应商名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "OpenCode",
+      "note": "第三方 CLI 名",
+      "origin": "bootstrap",
+      "locked": false
+    },
+    {
+      "term": "Qwen",
+      "note": "模型名",
+      "origin": "bootstrap",
+      "locked": false
+    }
+  ],
+  "terms": [
+    {
+      "id": "channel",
+      "source": "Channel",
+      "target": "渠道",
+      "alt": [],
+      "note": "外部译文中的表格/标题用词",
+      "origin": "bootstrap",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "clipboard",
+      "source": "Clipboard",
+      "target": "剪贴板",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "command",
+      "source": "Command",
+      "target": "命令",
+      "alt": [],
+      "note": "",
+      "origin": "bootstrap",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 3,
+      "firstSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "common-questions",
+      "source": "Common Questions",
+      "target": "常见问题",
+      "alt": [],
+      "note": "",
+      "origin": "bootstrap",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 4,
+      "firstSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "context",
+      "source": "Context",
+      "target": "上下文",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 14,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "dashboard",
+      "source": "Dashboard",
+      "target": "仪表盘",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 4,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "factor",
+      "source": "Factor",
+      "target": "因素",
+      "alt": [],
+      "note": "",
+      "origin": "bootstrap",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "file",
+      "source": "File",
+      "target": "文件",
+      "alt": [],
+      "note": "",
+      "origin": "bootstrap",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "harness",
+      "source": "Harness",
+      "target": "测试工具",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 8,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "manifest",
+      "source": "Manifest",
+      "target": "清单",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "provider",
+      "source": "Provider",
+      "target": "提供者",
+      "alt": [],
+      "note": "PROVIDERS-GUIDE 与 README 中的通用用法",
+      "origin": "bootstrap",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "quick-start",
+      "source": "Quick Start",
+      "target": "快速开始",
+      "alt": [],
+      "note": "",
+      "origin": "bootstrap",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "sentinel",
+      "source": "Sentinel",
+      "target": "哨兵",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 3,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "smoke-test",
+      "source": "Smoke test",
+      "target": "冒烟测试",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "table-of-contents",
+      "source": "Table of Contents",
+      "target": "目录",
+      "alt": [],
+      "note": "",
+      "origin": "bootstrap",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "variable",
+      "source": "Variable",
+      "target": "变量",
+      "alt": [],
+      "note": "",
+      "origin": "bootstrap",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "workload",
+      "source": "Workload",
+      "target": "工作负载",
+      "alt": [],
+      "note": "",
+      "origin": "bootstrap",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/i18n/zh-CN (evidence)",
+        "run": "20261026-2333"
+      },
+      "conflicts": []
+    }
+  ]
+}

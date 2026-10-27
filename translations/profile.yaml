@@ -1,0 +1,71 @@
+# Repository profile for the `doc-translation` skill (field meanings: <skill>/references/profile-spec.md).
+# Human-owned: the runs never edit this file.
+schema: 1
+repo: repos/omniroute-docs                 # relative to the monorepo root, where runs start
+translationsRoot: translations
+defaultLocale: zh-CN
+locales:
+  zh-CN:
+    name: 简体中文
+    cjk: true
+    notes: 读者称"你"不称"您";全角标点;中英文与数字之间加半角空格;站点是技术文档,语气书面、克制。
+
+sources:
+  description: >-
+    OmniRoute upstream English documentation — every English Markdown under `docs/` of the pinned
+    `vendor/OmniRoute` submodule plus its root `README.md` (the same set the site publishes; see
+    `docs/upstream-route-map.md`).
+  discovery:
+    cwd: repos/omniroute-docs
+    command: node translations/discover.mjs --locale {locale}
+  extensions: [.md]
+
+externalTranslations:
+  policy: skip                             # upstream already translated these; never translate or rewrite them
+  evidence:
+    - vendor/OmniRoute/docs/i18n/{locale}/ # read-only; quality unverified, so terminology evidence only
+
+writeScope: [translations/]
+readOnly:
+  - vendor/                                # pinned upstream submodule, including docs/i18n/
+  - src/content/docs/                      # generated and Git-ignored
+  - src/content/upstream-translation-reviews.json
+  - scripts/
+  - src/
+  - test/
+  - astro.config.mjs
+  - package.json
+  - package-lock.json
+forbidden:
+  - repos/hagicode-local-deployment/.generated/environments/dev-a   # the owner's live deployment: no reads, writes, restarts, kills
+  - git push / stash / reset / checkout / new branches / --no-verify
+  - npm install, builds, tests, long-running services
+  - killing processes by name
+
+priority:
+  - { tier: 1, match: ["README.md", "docs/getting-started/", "docs/guides/"] }
+  - { tier: 2, match: ["docs/routing/", "docs/security/", "docs/reference/"] }
+  - { tier: 4, match: ["docs/changelog/", "docs/assets/"] }
+
+budgets:
+  maxRunMinutes: 240
+  maxDocs: 10
+  maxSourceBytes: 80000
+  minMinutesToStartDoc: 20
+
+commit:
+  enabled: true
+  messagePrefix: "docs(translation)"
+  trailer: ""                              # empty: use the attribution the invoking session requires
+
+timezone: America/Los_Angeles
+
+rules:
+  doNotTranslateSeeds: [OmniRoute, HagiCode]
+  links: Keep relative links unchanged; the site importer rewrites them.
+  frontmatterTranslatable: [title, description]
+  extra:
+    - Do not translate comments inside fenced code blocks (code blocks are verified byte-for-byte).
+    - Do not add the upstream language-switcher bar or a "(中文 (简体))" suffix to titles.
+    - Node commands use NODE_OPTIONS=--max-old-space-size=24576; anything that may hang runs under `timeout -k 30 <seconds>`.
+    - Other sessions may share this worktree and git index; run `git status` first and only ever touch `translations/`.

@@ -1,0 +1,8 @@
+{"ts":"2026-10-27T06:34:56Z","run":"20261026-2333","op":"add","id":"*bootstrap*","version":1,"note":"first-run bootstrap from external zh-CN evidence (>=2-doc pairs) + doNotTranslate seeds and product names"}
+{"ts":"2026-10-27T06:37:13Z","run":"20261026-2333","op":"add","id":"dashboard","target":"仪表盘"}
+{"ts":"2026-10-27T06:37:13Z","run":"20261026-2333","op":"add","id":"context","target":"上下文"}
+{"ts":"2026-10-27T06:37:13Z","run":"20261026-2333","op":"add","id":"harness","target":"测试工具"}
+{"ts":"2026-10-27T06:37:13Z","run":"20261026-2333","op":"add","id":"smoke-test","target":"冒烟测试"}
+{"ts":"2026-10-27T06:37:13Z","run":"20261026-2333","op":"add","id":"sentinel","target":"哨兵"}
+{"ts":"2026-10-27T06:37:13Z","run":"20261026-2333","op":"add","id":"manifest","target":"清单"}
+{"ts":"2026-10-27T06:37:13Z","run":"20261026-2333","op":"add","id":"clipboard","target":"剪贴板"}
