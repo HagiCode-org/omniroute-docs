@@ -27,10 +27,6 @@ Subscribe to be notified of new documentation:
 
 Localized feeds do not include English fallback pages.
 
-## Translation tooling
-
-For local Ollama translation commands, terminology maintenance and quality checks, see the [Ollama translation guide (简体中文)](./docs/ollama-translation-guide.md).
-
 ## About OmniRoute
 
 For the product itself, including source code and releases, see the [OmniRoute project](https://github.com/diegosouzapw/OmniRoute).
