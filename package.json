@@ -5,14 +5,16 @@
   "type": "module",
   "scripts": {
     "import:upstream": "node scripts/import-english.mjs",
-    "dev": "npm run import:upstream && astro dev",
-    "build": "export NODE_OPTIONS=\"${NODE_OPTIONS:-} --max-old-space-size=8192\"; npm run import:upstream && astro build",
+    "dev": "pnpm run import:upstream && astro dev",
+    "build": "export NODE_OPTIONS=\"${NODE_OPTIONS:-} --max-old-space-size=8192\"; pnpm run import:upstream && astro build",
     "preview": "astro preview",
-    "check": "export NODE_OPTIONS=\"${NODE_OPTIONS:-} --max-old-space-size=8192\"; npm run import:upstream && astro check",
-    "test:fast": "npm run check",
+    "check": "export NODE_OPTIONS=\"${NODE_OPTIONS:-} --max-old-space-size=8192\"; pnpm run import:upstream && astro check",
+    "test:fast": "pnpm run check",
     "check:translation-reviews": "node scripts/check-translation-baselines.mjs",
     "update:translation-reviews": "node scripts/update-translation-reviews.mjs --reviewed",
-    "test": "node --test test/*.test.mjs"
+    "test": "node --test test/*.test.mjs",
+    "check:registry": "node scripts/check-registry-neutrality.mjs",
+    "test:registry": "node --test scripts/check-registry-neutrality.node-test.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.1",
@@ -20,10 +22,12 @@
     "@hagicode/hagilight": "0.20.0",
     "@hagicode/hagilight-core": "0.20.0",
     "@hagicode/hagilight-starlight": "0.20.0",
-    "astro": "^7.3.8"
+    "astro": "^7.3.8",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "typescript": "^6.0.3"
-  }
+  },
+  "packageManager": "pnpm@12.16.1"
 }
