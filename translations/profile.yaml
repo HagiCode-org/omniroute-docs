@@ -39,7 +39,7 @@ readOnly:
 forbidden:
   - repos/hagicode-local-deployment/.generated/environments/dev-a   # the owner's live deployment: no reads, writes, restarts, kills
   - git push / stash / reset / checkout / new branches / --no-verify
-  - npm install, builds, tests, long-running services
+  - npm install, pnpm install, builds, tests, long-running services
   - killing processes by name
 
 priority:
