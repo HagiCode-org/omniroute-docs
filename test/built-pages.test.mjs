@@ -6,8 +6,11 @@ import { LANGUAGE_OPTIONS, SITE_COPY } from "../src/i18n/site-copy.mjs";
 import { discoverTopics } from "../scripts/upstream-topics.mjs";
 
 const page = (route) => readFile(new URL(`../dist/${route}index.html`, import.meta.url), "utf8");
-const googleAnalyticsScript = /<script[^>]+src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-EN03FMT2Q4"/u;
-const fiftyOneLaScript = /<script[^>]+src="https:\/\/sdk\.51\.la\/js-sdk-pro\.min\.js"/u;
+// Hagilight gates analytics behind consent: pages carry one inert descriptor per provider and the consent
+// gate loads the provider after a grant, so the built HTML never contains the provider loader itself.
+const googleAnalyticsDescriptor = /<script[^>]+data-hagilight-analytics="googleAnalytics"[^>]*>\{"measurementId":"G-EN03FMT2Q4"\}<\/script>/u;
+const fiftyOneLaDescriptor = /<script[^>]+data-hagilight-analytics="fiftyOneLa"[^>]*>\{"siteId":"L6b88a5yK4h2Xnci"\}<\/script>/u;
+const providerLoaders = /googletagmanager\.com\/gtag\/js|sdk\.51\.la\/js-sdk/u;
 const sourceTopic = "getting-started/self-hosting/";
 
 test("localized RSS feeds are published without an all-language feed", async () => {
@@ -82,10 +85,10 @@ test("all upstream topics retain one article promotion and no empty campaign fal
       assert.equal(topic.split("<hagilight-promoto-banner").length - 1, 1, `${code}/${slug} has one remote campaign component`);
       assert.ok(topic.includes(`<link rel="canonical" href="https://omniroute.hagicode.com/${code}/${slug}/"`));
       assert.doesNotMatch(topic, /data-fallback=|data-hagicode-promotion|data-hagicode-end-card|\/img\/hagicode\/light-main\.png/u);
-      assert.match(topic, googleAnalyticsScript);
-      assert.match(topic, fiftyOneLaScript);
-      assert.match(topic, /const siteId = "L6b88a5yK4h2Xnci"/u);
-      assert.match(topic, /screenRecord:\s*true/u);
+      assert.match(topic, googleAnalyticsDescriptor);
+      assert.match(topic, fiftyOneLaDescriptor);
+      assert.doesNotMatch(topic, providerLoaders);
+      assert.doesNotMatch(topic, /screenRecord:\s*true/u);
     }
 
     await assert.rejects(stat(new URL(`../dist/${code}/stores-beta/user-guide/index.html`, import.meta.url)), { code: "ENOENT" });
@@ -201,8 +204,9 @@ test("upstream links resolve for every locale with both analytics providers enab
     for (const file of pages.filter((name) => name.endsWith("index.html"))) {
       const html = await readFile(new URL(`../dist/${code}/${file}`, import.meta.url), "utf8");
       assert.ok(html.includes(`https://github.com/diegosouzapw/OmniRoute/blob/${revision}/`));
-      assert.match(html, googleAnalyticsScript, `${code}/${file} loads Google Analytics`);
-      assert.match(html, fiftyOneLaScript, `${code}/${file} loads 51LA`);
+      assert.match(html, googleAnalyticsDescriptor, `${code}/${file} declares Google Analytics`);
+      assert.match(html, fiftyOneLaDescriptor, `${code}/${file} declares 51LA`);
+      assert.doesNotMatch(html, providerLoaders, `${code}/${file} loads no provider before consent`);
       const article = html.match(/<main[\s\S]*?<\/main>/u)?.[0] ?? "";
       for (const [, href] of article.matchAll(/(?:href|src)="([^"]+)"/gu)) {
         if (/^https?:/iu.test(href) && !href.startsWith("https://omniroute.hagicode.com/")) continue;
