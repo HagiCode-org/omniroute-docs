@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": 7,
-  "updatedAt": "2026-10-30T19:36:36.309Z",
+  "version": 10,
+  "updatedAt": "2026-10-30T20:33:03.062Z",
   "doNotTranslate": [
     {
       "term": "OmniRoute",
@@ -320,6 +320,26 @@
       "conflicts": []
     },
     {
+      "id": "locale",
+      "source": "locale",
+      "target": "语言环境",
+      "alt": [],
+      "note": "translation and locale workflow (I18N guide)",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "doc": "docs/i18n/README.md",
+        "run": "20261030-1332"
+      },
+      "conflicts": []
+    },
+    {
       "id": "loopback",
       "source": "loopback",
       "target": "回环地址",
@@ -356,6 +376,26 @@
       "lastSeen": {
         "doc": "docs/guides/CLI-MANUAL-MODELS.md",
         "run": "run1"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "profile",
+      "source": "profile",
+      "target": "配置档",
+      "alt": [],
+      "note": "Docker Compose profiles; keep English in parentheses at first use",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
+      },
+      "lastSeen": {
+        "doc": "docs/security/CLI-CONFIGURATION.md",
+        "run": "20261030-1332"
       },
       "conflicts": []
     },
@@ -436,6 +476,26 @@
       "lastSeen": {
         "doc": "docs/i18n/zh-CN (evidence)",
         "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "self-hosted",
+      "source": "self-hosted",
+      "target": "自托管",
+      "alt": [],
+      "note": "统一入口的定位描述",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "run6"
+      },
+      "lastSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261030-1332"
       },
       "conflicts": []
     },

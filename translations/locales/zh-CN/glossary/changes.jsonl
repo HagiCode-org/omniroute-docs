@@ -91,3 +91,18 @@
 {"ts":"2026-10-30T19:36:36.309Z","run":"run6","op":"promote","id":"loopback","target":"回环地址","docs":2,"version":7,"doc":"docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"}
 {"ts":"2026-10-30T19:36:36.309Z","run":"run6","op":"confirm","id":"blacklist","target":"黑名单","docs":2,"by":"use","version":7,"doc":"docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"}
 {"ts":"2026-10-30T19:36:36.309Z","run":"run6","op":"promote","id":"blacklist","target":"黑名单","docs":2,"version":7,"doc":"docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"}
+{"ts":"2026-10-30T20:32:44.019Z","run":"20261030-1332","op":"confirm","id":"locale","target":"语言环境","docs":2,"version":8,"doc":"docs/i18n/README.md"}
+{"ts":"2026-10-30T20:32:44.019Z","run":"20261030-1332","op":"promote","id":"locale","target":"语言环境","docs":2,"docNames":["docs/README.md","docs/i18n/README.md"],"version":8,"doc":"docs/i18n/README.md"}
+{"ts":"2026-10-30T20:33:02.836Z","run":"20261030-1332","op":"stage","id":"opencode-go","target":null,"version":8,"doc":"docs/reference/OPENCODE-SESSION-IDENTITY.md"}
+{"ts":"2026-10-30T20:33:02.948Z","run":"20261030-1332","op":"confirm","id":"profile","target":"配置档","docs":2,"version":9,"doc":"docs/security/CLI-CONFIGURATION.md"}
+{"ts":"2026-10-30T20:33:02.948Z","run":"20261030-1332","op":"promote","id":"profile","target":"配置档","docs":2,"docNames":["docs/getting-started/SELF_HOST_GUIDE.md","docs/security/CLI-CONFIGURATION.md"],"version":9,"doc":"docs/security/CLI-CONFIGURATION.md"}
+{"ts":"2026-10-30T20:33:03.062Z","run":"20261030-1332","op":"confirm","id":"self-hosted","target":"自托管","docs":2,"version":10,"doc":"docs/security/INFERENCE_AUTH_POSTURE.md"}
+{"ts":"2026-10-30T20:33:03.062Z","run":"20261030-1332","op":"promote","id":"self-hosted","target":"自托管","docs":2,"docNames":["docs/routing/SELF_HOSTED_OPENAI_ENTRY.md","docs/security/INFERENCE_AUTH_POSTURE.md"],"version":10,"doc":"docs/security/INFERENCE_AUTH_POSTURE.md"}
+{"ts":"2026-10-30T20:33:03.062Z","run":"20261030-1332","op":"stage","id":"traefik","target":null,"version":10,"doc":"docs/security/INFERENCE_AUTH_POSTURE.md"}
+{"ts":"2026-10-30T20:33:07.801Z","run":"20261030-1332","op":"stage","id":"glm","target":null,"version":10,"doc":"docs/changelog/fragments/10962.md"}
+{"ts":"2026-10-30T20:33:07.801Z","run":"20261030-1332","op":"stage","id":"zcode","target":null,"version":10,"doc":"docs/changelog/fragments/10962.md"}
+{"ts":"2026-10-30T20:33:32.930Z","run":"20261030-1332","op":"stage","id":"key-pool","target":"密钥池","version":10,"doc":"docs/diagrams/README.md"}
+{"ts":"2026-10-30T20:33:32.930Z","run":"20261030-1332","op":"stage","id":"auto-fallback","target":"自动回退","version":10,"doc":"docs/diagrams/README.md"}
+{"ts":"2026-10-30T20:33:32.930Z","run":"20261030-1332","op":"reject","id":"circuit-breaker","target":"熔断器","reason":"not-in-source: the term does not occur in the document's prose","version":10,"doc":"docs/diagrams/README.md"}
+{"ts":"2026-10-30T20:33:32.930Z","run":"20261030-1332","op":"reject","id":"routing-strategy","target":"路由策略","reason":"not-in-source: the term does not occur in the document's prose","version":10,"doc":"docs/diagrams/README.md"}
+{"ts":"2026-10-30T20:33:32.930Z","run":"20261030-1332","op":"reject","id":"compression-engine","target":"压缩引擎","reason":"not-in-source: the term does not occur in the document's prose","version":10,"doc":"docs/diagrams/README.md"}

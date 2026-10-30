@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "locale": "zh-CN",
-  "updatedAt": "2026-10-30T19:36:36.310Z",
-  "lastRun": "run6",
+  "updatedAt": "2026-10-30T20:33:32.928Z",
+  "lastRun": "20261030-1332",
   "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
-  "glossaryVersion": 7,
-  "glossarySha256": "4f219b85a13b0157c5581e603db0329c0c54866da06468b7bbf26ff01cb80dc6",
+  "glossaryVersion": 10,
+  "glossarySha256": "823a6b4b675ccc9cec6472e01be9428086d9b70bf1b2401580281a4f36a1c162",
   "docs": {
     "docs/guides/CLI-COMPANION.md": {
       "status": "done",
@@ -85,7 +85,8 @@
         "model-catalog": "模型目录",
         "provider": "提供者",
         "quick-start": "快速开始",
-        "variable": "变量"
+        "variable": "变量",
+        "locale": "语言环境"
       }
     },
     "docs/getting-started/SELF_HOST_GUIDE.md": {
@@ -116,7 +117,8 @@
         "proxy": "代理",
         "quick-start": "快速开始",
         "variable": "变量",
-        "loopback": "回环地址"
+        "loopback": "回环地址",
+        "profile": "配置档"
       }
     },
     "docs/routing/DETERMINISTIC_ROUTING.md": {
@@ -159,6 +161,189 @@
       "termTargets": {
         "blacklist": "黑名单",
         "loopback": "回环地址",
+        "provider": "提供者",
+        "self-hosted": "自托管"
+      }
+    },
+    "docs/i18n/README.md": {
+      "status": "done",
+      "sourceSha256": "618c0ba3c76da4c8bedb0c2f4944df2bfc3b8a2314ec520501e43c30968e36db",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-CN/content/docs/i18n/README.md",
+      "translationSha256": "f0e99a4333f7729a1bf010754b7bb84b9f66e165afce7d14a16cdcd4a14be60f",
+      "glossaryVersion": 7,
+      "attempts": 1,
+      "runId": "20261030-1332",
+      "doneAt": "2026-10-30T20:32:44.018Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": "",
+      "model": "haiku",
+      "retries": 0,
+      "seconds": 60,
+      "termTargets": {
+        "locale": "语言环境"
+      }
+    },
+    "docs/reference/OPENCODE-SESSION-IDENTITY.md": {
+      "status": "done",
+      "sourceSha256": "1bd42a4bf85da55527f3efbf0f04f993791ef572cec0a0ea02b0f9e55a5667c0",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-CN/content/docs/reference/OPENCODE-SESSION-IDENTITY.md",
+      "translationSha256": "7582cbde4072435f311ecea58b32ca8353a9d65da7972cca8b6f7d25cfc84351",
+      "glossaryVersion": 8,
+      "attempts": 1,
+      "runId": "20261030-1332",
+      "doneAt": "2026-10-30T20:33:02.834Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": "",
+      "model": "haiku",
+      "retries": 0,
+      "seconds": 8,
+      "termTargets": {
+        "provider": "提供者"
+      }
+    },
+    "docs/security/CLI-CONFIGURATION.md": {
+      "status": "done",
+      "sourceSha256": "1c0098ef49753fb3a8e561428a040bd5643f5608b193b6101e26230207a88325",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-CN/content/docs/security/CLI-CONFIGURATION.md",
+      "translationSha256": "4d6dd8eccb489b72c6235e16a27e43415afeb31394c6161f9d9a82064560b328",
+      "glossaryVersion": 8,
+      "attempts": 1,
+      "runId": "20261030-1332",
+      "doneAt": "2026-10-30T20:33:02.946Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": "",
+      "model": "haiku",
+      "retries": 0,
+      "seconds": 8,
+      "termTargets": {
+        "profile": "配置档"
+      }
+    },
+    "docs/security/INFERENCE_AUTH_POSTURE.md": {
+      "status": "done",
+      "sourceSha256": "52cf72e6ab3d362d2cc8099b517845745e92faf785bac7f38611e49c4225b80b",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-CN/content/docs/security/INFERENCE_AUTH_POSTURE.md",
+      "translationSha256": "e5cd2d7acb97b3725f646868646c11338aad2dc83a9d72ae9d438183cf9f484b",
+      "glossaryVersion": 9,
+      "attempts": 1,
+      "runId": "20261030-1332",
+      "doneAt": "2026-10-30T20:33:03.060Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": "",
+      "model": "haiku",
+      "retries": 0,
+      "seconds": 3,
+      "termTargets": {
+        "dashboard": "仪表盘",
+        "endpoint": "端点",
+        "loopback": "回环地址",
+        "proxy": "代理",
+        "self-hosted": "自托管"
+      }
+    },
+    "docs/changelog/fragments/10962.md": {
+      "status": "done",
+      "sourceSha256": "ce3be90158f57ff75c13906e240203b608d10337f50a7fab2ec0222c7d3ce6c6",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-CN/content/docs/changelog/fragments/10962.md",
+      "translationSha256": "aa87bbb2089d9f3d3f823d12dd7c35a3d9c2a951ead9779a2089c0a2086c4458",
+      "glossaryVersion": 10,
+      "attempts": 1,
+      "runId": "20261030-1332",
+      "doneAt": "2026-10-30T20:33:07.788Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": "",
+      "model": "haiku",
+      "retries": 1,
+      "seconds": null,
+      "termTargets": {
+        "provider": "提供者"
+      }
+    },
+    "docs/changelog/fragments/14268.md": {
+      "status": "done",
+      "sourceSha256": "00310e5589b4872049d81d5f345e9e1336174718acb9ce030981d55ca86ac2c4",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-CN/content/docs/changelog/fragments/14268.md",
+      "translationSha256": "5d7351b36bbdba7bdbd7452aa5582d5aa84b4d900fb848ab3b2f0eae19277d07",
+      "glossaryVersion": 10,
+      "attempts": 1,
+      "runId": "20261030-1332",
+      "doneAt": "2026-10-30T20:33:07.905Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": "",
+      "model": "haiku",
+      "retries": 0,
+      "seconds": null,
+      "termTargets": {}
+    },
+    "docs/changelog/fragments/7778.md": {
+      "status": "done",
+      "sourceSha256": "492122beb925609af9e2f5878b20ad86e1c58434aa6fdd22175e20124e364fc0",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-CN/content/docs/changelog/fragments/7778.md",
+      "translationSha256": "43efb83cd83cf20583db033a4762184a6854931ef935137c31e0608e9a8f7c5d",
+      "glossaryVersion": 10,
+      "attempts": 1,
+      "runId": "20261030-1332",
+      "doneAt": "2026-10-30T20:33:08.010Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": "",
+      "model": "haiku",
+      "retries": 0,
+      "seconds": null,
+      "termTargets": {
+        "provider": "提供者"
+      }
+    },
+    "docs/assets/flags/README.md": {
+      "status": "done",
+      "sourceSha256": "857b97da8c35150c85e74f2964f13f4d73011453400864724b53123bd73f08fa",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-CN/content/docs/assets/flags/README.md",
+      "translationSha256": "1a4ab3e519601ac10fb2d28516805c2050961fff9010bd8ae96cd31dd7cf26b9",
+      "glossaryVersion": 10,
+      "attempts": 1,
+      "runId": "20261030-1332",
+      "doneAt": "2026-10-30T20:33:08.152Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": "",
+      "model": "haiku",
+      "retries": 1,
+      "seconds": null,
+      "termTargets": {}
+    },
+    "docs/diagrams/README.md": {
+      "status": "done",
+      "sourceSha256": "ec4fe263232433595a46e7469e4e8ca0f4ab6f4129d08180f1cf2db8bbf84021",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-CN/content/docs/diagrams/README.md",
+      "translationSha256": "d6e914bc37e7162551c9e03caed1ad765683fafa9ba646e39fb06a11c2904abf",
+      "glossaryVersion": 10,
+      "attempts": 1,
+      "runId": "20261030-1332",
+      "doneAt": "2026-10-30T20:33:32.928Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": "",
+      "model": "haiku",
+      "retries": 0,
+      "seconds": 90,
+      "termTargets": {
+        "agent": "智能体",
+        "free-tier": "免费层",
         "provider": "提供者"
       }
     }

@@ -187,23 +187,6 @@
       }
     },
     {
-      "id": "locale",
-      "source": "locale",
-      "target": "语言环境",
-      "kind": "term",
-      "note": "translation and locale workflow (I18N guide)",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "run2"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
       "id": "manifest",
       "source": "Manifest",
       "target": "清单",
@@ -266,23 +249,6 @@
       "firstSeen": {
         "doc": "docs/README.md",
         "run": "run2"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
-      "id": "profile",
-      "source": "profile",
-      "target": "配置档",
-      "kind": "term",
-      "note": "Docker Compose profiles; keep English in parentheses at first use",
-      "docs": [
-        "docs/getting-started/SELF_HOST_GUIDE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
-        "run": "run3"
       },
       "lastSeen": {
         "run": "audit1"
@@ -673,24 +639,6 @@
       }
     },
     {
-      "id": "self-hosted",
-      "source": "self-hosted",
-      "target": "自托管",
-      "kind": "term",
-      "note": "统一入口的定位描述",
-      "docs": [
-        "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
-        "run": "run6"
-      },
-      "lastSeen": {
-        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
-        "run": "run6"
-      }
-    },
-    {
       "id": "provider-adapter",
       "source": "provider adapter",
       "target": "提供者适配器",
@@ -706,6 +654,114 @@
       "lastSeen": {
         "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
         "run": "run6"
+      }
+    },
+    {
+      "id": "opencode-go",
+      "source": "OpenCode Go",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "产品名，保留原文",
+      "docs": [
+        "docs/reference/OPENCODE-SESSION-IDENTITY.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/reference/OPENCODE-SESSION-IDENTITY.md",
+        "run": "20261030-1332"
+      },
+      "lastSeen": {
+        "doc": "docs/reference/OPENCODE-SESSION-IDENTITY.md",
+        "run": "20261030-1332"
+      }
+    },
+    {
+      "id": "traefik",
+      "source": "Traefik",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "reverse proxy product name",
+      "docs": [
+        "docs/security/INFERENCE_AUTH_POSTURE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261030-1332"
+      },
+      "lastSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261030-1332"
+      }
+    },
+    {
+      "id": "glm",
+      "source": "GLM",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "model family name kept as written",
+      "docs": [
+        "docs/changelog/fragments/10962.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/changelog/fragments/10962.md",
+        "run": "20261030-1332"
+      },
+      "lastSeen": {
+        "doc": "docs/changelog/fragments/10962.md",
+        "run": "20261030-1332"
+      }
+    },
+    {
+      "id": "zcode",
+      "source": "ZCode",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "alias/product name kept as written",
+      "docs": [
+        "docs/changelog/fragments/10962.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/changelog/fragments/10962.md",
+        "run": "20261030-1332"
+      },
+      "lastSeen": {
+        "doc": "docs/changelog/fragments/10962.md",
+        "run": "20261030-1332"
+      }
+    },
+    {
+      "id": "key-pool",
+      "source": "key pool",
+      "target": "密钥池",
+      "kind": "term",
+      "note": "API key pool (pool-fair-share.svg); not in glossary yet",
+      "docs": [
+        "docs/diagrams/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1332"
+      },
+      "lastSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1332"
+      }
+    },
+    {
+      "id": "auto-fallback",
+      "source": "auto-fallback",
+      "target": "自动回退",
+      "kind": "term",
+      "note": "4-tier auto-fallback cascade (tier-cascade.svg)",
+      "docs": [
+        "docs/diagrams/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1332"
+      },
+      "lastSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1332"
       }
     }
   ]
