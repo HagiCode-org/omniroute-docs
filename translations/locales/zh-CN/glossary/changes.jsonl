@@ -6,3 +6,88 @@
 {"ts":"2026-10-27T06:37:13Z","run":"20261026-2333","op":"add","id":"sentinel","target":"哨兵"}
 {"ts":"2026-10-27T06:37:13Z","run":"20261026-2333","op":"add","id":"manifest","target":"清单"}
 {"ts":"2026-10-27T06:37:13Z","run":"20261026-2333","op":"add","id":"clipboard","target":"剪贴板"}
+{"ts":"2026-10-30T18:35:31.462Z","run":"run1","op":"add","id":"model-catalog","target":"模型目录","version":3,"doc":"docs/guides/CLI-MANUAL-MODELS.md"}
+{"ts":"2026-10-30T18:35:31.462Z","run":"run1","op":"add","id":"manual-entry","target":"手动条目","version":3,"doc":"docs/guides/CLI-MANUAL-MODELS.md"}
+{"ts":"2026-10-30T18:35:31.462Z","run":"run1","op":"add","id":"manual-model","target":"手动模型","version":3,"doc":"docs/guides/CLI-MANUAL-MODELS.md"}
+{"ts":"2026-10-30T18:35:31.462Z","run":"run1","op":"add","id":"readback","target":"回读","version":3,"doc":"docs/guides/CLI-MANUAL-MODELS.md"}
+{"ts":"2026-10-30T18:35:31.462Z","run":"run1","op":"add","id":"compare-and-swap","target":"比较并交换","version":3,"doc":"docs/guides/CLI-MANUAL-MODELS.md"}
+{"ts":"2026-10-30T18:35:31.462Z","run":"run1","op":"add","id":"connection-pin","target":"连接固定","version":3,"doc":"docs/guides/CLI-MANUAL-MODELS.md"}
+{"ts":"2026-10-30T18:35:31.462Z","run":"run1","op":"add","id":"synthetic-tool-call","target":"合成工具调用","version":3,"doc":"docs/guides/CLI-MANUAL-MODELS.md"}
+{"ts":"2026-10-30T18:35:31.462Z","run":"run1","op":"add","id":"session-affinity","target":"会话亲和性","version":3,"doc":"docs/guides/CLI-MANUAL-MODELS.md"}
+{"ts":"2026-10-30T18:35:31.462Z","run":"run1","op":"add","id":"connection-receipt","target":"连接回执","version":3,"doc":"docs/guides/CLI-MANUAL-MODELS.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"circuit-breaker","target":"断路器","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"stealth","target":"隐身","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"guardrails","target":"护栏","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"route-guard","target":"路由守卫","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"admission-lanes","target":"准入通道","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"relay","target":"中继","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"locale","target":"语言环境","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"prompt-compression","target":"提示词压缩","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"quota-sharing","target":"配额共享","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"reasoning-replay","target":"推理回放","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"homologation-suite","target":"一致性验证套件","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"merge-queue","target":"合并队列","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"agent","target":"智能体","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:40:58.751Z","run":"run2","op":"add","id":"proxy","target":"代理","version":4,"doc":"docs/README.md"}
+{"ts":"2026-10-30T18:47:46.017Z","run":"run3","op":"add","id":"profile","target":"配置档","version":5,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-30T18:47:46.017Z","run":"run3","op":"add","id":"self-host","target":"自托管","version":5,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-30T18:47:46.017Z","run":"run3","op":"add","id":"endpoint","target":"端点","version":5,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-30T18:47:46.017Z","run":"run3","op":"add","id":"prompt","target":"提示词","version":5,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-30T18:47:46.017Z","run":"run3","op":"add","id":"loopback","target":"回环地址","version":5,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-30T18:47:46.017Z","run":"run3","op":"add","id":"coding-agent","target":"编码智能体","version":5,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-30T18:47:46.017Z","run":"run3","op":"add","id":"fusion-combo","target":"融合组合","version":5,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-30T18:47:46.017Z","run":"run3","op":"add","id":"web-cookie-provider","target":"网页 Cookie 提供者","version":5,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-30T18:47:46.017Z","run":"run3","op":"add","id":"kiss-overlay","target":"覆盖文件","version":5,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-30T18:47:46.017Z","run":"run3","op":"add","id":"free-tier","target":"免费层","version":5,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-30T18:47:46.017Z","run":"run3","op":"add","id":"sidecar","kind":"doNotTranslate","version":5,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"command","target":"命令","kind":"term","to":"removed","reason":"generic: an ordinary word with no site-specific rendering","version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"file","target":"文件","kind":"term","to":"removed","reason":"generic: an ordinary word with no site-specific rendering","version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"synthetic-tool-call","target":"合成工具调用","kind":"term","to":"removed","reason":"too-long: a sentence fragment, not a term","version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"variable","target":"变量","kind":"term","to":"removed","reason":"generic: an ordinary word with no site-specific rendering","version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"admission-lanes","target":"准入通道","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"circuit-breaker","target":"断路器","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"clipboard","target":"剪贴板","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"compare-and-swap","target":"比较并交换","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"connection-pin","target":"连接固定","kind":"term","to":"pending","reason":"evidence: rendering used in 0 of 0 translated document(s) that contain the term; 2 needed","docs":0,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"connection-receipt","target":"连接回执","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"fusion-combo","target":"融合组合","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"guardrails","target":"护栏","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"harness","target":"测试工具","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"homologation-suite","target":"一致性验证套件","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"kiss-overlay","target":"覆盖文件","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"locale","target":"语言环境","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"loopback","target":"回环地址","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 2 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"manifest","target":"清单","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"manual-entry","target":"手动条目","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"manual-model","target":"手动模型","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"merge-queue","target":"合并队列","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"profile","target":"配置档","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 2 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"prompt-compression","target":"提示词压缩","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"quota-sharing","target":"配额共享","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"readback","target":"回读","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"reasoning-replay","target":"推理回放","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"relay","target":"中继","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"route-guard","target":"路由守卫","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"self-host","target":"自托管","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"sentinel","target":"哨兵","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"session-affinity","target":"会话亲和性","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"smoke-test","target":"冒烟测试","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"stealth","target":"隐身","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 1 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:21.393Z","run":"audit1","op":"demote","id":"web-cookie-provider","target":"网页 Cookie 提供者","kind":"term","to":"pending","reason":"evidence: rendering used in 1 of 2 translated document(s) that contain the term; 2 needed","docs":1,"version":6}
+{"ts":"2026-10-30T19:17:57.843Z","run":"audit1-fix","op":"stage","id":"synthetic-tool-call","target":"合成工具调用","version":6,"doc":"docs/guides/CLI-MANUAL-MODELS.md"}
+{"ts":"2026-10-30T19:33:13.123Z","run":"run5","op":"stage","id":"strategy-engine","target":"策略引擎","version":6,"doc":"docs/routing/DETERMINISTIC_ROUTING.md"}
+{"ts":"2026-10-30T19:33:13.123Z","run":"run5","op":"stage","id":"cooldown-breaker","target":"冷却断路器","version":6,"doc":"docs/routing/DETERMINISTIC_ROUTING.md"}
+{"ts":"2026-10-30T19:33:13.123Z","run":"run5","op":"stage","id":"fallback-chain","target":"回退链","version":6,"doc":"docs/routing/DETERMINISTIC_ROUTING.md"}
+{"ts":"2026-10-30T19:33:13.123Z","run":"run5","op":"stage","id":"route-decision","target":"路由决策","version":6,"doc":"docs/routing/DETERMINISTIC_ROUTING.md"}
+{"ts":"2026-10-30T19:33:13.123Z","run":"run5","op":"stage","id":"pinned-provider","target":"固定的提供者","version":6,"doc":"docs/routing/DETERMINISTIC_ROUTING.md"}
+{"ts":"2026-10-30T19:33:13.123Z","run":"run5","op":"stage","id":"cost-priority","target":"成本优先","version":6,"doc":"docs/routing/DETERMINISTIC_ROUTING.md"}
+{"ts":"2026-10-30T19:33:13.123Z","run":"run5","op":"stage","id":"latency-aware","target":"延迟感知","version":6,"doc":"docs/routing/DETERMINISTIC_ROUTING.md"}
+{"ts":"2026-10-30T19:33:13.123Z","run":"run5","op":"stage","id":"blacklist","target":"黑名单","version":6,"doc":"docs/routing/DETERMINISTIC_ROUTING.md"}
+{"ts":"2026-10-30T19:33:13.123Z","run":"run5","op":"stage","id":"whitelist","target":"白名单","version":6,"doc":"docs/routing/DETERMINISTIC_ROUTING.md"}
+{"ts":"2026-10-30T19:36:36.309Z","run":"run6","op":"stage","id":"gateway","target":"网关","version":7,"doc":"docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"}
+{"ts":"2026-10-30T19:36:36.309Z","run":"run6","op":"stage","id":"self-hosted","target":"自托管","version":7,"doc":"docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"}
+{"ts":"2026-10-30T19:36:36.309Z","run":"run6","op":"stage","id":"provider-adapter","target":"提供者适配器","version":7,"doc":"docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"}
+{"ts":"2026-10-30T19:36:36.309Z","run":"run6","op":"confirm","id":"loopback","target":"回环地址","docs":2,"by":"use","version":7,"doc":"docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"}
+{"ts":"2026-10-30T19:36:36.309Z","run":"run6","op":"promote","id":"loopback","target":"回环地址","docs":2,"version":7,"doc":"docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"}
+{"ts":"2026-10-30T19:36:36.309Z","run":"run6","op":"confirm","id":"blacklist","target":"黑名单","docs":2,"by":"use","version":7,"doc":"docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"}
+{"ts":"2026-10-30T19:36:36.309Z","run":"run6","op":"promote","id":"blacklist","target":"黑名单","docs":2,"version":7,"doc":"docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"}

@@ -1,0 +1,712 @@
+{
+  "schema": 1,
+  "entries": [
+    {
+      "id": "admission-lanes",
+      "source": "admission lanes",
+      "target": "准入通道",
+      "kind": "term",
+      "note": "the two admission-lane systems",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "circuit-breaker",
+      "source": "circuit breaker",
+      "target": "断路器",
+      "kind": "term",
+      "note": "provider circuit breaker in RESILIENCE_GUIDE",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "clipboard",
+      "source": "Clipboard",
+      "target": "剪贴板",
+      "kind": "term",
+      "note": "",
+      "docs": [
+        "docs/guides/CLI-COMPANION.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "compare-and-swap",
+      "source": "compare-and-swap",
+      "target": "比较并交换",
+      "kind": "term",
+      "note": "transaction primitive; keep English in parentheses on first use",
+      "docs": [
+        "docs/guides/CLI-MANUAL-MODELS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "run1"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "connection-pin",
+      "source": "connection pin",
+      "target": "连接固定",
+      "kind": "term",
+      "note": "x-omniroute-connection pinning a provider connection",
+      "docs": [],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "run1"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "connection-receipt",
+      "source": "connection receipt",
+      "target": "连接回执",
+      "kind": "term",
+      "note": "verifiable proof that a specific connection served a request",
+      "docs": [
+        "docs/guides/CLI-MANUAL-MODELS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "run1"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "fusion-combo",
+      "source": "fusion combo",
+      "target": "融合组合",
+      "kind": "term",
+      "note": "parallel multi-model combos",
+      "docs": [
+        "docs/getting-started/SELF_HOST_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "guardrails",
+      "source": "guardrails",
+      "target": "护栏",
+      "kind": "term",
+      "note": "PII, prompt injection and vision guardrails",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "harness",
+      "source": "Harness",
+      "target": "测试工具",
+      "kind": "term",
+      "note": "",
+      "docs": [
+        "docs/guides/CLI-SMOKE-TESTS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "homologation-suite",
+      "source": "homologation suite",
+      "target": "一致性验证套件",
+      "kind": "term",
+      "note": "npm run homolog",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "kiss-overlay",
+      "source": "KISS overlay",
+      "target": "覆盖文件",
+      "kind": "term",
+      "note": "docker-compose override file for the self-host path",
+      "docs": [
+        "docs/getting-started/SELF_HOST_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "locale",
+      "source": "locale",
+      "target": "语言环境",
+      "kind": "term",
+      "note": "translation and locale workflow (I18N guide)",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "manifest",
+      "source": "Manifest",
+      "target": "清单",
+      "kind": "term",
+      "note": "",
+      "docs": [
+        "docs/guides/CLI-COMPANION.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "manual-entry",
+      "source": "manual entry",
+      "target": "手动条目",
+      "kind": "term",
+      "note": "手动维护的模型条目 (manual custom entry)",
+      "docs": [
+        "docs/guides/CLI-MANUAL-MODELS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "run1"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "manual-model",
+      "source": "manual model",
+      "target": "手动模型",
+      "kind": "term",
+      "note": "manual model lifecycle / manual CRUD",
+      "docs": [
+        "docs/guides/CLI-MANUAL-MODELS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "run1"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "merge-queue",
+      "source": "merge queue",
+      "target": "合并队列",
+      "kind": "term",
+      "note": "merge queue and manual merge-train runbook (MERGE_TRAIN)",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "profile",
+      "source": "profile",
+      "target": "配置档",
+      "kind": "term",
+      "note": "Docker Compose profiles; keep English in parentheses at first use",
+      "docs": [
+        "docs/getting-started/SELF_HOST_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "prompt-compression",
+      "source": "prompt compression",
+      "target": "提示词压缩",
+      "kind": "term",
+      "note": "compression section overview",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "quota-sharing",
+      "source": "quota sharing",
+      "target": "配额共享",
+      "kind": "term",
+      "note": "quota sharing engine",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "readback",
+      "source": "readback",
+      "target": "回读",
+      "kind": "term",
+      "note": "write then read back the manual catalog to verify",
+      "docs": [
+        "docs/guides/CLI-MANUAL-MODELS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "run1"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "reasoning-replay",
+      "source": "reasoning replay",
+      "target": "推理回放",
+      "kind": "term",
+      "note": "reasoning replay cache",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "relay",
+      "source": "relay",
+      "target": "中继",
+      "kind": "term",
+      "note": "relay backend strategy and troubleshooting",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "route-guard",
+      "source": "route guard",
+      "target": "路由守卫",
+      "kind": "term",
+      "note": "route-guard classification tiers",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "self-host",
+      "source": "self-host",
+      "target": "自托管",
+      "kind": "term",
+      "note": "self-host / self-hosting / self-hoster (自托管者)",
+      "docs": [
+        "docs/getting-started/SELF_HOST_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "sentinel",
+      "source": "Sentinel",
+      "target": "哨兵",
+      "kind": "term",
+      "note": "",
+      "docs": [
+        "docs/guides/CLI-SMOKE-TESTS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "session-affinity",
+      "source": "session affinity",
+      "target": "会话亲和性",
+      "kind": "term",
+      "note": "routing factor in credential selection",
+      "docs": [
+        "docs/guides/CLI-MANUAL-MODELS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "run1"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "smoke-test",
+      "source": "Smoke test",
+      "target": "冒烟测试",
+      "kind": "term",
+      "note": "",
+      "docs": [
+        "docs/guides/CLI-SMOKE-TESTS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "stealth",
+      "source": "stealth",
+      "target": "隐身",
+      "kind": "term",
+      "note": "TLS / fingerprint stealth, STEALTH_GUIDE",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "web-cookie-provider",
+      "source": "web-cookie provider",
+      "target": "网页 Cookie 提供者",
+      "kind": "term",
+      "note": "providers that authenticate with browser cookies",
+      "docs": [
+        "docs/getting-started/SELF_HOST_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
+      },
+      "lastSeen": {
+        "run": "audit1"
+      }
+    },
+    {
+      "id": "synthetic-tool-call",
+      "source": "synthetic tool call",
+      "target": "合成工具调用",
+      "kind": "term",
+      "note": "restored after an audit false positive (the rule was too broad)",
+      "docs": [
+        "docs/guides/CLI-MANUAL-MODELS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "audit1-fix"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "audit1-fix"
+      }
+    },
+    {
+      "id": "strategy-engine",
+      "source": "strategy engine",
+      "target": "策略引擎",
+      "kind": "term",
+      "note": "路由策略引擎，文中多次出现",
+      "docs": [
+        "docs/routing/DETERMINISTIC_ROUTING.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      }
+    },
+    {
+      "id": "cooldown-breaker",
+      "source": "cooldown breaker",
+      "target": "冷却断路器",
+      "kind": "term",
+      "note": "与 docs/README.md 的「断路器」一致",
+      "docs": [
+        "docs/routing/DETERMINISTIC_ROUTING.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      }
+    },
+    {
+      "id": "fallback-chain",
+      "source": "fallback chain",
+      "target": "回退链",
+      "kind": "term",
+      "note": "有序的主用到备用候选顺序",
+      "docs": [
+        "docs/routing/DETERMINISTIC_ROUTING.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      }
+    },
+    {
+      "id": "route-decision",
+      "source": "route decision",
+      "target": "路由决策",
+      "kind": "term",
+      "note": "每次路由的决策结果，对应 x-omniroute-route-decision",
+      "docs": [
+        "docs/routing/DETERMINISTIC_ROUTING.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      }
+    },
+    {
+      "id": "pinned-provider",
+      "source": "pinned provider",
+      "target": "固定的提供者",
+      "kind": "term",
+      "note": "由请求头或 provider/model 前缀显式指定的提供者",
+      "docs": [
+        "docs/routing/DETERMINISTIC_ROUTING.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      }
+    },
+    {
+      "id": "cost-priority",
+      "source": "cost-priority",
+      "target": "成本优先",
+      "kind": "term",
+      "note": "按声明成本升序排序的策略",
+      "docs": [
+        "docs/routing/DETERMINISTIC_ROUTING.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      }
+    },
+    {
+      "id": "latency-aware",
+      "source": "latency-aware",
+      "target": "延迟感知",
+      "kind": "term",
+      "note": "按近期平均延迟排序的策略",
+      "docs": [
+        "docs/routing/DETERMINISTIC_ROUTING.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      }
+    },
+    {
+      "id": "whitelist",
+      "source": "whitelist",
+      "target": "白名单",
+      "kind": "term",
+      "note": "路由策略中的仅允许列表",
+      "docs": [
+        "docs/routing/DETERMINISTIC_ROUTING.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      }
+    },
+    {
+      "id": "gateway",
+      "source": "gateway",
+      "target": "网关",
+      "kind": "term",
+      "note": "自托管网关，本文核心概念",
+      "docs": [
+        "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "run6"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "run6"
+      }
+    },
+    {
+      "id": "self-hosted",
+      "source": "self-hosted",
+      "target": "自托管",
+      "kind": "term",
+      "note": "统一入口的定位描述",
+      "docs": [
+        "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "run6"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "run6"
+      }
+    },
+    {
+      "id": "provider-adapter",
+      "source": "provider adapter",
+      "target": "提供者适配器",
+      "kind": "term",
+      "note": "请求经提供者适配器分发",
+      "docs": [
+        "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "run6"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "run6"
+      }
+    }
+  ]
+}

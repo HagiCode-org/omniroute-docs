@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": 2,
-  "updatedAt": "2026-10-27T06:37:13Z",
+  "version": 7,
+  "updatedAt": "2026-10-30T19:36:36.309Z",
   "doNotTranslate": [
     {
       "term": "OmniRoute",
@@ -110,9 +110,55 @@
       "note": "模型名",
       "origin": "bootstrap",
       "locked": false
+    },
+    {
+      "term": "sidecar",
+      "note": "保留英文:上游译文 98 处英文 / 38 处「边车」;与 docs/README.md 一致",
+      "origin": "auto",
+      "locked": false
     }
   ],
   "terms": [
+    {
+      "id": "agent",
+      "source": "agent",
+      "target": "智能体",
+      "alt": [],
+      "note": "AI agent (Cloud Agent, agent skills, agent protocols). 上游简体中文译文用「智能体」;「代理」保留给 proxy,避免混淆",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "blacklist",
+      "source": "blacklist",
+      "target": "黑名单",
+      "alt": [],
+      "note": "路由策略中的排除列表",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "run5"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "run6"
+      },
+      "conflicts": []
+    },
     {
       "id": "channel",
       "source": "Channel",
@@ -134,42 +180,22 @@
       "conflicts": []
     },
     {
-      "id": "clipboard",
-      "source": "Clipboard",
-      "target": "剪贴板",
+      "id": "coding-agent",
+      "source": "coding agent",
+      "target": "编码智能体",
       "alt": [],
-      "note": "",
+      "note": "AI coding agents such as Claude Code and Codex",
       "origin": "auto",
       "locked": false,
       "confidence": "medium",
-      "occurrences": 2,
+      "occurrences": 1,
       "firstSeen": {
-        "doc": "docs/guides/CLI-COMPANION.md",
-        "run": "20261026-2333"
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
       },
       "lastSeen": {
-        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
-        "run": "20261026-2333"
-      },
-      "conflicts": []
-    },
-    {
-      "id": "command",
-      "source": "Command",
-      "target": "命令",
-      "alt": [],
-      "note": "",
-      "origin": "bootstrap",
-      "locked": false,
-      "confidence": "medium",
-      "occurrences": 3,
-      "firstSeen": {
-        "doc": "docs/i18n/zh-CN (evidence)",
-        "run": "20261026-2333"
-      },
-      "lastSeen": {
-        "doc": "docs/i18n/zh-CN (evidence)",
-        "run": "20261026-2333"
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
       },
       "conflicts": []
     },
@@ -234,6 +260,26 @@
       "conflicts": []
     },
     {
+      "id": "endpoint",
+      "source": "endpoint",
+      "target": "端点",
+      "alt": [],
+      "note": "the unified local /v1 endpoint",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
+      },
+      "lastSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
+      },
+      "conflicts": []
+    },
+    {
       "id": "factor",
       "source": "Factor",
       "target": "因素",
@@ -254,62 +300,82 @@
       "conflicts": []
     },
     {
-      "id": "file",
-      "source": "File",
-      "target": "文件",
+      "id": "free-tier",
+      "source": "free tier",
+      "target": "免费层",
       "alt": [],
-      "note": "",
-      "origin": "bootstrap",
-      "locked": false,
-      "confidence": "medium",
-      "occurrences": 2,
-      "firstSeen": {
-        "doc": "docs/i18n/zh-CN (evidence)",
-        "run": "20261026-2333"
-      },
-      "lastSeen": {
-        "doc": "docs/i18n/zh-CN (evidence)",
-        "run": "20261026-2333"
-      },
-      "conflicts": []
-    },
-    {
-      "id": "harness",
-      "source": "Harness",
-      "target": "测试工具",
-      "alt": [],
-      "note": "",
+      "note": "上游简体中文译文多用「免费层」(130 处)而非「免费套餐」(48 处);与 docs/README.md 一致",
       "origin": "auto",
       "locked": false,
       "confidence": "medium",
-      "occurrences": 8,
+      "occurrences": 1,
       "firstSeen": {
-        "doc": "docs/guides/CLI-COMPANION.md",
-        "run": "20261026-2333"
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
       },
       "lastSeen": {
-        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
-        "run": "20261026-2333"
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
       },
       "conflicts": []
     },
     {
-      "id": "manifest",
-      "source": "Manifest",
-      "target": "清单",
+      "id": "loopback",
+      "source": "loopback",
+      "target": "回环地址",
       "alt": [],
-      "note": "",
+      "note": "127.0.0.1 bind; loopback-only",
       "origin": "auto",
       "locked": false,
       "confidence": "medium",
       "occurrences": 2,
       "firstSeen": {
-        "doc": "docs/guides/CLI-COMPANION.md",
-        "run": "20261026-2333"
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
       },
       "lastSeen": {
-        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
-        "run": "20261026-2333"
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "run6"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "model-catalog",
+      "source": "model catalog",
+      "target": "模型目录",
+      "alt": [],
+      "note": "公开模型目录 (public model catalog), CLI omniroute models",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "run1"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "run1"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "prompt",
+      "source": "prompt",
+      "target": "提示词",
+      "alt": [],
+      "note": "user prompts sent to providers",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
+      },
+      "lastSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "run3"
       },
       "conflicts": []
     },
@@ -334,6 +400,26 @@
       "conflicts": []
     },
     {
+      "id": "proxy",
+      "source": "proxy",
+      "target": "代理",
+      "alt": [],
+      "note": "网络代理(上游代理、免费代理);上游简体中文译文一致用「代理」",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "conflicts": []
+    },
+    {
       "id": "quick-start",
       "source": "Quick Start",
       "target": "快速开始",
@@ -354,69 +440,9 @@
       "conflicts": []
     },
     {
-      "id": "sentinel",
-      "source": "Sentinel",
-      "target": "哨兵",
-      "alt": [],
-      "note": "",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
-      "occurrences": 3,
-      "firstSeen": {
-        "doc": "docs/guides/CLI-COMPANION.md",
-        "run": "20261026-2333"
-      },
-      "lastSeen": {
-        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
-        "run": "20261026-2333"
-      },
-      "conflicts": []
-    },
-    {
-      "id": "smoke-test",
-      "source": "Smoke test",
-      "target": "冒烟测试",
-      "alt": [],
-      "note": "",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
-      "occurrences": 2,
-      "firstSeen": {
-        "doc": "docs/guides/CLI-COMPANION.md",
-        "run": "20261026-2333"
-      },
-      "lastSeen": {
-        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
-        "run": "20261026-2333"
-      },
-      "conflicts": []
-    },
-    {
       "id": "table-of-contents",
       "source": "Table of Contents",
       "target": "目录",
-      "alt": [],
-      "note": "",
-      "origin": "bootstrap",
-      "locked": false,
-      "confidence": "medium",
-      "occurrences": 2,
-      "firstSeen": {
-        "doc": "docs/i18n/zh-CN (evidence)",
-        "run": "20261026-2333"
-      },
-      "lastSeen": {
-        "doc": "docs/i18n/zh-CN (evidence)",
-        "run": "20261026-2333"
-      },
-      "conflicts": []
-    },
-    {
-      "id": "variable",
-      "source": "Variable",
-      "target": "变量",
       "alt": [],
       "note": "",
       "origin": "bootstrap",
