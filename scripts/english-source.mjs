@@ -126,11 +126,13 @@ function parseDocument(original, file) {
   body = body.replace(/<code>([\s\S]*?)<\/code>/gu, (_, text) =>
     `<code>${text.replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</code>`);
   const allowed = new Set(["a", "b", "br", "code", "details", "div", "h3", "i", "img", "p", "picture", "source", "strong", "sub", "summary", "table", "td", "th", "tr"]);
-  body = body.replace(/<([a-z][\w-]*)>/gu, (tag, name) =>
-    !allowed.has(name) && !body.includes(`</${name}>`) && !["script", "style", "iframe"].includes(name)
-      ? `&lt;${name}&gt;` : tag);
-  body = body.replace(/<([a-z][\w-]*)( [a-z][\w-]*)>/gu, (tag, name, attribute) =>
-    allowed.has(name) ? tag : `&lt;${name}${attribute}&gt;`);
+  body = outsideCode(body, (text) => text
+    .replace(/<([a-z][\w-]*)>/gu, (tag, name) =>
+      !allowed.has(name) && !text.includes(`</${name}>`) && !["script", "style", "iframe"].includes(name)
+        ? `&lt;${name}&gt;` : tag)
+    // Prose placeholders can start with an acronym, as in "Made with <AI tool>".
+    .replace(/<([a-z][\w-]*|[A-Z][A-Z\d_-]*)( [a-z][\w-]*)>/gu, (tag, name, attribute) =>
+      allowed.has(name) || text.includes(`</${name}>`) ? tag : `&lt;${name}${attribute}&gt;`));
   const withoutCode = body.replace(FENCED_CODE, "")
     .replace(/`+[^`\n]+`+/gu, "");
   if (/^\s*(?:import|export)\s.+$/mu.test(withoutCode)) {

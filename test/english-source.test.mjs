@@ -122,6 +122,8 @@ test("broken links, missing assets, unsupported markup and missing selected sour
     ["# Guide\n[Broken](missing.md)\n", /Missing local reference/u],
     ["# Guide\n![Broken](absent.svg)\n", /Missing local reference/u],
     ["# Guide\n<Widget />\n", /Unsupported HTML or MDX element/u],
+    ["# Guide\n<Widget prop>Content</Widget>\n", /Unsupported HTML or MDX element/u],
+    ["# Guide\n<AI tool>Content</AI>\n", /Unsupported HTML or MDX element/u],
     ["# Guide\n<a href=\"javascript:alert(1)\">Bad</a>\n", /Unsupported URL scheme/u],
     ["# Guide\n<img src=\"icon.svg\" onload=\"alert(1)\" />\n", /HTML event handlers are not supported/u],
     ["# Guide\n<img src=icon.svg />\n", /Unquoted HTML links are not supported/u],
@@ -134,6 +136,27 @@ test("broken links, missing assets, unsupported markup and missing selected sour
   }
   await rm(guide);
   await assert.rejects(importEnglishDocs(options), /Selected English source is missing/u);
+});
+
+test("capitalized prose placeholders are escaped while code examples stay unchanged", async (t) => {
+  const { sourceDir, options } = await fixture(t);
+  await writeFile(path.join(sourceDir, "docs/guides/GUIDE.md"), [
+    "# Guide",
+    "",
+    "Made with <AI tool> and configured with <API key>.",
+    "",
+    "`<AI tool>` and ``<API key>``",
+    "",
+    "```text",
+    "Made with <AI tool>",
+    "```",
+    "",
+  ].join("\n"));
+  const plan = await createImportPlan(options);
+  const page = plan.documents.get("en-US/guides/guide/index.md").rendered;
+  assert.match(page, /Made with &lt;AI tool&gt; and configured with &lt;API key&gt;\./u);
+  assert.ok(page.includes("`<AI tool>` and ``<API key>``"));
+  assert.ok(page.includes("```text\nMade with <AI tool>\n```"));
 });
 
 test("linked source files stay upstream; only media files are copied into public", async (t) => {
