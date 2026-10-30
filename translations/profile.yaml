@@ -6,9 +6,41 @@ translationsRoot: translations
 defaultLocale: zh-CN
 locales:
   zh-CN:
-    name: 简体中文
+    name: "简体中文"
     cjk: true
-    notes: 读者称"你"不称"您";全角标点;中英文与数字之间加半角空格;站点是技术文档,语气书面、克制。
+    notes: "读者称“你”不称“您”;全角标点;中英文与数字之间加半角空格;技术文档,语气书面、克制。"
+  zh-Hant:
+    name: "繁體中文"
+    cjk: true
+    notes: "使用台灣慣用詞彙與全形標點;中英文與數字之間加半形空格;語氣書面、克制。"
+  de-DE:
+    name: "Deutsch"
+    cjk: false
+    notes: ""
+  es-ES:
+    name: "Español"
+    cjk: false
+    notes: ""
+  fr-FR:
+    name: "Français"
+    cjk: false
+    notes: ""
+  ja-JP:
+    name: "日本語"
+    cjk: true
+    notes: ""
+  ko-KR:
+    name: "한국어"
+    cjk: true
+    notes: ""
+  pt-BR:
+    name: "Português (Brasil)"
+    cjk: false
+    notes: ""
+  ru-RU:
+    name: "Русский"
+    cjk: false
+    notes: ""
 
 sources:
   description: >-
