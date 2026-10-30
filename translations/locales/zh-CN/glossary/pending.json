@@ -19,23 +19,6 @@
       }
     },
     {
-      "id": "circuit-breaker",
-      "source": "circuit breaker",
-      "target": "断路器",
-      "kind": "term",
-      "note": "provider circuit breaker in RESILIENCE_GUIDE",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "run2"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
       "id": "clipboard",
       "source": "Clipboard",
       "target": "剪贴板",
@@ -47,23 +30,6 @@
       "firstSeen": {
         "doc": "docs/guides/CLI-COMPANION.md",
         "run": "20261026-2333"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
-      "id": "compare-and-swap",
-      "source": "compare-and-swap",
-      "target": "比较并交换",
-      "kind": "term",
-      "note": "transaction primitive; keep English in parentheses on first use",
-      "docs": [
-        "docs/guides/CLI-MANUAL-MODELS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
-        "run": "run1"
       },
       "lastSeen": {
         "run": "audit1"
@@ -136,23 +102,6 @@
       }
     },
     {
-      "id": "harness",
-      "source": "Harness",
-      "target": "测试工具",
-      "kind": "term",
-      "note": "",
-      "docs": [
-        "docs/guides/CLI-SMOKE-TESTS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/CLI-COMPANION.md",
-        "run": "20261026-2333"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
       "id": "homologation-suite",
       "source": "homologation suite",
       "target": "一致性验证套件",
@@ -187,23 +136,6 @@
       }
     },
     {
-      "id": "manifest",
-      "source": "Manifest",
-      "target": "清单",
-      "kind": "term",
-      "note": "",
-      "docs": [
-        "docs/guides/CLI-COMPANION.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/CLI-COMPANION.md",
-        "run": "20261026-2333"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
       "id": "manual-entry",
       "source": "manual entry",
       "target": "手动条目",
@@ -215,57 +147,6 @@
       "firstSeen": {
         "doc": "docs/guides/CLI-MANUAL-MODELS.md",
         "run": "run1"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
-      "id": "manual-model",
-      "source": "manual model",
-      "target": "手动模型",
-      "kind": "term",
-      "note": "manual model lifecycle / manual CRUD",
-      "docs": [
-        "docs/guides/CLI-MANUAL-MODELS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
-        "run": "run1"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
-      "id": "merge-queue",
-      "source": "merge queue",
-      "target": "合并队列",
-      "kind": "term",
-      "note": "merge queue and manual merge-train runbook (MERGE_TRAIN)",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "run2"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
-      "id": "prompt-compression",
-      "source": "prompt compression",
-      "target": "提示词压缩",
-      "kind": "term",
-      "note": "compression section overview",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "run2"
       },
       "lastSeen": {
         "run": "audit1"
@@ -289,62 +170,11 @@
       }
     },
     {
-      "id": "readback",
-      "source": "readback",
-      "target": "回读",
-      "kind": "term",
-      "note": "write then read back the manual catalog to verify",
-      "docs": [
-        "docs/guides/CLI-MANUAL-MODELS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
-        "run": "run1"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
       "id": "reasoning-replay",
       "source": "reasoning replay",
       "target": "推理回放",
       "kind": "term",
       "note": "reasoning replay cache",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "run2"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
-      "id": "relay",
-      "source": "relay",
-      "target": "中继",
-      "kind": "term",
-      "note": "relay backend strategy and troubleshooting",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "run2"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
-      "id": "route-guard",
-      "source": "route guard",
-      "target": "路由守卫",
-      "kind": "term",
-      "note": "route-guard classification tiers",
       "docs": [
         "docs/README.md"
       ],
@@ -374,23 +204,6 @@
       }
     },
     {
-      "id": "sentinel",
-      "source": "Sentinel",
-      "target": "哨兵",
-      "kind": "term",
-      "note": "",
-      "docs": [
-        "docs/guides/CLI-SMOKE-TESTS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/CLI-COMPANION.md",
-        "run": "20261026-2333"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
       "id": "session-affinity",
       "source": "session affinity",
       "target": "会话亲和性",
@@ -402,23 +215,6 @@
       "firstSeen": {
         "doc": "docs/guides/CLI-MANUAL-MODELS.md",
         "run": "run1"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
-      "id": "smoke-test",
-      "source": "Smoke test",
-      "target": "冒烟测试",
-      "kind": "term",
-      "note": "",
-      "docs": [
-        "docs/guides/CLI-SMOKE-TESTS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/CLI-COMPANION.md",
-        "run": "20261026-2333"
       },
       "lastSeen": {
         "run": "audit1"
@@ -621,42 +417,6 @@
       }
     },
     {
-      "id": "gateway",
-      "source": "gateway",
-      "target": "网关",
-      "kind": "term",
-      "note": "自托管网关，本文核心概念",
-      "docs": [
-        "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
-        "run": "run6"
-      },
-      "lastSeen": {
-        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
-        "run": "run6"
-      }
-    },
-    {
-      "id": "provider-adapter",
-      "source": "provider adapter",
-      "target": "提供者适配器",
-      "kind": "term",
-      "note": "请求经提供者适配器分发",
-      "docs": [
-        "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
-        "run": "run6"
-      },
-      "lastSeen": {
-        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
-        "run": "run6"
-      }
-    },
-    {
       "id": "opencode-go",
       "source": "OpenCode Go",
       "target": null,
@@ -671,60 +431,6 @@
       },
       "lastSeen": {
         "doc": "docs/reference/OPENCODE-SESSION-IDENTITY.md",
-        "run": "20261030-1332"
-      }
-    },
-    {
-      "id": "traefik",
-      "source": "Traefik",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "reverse proxy product name",
-      "docs": [
-        "docs/security/INFERENCE_AUTH_POSTURE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
-        "run": "20261030-1332"
-      },
-      "lastSeen": {
-        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
-        "run": "20261030-1332"
-      }
-    },
-    {
-      "id": "glm",
-      "source": "GLM",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "model family name kept as written",
-      "docs": [
-        "docs/changelog/fragments/10962.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/changelog/fragments/10962.md",
-        "run": "20261030-1332"
-      },
-      "lastSeen": {
-        "doc": "docs/changelog/fragments/10962.md",
-        "run": "20261030-1332"
-      }
-    },
-    {
-      "id": "zcode",
-      "source": "ZCode",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "alias/product name kept as written",
-      "docs": [
-        "docs/changelog/fragments/10962.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/changelog/fragments/10962.md",
-        "run": "20261030-1332"
-      },
-      "lastSeen": {
-        "doc": "docs/changelog/fragments/10962.md",
         "run": "20261030-1332"
       }
     },
@@ -762,6 +468,1428 @@
       "lastSeen": {
         "doc": "docs/diagrams/README.md",
         "run": "20261030-1332"
+      }
+    },
+    {
+      "id": "radar",
+      "source": "Radar",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "功能名,保留英文",
+      "docs": [
+        "docs/guides/HEADLESS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/HEADLESS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/HEADLESS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "omniconductor",
+      "source": "OmniConductor",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "产品名,保留英文",
+      "docs": [
+        "docs/guides/HEADLESS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/HEADLESS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/HEADLESS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "cloud-sync",
+      "source": "Cloud Sync",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "OmniRoute 设置项名称,保留英文",
+      "docs": [
+        "docs/guides/SESSION-SYNC-EXTENSION.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/SESSION-SYNC-EXTENSION.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/SESSION-SYNC-EXTENSION.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "omniroute-session-sync",
+      "source": "OmniRoute Session Sync",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "配套扩展程序的产品名,保留英文",
+      "docs": [
+        "docs/guides/SESSION-SYNC-EXTENSION.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/SESSION-SYNC-EXTENSION.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/SESSION-SYNC-EXTENSION.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "camo",
+      "source": "camo",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "GitHub image proxy name; kept as-is",
+      "docs": [
+        "docs/diagrams/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "composer",
+      "source": "composer",
+      "target": "输入框",
+      "kind": "term",
+      "note": "ChatGPT 网页界面中的输入框",
+      "docs": [
+        "docs/guides/CHATGPT-WEB-PERSISTENT-CDP.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CHATGPT-WEB-PERSISTENT-CDP.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CHATGPT-WEB-PERSISTENT-CDP.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "5dive",
+      "source": "5dive",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "CLI 工具名",
+      "docs": [
+        "docs/guides/CLI-LAUNCH-CONTRACTS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-LAUNCH-CONTRACTS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-LAUNCH-CONTRACTS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "launcher",
+      "source": "launcher",
+      "target": "启动器",
+      "kind": "term",
+      "note": "omniroute run/launch 的启动组件",
+      "docs": [
+        "docs/guides/CLI-LAUNCH-CONTRACTS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/CLI-LAUNCH-CONTRACTS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-LAUNCH-CONTRACTS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "grok-cli",
+      "source": "Grok CLI",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "产品名",
+      "docs": [
+        "docs/guides/GROK_IMAGES.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/GROK_IMAGES.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/GROK_IMAGES.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "omnicopilot",
+      "source": "OmniCopilot",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "产品名",
+      "docs": [
+        "docs/guides/LOCAL_OLLAMA_DOCKER.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/LOCAL_OLLAMA_DOCKER.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/LOCAL_OLLAMA_DOCKER.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "docker-compose",
+      "source": "Docker Compose",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "产品名",
+      "docs": [
+        "docs/guides/LOCAL_OLLAMA_DOCKER.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/LOCAL_OLLAMA_DOCKER.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/LOCAL_OLLAMA_DOCKER.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "cost-center",
+      "source": "cost center",
+      "target": "成本中心",
+      "kind": "term",
+      "note": "Team Cost Centers feature name",
+      "docs": [
+        "docs/guides/TEAM_COST_CENTERS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/TEAM_COST_CENTERS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/TEAM_COST_CENTERS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "quota-share",
+      "source": "Quota Share",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "existing product feature name kept in English",
+      "docs": [
+        "docs/guides/TEAM_COST_CENTERS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/TEAM_COST_CENTERS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/TEAM_COST_CENTERS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "management-admin",
+      "source": "Management Admin",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "global admin role name kept in English",
+      "docs": [
+        "docs/guides/TEAM_COST_CENTERS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/TEAM_COST_CENTERS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/TEAM_COST_CENTERS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "primary-account",
+      "source": "primary account",
+      "target": "主账户",
+      "kind": "term",
+      "note": "ordered routing preference target for an API key",
+      "docs": [
+        "docs/routing/API_KEY_CONNECTION_PREFERENCE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/API_KEY_CONNECTION_PREFERENCE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/API_KEY_CONNECTION_PREFERENCE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "api-manager",
+      "source": "API Manager",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "dashboard section label kept in English",
+      "docs": [
+        "docs/routing/API_KEY_CONNECTION_PREFERENCE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/API_KEY_CONNECTION_PREFERENCE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/API_KEY_CONNECTION_PREFERENCE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "trusted-publishing",
+      "source": "Trusted Publishing",
+      "target": "可信发布",
+      "kind": "term",
+      "note": "npm OIDC publishing mode",
+      "docs": [
+        "docs/security/LTS_SECURITY_BASELINE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/security/LTS_SECURITY_BASELINE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/security/LTS_SECURITY_BASELINE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "onboarding-wizard",
+      "source": "onboarding wizard",
+      "target": "引导向导",
+      "kind": "term",
+      "note": "dashboard first-run setup that creates the login password",
+      "docs": [
+        "docs/getting-started/SELF_HOST_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "bootstrap-token",
+      "source": "bootstrap token",
+      "target": "引导令牌",
+      "kind": "term",
+      "note": "one-time token the wizard asks for, printed to the container log (keep English in parentheses at first use)",
+      "docs": [
+        "docs/getting-started/SELF_HOST_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "dispatch-fence",
+      "source": "dispatch fence",
+      "target": "派发围栏",
+      "kind": "term",
+      "note": "OmniRoute 进程内的派发检查",
+      "docs": [
+        "docs/guides/MODEL-VALIDATION.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/guides/MODEL-VALIDATION.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/MODEL-VALIDATION.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "proxy-registry",
+      "source": "proxy registry",
+      "target": "代理注册表",
+      "kind": "term",
+      "note": "仪表盘中的代理列表",
+      "docs": [
+        "docs/ops/PROXY_BULK_IMPORT.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/PROXY_BULK_IMPORT.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/PROXY_BULK_IMPORT.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "tunnel-core",
+      "source": "tunnel core",
+      "target": "隧道核心",
+      "kind": "term",
+      "note": "",
+      "docs": [
+        "docs/ops/PROXY_BULK_IMPORT.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/PROXY_BULK_IMPORT.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/PROXY_BULK_IMPORT.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "setup-token",
+      "source": "Setup Token",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "UI 标签页名称,保持原文",
+      "docs": [
+        "docs/providers/CLAUDE_CODE_SETUP_TOKEN.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/CLAUDE_CODE_SETUP_TOKEN.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CLAUDE_CODE_SETUP_TOKEN.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "browser-login",
+      "source": "Browser Login",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "UI 标签页名称,保持原文",
+      "docs": [
+        "docs/providers/CLAUDE_CODE_SETUP_TOKEN.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/CLAUDE_CODE_SETUP_TOKEN.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CLAUDE_CODE_SETUP_TOKEN.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "add-connection",
+      "source": "Add Connection",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "UI 按钮名称,保持原文",
+      "docs": [
+        "docs/providers/CLAUDE_CODE_SETUP_TOKEN.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/CLAUDE_CODE_SETUP_TOKEN.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CLAUDE_CODE_SETUP_TOKEN.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "shadow-key",
+      "source": "shadow key",
+      "target": "影子密钥",
+      "kind": "term",
+      "note": "per-user api_keys row bound to an Entra oid for source='sso'",
+      "docs": [
+        "docs/security/ENTRA_SSO.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/security/ENTRA_SSO.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/security/ENTRA_SSO.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "graph-fallback",
+      "source": "Graph fallback",
+      "target": "Graph 回退",
+      "kind": "term",
+      "note": "group-claim overage resolved through Microsoft Graph",
+      "docs": [
+        "docs/security/ENTRA_SSO.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/security/ENTRA_SSO.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/security/ENTRA_SSO.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "sovereign-cloud",
+      "source": "sovereign cloud",
+      "target": "主权云",
+      "kind": "term",
+      "note": "Entra authority hosts for US Gov and China",
+      "docs": [
+        "docs/security/ENTRA_SSO.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/security/ENTRA_SSO.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/security/ENTRA_SSO.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "authority",
+      "source": "authority",
+      "target": "授权机构",
+      "kind": "term",
+      "note": "Entra authority (entraAuthorityHost)",
+      "docs": [
+        "docs/security/ENTRA_SSO.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/security/ENTRA_SSO.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/security/ENTRA_SSO.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "conditional-access",
+      "source": "Conditional Access",
+      "target": "条件访问",
+      "kind": "term",
+      "note": "Entra Conditional Access; a Microsoft product feature name",
+      "docs": [
+        "docs/security/ENTRA_SSO.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/security/ENTRA_SSO.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/security/ENTRA_SSO.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "admin-consent",
+      "source": "admin consent",
+      "target": "管理员同意",
+      "kind": "term",
+      "note": "Entra admin consent for app permissions and scopes",
+      "docs": [
+        "docs/security/ENTRA_SSO.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/security/ENTRA_SSO.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/security/ENTRA_SSO.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "empty-turn",
+      "source": "empty turn",
+      "target": "空轮次",
+      "kind": "term",
+      "note": "assistant turn that finishes without visible text",
+      "docs": [
+        "docs/routing/EMPTY_TURNS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/EMPTY_TURNS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/EMPTY_TURNS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "native-terminal",
+      "source": "native terminal",
+      "target": "原生终止信号",
+      "kind": "term",
+      "note": "protocol completion event from the upstream response",
+      "docs": [
+        "docs/routing/EMPTY_TURNS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/EMPTY_TURNS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/EMPTY_TURNS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "connection-cooldown",
+      "source": "connection cooldown",
+      "target": "连接冷却",
+      "kind": "term",
+      "note": "scope: one connection, account or key",
+      "docs": [
+        "docs/routing/EMPTY_TURNS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/EMPTY_TURNS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/EMPTY_TURNS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "selector-group",
+      "source": "selector group",
+      "target": "选择器组",
+      "kind": "term",
+      "note": "switch group that selects nodes for the proxy core",
+      "docs": [
+        "docs/routing/PROXY_CORE_CONFIG.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/PROXY_CORE_CONFIG.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/PROXY_CORE_CONFIG.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "member-digest",
+      "source": "member digest",
+      "target": "成员摘要",
+      "kind": "term",
+      "note": "rendered member digest; reload happens only when it changes",
+      "docs": [
+        "docs/routing/PROXY_CORE_CONFIG.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/PROXY_CORE_CONFIG.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/PROXY_CORE_CONFIG.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "reload-channel",
+      "source": "reload channel",
+      "target": "重新加载渠道",
+      "kind": "term",
+      "note": "one of Control API, command or external observer",
+      "docs": [
+        "docs/routing/PROXY_CORE_CONFIG.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/routing/PROXY_CORE_CONFIG.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/PROXY_CORE_CONFIG.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "base-green-check",
+      "source": "Base-green check",
+      "target": "基线绿色检查",
+      "kind": "term",
+      "note": "pre-PR check that the base branch is green",
+      "docs": [
+        "docs/ops/WORKTREE_ISOLATION.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/WORKTREE_ISOLATION.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/WORKTREE_ISOLATION.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "sync-back-landing",
+      "source": "Sync-back landing",
+      "target": "回同步落地",
+      "kind": "term",
+      "note": "main to release fast-forward landing procedure",
+      "docs": [
+        "docs/ops/WORKTREE_ISOLATION.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/WORKTREE_ISOLATION.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/WORKTREE_ISOLATION.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "demon-route",
+      "source": "Demon Route",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "provider name, kept in English",
+      "docs": [
+        "docs/providers/DEMON_ROUTE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/DEMON_ROUTE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/DEMON_ROUTE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "complimentary-lane",
+      "source": "complimentary lane",
+      "target": "赠送额度通道",
+      "kind": "term",
+      "note": "Demon Route conditional free-request lane (provider policy)",
+      "docs": [
+        "docs/providers/DEMON_ROUTE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/DEMON_ROUTE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/DEMON_ROUTE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "auto-sync",
+      "source": "Auto-Sync",
+      "target": "自动同步",
+      "kind": "term",
+      "note": "connection setting that imports the key's live model list",
+      "docs": [
+        "docs/providers/DEMON_ROUTE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/DEMON_ROUTE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/DEMON_ROUTE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "rail-gates",
+      "source": "rail gates",
+      "target": "轨道门禁",
+      "kind": "term",
+      "note": "gates of the 3.8.x rail, G0 to G14 subset",
+      "docs": [
+        "docs/ops/LTS_GO_NO_GO.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/LTS_GO_NO_GO.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/LTS_GO_NO_GO.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "closing-battery",
+      "source": "closing battery",
+      "target": "收尾检查套件",
+      "kind": "term",
+      "note": "final verification list run on the LTS tip",
+      "docs": [
+        "docs/ops/LTS_GO_NO_GO.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/LTS_GO_NO_GO.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/LTS_GO_NO_GO.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "cut-readiness",
+      "source": "cut readiness",
+      "target": "切版就绪度",
+      "kind": "term",
+      "note": "release branch and dry-run readiness section",
+      "docs": [
+        "docs/ops/LTS_GO_NO_GO.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/LTS_GO_NO_GO.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/LTS_GO_NO_GO.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "forward-port",
+      "source": "forward-port",
+      "target": "向前移植",
+      "kind": "term",
+      "note": "fix cherry-picked from stable/v3 to develop with credit",
+      "docs": [
+        "docs/ops/RELEASE_STRATEGY.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/RELEASE_STRATEGY.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/RELEASE_STRATEGY.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "validation-window",
+      "source": "validation window",
+      "target": "验证窗口",
+      "kind": "term",
+      "note": "3.8.55 to 3.8.59 stabilization versions",
+      "docs": [
+        "docs/ops/RELEASE_STRATEGY.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/RELEASE_STRATEGY.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/RELEASE_STRATEGY.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "kubernetes",
+      "source": "Kubernetes",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "Platform name; kept in English",
+      "docs": [
+        "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "helm",
+      "source": "Helm",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "Package manager and chart format; kept in English",
+      "docs": [
+        "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "kustomize",
+      "source": "Kustomize",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "Kubernetes configuration tool; kept in English",
+      "docs": [
+        "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "ingress",
+      "source": "Ingress",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "Kubernetes resource kind; kept in English",
+      "docs": [
+        "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "probe",
+      "source": "probe",
+      "target": "探针",
+      "kind": "term",
+      "note": "Kubernetes startup, readiness and liveness probes",
+      "docs": [
+        "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "embedded-service",
+      "source": "Embedded Service",
+      "target": "内嵌服务",
+      "kind": "term",
+      "note": "src/lib/services 下的内嵌服务（installers、bootstrap、SERVICES[]）",
+      "docs": [
+        "docs/architecture/MODIFICATION_SCENARIOS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "eval-suite",
+      "source": "Eval suite",
+      "target": "评估套件",
+      "kind": "term",
+      "note": "src/lib/evals",
+      "docs": [
+        "docs/architecture/MODIFICATION_SCENARIOS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "log-export-destination",
+      "source": "Log-export destination",
+      "target": "日志导出目标",
+      "kind": "term",
+      "note": "src/lib/logExport/destinations",
+      "docs": [
+        "docs/architecture/MODIFICATION_SCENARIOS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "dual-auth",
+      "source": "Dual Auth",
+      "target": "双重认证",
+      "kind": "term",
+      "note": "DUAL_AUTH_PROVIDER_IDS，多个 API 密钥的认证方式",
+      "docs": [
+        "docs/architecture/MODIFICATION_SCENARIOS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "agent-card",
+      "source": "Agent Card",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "A2A 规范名称，保留英文",
+      "docs": [
+        "docs/architecture/MODIFICATION_SCENARIOS.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "reducer",
+      "source": "reducer",
+      "target": "归约器",
+      "kind": "term",
+      "note": "release-acceptance 的归约器：plan 与 manifests 归约为报告",
+      "docs": [
+        "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "producer",
+      "source": "producer",
+      "target": "生产者",
+      "kind": "term",
+      "note": "release-acceptance 的结果生产者（producer 适配器）",
+      "docs": [
+        "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "shadow",
+      "source": "shadow",
+      "target": "影子",
+      "kind": "term",
+      "note": "影子集成/影子模式，使用夹具而非真实生产者",
+      "docs": [
+        "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "fixtures",
+      "source": "fixtures",
+      "target": "夹具",
+      "kind": "term",
+      "note": "测试夹具（fixtures）",
+      "docs": [
+        "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "release-captain",
+      "source": "release captain",
+      "target": "发布负责人",
+      "kind": "term",
+      "note": "/generate-release 的操作者",
+      "docs": [
+        "docs/ops/HARD_RULES_DETAIL.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "campaign",
+      "source": "campaign",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "批量 PR 处理工作流的名称，保留英文，与“campaign 工作流”搭配",
+      "docs": [
+        "docs/ops/HARD_RULES_DETAIL.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "homologation",
+      "source": "homologation",
+      "target": "验收（homologation）",
+      "kind": "term",
+      "note": "冻结期间的验收发现",
+      "docs": [
+        "docs/ops/HARD_RULES_DETAIL.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "opt-in",
+      "source": "opt-in",
+      "target": "选择性开启（opt-in）",
+      "kind": "term",
+      "note": "PII 功能默认关闭的设计原则",
+      "docs": [
+        "docs/ops/HARD_RULES_DETAIL.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "subagent",
+      "source": "subagent",
+      "target": "子智能体",
+      "kind": "term",
+      "note": "派发的子智能体（agent 系列）",
+      "docs": [
+        "docs/ops/HARD_RULES_DETAIL.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "worktree",
+      "source": "worktree",
+      "target": "工作树",
+      "kind": "term",
+      "note": "git worktree",
+      "docs": [
+        "docs/ops/HARD_RULES_DETAIL.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "mergify",
+      "source": "Mergify",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "产品名，保留原写法",
+      "docs": [
+        "docs/ops/RELAY_INTEGRATION_QUEUE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/ops/RELAY_INTEGRATION_QUEUE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/RELAY_INTEGRATION_QUEUE.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "chatplayground",
+      "source": "ChatPlayground",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "产品名，保留原写法",
+      "docs": [
+        "docs/providers/CHATPLAYGROUND.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "clerk",
+      "source": "Clerk",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "认证服务名，保留原写法",
+      "docs": [
+        "docs/providers/CHATPLAYGROUND.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "perplexity",
+      "source": "Perplexity",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "模型厂商与端点系列名，保留原写法",
+      "docs": [
+        "docs/providers/CHATPLAYGROUND.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "lmsys",
+      "source": "LMSYS",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "端点系列名，保留原写法",
+      "docs": [
+        "docs/providers/CHATPLAYGROUND.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "azure",
+      "source": "Azure",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "端点系列名，保留原写法",
+      "docs": [
+        "docs/providers/CHATPLAYGROUND.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "stacksocial",
+      "source": "StackSocial",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "订阅平台名，保留原写法",
+      "docs": [
+        "docs/providers/CHATPLAYGROUND.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "yaseen-ai",
+      "source": "Yaseen AI",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "运营方名称，保留原写法",
+      "docs": [
+        "docs/providers/CHATPLAYGROUND.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "combo-router",
+      "source": "Combo Router",
+      "target": "组合路由器",
+      "kind": "term",
+      "note": "OmniRoute 组合路由器，英文名保留在括号中",
+      "docs": [
+        "docs/providers/CHATPLAYGROUND.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "auto-combo",
+      "source": "auto-combo",
+      "target": "自动组合",
+      "kind": "term",
+      "note": "OmniRoute 自动组合评分；正文可译，名称首次出现保留英文 auto-combo",
+      "docs": [
+        "docs/providers/GITHUB-COPILOT.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/GITHUB-COPILOT.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/GITHUB-COPILOT.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "entitlement",
+      "source": "entitlement",
+      "target": "使用资格",
+      "kind": "term",
+      "note": "Copilot entitlement（订阅资格），对应错误信息 'Copilot entitlement not found'",
+      "docs": [
+        "docs/providers/GITHUB-COPILOT.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/GITHUB-COPILOT.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/GITHUB-COPILOT.md",
+        "run": "20261030-run2"
+      }
+    },
+    {
+      "id": "auto",
+      "source": "Auto",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "Copilot 自动选模型在目录中的模型名 (auto)，保留英文",
+      "docs": [
+        "docs/providers/GITHUB-COPILOT.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/providers/GITHUB-COPILOT.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/GITHUB-COPILOT.md",
+        "run": "20261030-run2"
       }
     }
   ]

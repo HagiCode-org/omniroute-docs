@@ -13,6 +13,8 @@ title: "推理认证策略"
 | `GET /v1/models`                                                                   | 仪表盘登录策略（`isAuthRequired()`），可按实例通过 `requireAuthForModels` 覆盖（`src/app/api/v1/models/catalogRequest.ts`）                        |
 | `POST /v1/chat/completions`、`POST /v1/responses`，以及其他客户端 API 路由         | `REQUIRE_API_KEY`（`src/server/authz/policies/clientApi.ts`）                                                                                      |
 
+Responses WebSocket（`/v1/responses` 升级为 `ws://`）同样受 `REQUIRE_API_KEY` 门控：开启该设置时，握手需要有效的 API 密钥或仪表盘会话，即使 `wsAuth` 设置已关闭。
+
 在设置了管理员密码且 `REQUIRE_API_KEY=false` 的实例上，`/v1/models` 返回 `401`，而任何能访问该端口的人都可以调用推理接口。
 
 > **探测注意事项：** `/v1/models` 返回的 `401` **不能**证明推理接口受到保护，它只说明仪表盘要求登录。

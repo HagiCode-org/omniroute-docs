@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": 10,
-  "updatedAt": "2026-10-30T20:33:03.062Z",
+  "version": 34,
+  "updatedAt": "2026-10-30T21:04:46.338Z",
   "doNotTranslate": [
     {
       "term": "OmniRoute",
@@ -116,6 +116,60 @@
       "note": "保留英文:上游译文 98 处英文 / 38 处「边车」;与 docs/README.md 一致",
       "origin": "auto",
       "locked": false
+    },
+    {
+      "term": "Traefik",
+      "note": "reverse proxy product name",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "Claude Code",
+      "note": "产品名,保持原文",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "ChatGPT",
+      "note": "产品名",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "VS Code",
+      "note": "产品名",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "worktree",
+      "note": "git term, kept in English",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "ZCode",
+      "note": "alias/product name kept as written",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "GLM",
+      "note": "model family name kept as written",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "GitHub",
+      "note": "平台名，保留原写法",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "Grok Build",
+      "note": "产品名",
+      "origin": "auto",
+      "locked": false
     }
   ],
   "terms": [
@@ -160,6 +214,26 @@
       "conflicts": []
     },
     {
+      "id": "canary",
+      "source": "canary",
+      "target": "金丝雀",
+      "alt": [],
+      "note": "VPS canary with live smoke",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/ops/LTS_GO_NO_GO.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/RELEASE_STRATEGY.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
       "id": "channel",
       "source": "Channel",
       "target": "渠道",
@@ -176,6 +250,46 @@
       "lastSeen": {
         "doc": "docs/i18n/zh-CN (evidence)",
         "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "circuit-breaker",
+      "source": "circuit breaker",
+      "target": "断路器",
+      "alt": [],
+      "note": "provider circuit breaker in RESILIENCE_GUIDE",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/GITHUB-COPILOT.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "cloud-agent",
+      "source": "Cloud Agent",
+      "target": "云端智能体",
+      "alt": [],
+      "note": "AI 智能体的一种,与 agent 的译法一致",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/guides/HEADLESS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
       },
       "conflicts": []
     },
@@ -200,6 +314,26 @@
       "conflicts": []
     },
     {
+      "id": "combo",
+      "source": "combo",
+      "target": "组合",
+      "alt": [],
+      "note": "OmniRoute 路由组合(browser-sessions 组合)",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 4,
+      "firstSeen": {
+        "doc": "docs/guides/SESSION-SYNC-EXTENSION.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/EMPTY_TURNS.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
       "id": "common-questions",
       "source": "Common Questions",
       "target": "常见问题",
@@ -216,6 +350,26 @@
       "lastSeen": {
         "doc": "docs/i18n/zh-CN (evidence)",
         "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "compare-and-swap",
+      "source": "compare-and-swap",
+      "target": "比较并交换",
+      "alt": [],
+      "note": "transaction primitive; keep English in parentheses on first use",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "run1"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/TEAM_COST_CENTERS.md",
+        "run": "20261030-run2"
       },
       "conflicts": []
     },
@@ -320,6 +474,146 @@
       "conflicts": []
     },
     {
+      "id": "gate",
+      "source": "gate",
+      "target": "闸门",
+      "alt": [],
+      "note": "质量闸门（release-acceptance gate）",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "gateway",
+      "source": "gateway",
+      "target": "网关",
+      "alt": [],
+      "note": "自托管网关，本文核心概念",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 4,
+      "firstSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "run6"
+      },
+      "lastSeen": {
+        "doc": "docs/reference/OPENAI_COMPATIBILITY.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "guardrail",
+      "source": "Guardrail",
+      "target": "护栏",
+      "alt": [],
+      "note": "src/lib/guardrails，文档 GUARDRAILS.md",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "hard-rule",
+      "source": "Hard Rule",
+      "target": "硬性规则",
+      "alt": [],
+      "note": "OmniRoute numbered hard rules",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 6,
+      "firstSeen": {
+        "doc": "docs/security/LTS_SECURITY_BASELINE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "harness",
+      "source": "Harness",
+      "target": "测试工具",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "headless-mode",
+      "source": "headless mode",
+      "target": "无头模式",
+      "alt": [],
+      "note": "OmniRoute headless mode (proxy engine only, no dashboard), HEADLESS.md",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/HEADLESS.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "live-catalog",
+      "source": "live catalog",
+      "target": "实时目录",
+      "alt": [],
+      "note": "OmniRoute model catalog as it is live from the provider",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/changelog/fragments/15540.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/changelog/fragments/15659.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
       "id": "locale",
       "source": "locale",
       "target": "语言环境",
@@ -360,6 +654,86 @@
       "conflicts": []
     },
     {
+      "id": "lts-rail",
+      "source": "LTS rail",
+      "target": "LTS 轨道",
+      "alt": [],
+      "note": "release rail for the LTS line (branches, npm channels, rail labels), RELEASE_STRATEGY.md / LTS_GO_NO_GO.md",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 3,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/RELEASE_STRATEGY.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "manifest",
+      "source": "Manifest",
+      "target": "清单",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 3,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "manual-model",
+      "source": "manual model",
+      "target": "手动模型",
+      "alt": [],
+      "note": "manual model lifecycle / manual CRUD",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "run1"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/MODEL-VALIDATION.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "merge-queue",
+      "source": "merge queue",
+      "target": "合并队列",
+      "alt": [],
+      "note": "merge queue and manual merge-train runbook (MERGE_TRAIN)",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 4,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/RELAY_INTEGRATION_QUEUE.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
       "id": "model-catalog",
       "source": "model catalog",
       "target": "模型目录",
@@ -376,6 +750,26 @@
       "lastSeen": {
         "doc": "docs/guides/CLI-MANUAL-MODELS.md",
         "run": "run1"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "model-lockout",
+      "source": "model lockout",
+      "target": "模型锁定",
+      "alt": [],
+      "note": "scope: provider, connection and model",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/routing/EMPTY_TURNS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/GITHUB-COPILOT.md",
+        "run": "20261030-run2"
       },
       "conflicts": []
     },
@@ -420,6 +814,46 @@
       "conflicts": []
     },
     {
+      "id": "prompt-compression",
+      "source": "prompt compression",
+      "target": "提示词压缩",
+      "alt": [],
+      "note": "compression section overview",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 3,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "provenance",
+      "source": "provenance",
+      "target": "来源证明",
+      "alt": [],
+      "note": "npm package provenance attestation",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/security/LTS_SECURITY_BASELINE.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/RELEASE_STRATEGY.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
       "id": "provider",
       "source": "Provider",
       "target": "提供者",
@@ -436,6 +870,26 @@
       "lastSeen": {
         "doc": "docs/i18n/zh-CN (evidence)",
         "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "provider-adapter",
+      "source": "provider adapter",
+      "target": "提供者适配器",
+      "alt": [],
+      "note": "请求经提供者适配器分发",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "run6"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/SESSION-SYNC-EXTENSION.md",
+        "run": "20261030-run2"
       },
       "conflicts": []
     },
@@ -480,6 +934,106 @@
       "conflicts": []
     },
     {
+      "id": "readback",
+      "source": "readback",
+      "target": "回读",
+      "alt": [],
+      "note": "write then read back the manual catalog to verify",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "run1"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/RELAY_INTEGRATION_QUEUE.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "receipt",
+      "source": "receipt",
+      "target": "回执",
+      "alt": [],
+      "note": "验证成功后的说明性记录,不是授权令牌",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/guides/MODEL-VALIDATION.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/RELAY_INTEGRATION_QUEUE.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "relay",
+      "source": "relay",
+      "target": "中继",
+      "alt": [],
+      "note": "relay backend strategy and troubleshooting",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/RELAY_INTEGRATION_QUEUE.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "release-freeze",
+      "source": "release freeze",
+      "target": "发布冻结",
+      "alt": [],
+      "note": "freeze issue that announces the frozen release branch",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/ops/RELEASE_STRATEGY.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/HARD_RULES_DETAIL.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "route-guard",
+      "source": "route guard",
+      "target": "路由守卫",
+      "alt": [],
+      "note": "route-guard classification tiers",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "run2"
+      },
+      "lastSeen": {
+        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
       "id": "self-hosted",
       "source": "self-hosted",
       "target": "自托管",
@@ -500,6 +1054,46 @@
       "conflicts": []
     },
     {
+      "id": "sentinel",
+      "source": "Sentinel",
+      "target": "哨兵",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "smoke-test",
+      "source": "Smoke test",
+      "target": "冒烟测试",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261026-2333"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CHATGPT-WEB-PERSISTENT-CDP.md",
+        "run": "20261030-run2"
+      },
+      "conflicts": []
+    },
+    {
       "id": "table-of-contents",
       "source": "Table of Contents",
       "target": "目录",
@@ -516,6 +1110,26 @@
       "lastSeen": {
         "doc": "docs/i18n/zh-CN (evidence)",
         "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "team",
+      "source": "Team",
+      "target": "团队",
+      "alt": [],
+      "note": "billing owner group of API keys; product feature name",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/guides/TEAM_COST_CENTERS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/providers/CHATPLAYGROUND.md",
+        "run": "20261030-run2"
       },
       "conflicts": []
     },
