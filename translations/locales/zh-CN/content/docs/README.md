@@ -27,18 +27,18 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 ### guides/
 
 - [SETUP_GUIDE.md](guides/SETUP_GUIDE.md) — OmniRoute 的首次设置。
-- [USER_GUIDE.md](guides/USER_GUIDE.md) — 仪表盘与 API 的日常使用。
+- [USER_GUIDE.md](guides/USER_GUIDE.md) — dashboard 与 API 的日常使用。
 - [THINKING_BUDGET.md](guides/THINKING_BUDGET.md) — 思考/推理预算模式（直通与自动剥离）。
-- [FEATURES.md](guides/FEATURES.md) — 仪表盘功能总览。
+- [FEATURES.md](guides/FEATURES.md) — dashboard 功能总览。
 - [CHAOS-MODE.md](guides/CHAOS-MODE.md) — 多模型并行/协作执行（设置、权限、API）。
 - [TIERS.md](guides/TIERS.md) — OmniRoute 层级说明（用户指南）。
 - [USAGE_QUOTA_GUIDE.md](guides/USAGE_QUOTA_GUIDE.md) — 用量、配额与支出跟踪。
 - [COST_TRACKING.md](guides/COST_TRACKING.md) — 成本与支出跟踪。
 - [FREE_PROVIDER_RANKINGS.md](guides/FREE_PROVIDER_RANKINGS.md) — 免费提供者排名（Arena ELO）。
-- [DOCKER_GUIDE.md](guides/DOCKER_GUIDE.md) — 在 Docker 中运行 OmniRoute，包括编码智能体的运行时内存占用。
+- [DOCKER_GUIDE.md](guides/DOCKER_GUIDE.md) — 在 Docker 中运行 OmniRoute，包括 coding agent 的运行时内存占用。
 - [ELECTRON_GUIDE.md](guides/ELECTRON_GUIDE.md) — 桌面端（Electron）构建。
 - [TERMUX_GUIDE.md](guides/TERMUX_GUIDE.md) — 通过 Termux 在 Android 上运行。
-- [PWA_GUIDE.md](guides/PWA_GUIDE.md) — 将仪表盘安装为 PWA。
+- [PWA_GUIDE.md](guides/PWA_GUIDE.md) — 将 dashboard 安装为 PWA。
 - [REMOTE-MODE.md](guides/REMOTE-MODE.md) — 远程暴露 OmniRoute 及限定范围的令牌。
 - [CLI-INTEGRATIONS.md](guides/CLI-INTEGRATIONS.md) — `setup-*` CLI 集成的总表。
 - [OPENCODE-V2-PLUGIN.md](guides/OPENCODE-V2-PLUGIN.md) — 安装并配置 OpenCode v2 插件。
@@ -47,7 +47,7 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [KIRO_SETUP.md](guides/KIRO_SETUP.md) — Kiro 设置。
 - [ANTIGRAVITY-ONBOARDING.md](guides/ANTIGRAVITY-ONBOARDING.md) — Antigravity（Google One AI）入门指南。
 - [MANAGEMENT-AUTH.md](guides/MANAGEMENT-AUTH.md) — 管理认证。
-- [I18N.md](guides/I18N.md) — 翻译与语言环境工作流。
+- [I18N.md](guides/I18N.md) — 翻译与 locale 工作流。
 - [TROUBLESHOOTING.md](guides/TROUBLESHOOTING.md) — 详细的故障排查参考。
 - [UNINSTALL.md](guides/UNINSTALL.md) — 彻底卸载的步骤。
 
@@ -65,10 +65,10 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [CODEBASE_DOCUMENTATION.md](architecture/CODEBASE_DOCUMENTATION.md) — 代码库的工程参考。
 - [REPOSITORY_MAP.md](architecture/REPOSITORY_MAP.md) — 按目录逐一导航的指南。
 - [AUTHZ_GUIDE.md](architecture/AUTHZ_GUIDE.md) — 授权管线（路由分类器 + 策略引擎）。
-- [RESILIENCE_GUIDE.md](architecture/RESILIENCE_GUIDE.md) — 提供者断路器、连接冷却与模型锁定。
+- [RESILIENCE_GUIDE.md](architecture/RESILIENCE_GUIDE.md) — 提供者 circuit breaker、connection cooldown 与模型锁定。
 - [QUALITY_GATES.md](architecture/QUALITY_GATES.md) — quality-gate 脚本与 CI 任务清单。
-- [MONITORING_SECTIONS.md](architecture/MONITORING_SECTIONS.md) — 监控/成本仪表盘的导航。
-- [cluster-decisions.md](architecture/cluster-decisions.md) — 可选的 sidecar/集群配置决策。
+- [MONITORING_SECTIONS.md](architecture/MONITORING_SECTIONS.md) — 监控/成本 dashboard 的导航。
+- [cluster-decisions.md](architecture/cluster-decisions.md) — 可选的 sidecar/cluster profile 决策。
 - [DESIGN_SYSTEM.md](architecture/DESIGN_SYSTEM.md) — 设计系统与视觉识别。
 - [ROUTER_BACKENDS.md](architecture/ROUTER_BACKENDS.md) — 路由后端与内嵌服务的架构约定（ADR）。
 - [admission-lanes.md](architecture/admission-lanes.md) — 两套准入通道系统及各自受哪些条件约束。
@@ -78,7 +78,7 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 
 查阅性资料：API 接口、环境变量、CLI 参数与提供者目录。
 
-- [API_REFERENCE.md](reference/API_REFERENCE.md) — REST API 端点与数据结构。
+- [API_REFERENCE.md](reference/API_REFERENCE.md) — REST API endpoint 与数据结构。
 - [PROVIDER_REFERENCE.md](reference/PROVIDER_REFERENCE.md) — 自动生成的提供者目录（请勿手动编辑）。
 - [REMOVED_PROVIDERS.md](reference/REMOVED_PROVIDERS.md) — 应运营方要求而移除的提供者；未经书面许可请勿重新引入。
 - [PROVIDER_PLUGIN_MANIFEST.md](reference/PROVIDER_PLUGIN_MANIFEST.md) — 面向 Bifrost 与 CLIProxyAPI 迁移的、sidecar 安全的提供者插件契约。
@@ -87,21 +87,21 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [FEATURE_FLAGS.md](reference/FEATURE_FLAGS.md) — 功能开关及其默认值。
 - [CLI-TOOLS.md](reference/CLI-TOOLS.md) — 内置 CLI 命令。
 - [FREE_TIERS.md](reference/FREE_TIERS.md) — 免费层 LLM 提供者目录。
-- [FREE_PROXIES_API.md](reference/FREE_PROXIES_API.md) — 免费代理 API。
-- [RELAY_BACKEND_STRATEGY.md](reference/RELAY_BACKEND_STRATEGY.md) — 中继后端策略。
-- [RELAY_TROUBLESHOOTING.md](reference/RELAY_TROUBLESHOOTING.md) — 中继故障排查。
+- [FREE_PROXIES_API.md](reference/FREE_PROXIES_API.md) — 免费 proxy API。
+- [RELAY_BACKEND_STRATEGY.md](reference/RELAY_BACKEND_STRATEGY.md) — relay 后端策略。
+- [RELAY_TROUBLESHOOTING.md](reference/RELAY_TROUBLESHOOTING.md) — relay 故障排查。
 
 ## frameworks/
 
-面向客户端、智能体与运维人员开放的可插拔子系统。
+面向客户端、agent 与运维人员开放的可插拔子系统。
 
 - [MCP-SERVER.md](frameworks/MCP-SERVER.md) — Model Context Protocol 服务器。
 - [A2A-SERVER.md](frameworks/A2A-SERVER.md) — Agent-to-Agent（A2A）JSON-RPC 服务器。
-- [ACP.md](frameworks/ACP.md) — Agent Client Protocol（智能体客户端协议）。
-- [AGENT_PROTOCOLS_GUIDE.md](frameworks/AGENT_PROTOCOLS_GUIDE.md) — A2A / ACP / 云端智能体概览。
-- [AGENTBRIDGE.md](frameworks/AGENTBRIDGE.md) — IDE 智能体桥接。
-- [AGENT-SKILLS.md](frameworks/AGENT-SKILLS.md) — 智能体技能目录。
-- [CLOUD_AGENT.md](frameworks/CLOUD_AGENT.md) — 云端智能体运行时与提供者。
+- [ACP.md](frameworks/ACP.md) — Agent Client Protocol（agent 客户端协议）。
+- [AGENT_PROTOCOLS_GUIDE.md](frameworks/AGENT_PROTOCOLS_GUIDE.md) — A2A / ACP / Cloud Agent 概览。
+- [AGENTBRIDGE.md](frameworks/AGENTBRIDGE.md) — IDE agent 桥接。
+- [AGENT-SKILLS.md](frameworks/AGENT-SKILLS.md) — agent 技能目录。
+- [CLOUD_AGENT.md](frameworks/CLOUD_AGENT.md) — Cloud Agent 运行时与提供者。
 - [SKILLS.md](frameworks/SKILLS.md) — Skills 框架（沙箱化扩展）。
 - [MEMORY.md](frameworks/MEMORY.md) — 持久化记忆（FTS5 + Qdrant）。
 - [WEBHOOKS.md](frameworks/WEBHOOKS.md) — Webhook 事件与分发。
@@ -132,9 +132,9 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 
 ## security/
 
-护栏、合规、隐身，以及处理公开凭据与错误信息的强制性模式。
+Guardrail、合规、隐身，以及处理公开凭据与错误信息的强制性模式。
 
-- [GUARDRAILS.md](security/GUARDRAILS.md) — PII、提示注入与视觉护栏。
+- [GUARDRAILS.md](security/GUARDRAILS.md) — PII、prompt 注入与视觉 guardrail。
 - [COMPLIANCE.md](security/COMPLIANCE.md) — 审计追踪与合规。
 - [STEALTH_GUIDE.md](security/STEALTH_GUIDE.md) — TLS / 指纹隐身。
 - [PUBLIC_CREDS.md](security/PUBLIC_CREDS.md) — **必须遵守**的模式：嵌入公开的上游 OAuth client_id/secret 与 Firebase Web 密钥，且不触发密钥扫描器。
@@ -151,7 +151,7 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 
 ## compression/
 
-提示词压缩引擎、规则与语言包。
+Prompt compression 引擎、规则与语言包。
 
 - [COMPRESSION_GUIDE.md](compression/COMPRESSION_GUIDE.md) — 压缩功能总览。
 - [COMPRESSION_ENGINES.md](compression/COMPRESSION_ENGINES.md) — 可用的压缩引擎。
@@ -179,7 +179,7 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 
 ## ops/
 
-发布、部署、代理、隧道、覆盖率、数据库与监控。
+发布、部署、proxy、隧道、覆盖率、数据库与监控。
 
 - [RELEASE_CHECKLIST.md](ops/RELEASE_CHECKLIST.md) — 发布流程检查清单。
 - [RELEASE_GREEN.md](ops/RELEASE_GREEN.md) — 保持 PR 队列与发布分支处于通过状态。
@@ -187,7 +187,7 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [MERGE_TRAIN.md](ops/MERGE_TRAIN.md) — 合并队列与手动 merge-train 运行手册。
 - [HOMOLOGATION.md](ops/HOMOLOGATION.md) — 一致性验证套件（`npm run homolog`）。
 - [QUALITY_GATE_PLAYBOOK.md](ops/QUALITY_GATE_PLAYBOOK.md) — quality-gate 操作手册。
-- [RUNNER_BOX.md](ops/RUNNER_BOX.md) — 自托管 runner 主机的运维。
+- [RUNNER_BOX.md](ops/RUNNER_BOX.md) — self-hosted runner 主机的运维。
 - [BRANCH_PROTECTION_MAIN.md](ops/BRANCH_PROTECTION_MAIN.md) — `main` 分支保护。
 - [CONTRIBUTION_GOLDEN_PATH.md](ops/CONTRIBUTION_GOLDEN_PATH.md) — 贡献的标准流程（按变更类型执行针对性检查）。
 - [COVERAGE_PLAN.md](ops/COVERAGE_PLAN.md) — 测试覆盖率计划。
@@ -197,7 +197,7 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [MONITORING_GUIDE.md](ops/MONITORING_GUIDE.md) — 监控与可观测性。
 - [FLY_IO_DEPLOYMENT_GUIDE.md](ops/FLY_IO_DEPLOYMENT_GUIDE.md) — Fly.io 部署。
 - [VM_DEPLOYMENT_GUIDE.md](ops/VM_DEPLOYMENT_GUIDE.md) — 通用虚拟机部署。
-- [PROXY_GUIDE.md](ops/PROXY_GUIDE.md) — 上游代理配置。
+- [PROXY_GUIDE.md](ops/PROXY_GUIDE.md) — 上游 proxy 配置。
 - [TUNNELS_GUIDE.md](ops/TUNNELS_GUIDE.md) — Cloudflare 隧道及同类工具。
 
 ## diagrams/
@@ -206,11 +206,11 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 
 ## i18n/
 
-文档在 66 种语言环境中的译本（加上英文原文，共 67 种语言）。支持的语言列表参见 [i18n/README.md](i18n/README.md)。
+文档在 66 种 locale 中的译本（加上英文原文，共 67 种语言）。支持的语言列表参见 [i18n/README.md](i18n/README.md)。
 
 ## screenshots/
 
-仪表盘与 README 使用的静态截图，不属于文档正文。
+dashboard 与 README 使用的静态截图，不属于文档正文。
 
 ---
 

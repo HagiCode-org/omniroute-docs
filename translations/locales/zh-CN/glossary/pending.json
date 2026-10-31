@@ -19,46 +19,12 @@
       }
     },
     {
-      "id": "clipboard",
-      "source": "Clipboard",
-      "target": "剪贴板",
-      "kind": "term",
-      "note": "",
-      "docs": [
-        "docs/guides/CLI-COMPANION.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/CLI-COMPANION.md",
-        "run": "20261026-2333"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
       "id": "connection-pin",
       "source": "connection pin",
       "target": "连接固定",
       "kind": "term",
       "note": "x-omniroute-connection pinning a provider connection",
       "docs": [],
-      "firstSeen": {
-        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
-        "run": "run1"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
-      "id": "connection-receipt",
-      "source": "connection receipt",
-      "target": "连接回执",
-      "kind": "term",
-      "note": "verifiable proof that a specific connection served a request",
-      "docs": [
-        "docs/guides/CLI-MANUAL-MODELS.md"
-      ],
       "firstSeen": {
         "doc": "docs/guides/CLI-MANUAL-MODELS.md",
         "run": "run1"
@@ -79,23 +45,6 @@
       "firstSeen": {
         "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
         "run": "run3"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
-      "id": "guardrails",
-      "source": "guardrails",
-      "target": "护栏",
-      "kind": "term",
-      "note": "PII, prompt injection and vision guardrails",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "run2"
       },
       "lastSeen": {
         "run": "audit1"
@@ -181,23 +130,6 @@
       "firstSeen": {
         "doc": "docs/README.md",
         "run": "run2"
-      },
-      "lastSeen": {
-        "run": "audit1"
-      }
-    },
-    {
-      "id": "self-host",
-      "source": "self-host",
-      "target": "自托管",
-      "kind": "term",
-      "note": "self-host / self-hosting / self-hoster (自托管者)",
-      "docs": [
-        "docs/getting-started/SELF_HOST_GUIDE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
-        "run": "run3"
       },
       "lastSeen": {
         "run": "audit1"
@@ -291,42 +223,6 @@
       }
     },
     {
-      "id": "cooldown-breaker",
-      "source": "cooldown breaker",
-      "target": "冷却断路器",
-      "kind": "term",
-      "note": "与 docs/README.md 的「断路器」一致",
-      "docs": [
-        "docs/routing/DETERMINISTIC_ROUTING.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
-        "run": "run5"
-      },
-      "lastSeen": {
-        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
-        "run": "run5"
-      }
-    },
-    {
-      "id": "fallback-chain",
-      "source": "fallback chain",
-      "target": "回退链",
-      "kind": "term",
-      "note": "有序的主用到备用候选顺序",
-      "docs": [
-        "docs/routing/DETERMINISTIC_ROUTING.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
-        "run": "run5"
-      },
-      "lastSeen": {
-        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
-        "run": "run5"
-      }
-    },
-    {
       "id": "route-decision",
       "source": "route decision",
       "target": "路由决策",
@@ -399,42 +295,6 @@
       }
     },
     {
-      "id": "whitelist",
-      "source": "whitelist",
-      "target": "白名单",
-      "kind": "term",
-      "note": "路由策略中的仅允许列表",
-      "docs": [
-        "docs/routing/DETERMINISTIC_ROUTING.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
-        "run": "run5"
-      },
-      "lastSeen": {
-        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
-        "run": "run5"
-      }
-    },
-    {
-      "id": "opencode-go",
-      "source": "OpenCode Go",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "产品名，保留原文",
-      "docs": [
-        "docs/reference/OPENCODE-SESSION-IDENTITY.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/reference/OPENCODE-SESSION-IDENTITY.md",
-        "run": "20261030-1332"
-      },
-      "lastSeen": {
-        "doc": "docs/reference/OPENCODE-SESSION-IDENTITY.md",
-        "run": "20261030-1332"
-      }
-    },
-    {
       "id": "key-pool",
       "source": "key pool",
       "target": "密钥池",
@@ -450,60 +310,6 @@
       "lastSeen": {
         "doc": "docs/diagrams/README.md",
         "run": "20261030-1332"
-      }
-    },
-    {
-      "id": "auto-fallback",
-      "source": "auto-fallback",
-      "target": "自动回退",
-      "kind": "term",
-      "note": "4-tier auto-fallback cascade (tier-cascade.svg)",
-      "docs": [
-        "docs/diagrams/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/diagrams/README.md",
-        "run": "20261030-1332"
-      },
-      "lastSeen": {
-        "doc": "docs/diagrams/README.md",
-        "run": "20261030-1332"
-      }
-    },
-    {
-      "id": "omniconductor",
-      "source": "OmniConductor",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "产品名,保留英文",
-      "docs": [
-        "docs/guides/HEADLESS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/HEADLESS.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/guides/HEADLESS.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "cloud-sync",
-      "source": "Cloud Sync",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "OmniRoute 设置项名称,保留英文",
-      "docs": [
-        "docs/guides/SESSION-SYNC-EXTENSION.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/SESSION-SYNC-EXTENSION.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/guides/SESSION-SYNC-EXTENSION.md",
-        "run": "20261030-run2"
       }
     },
     {
@@ -543,24 +349,6 @@
       }
     },
     {
-      "id": "composer",
-      "source": "composer",
-      "target": "输入框",
-      "kind": "term",
-      "note": "ChatGPT 网页界面中的输入框",
-      "docs": [
-        "docs/guides/CHATGPT-WEB-PERSISTENT-CDP.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/CHATGPT-WEB-PERSISTENT-CDP.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/guides/CHATGPT-WEB-PERSISTENT-CDP.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
       "id": "5dive",
       "source": "5dive",
       "target": null,
@@ -575,78 +363,6 @@
       },
       "lastSeen": {
         "doc": "docs/guides/CLI-LAUNCH-CONTRACTS.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "launcher",
-      "source": "launcher",
-      "target": "启动器",
-      "kind": "term",
-      "note": "omniroute run/launch 的启动组件",
-      "docs": [
-        "docs/guides/CLI-LAUNCH-CONTRACTS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/CLI-LAUNCH-CONTRACTS.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/guides/CLI-LAUNCH-CONTRACTS.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "grok-cli",
-      "source": "Grok CLI",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "产品名",
-      "docs": [
-        "docs/guides/GROK_IMAGES.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/GROK_IMAGES.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/guides/GROK_IMAGES.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "omnicopilot",
-      "source": "OmniCopilot",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "产品名",
-      "docs": [
-        "docs/guides/LOCAL_OLLAMA_DOCKER.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/LOCAL_OLLAMA_DOCKER.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/guides/LOCAL_OLLAMA_DOCKER.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "docker-compose",
-      "source": "Docker Compose",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "产品名",
-      "docs": [
-        "docs/guides/LOCAL_OLLAMA_DOCKER.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/LOCAL_OLLAMA_DOCKER.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/guides/LOCAL_OLLAMA_DOCKER.md",
         "run": "20261030-run2"
       }
     },
@@ -741,47 +457,11 @@
       }
     },
     {
-      "id": "trusted-publishing",
-      "source": "Trusted Publishing",
-      "target": "可信发布",
-      "kind": "term",
-      "note": "npm OIDC publishing mode",
-      "docs": [
-        "docs/security/LTS_SECURITY_BASELINE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/security/LTS_SECURITY_BASELINE.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/security/LTS_SECURITY_BASELINE.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
       "id": "onboarding-wizard",
       "source": "onboarding wizard",
       "target": "引导向导",
       "kind": "term",
       "note": "dashboard first-run setup that creates the login password",
-      "docs": [
-        "docs/getting-started/SELF_HOST_GUIDE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "bootstrap-token",
-      "source": "bootstrap token",
-      "target": "引导令牌",
-      "kind": "term",
-      "note": "one-time token the wizard asks for, printed to the container log (keep English in parentheses at first use)",
       "docs": [
         "docs/getting-started/SELF_HOST_GUIDE.md"
       ],
@@ -809,24 +489,6 @@
       },
       "lastSeen": {
         "doc": "docs/guides/MODEL-VALIDATION.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "proxy-registry",
-      "source": "proxy registry",
-      "target": "代理注册表",
-      "kind": "term",
-      "note": "仪表盘中的代理列表",
-      "docs": [
-        "docs/ops/PROXY_BULK_IMPORT.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/ops/PROXY_BULK_IMPORT.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/ops/PROXY_BULK_IMPORT.md",
         "run": "20261030-run2"
       }
     },
@@ -921,24 +583,6 @@
       }
     },
     {
-      "id": "graph-fallback",
-      "source": "Graph fallback",
-      "target": "Graph 回退",
-      "kind": "term",
-      "note": "group-claim overage resolved through Microsoft Graph",
-      "docs": [
-        "docs/security/ENTRA_SSO.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/security/ENTRA_SSO.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/security/ENTRA_SSO.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
       "id": "sovereign-cloud",
       "source": "sovereign cloud",
       "target": "主权云",
@@ -962,24 +606,6 @@
       "target": "授权机构",
       "kind": "term",
       "note": "Entra authority (entraAuthorityHost)",
-      "docs": [
-        "docs/security/ENTRA_SSO.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/security/ENTRA_SSO.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/security/ENTRA_SSO.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "conditional-access",
-      "source": "Conditional Access",
-      "target": "条件访问",
-      "kind": "term",
-      "note": "Entra Conditional Access; a Microsoft product feature name",
       "docs": [
         "docs/security/ENTRA_SSO.md"
       ],
@@ -1245,24 +871,6 @@
       }
     },
     {
-      "id": "forward-port",
-      "source": "forward-port",
-      "target": "向前移植",
-      "kind": "term",
-      "note": "fix cherry-picked from stable/v3 to develop with credit",
-      "docs": [
-        "docs/ops/RELEASE_STRATEGY.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/ops/RELEASE_STRATEGY.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/ops/RELEASE_STRATEGY.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
       "id": "validation-window",
       "source": "validation window",
       "target": "验证窗口",
@@ -1277,96 +885,6 @@
       },
       "lastSeen": {
         "doc": "docs/ops/RELEASE_STRATEGY.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "kubernetes",
-      "source": "Kubernetes",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "Platform name; kept in English",
-      "docs": [
-        "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "helm",
-      "source": "Helm",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "Package manager and chart format; kept in English",
-      "docs": [
-        "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "kustomize",
-      "source": "Kustomize",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "Kubernetes configuration tool; kept in English",
-      "docs": [
-        "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "ingress",
-      "source": "Ingress",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "Kubernetes resource kind; kept in English",
-      "docs": [
-        "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "probe",
-      "source": "probe",
-      "target": "探针",
-      "kind": "term",
-      "note": "Kubernetes startup, readiness and liveness probes",
-      "docs": [
-        "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
         "run": "20261030-run2"
       }
     },
@@ -1407,83 +925,11 @@
       }
     },
     {
-      "id": "agent-card",
-      "source": "Agent Card",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "A2A 规范名称，保留英文",
-      "docs": [
-        "docs/architecture/MODIFICATION_SCENARIOS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "reducer",
-      "source": "reducer",
-      "target": "归约器",
-      "kind": "term",
-      "note": "release-acceptance 的归约器：plan 与 manifests 归约为报告",
-      "docs": [
-        "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "producer",
-      "source": "producer",
-      "target": "生产者",
-      "kind": "term",
-      "note": "release-acceptance 的结果生产者（producer 适配器）",
-      "docs": [
-        "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
       "id": "shadow",
       "source": "shadow",
       "target": "影子",
       "kind": "term",
       "note": "影子集成/影子模式，使用夹具而非真实生产者",
-      "docs": [
-        "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "fixtures",
-      "source": "fixtures",
-      "target": "夹具",
-      "kind": "term",
-      "note": "测试夹具（fixtures）",
       "docs": [
         "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md"
       ],
@@ -1551,42 +997,6 @@
       }
     },
     {
-      "id": "opt-in",
-      "source": "opt-in",
-      "target": "选择性开启（opt-in）",
-      "kind": "term",
-      "note": "PII 功能默认关闭的设计原则",
-      "docs": [
-        "docs/ops/HARD_RULES_DETAIL.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/ops/HARD_RULES_DETAIL.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/ops/HARD_RULES_DETAIL.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "subagent",
-      "source": "subagent",
-      "target": "子智能体",
-      "kind": "term",
-      "note": "派发的子智能体（agent 系列）",
-      "docs": [
-        "docs/ops/HARD_RULES_DETAIL.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/ops/HARD_RULES_DETAIL.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/ops/HARD_RULES_DETAIL.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
       "id": "worktree",
       "source": "worktree",
       "target": "工作树",
@@ -1601,132 +1011,6 @@
       },
       "lastSeen": {
         "doc": "docs/ops/HARD_RULES_DETAIL.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "mergify",
-      "source": "Mergify",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "产品名，保留原写法",
-      "docs": [
-        "docs/ops/RELAY_INTEGRATION_QUEUE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/ops/RELAY_INTEGRATION_QUEUE.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/ops/RELAY_INTEGRATION_QUEUE.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "chatplayground",
-      "source": "ChatPlayground",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "产品名，保留原写法",
-      "docs": [
-        "docs/providers/CHATPLAYGROUND.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/providers/CHATPLAYGROUND.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/providers/CHATPLAYGROUND.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "clerk",
-      "source": "Clerk",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "认证服务名，保留原写法",
-      "docs": [
-        "docs/providers/CHATPLAYGROUND.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/providers/CHATPLAYGROUND.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/providers/CHATPLAYGROUND.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "perplexity",
-      "source": "Perplexity",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "模型厂商与端点系列名，保留原写法",
-      "docs": [
-        "docs/providers/CHATPLAYGROUND.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/providers/CHATPLAYGROUND.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/providers/CHATPLAYGROUND.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "lmsys",
-      "source": "LMSYS",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "端点系列名，保留原写法",
-      "docs": [
-        "docs/providers/CHATPLAYGROUND.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/providers/CHATPLAYGROUND.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/providers/CHATPLAYGROUND.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "azure",
-      "source": "Azure",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "端点系列名，保留原写法",
-      "docs": [
-        "docs/providers/CHATPLAYGROUND.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/providers/CHATPLAYGROUND.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/providers/CHATPLAYGROUND.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "stacksocial",
-      "source": "StackSocial",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "订阅平台名，保留原写法",
-      "docs": [
-        "docs/providers/CHATPLAYGROUND.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/providers/CHATPLAYGROUND.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/providers/CHATPLAYGROUND.md",
         "run": "20261030-run2"
       }
     },
@@ -1821,78 +1105,6 @@
       }
     },
     {
-      "id": "self-host-carrier",
-      "source": "self-host carrier",
-      "target": "自托管载体",
-      "kind": "term",
-      "note": "OmniRoute 自托管产品形态的载体（packaged container/binary）",
-      "docs": [
-        "docs/getting-started/SELF_HOST_GUIDE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "caddy",
-      "source": "Caddy",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "反向代理产品名，保留原写法",
-      "docs": [
-        "docs/getting-started/SELF_HOST_GUIDE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "playwright",
-      "source": "Playwright",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "产品名，保留原写法",
-      "docs": [
-        "docs/getting-started/SELF_HOST_GUIDE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "chromium",
-      "source": "Chromium",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "浏览器名，保留原写法",
-      "docs": [
-        "docs/getting-started/SELF_HOST_GUIDE.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
       "id": "fair-share",
       "source": "fair-share",
       "target": "公平份额",
@@ -1916,42 +1128,6 @@
       "target": "注册赠送额度",
       "kind": "term",
       "note": "免费层注册赠送额度,与 free tier 配套",
-      "docs": [
-        "docs/diagrams/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/diagrams/README.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/diagrams/README.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "breaker",
-      "source": "breaker",
-      "target": "熔断器",
-      "kind": "term",
-      "note": "熔断器状态 (CLOSED/OPEN/HALF-OPEN),即 provider circuit breaker",
-      "docs": [
-        "docs/diagrams/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/diagrams/README.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/diagrams/README.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "groq",
-      "source": "Groq",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "提供者名,保留原写法",
       "docs": [
         "docs/diagrams/README.md"
       ],
@@ -2019,165 +1195,21 @@
       }
     },
     {
-      "id": "bifrost",
-      "source": "Bifrost",
+      "id": "self-host",
+      "source": "self-host",
       "target": null,
       "kind": "doNotTranslate",
-      "note": "第三方网关产品名",
+      "note": "人工裁决:技术词保留原文;自托管 → self-host(源文为 self-host 时)",
       "docs": [
-        "docs/README.md"
+        "docs/getting-started/SELF_HOST_GUIDE.md"
       ],
       "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-1850"
       },
       "lastSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "cliproxyapi",
-      "source": "CLIProxyAPI",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "第三方代理产品名",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "9router",
-      "source": "9Router",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "内嵌 sidecar 服务产品名",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "termux",
-      "source": "Termux",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "Android 终端环境产品名",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "electron",
-      "source": "Electron",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "桌面端框架名",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "notion",
-      "source": "Notion",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "第三方产品名",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "obsidian",
-      "source": "Obsidian",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "第三方产品名",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "qdrant",
-      "source": "Qdrant",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "向量数据库产品名",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      }
-    },
-    {
-      "id": "fumadocs",
-      "source": "Fumadocs",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "文档框架产品名",
-      "docs": [
-        "docs/README.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
-      },
-      "lastSeen": {
-        "doc": "docs/README.md",
-        "run": "20261030-1832"
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-1850"
       }
     }
   ]

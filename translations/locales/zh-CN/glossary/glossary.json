@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": 36,
-  "updatedAt": "2026-10-31T01:46:58.819Z",
+  "version": 39,
+  "updatedAt": "2026-10-31T01:53:50.626Z",
   "doNotTranslate": [
     {
       "term": "OmniRoute",
@@ -206,18 +206,300 @@
       "note": "人工裁决 2026-10-30:gate 属于明显的技术词,任何语言都保留原文(含 quality-gate、supply-chain gates 等复合写法)",
       "origin": "human",
       "locked": true
+    },
+    {
+      "term": "fallback",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "whitelist",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "probe",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "fixtures",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "reducer",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "producer",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "subagent",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "opt-in",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "forward-port",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "launcher",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "composer",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "clipboard",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "bootstrap token",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Kubernetes",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Helm",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Kustomize",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Ingress",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Docker Compose",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Azure",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Perplexity",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Notion",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Obsidian",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Qdrant",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Fumadocs",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Electron",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Termux",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Caddy",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Playwright",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Chromium",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Groq",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Mergify",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Clerk",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "LMSYS",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "StackSocial",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Bifrost",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "CLIProxyAPI",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "9Router",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "OmniConductor",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "OmniCopilot",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Grok CLI",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "OpenCode Go",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "ChatPlayground",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Cloud Sync",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Agent Card",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Conditional Access",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Trusted Publishing",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "reverse proxy",
+      "note": "人工裁决:技术词保留原文;反向代理 → reverse proxy",
+      "origin": "auto",
+      "locked": false
     }
   ],
   "terms": [
     {
       "id": "agent",
       "source": "agent",
-      "target": "智能体",
+      "target": "agent",
       "alt": [],
-      "note": "AI agent (Cloud Agent, agent skills, agent protocols). 上游简体中文译文用「智能体」;「代理」保留给 proxy,避免混淆",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "AI agent (Cloud Agent, agent skills, agent protocols). 上游简体中文译文用「智能体」;「代理」保留给 proxy,避免混淆;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 1,
       "firstSeen": {
         "doc": "docs/README.md",
@@ -232,12 +514,12 @@
     {
       "id": "blacklist",
       "source": "blacklist",
-      "target": "黑名单",
+      "target": "blacklist",
       "alt": [],
-      "note": "路由策略中的排除列表",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "路由策略中的排除列表;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
@@ -252,12 +534,12 @@
     {
       "id": "canary",
       "source": "canary",
-      "target": "金丝雀",
+      "target": "canary",
       "alt": [],
-      "note": "VPS canary with live smoke",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "VPS canary with live smoke;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/ops/LTS_GO_NO_GO.md",
@@ -292,12 +574,12 @@
     {
       "id": "circuit-breaker",
       "source": "circuit breaker",
-      "target": "断路器",
+      "target": "circuit breaker",
       "alt": [],
-      "note": "provider circuit breaker in RESILIENCE_GUIDE",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "provider circuit breaker in RESILIENCE_GUIDE;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/README.md",
@@ -312,12 +594,12 @@
     {
       "id": "cloud-agent",
       "source": "Cloud Agent",
-      "target": "云端智能体",
+      "target": "Cloud Agent",
       "alt": [],
-      "note": "AI 智能体的一种,与 agent 的译法一致",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "AI 智能体的一种,与 agent 的译法一致;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/guides/HEADLESS.md",
@@ -332,12 +614,12 @@
     {
       "id": "coding-agent",
       "source": "coding agent",
-      "target": "编码智能体",
+      "target": "coding agent",
       "alt": [],
-      "note": "AI coding agents such as Claude Code and Codex",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "AI coding agents such as Claude Code and Codex;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 1,
       "firstSeen": {
         "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
@@ -392,12 +674,12 @@
     {
       "id": "compare-and-swap",
       "source": "compare-and-swap",
-      "target": "比较并交换",
+      "target": "compare-and-swap",
       "alt": [],
-      "note": "transaction primitive; keep English in parentheses on first use",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "transaction primitive; keep English in parentheses on first use;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/guides/CLI-MANUAL-MODELS.md",
@@ -412,12 +694,12 @@
     {
       "id": "connection-cooldown",
       "source": "connection cooldown",
-      "target": "连接冷却",
+      "target": "connection cooldown",
       "alt": [],
-      "note": "scope: one connection, account or key",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "scope: one connection, account or key;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/routing/EMPTY_TURNS.md",
@@ -452,12 +734,12 @@
     {
       "id": "cooldown",
       "source": "cooldown",
-      "target": "冷却",
+      "target": "cooldown",
       "alt": [],
-      "note": "密钥冷却 (connection cooldown)",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "密钥冷却 (connection cooldown);人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/diagrams/README.md",
@@ -472,12 +754,12 @@
     {
       "id": "dashboard",
       "source": "Dashboard",
-      "target": "仪表盘",
+      "target": "dashboard",
       "alt": [],
-      "note": "",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 4,
       "firstSeen": {
         "doc": "docs/guides/CLI-COMPANION.md",
@@ -512,12 +794,12 @@
     {
       "id": "endpoint",
       "source": "endpoint",
-      "target": "端点",
+      "target": "endpoint",
       "alt": [],
-      "note": "the unified local /v1 endpoint",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "the unified local /v1 endpoint;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 1,
       "firstSeen": {
         "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
@@ -592,11 +874,11 @@
     {
       "id": "gateway",
       "source": "gateway",
-      "target": "网关",
+      "target": "gateway",
       "alt": [],
-      "note": "自托管网关，本文核心概念",
-      "origin": "auto",
-      "locked": false,
+      "note": "自托管网关，本文核心概念;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
       "confidence": "high",
       "occurrences": 4,
       "firstSeen": {
@@ -612,12 +894,12 @@
     {
       "id": "guardrail",
       "source": "Guardrail",
-      "target": "护栏",
+      "target": "guardrail",
       "alt": [],
-      "note": "src/lib/guardrails，文档 GUARDRAILS.md",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "src/lib/guardrails，文档 GUARDRAILS.md;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
@@ -632,11 +914,11 @@
     {
       "id": "hard-rule",
       "source": "Hard Rule",
-      "target": "硬性规则",
+      "target": "Hard Rule",
       "alt": [],
-      "note": "OmniRoute numbered hard rules",
-      "origin": "auto",
-      "locked": false,
+      "note": "OmniRoute numbered hard rules;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
       "confidence": "high",
       "occurrences": 6,
       "firstSeen": {
@@ -652,12 +934,12 @@
     {
       "id": "harness",
       "source": "Harness",
-      "target": "测试工具",
+      "target": "harness",
       "alt": [],
-      "note": "",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/guides/CLI-COMPANION.md",
@@ -672,12 +954,12 @@
     {
       "id": "headless-mode",
       "source": "headless mode",
-      "target": "无头模式",
+      "target": "headless mode",
       "alt": [],
-      "note": "OmniRoute headless mode (proxy engine only, no dashboard), HEADLESS.md",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "OmniRoute headless mode (proxy engine only, no dashboard), HEADLESS.md;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/README.md",
@@ -712,12 +994,12 @@
     {
       "id": "locale",
       "source": "locale",
-      "target": "语言环境",
+      "target": "locale",
       "alt": [],
-      "note": "translation and locale workflow (I18N guide)",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "translation and locale workflow (I18N guide);人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/README.md",
@@ -732,12 +1014,12 @@
     {
       "id": "loopback",
       "source": "loopback",
-      "target": "回环地址",
+      "target": "loopback",
       "alt": [],
-      "note": "127.0.0.1 bind; loopback-only",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "127.0.0.1 bind; loopback-only;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
@@ -772,11 +1054,11 @@
     {
       "id": "manifest",
       "source": "Manifest",
-      "target": "清单",
+      "target": "manifest",
       "alt": [],
-      "note": "",
-      "origin": "auto",
-      "locked": false,
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
       "confidence": "high",
       "occurrences": 3,
       "firstSeen": {
@@ -872,12 +1154,12 @@
     {
       "id": "profile",
       "source": "profile",
-      "target": "配置档",
+      "target": "profile",
       "alt": [],
-      "note": "Docker Compose profiles; keep English in parentheses at first use",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "Docker Compose profiles; keep English in parentheses at first use;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
@@ -892,12 +1174,12 @@
     {
       "id": "prompt",
       "source": "prompt",
-      "target": "提示词",
+      "target": "prompt",
       "alt": [],
-      "note": "user prompts sent to providers",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "user prompts sent to providers;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 1,
       "firstSeen": {
         "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
@@ -912,11 +1194,11 @@
     {
       "id": "prompt-compression",
       "source": "prompt compression",
-      "target": "提示词压缩",
+      "target": "prompt compression",
       "alt": [],
-      "note": "compression section overview",
-      "origin": "auto",
-      "locked": false,
+      "note": "compression section overview;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
       "confidence": "high",
       "occurrences": 3,
       "firstSeen": {
@@ -932,12 +1214,12 @@
     {
       "id": "provenance",
       "source": "provenance",
-      "target": "来源证明",
+      "target": "provenance",
       "alt": [],
-      "note": "npm package provenance attestation",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "npm package provenance attestation;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/security/LTS_SECURITY_BASELINE.md",
@@ -992,12 +1274,12 @@
     {
       "id": "proxy",
       "source": "proxy",
-      "target": "代理",
+      "target": "proxy",
       "alt": [],
-      "note": "网络代理(上游代理、免费代理);上游简体中文译文一致用「代理」",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "网络代理(上游代理、免费代理);上游简体中文译文一致用「代理」;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 1,
       "firstSeen": {
         "doc": "docs/README.md",
@@ -1032,12 +1314,12 @@
     {
       "id": "readback",
       "source": "readback",
-      "target": "回读",
+      "target": "readback",
       "alt": [],
-      "note": "write then read back the manual catalog to verify",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "write then read back the manual catalog to verify;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/guides/CLI-MANUAL-MODELS.md",
@@ -1052,12 +1334,12 @@
     {
       "id": "receipt",
       "source": "receipt",
-      "target": "回执",
+      "target": "receipt",
       "alt": [],
-      "note": "验证成功后的说明性记录,不是授权令牌",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "验证成功后的说明性记录,不是授权令牌;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/guides/MODEL-VALIDATION.md",
@@ -1072,12 +1354,12 @@
     {
       "id": "relay",
       "source": "relay",
-      "target": "中继",
+      "target": "relay",
       "alt": [],
-      "note": "relay backend strategy and troubleshooting",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "relay backend strategy and troubleshooting;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/README.md",
@@ -1132,12 +1414,12 @@
     {
       "id": "self-hosted",
       "source": "self-hosted",
-      "target": "自托管",
+      "target": "self-hosted",
       "alt": [],
-      "note": "统一入口的定位描述",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "统一入口的定位描述;人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
@@ -1152,12 +1434,12 @@
     {
       "id": "sentinel",
       "source": "Sentinel",
-      "target": "哨兵",
+      "target": "sentinel",
       "alt": [],
-      "note": "",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/guides/CLI-COMPANION.md",
@@ -1172,12 +1454,12 @@
     {
       "id": "smoke-test",
       "source": "Smoke test",
-      "target": "冒烟测试",
+      "target": "smoke test",
       "alt": [],
-      "note": "",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true,
+      "confidence": "high",
       "occurrences": 2,
       "firstSeen": {
         "doc": "docs/guides/CLI-COMPANION.md",

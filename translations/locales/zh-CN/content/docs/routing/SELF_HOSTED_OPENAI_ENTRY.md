@@ -1,10 +1,10 @@
 ---
-title: "自托管 OpenAI 兼容入口"
+title: "Self-Hosted OpenAI 兼容入口"
 ---
 
-# 自托管的统一 OpenAI 兼容入口
+# Self-hosted 的统一 OpenAI 兼容入口
 
-启用后，OmniRoute 现有的 `/v1/chat/completions`（及其提供的 OpenAI 兼容约定）会变成一个**自托管网关**：接收一个 OpenAI 兼容请求，通过提供者适配器自动路由到你选择的提供者，并返回标准的 OpenAI 错误结构。客户端代码无需改动。
+启用后，OmniRoute 现有的 `/v1/chat/completions`（及其提供的 OpenAI 兼容约定）会变成一个**self-hosted gateway**：接收一个 OpenAI 兼容请求，通过提供者适配器自动路由到你选择的提供者，并返回标准的 OpenAI 错误结构。客户端代码无需改动。
 
 这是 RIC-697 设计中的 D4（接入即用）差异化特性：沿用 OpenAI SDK 已经指向的同一条 `/v1` 路径，但后端由你自己的提供者支撑，而不是单一的内置目录。
 
@@ -54,7 +54,7 @@ curl ... -d '{"model":"claude/claude-sonnet","messages":[...]}'
 
 ## 认证骨架（D5 预留）
 
-可选设置 `OMNIROUTE_SELF_HOSTED_API_KEY`。设置后，请求必须携带 `Authorization: Bearer <key>`。未设置时为开放路由（回环地址或可信网络），与 OmniRoute 现有本地提供者的方式保持一致。D5 的配额与自治密钥体系预计将接管该请求头。
+可选设置 `OMNIROUTE_SELF_HOSTED_API_KEY`。设置后，请求必须携带 `Authorization: Bearer <key>`。未设置时为开放路由（loopback 或可信网络），与 OmniRoute 现有本地提供者的方式保持一致。D5 的配额与自治密钥体系预计将接管该请求头。
 
 ## 失败约定
 
@@ -68,5 +68,5 @@ curl ... -d '{"model":"claude/claude-sonnet","messages":[...]}'
 
 ## 备注
 
-- 自托管模型按设计绕过云端专属的下线与别名机制：分流发生在这些云端检查之前，因此 `local/llama3` 这类 id 永远不会触发云端对等节点返回的 410，也不会被别名改写。
-- 确定性路由策略（回退、冷却、成本、延迟与黑名单）属于 M2 的范围（`RIC-740`），并在此注入网关层。请通过 `strategy:` 配置块进行设置，参见 [DETERMINISTIC_ROUTING.md](./DETERMINISTIC_ROUTING.md)。
+- self-hosted 模型按设计绕过云端专属的下线与别名机制：分流发生在这些云端检查之前，因此 `local/llama3` 这类 id 永远不会触发云端对等节点返回的 410，也不会被别名改写。
+- 确定性路由策略（fallback、cooldown、成本、延迟与 blacklist）属于 M2 的范围（`RIC-740`），并在此注入 gateway 层。请通过 `strategy:` 配置块进行设置，参见 [DETERMINISTIC_ROUTING.md](./DETERMINISTIC_ROUTING.md)。
