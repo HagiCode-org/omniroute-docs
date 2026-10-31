@@ -1,0 +1,1061 @@
+<!DOCTYPE html><html lang="ja-JP" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-ebvmxtiu"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>OmniRoute MCP Server Documentation | OmniRoute Docs</title><link rel="canonical" href="https://omniroute.hagicode.com/ja-JP/frameworks/mcp-server/"/><link rel="alternate" hreflang="en-US" href="https://omniroute.hagicode.com/en-US/frameworks/mcp-server/"/><link rel="alternate" hreflang="zh-CN" href="https://omniroute.hagicode.com/zh-CN/frameworks/mcp-server/"/><link rel="alternate" hreflang="zh-Hant" href="https://omniroute.hagicode.com/zh-Hant/frameworks/mcp-server/"/><link rel="alternate" hreflang="fr-FR" href="https://omniroute.hagicode.com/fr-FR/frameworks/mcp-server/"/><link rel="alternate" hreflang="de-DE" href="https://omniroute.hagicode.com/de-DE/frameworks/mcp-server/"/><link rel="alternate" hreflang="es-ES" href="https://omniroute.hagicode.com/es-ES/frameworks/mcp-server/"/><link rel="alternate" hreflang="ja-JP" href="https://omniroute.hagicode.com/ja-JP/frameworks/mcp-server/"/><link rel="alternate" hreflang="ko-KR" href="https://omniroute.hagicode.com/ko-KR/frameworks/mcp-server/"/><link rel="alternate" hreflang="pt-BR" href="https://omniroute.hagicode.com/pt-BR/frameworks/mcp-server/"/><link rel="alternate" hreflang="ru-RU" href="https://omniroute.hagicode.com/ru-RU/frameworks/mcp-server/"/><link rel="alternate" hreflang="x-default" href="https://omniroute.hagicode.com/en-US/frameworks/mcp-server/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="alternate" type="application/rss+xml" href="https://omniroute.hagicode.com/rss.xml"/><script>(() => {
+  let mode = 'wide';
+  try {
+    const stored = localStorage.getItem('hagilight-content-width');
+    if (stored === 'wide' || stored === 'narrow') mode = stored;
+  } catch {
+    mode = 'wide';
+  }
+  document.documentElement.dataset.hagilightContentWidth = mode;
+})();</script><script>(function () {
+  var choices = ["default","default-light","default-dark","ocean-light","ocean-dark","sakura-light","sakura-dark","forest-light","forest-dark"];
+  var choiceKey = "hagilight-theme";
+  var choice = 'default';
+  try {
+    var stored = localStorage.getItem(choiceKey);
+    if (choices.includes(stored)) choice = stored;
+  } catch (error) {}
+  var themeId = choice === 'default'
+    ? "forest"
+    : choice.slice(0, choice.lastIndexOf('-'));
+  document.documentElement.dataset.hagilightTheme = themeId;
+})();</script><link rel="icon" href="https://cdn.jsdelivr.net/npm/@hagicode/hagilight-core@0.5.0/favicon.ico"/><link rel="shortcut icon" href="https://cdn.jsdelivr.net/npm/@hagicode/hagilight-core@0.5.0/favicon.ico" type="image/x-icon"/><meta name="generator" content="Astro v7.3.8"/><meta name="generator" content="Starlight v0.42.4"/><meta property="og:type" content="article"/><meta property="og:url" content="https://omniroute.hagicode.com/ja-JP/frameworks/mcp-server/"/><meta property="og:locale" content="ja-JP"/><meta property="og:site_name" content="OmniRoute Docs"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="ルーティング、キャッシュ、圧縮、メモリ、スキル、プロキシ、プール、Radar、およびコンテキストソース操作にまたがる110個のツールを備えたModel Context Protocolサーバー。 信頼できる情報源: open-sse/mcp-server/server.ts…"/><meta property="og:title" content="OmniRoute Docs"/><meta property="og:description" content="ルーティング、キャッシュ、圧縮、メモリ、スキル、プロキシ、プール、Radar、およびコンテキストソース操作にまたがる110個のツールを備えたModel Context Protocolサーバー。 信頼できる情報源: open-sse/mcp-server/server.ts…"/><meta name="twitter:title" content="OmniRoute Docs"/><meta name="twitter:description" content="ルーティング、キャッシュ、圧縮、メモリ、スキル、プロキシ、プール、Radar、およびコンテキストソース操作にまたがる110個のツールを備えたModel Context Protocolサーバー。 信頼できる情報源: open-sse/mcp-server/server.ts…"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"🚀 OmniRoute — 無料のAIゲートウェイ","item":"https://omniroute.hagicode.com/ja-JP/"},{"@type":"ListItem","position":2,"name":"OmniRoute MCP Server Documentation","item":"https://omniroute.hagicode.com/ja-JP/frameworks/mcp-server/"}]}</script><script type="application/json" data-hagilight-analytics="posthog">{"apiKey":"phc_qiVVihsL925ovhPYNdLJWz4k7aoKVMwYCevgZPE6PER5","loader":"(() => {\n  if (window.__hagilightPosthogInitialized) return;\n  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(\".\");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement(\"script\")).type=\"text/javascript\",p.crossOrigin=\"anonymous\",p.async=!0,p.src=s.api_host.replace(\".i.posthog.com\",\"-assets.i.posthog.com\")+\"/static/array.js\",(r=t.getElementsByTagName(\"script\")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a=\"posthog\",u.people=u.people||[],Object.defineProperty(u,\"toString\",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e=\"posthog\";return\"posthog\"!==a&&(e+=\".\"+a),t||(e+=\" (stub)\"),e}}),Object.defineProperty(u.people,\"toString\",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+\".people (stub)\"}}),o=\"init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug\".split(\" \"),n=0;n\u003co.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);\n  posthog.init(\"phc_qiVVihsL925ovhPYNdLJWz4k7aoKVMwYCevgZPE6PER5\", {\"api_host\":\"https://t.hagicode.com\",\"ui_host\":\"https://us.posthog.com\",\"defaults\":\"2026-05-30\",\"person_profiles\":\"identified_only\",\"capture_exceptions\":true});\n  (() => {\n    const context = {\"siteId\":\"omniroute-docs\",\"framework\":\"starlight\",\"version\":\"0.20.0\",\"pageType\":\"docs\"};\n    const pageTypes = [\"home\",\"docs\",\"blog\",\"compare\",\"404\",\"other\"];\n    const metaPageType = document.querySelector('meta[name=\"hagilight:page-type\"]')?.getAttribute('content');\n    const superProperties = {\n      site_id: context.siteId || window.location.hostname,\n      site_framework: context.framework,\n      hagilight_version: context.version,\n      locale: document.documentElement.lang,\n      page_type: [context.pageType, metaPageType].find((value) => pageTypes.includes(value)) ?? 'other',\n    };\n    posthog.register(Object.fromEntries(Object.entries(superProperties).filter(([, value]) => typeof value === 'string' && value !== '')));\n  })();\n  window.__hagilightPosthogInitialized = true;\n})();"}</script><script type="module" src="/_astro/PostHog.astro_astro_type_script_index_0_lang.BmQUX2H7.js"></script><script type="application/json" data-hagilight-analytics="googleAnalytics">{"measurementId":"G-EN03FMT2Q4"}</script><script type="module" src="/_astro/GoogleAnalytics.astro_astro_type_script_index_0_lang.BLi6KyVA.js"></script><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/_astro/common.CKWLOO04.css"><script type="module" src="/_astro/page.Dwipeu-R.js"></script></head><body class="astro-ebvmxtiu"><a class="sl-skip-link astro-ywwvfczx" href="#_top">コンテンツにスキップ</a><div class="page sl-flex astro-d4j6jack"><header class="header astro-d4j6jack"><div class="header astro-wr5gqwxm"><div class="title-wrapper sl-flex astro-wr5gqwxm"><a href="/ja-JP" class="site-title sl-flex astro-t7u7p2rz"><img class="astro-t7u7p2rz" alt="HagiCode" src="/_astro/logo.COFWaAMt.png" width="32" height="32"><span class="astro-t7u7p2rz" translate="no">OmniRoute Docs</span></a></div><div class="sl-flex print:hidden astro-wr5gqwxm"><site-search class="astro-wr5gqwxm astro-xbpguxsq" data-translations="{&quot;placeholder&quot;:&quot;検索&quot;}"><button data-open-modal disabled aria-label="検索" aria-keyshortcuts="Control+K" class="astro-xbpguxsq"><svg aria-hidden="true" class="astro-xbpguxsq astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-xbpguxsq" aria-hidden="true">検索</span><kbd class="sl-hidden md:sl-flex astro-xbpguxsq" style="display: none;"><kbd class="astro-xbpguxsq">Ctrl</kbd><kbd class="astro-xbpguxsq">K</kbd></kbd></button><dialog style="padding:0" aria-label="検索" class="astro-xbpguxsq"><div class="dialog-frame sl-flex astro-xbpguxsq"><button data-close-modal class="sl-flex md:sl-hidden astro-xbpguxsq">キャンセル</button><div class="search-container astro-xbpguxsq"><div id="starlight__search" class="astro-xbpguxsq"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.BuGLwjLu.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-wr5gqwxm"><nav class="header-links astro-wr5gqwxm" aria-label="Site navigation"><a href="https://www.hagicode.com/ja-JP/" data-ga-category="navigation" data-ga-label="home" data-ga-location="header" class="astro-wr5gqwxm">ホーム</a><a href="https://docs.hagicode.com/ja-JP/blog/" data-ga-category="navigation" data-ga-label="blog" data-ga-location="header" class="astro-wr5gqwxm">ブログ</a><a href="https://www.hagicode.com/ja-JP/about/" data-ga-category="navigation" data-ga-label="support" data-ga-location="header" class="astro-wr5gqwxm">サポート</a></nav><div class="sl-flex social-icons astro-wr5gqwxm"><a href="https://github.com/diegosouzapw/OmniRoute" rel="me" class="sl-flex astro-5qkbe7cs"><span class="sr-only astro-5qkbe7cs">OmniRoute source</span><svg aria-hidden="true" class="astro-5qkbe7cs astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><hagilight-theme-select class="theme-picker astro-5ax3runw"><label style="--sl-select-width: 12.5em" class="astro-5ax3runw"><span class="sr-only astro-5ax3runw">テーマの選択</span><svg class="icon label-icon astro-5ax3runw" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-5ax3runw"><option value="default" selected class="astro-5ax3runw">デフォルト</option><optgroup label="デフォルトテーマ" class="astro-5ax3runw"><option value="default-light" class="astro-5ax3runw">デフォルト · ライト</option><option value="default-dark" class="astro-5ax3runw">デフォルト · ダーク</option></optgroup><optgroup label="海" class="astro-5ax3runw"><option value="ocean-light" class="astro-5ax3runw">海 · ライト</option><option value="ocean-dark" class="astro-5ax3runw">海 · ダーク</option></optgroup><optgroup label="桜" class="astro-5ax3runw"><option value="sakura-light" class="astro-5ax3runw">桜 · ライト</option><option value="sakura-dark" class="astro-5ax3runw">桜 · ダーク</option></optgroup><optgroup label="森" class="astro-5ax3runw"><option value="forest-light" class="astro-5ax3runw">森 · ライト</option><option value="forest-dark" class="astro-5ax3runw">森 · ダーク</option></optgroup></select><svg class="icon caret astro-5ax3runw" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label><template class="mode-icons astro-5ax3runw"><svg class="mode-auto astro-5ax3runw" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><svg class="mode-light astro-5ax3runw" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg class="mode-dark astro-5ax3runw" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg></template></hagilight-theme-select><script type="module" src="/_astro/ThemeSelect.astro_astro_type_script_index_0_lang.Cn30ub1c.js"></script><hagilight-language-chooser class="language-switcher astro-gb4dlikb"><button type="button" class="language-trigger astro-gb4dlikb" aria-haspopup="dialog" aria-controls="hagilight-language-dialog" aria-expanded="false" aria-label="言語の選択: 日本語" title="日本語"><svg class="trigger-icon astro-gb4dlikb" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" class="astro-gb4dlikb"></circle><path d="M3 12h18" class="astro-gb4dlikb"></path><path d="M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z" class="astro-gb4dlikb"></path></svg><span class="trigger-label astro-gb4dlikb">日本語</span><span class="trigger-chevron astro-gb4dlikb" aria-hidden="true">▾</span></button><dialog id="hagilight-language-dialog" class="language-dialog astro-gb4dlikb" aria-modal="true" aria-labelledby="language-dialog-title"><div class="dialog-header astro-gb4dlikb"><div class="astro-gb4dlikb"><h2 id="language-dialog-title" class="dialog-title astro-gb4dlikb">言語の選択</h2><p class="dialog-current astro-gb4dlikb">現在の言語: <strong class="astro-gb4dlikb">日本語</strong></p></div><button type="button" class="dialog-close astro-gb4dlikb" aria-label="言語選択を閉じる">×</button></div><div class="language-grid-scroller astro-gb4dlikb"><div class="language-grid astro-gb4dlikb" role="listbox" aria-label="言語の選択"><button type="button" role="option" data-locale="en-US" data-href="/en-US/frameworks/mcp-server/" lang="en-US" aria-selected="false" class="language-option astro-gb4dlikb"><span class="language-option-label astro-gb4dlikb">English</span></button><button type="button" role="option" data-locale="zh-CN" data-href="/zh-CN/frameworks/mcp-server/" lang="zh-CN" aria-selected="false" class="language-option astro-gb4dlikb"><span class="language-option-label astro-gb4dlikb">简体中文</span></button><button type="button" role="option" data-locale="zh-Hant" data-href="/zh-Hant/frameworks/mcp-server/" lang="zh-Hant" aria-selected="false" class="language-option astro-gb4dlikb"><span class="language-option-label astro-gb4dlikb">繁體中文</span></button><button type="button" role="option" data-locale="fr-FR" data-href="/fr-FR/frameworks/mcp-server/" lang="fr-FR" aria-selected="false" class="language-option astro-gb4dlikb"><span class="language-option-label astro-gb4dlikb">Français</span></button><button type="button" role="option" data-locale="de-DE" data-href="/de-DE/frameworks/mcp-server/" lang="de-DE" aria-selected="false" class="language-option astro-gb4dlikb"><span class="language-option-label astro-gb4dlikb">Deutsch</span></button><button type="button" role="option" data-locale="es-ES" data-href="/es-ES/frameworks/mcp-server/" lang="es-ES" aria-selected="false" class="language-option astro-gb4dlikb"><span class="language-option-label astro-gb4dlikb">Español (España)</span></button><button type="button" role="option" data-locale="ja-JP" data-href="/ja-JP/frameworks/mcp-server/" lang="ja-JP" aria-selected="true" class="language-option language-option-selected astro-gb4dlikb"><span class="language-option-label astro-gb4dlikb">日本語</span><span class="selected-badge astro-gb4dlikb">選択中</span></button><button type="button" role="option" data-locale="ko-KR" data-href="/ko-KR/frameworks/mcp-server/" lang="ko-KR" aria-selected="false" class="language-option astro-gb4dlikb"><span class="language-option-label astro-gb4dlikb">한국어</span></button><button type="button" role="option" data-locale="pt-BR" data-href="/pt-BR/frameworks/mcp-server/" lang="pt-BR" aria-selected="false" class="language-option astro-gb4dlikb"><span class="language-option-label astro-gb4dlikb">Português (Brasil)</span></button><button type="button" role="option" data-locale="ru-RU" data-href="/ru-RU/frameworks/mcp-server/" lang="ru-RU" aria-selected="false" class="language-option astro-gb4dlikb"><span class="language-option-label astro-gb4dlikb">Русский</span></button></div></div></dialog></hagilight-language-chooser><script type="module" src="/_astro/LanguageChooser.astro_astro_type_script_index_0_lang.YJ4ekErL.js"></script></div></div></header><nav class="sidebar print:hidden astro-d4j6jack" aria-label="メインナビゲーション"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-wli6pwbz"><svg aria-hidden="true" class="open-menu astro-wli6pwbz astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-wli6pwbz astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-wli6pwbz">メニュー</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-d4j6jack"><div class="sidebar-content sl-flex astro-d4j6jack"><sl-sidebar-state-persist data-hash="08k1whd" class="astro-lmesu3ga"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-kyegz2q5"><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">はじめに</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/getting-started/auto-combo-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Auto-Combo: Let OmniRoute Pick the Best AI for You</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/getting-started/free-tiers-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Free Tiers Guide: Understand and Combine Free AI Access</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/getting-started/providers-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Providers Guide: Connect AI Models to OmniRoute</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/getting-started/quick-start/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Quick Start: Get OmniRoute Running in 3 Minutes</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/getting-started/self-hosting/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">🚀 Self-Host Guide — OmniRoute (零月费自托管 / zero-fee self-host)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/getting-started/web-cookie-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Web Cookie Providers</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">ガイド</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/guides/antigravity-onboarding/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Antigravity (Google One AI) Onboarding Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/chaos-mode/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Chaos Mode</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/claude-code-configuration/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Claude Code CLI — Configuration with OmniRoute</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/cli-companion/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">CLI Companion — copy-only terminal guidance</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/cli-integrations/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">CLI Integrations</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/cli-manual-models/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">CLI model catalog and manual metadata</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/cli-smoke-tests/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Isolated CLI smoke tests</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/codex-app-server-provider/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OpenAI Codex — App-Server provider (`codex-app-server`)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/codex-cli-configuration/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Codex CLI — Configuration with OmniRoute</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/cost-tracking/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Cost &amp; Spend Tracking</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/docker-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">🐳 Docker Guide — OmniRoute</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/electron-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Electron Desktop Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/features/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute — Dashboard Features Gallery</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/free-provider-rankings/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Free Provider Rankings (Arena ELO)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/i18n/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">i18n — Internationalization Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/kiro-setup/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Kiro Setup Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/management-auth/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Management Authentication</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/opencode-v2-plugin/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OpenCode v2 plugin — install and configure</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/pwa-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Progressive Web App (PWA) Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/remote-mode/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Remote Mode</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/setup-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">📖 Setup Guide — OmniRoute</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/termux-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Termux Headless Setup</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/thinking-budget/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Thinking Budget</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/tiers/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Tiers — User Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/troubleshooting/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Troubleshooting</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/uninstall/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute — Uninstall Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/usage-quota-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Usage, Quota &amp; Spend Tracking</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/user-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">User Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/guides/vscode-copilot/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">VS Code Copilot Chat — OmniCopilot extension</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details open class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">フレームワーク</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/a2a-server/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute A2A Server Documentation</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/acp/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">ACP (Agent Client Protocol)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/agent-protocols-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Agent Protocols Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/agent-skills/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Agent Skills Catalog</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/agentbridge/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">AgentBridge</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/cloud-agent/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Cloud Agents</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/embedded-services/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Embedded Services</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/evals/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Evaluations (Evals)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/gamification/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Gamification &amp; Leaderboard System</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/local-corpus-context/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Local Corpus Context Source</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/log-export/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Log export</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/mcp-server/" aria-current="page" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute MCP Server Documentation</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/memory/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Memory System</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/notion-context/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Notion Context Source</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/obsidian-context/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Obsidian Context Source</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/open-sse-architecture/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">open-sse Architecture</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/opencode/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OpenCode Integration</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/playground-studio/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Playground Studio</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/plugin-marketplace/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Plugin Marketplace</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/plugin-sdk/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Plugin SDK</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/plugins/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute CLI Plugin System</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/radar/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Radar Free-Model Catalog</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/search-tools-studio/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Search Tools Studio</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/skills/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Skills Framework</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/traffic-inspector/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Traffic Inspector</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/frameworks/webhooks/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Webhooks</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">ルーティング</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/routing/auto-combo/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Auto-Combo Engine</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/routing/deterministic-routing/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Deterministic Routing Strategies</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/routing/model-exposure-list/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Model Exposure Allow/Deny List</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/routing/quota-share/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Quota Sharing Engine</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/routing/reasoning-replay/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Reasoning Replay Cache</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/routing/reasoning-routing/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Reasoning Routing</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/routing/self-hosted-openai-entry/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Self-Hosted OpenAI-Compatible Entry</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/routing/strict-zero-cost/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">STRICT_ZERO_COST</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/routing/subscription-ladder/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Subscription-first routing</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">プロバイダー</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/providers/agentrouter/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">AgentRouter Setup Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/providers/alibaba-qwen-provider-families/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Alibaba and Qwen provider families</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/providers/chatgpt-web/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Providers — ChatGPT Web (Codex)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/providers/claude-web/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Providers — Claude Web</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/providers/copilot-m365/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Providers — Microsoft 365 Copilot (BizChat)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/providers/csv-import/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Import providers from a CSV or JSON file</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/providers/cursor-api-key-and-cli/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Cursor API provider and the Cursor CLI passthrough</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/providers/cursor-docker/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Cursor Provider in Docker Environments</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/providers/cursor-image/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Cursor Image Generation</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/providers/zed-docker/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Zed IDE Integration in Docker Environments</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">圧縮</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/compression/compression-engines/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Compression Engines</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/compression/compression-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">🗜️ Prompt Compression Guide — OmniRoute</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/compression/compression-language-packs/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Compression Language Packs</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/compression/compression-rules-format/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Compression Rules Format</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/compression/context-editing/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Delegated Context Editing (Anthropic)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/compression/extending-compression/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Extending the Compression Pipeline</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/compression/rtk-compression/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">RTK Compression</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">リファレンス</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/reference/api-reference/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">API Reference</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/reference/cli-tools/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">CLI Tools — OmniRoute</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/reference/embeddings/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Embeddings client runbook</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/reference/environment/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Environment Variables Reference</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/reference/feature-flags/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Feature Flags</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/reference/free-proxies-api/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Free Proxies API</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/reference/free-tiers/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Free Tiers &amp; Free-Token Budget</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/reference/opencode-session-identity/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OpenCode conversation identity</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/reference/provider-plugin-manifest/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Provider Plugin Manifest</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/reference/provider-reference/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Provider Reference</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/reference/relay-backend-strategy/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Relay Backend Strategy</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/reference/relay-troubleshooting/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Relay Troubleshooting</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/reference/removed-providers/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Providers removed at their operator&#39;s request</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">アーキテクチャ</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/adaptive-routing/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Adaptive Routing: Routing Events, Quality Feedback &amp; Explainability</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/admission-lanes/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Admission lanes (#9654) — two lane systems, what gates each, where each reports</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/architecture/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Architecture</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/authz-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Authorization Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/cluster-decisions/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Cluster Decisions — Optional Sidecar Profiles</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/codebase-documentation/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Codebase Documentation</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/design-system/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute — Design System &amp; Visual Identity</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/monitoring-sections/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Monitoring &amp; Costs — Navigation Structure</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/persistence-backend-boundary/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">ADR: Pluggable persistence boundary</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/quality-gates/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Quality Gates Reference</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/repository-map/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Repository Map</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/resilience-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Resilience Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/architecture/router-backends/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Router Backends &amp; Embedded Services — architecture contract (ADR)</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">セキュリティ</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="8"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/security/agentrouter-waf/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">agentrouter.org WAF (Web Application Firewall)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/ban-detection/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Account-Ban / Banned-Keyword Detection</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/cli-configuration/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">CLI configuration previews and writes</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/cli-token/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">CLI Machine-ID Token</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/compliance/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Compliance &amp; Audit</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/cors/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">CORS Configuration &amp; Security</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/egress-policy/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Egress IP Family Policy (IPv4/IPv6)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/error-sanitization/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Error Message Sanitization</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/guardrails/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Guardrails</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/inference-auth-posture/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Inference Auth Posture</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/mitm-tproxy-decrypt/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">MITM TPROXY Transparent Decrypt</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/public-creds/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Public Credentials Handling</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/route-guard-tiers/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Route Guard Tiers</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/socket-dev-findings/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Socket.dev / supply-chain finding attestation</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/stealth-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Stealth Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/security/supply-chain/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Supply-Chain Gates (Phase 8 · Block A)</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">運用</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="9"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/ops/branch-protection-main/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Branch protection — `main` (OpenSSF Scorecard: Branch-Protection)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/branching-model/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Branching &amp; Release Model</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/contribution-golden-path/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Contribution Golden Path</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/coverage-plan/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Test Coverage Plan</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/database-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Database Schema &amp; Operations Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/fly-io-deployment-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Fly.io 部署指南</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/homologation/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Homologation Suite (`npm run homolog`)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/merge-train/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Merge Queue &amp; Manual Merge-Train Runbook</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/monitoring-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Monitoring &amp; Observability Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/proxy-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">🌐 OmniRoute Proxy Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/quality-gate-playbook/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Quality-Gate System — Critical Assessment, Catalog and Replication Playbook</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/redis-production-config/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Redis Production Configuration Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/release-checklist/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Release Checklist</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/release-green/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Release-Green: keeping the queue and release branch green</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/runner-box/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Self-Hosted Runner Box Operations (.113 pool)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/sqlite-runtime/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">SQLite Runtime Resolution</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/tunnels-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Tunnels Guide</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/ops/vm-deployment-guide/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute — Deployment Guide on VM with Cloudflare</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">比較</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="10"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/comparison/omniroute-vs-alternatives/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute vs Alternatives</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">計画</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="11"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/plans/11690-anysearch-provider-integration/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">AnySearch provider integration (PR #11690)</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/plans/7778-hierarchical-admission/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">#7778 hierarchical admission cleanup plan</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">変更履歴</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="12"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">フラグメント</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="13"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/changelog/fragments/10962/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">10962</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/changelog/fragments/14268/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">14268</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/changelog/fragments/7778/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">7778</span></a></li></ul></details></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">アセット</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="14"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/assets/flags/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Flag icons</span></a></li></ul></details></li><li class="astro-kyegz2q5"><details class="astro-kyegz2q5"><summary class="astro-kyegz2q5"><span class="group-label astro-kyegz2q5"><span class="large astro-kyegz2q5">プロジェクト</span></span><svg aria-hidden="true" class="caret astro-kyegz2q5 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="15"></sl-sidebar-restore><ul class="astro-kyegz2q5"><li class="astro-kyegz2q5"><a href="/ja-JP/developer-environment/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Developer environment notes</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/devin-claude-bridge/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Devin Claude Bridge</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/diagrams/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">Diagrams</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/docs/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Documentation</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/i18n/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">🌐 Multilingual Documentation — OmniRoute</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/omniroute-allocation-handoff/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Allocation Handoff</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/omniroute-provider-failover/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Provider Failover</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/omniroute-quota-telemetry/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Quota Telemetry</span></a></li><li class="astro-kyegz2q5"><a href="/ja-JP/omniroute-routing-policy/" class="astro-kyegz2q5"><span class="astro-kyegz2q5">OmniRoute Routing Policy</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-dp3yytt5"><div class="social-icons astro-dp3yytt5"><a href="https://github.com/diegosouzapw/OmniRoute" rel="me" class="sl-flex astro-5qkbe7cs"><span class="sr-only astro-5qkbe7cs">OmniRoute source</span><svg aria-hidden="true" class="astro-5qkbe7cs astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><hagilight-theme-select class="theme-picker astro-5ax3runw"><label style="--sl-select-width: 12.5em" class="astro-5ax3runw"><span class="sr-only astro-5ax3runw">テーマの選択</span><svg class="icon label-icon astro-5ax3runw" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-5ax3runw"><option value="default" selected class="astro-5ax3runw">デフォルト</option><optgroup label="デフォルトテーマ" class="astro-5ax3runw"><option value="default-light" class="astro-5ax3runw">デフォルト · ライト</option><option value="default-dark" class="astro-5ax3runw">デフォルト · ダーク</option></optgroup><optgroup label="海" class="astro-5ax3runw"><option value="ocean-light" class="astro-5ax3runw">海 · ライト</option><option value="ocean-dark" class="astro-5ax3runw">海 · ダーク</option></optgroup><optgroup label="桜" class="astro-5ax3runw"><option value="sakura-light" class="astro-5ax3runw">桜 · ライト</option><option value="sakura-dark" class="astro-5ax3runw">桜 · ダーク</option></optgroup><optgroup label="森" class="astro-5ax3runw"><option value="forest-light" class="astro-5ax3runw">森 · ライト</option><option value="forest-dark" class="astro-5ax3runw">森 · ダーク</option></optgroup></select><svg class="icon caret astro-5ax3runw" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label><template class="mode-icons astro-5ax3runw"><svg class="mode-auto astro-5ax3runw" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><svg class="mode-light astro-5ax3runw" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg class="mode-dark astro-5ax3runw" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg></template></hagilight-theme-select><starlight-lang-select><label style="--sl-select-width: 7em" class="astro-uurmp7ip"><span class="sr-only astro-uurmp7ip">言語の選択</span><svg aria-hidden="true" class="icon label-icon astro-uurmp7ip astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path fill-rule="evenodd" d="M8.516 3a.94.94 0 0 0-.941.94v1.15H2.94a.94.94 0 1 0 0 1.882h7.362a7.422 7.422 0 0 1-1.787 3.958 7.42 7.42 0 0 1-1.422-2.425.94.94 0 1 0-1.774.627 9.303 9.303 0 0 0 1.785 3.043 7.422 7.422 0 0 1-4.164 1.278.94.94 0 1 0 0 1.881 9.303 9.303 0 0 0 5.575-1.855 9.303 9.303 0 0 0 4.11 1.74l-.763 1.525a.968.968 0 0 0-.016.034l-1.385 2.77a.94.94 0 1 0 1.683.841l1.133-2.267h5.806l1.134 2.267a.94.94 0 0 0 1.683-.841l-1.385-2.769a.95.95 0 0 0-.018-.036l-3.476-6.951a.94.94 0 0 0-1.682 0l-1.82 3.639a7.423 7.423 0 0 1-3.593-1.256 9.303 9.303 0 0 0 2.27-5.203h1.894a.94.94 0 0 0 0-1.881H9.456V3.94A.94.94 0 0 0 8.516 3Zm6.426 11.794a1.068 1.068 0 0 1-.02.039l-.703 1.407h3.924l-1.962-3.924-1.24 2.478Z" clip-rule="evenodd"/></svg><select autocomplete="off" class="astro-uurmp7ip"><option value="/en-US/frameworks/mcp-server/" class="astro-uurmp7ip">English</option><option value="/zh-CN/frameworks/mcp-server/" class="astro-uurmp7ip">简体中文</option><option value="/zh-Hant/frameworks/mcp-server/" class="astro-uurmp7ip">繁體中文</option><option value="/fr-FR/frameworks/mcp-server/" class="astro-uurmp7ip">Français</option><option value="/de-DE/frameworks/mcp-server/" class="astro-uurmp7ip">Deutsch</option><option value="/es-ES/frameworks/mcp-server/" class="astro-uurmp7ip">Español (España)</option><option value="/ja-JP/frameworks/mcp-server/" selected class="astro-uurmp7ip">日本語</option><option value="/ko-KR/frameworks/mcp-server/" class="astro-uurmp7ip">한국어</option><option value="/pt-BR/frameworks/mcp-server/" class="astro-uurmp7ip">Português (Brasil)</option><option value="/ru-RU/frameworks/mcp-server/" class="astro-uurmp7ip">Русский</option></select><svg aria-hidden="true" class="icon caret astro-uurmp7ip astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-lang-select></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-d4j6jack"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-2r7fxvt3"><aside class="right-sidebar-container print:hidden astro-2r7fxvt3"><div class="right-sidebar astro-2r7fxvt3"><div class="lg:sl-hidden astro-rg2cspvt"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-567eefx6"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-567eefx6"><details id="starlight__mobile-toc" class="astro-567eefx6"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-567eefx6"><span class="toggle sl-flex astro-567eefx6">目次<svg aria-hidden="true" class="caret astro-567eefx6 astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-567eefx6"></span></summary><div class="dropdown astro-567eefx6"><ul class="isMobile astro-zgxjgcac" style="--depth: 0;"><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#_top" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">概要</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#必須ツール14-フェーズ-1" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">必須ツール（14）— フェーズ 1</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#高度なツール-11--フェーズ-2" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">高度なツール (11) — フェーズ 2</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#キャッシュツール-2" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">キャッシュツール (2)</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#圧縮ツール-13" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">圧縮ツール (13)</span></a><ul class="isMobile astro-zgxjgcac" style="--depth: 1;"><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#mcp-アクセシビリティツリーフィルター-v380" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">MCP アクセシビリティツリーフィルター (v3.8.0)</span></a></li></ul></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#1proxy-ツール-3" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">1Proxy ツール (3)</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#メモリツール-3" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">メモリツール (3)</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#スキルツール-4" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">スキルツール (4)</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#notion-コンテキストソース-6" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">Notion コンテキストソース (6)</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#エージェントスキルカタログツール3" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">エージェントスキルカタログツール（3）</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#関連フレームワークv380" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">関連フレームワーク（v3.8.0）</span></a><ul class="isMobile astro-zgxjgcac" style="--depth: 1;"><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#クラウドエージェント" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">クラウドエージェント</span></a></li><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#ガードレール" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">ガードレール</span></a></li></ul></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#rest-apiエンドポイント" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">REST APIエンドポイント</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#認証とスコープ" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">認証とスコープ</span></a><ul class="isMobile astro-zgxjgcac" style="--depth: 1;"><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#3つのスコープ名前空間" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">3つのスコープ名前空間</span></a></li><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#mcpツールのスコープ" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">MCPツールのスコープ</span></a></li><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#mcpconnect--ルート機能の絞り込み-7895" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">mcp:connect — ルート機能の絞り込み (#7895)</span></a></li><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#キーごとのhttpスコープバインディング-7895" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">キーごとのHTTPスコープバインディング (#7895)</span></a></li></ul></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#環境変数" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">環境変数</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#説明の圧縮" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">説明の圧縮</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#ツール数の削減f43" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">ツール数の削減（F4.3）</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#ランタイムハートビート" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">ランタイムハートビート</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#監査ログ" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">監査ログ</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#ファイル" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">ファイル</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-rg2cspvt"><div class="sl-container astro-rg2cspvt"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">目次</h2><ul class="astro-zgxjgcac" style="--depth: 0;"><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#_top" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">概要</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#必須ツール14-フェーズ-1" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">必須ツール（14）— フェーズ 1</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#高度なツール-11--フェーズ-2" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">高度なツール (11) — フェーズ 2</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#キャッシュツール-2" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">キャッシュツール (2)</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#圧縮ツール-13" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">圧縮ツール (13)</span></a><ul class="astro-zgxjgcac" style="--depth: 1;"><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#mcp-アクセシビリティツリーフィルター-v380" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">MCP アクセシビリティツリーフィルター (v3.8.0)</span></a></li></ul></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#1proxy-ツール-3" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">1Proxy ツール (3)</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#メモリツール-3" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">メモリツール (3)</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#スキルツール-4" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">スキルツール (4)</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#notion-コンテキストソース-6" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">Notion コンテキストソース (6)</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#エージェントスキルカタログツール3" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">エージェントスキルカタログツール（3）</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#関連フレームワークv380" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">関連フレームワーク（v3.8.0）</span></a><ul class="astro-zgxjgcac" style="--depth: 1;"><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#クラウドエージェント" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">クラウドエージェント</span></a></li><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#ガードレール" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">ガードレール</span></a></li></ul></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#rest-apiエンドポイント" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">REST APIエンドポイント</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#認証とスコープ" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">認証とスコープ</span></a><ul class="astro-zgxjgcac" style="--depth: 1;"><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#3つのスコープ名前空間" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">3つのスコープ名前空間</span></a></li><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#mcpツールのスコープ" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">MCPツールのスコープ</span></a></li><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#mcpconnect--ルート機能の絞り込み-7895" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">mcp:connect — ルート機能の絞り込み (#7895)</span></a></li><li style="--depth: 1;" class="astro-zgxjgcac"><a href="#キーごとのhttpスコープバインディング-7895" style="--depth: 1;" class="astro-zgxjgcac"><span style="--depth: 1;" class="astro-zgxjgcac">キーごとのHTTPスコープバインディング (#7895)</span></a></li></ul></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#環境変数" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">環境変数</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#説明の圧縮" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">説明の圧縮</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#ツール数の削減f43" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">ツール数の削減（F4.3）</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#ランタイムハートビート" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">ランタイムハートビート</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#監査ログ" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">監査ログ</span></a></li><li style="--depth: 0;" class="astro-zgxjgcac"><a href="#ファイル" style="--depth: 0;" class="astro-zgxjgcac"><span style="--depth: 0;" class="astro-zgxjgcac">ファイル</span></a></li></ul></nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-2r7fxvt3"><main data-pagefind-body class="astro-ebvmxtiu" lang="ja-JP" dir="ltr"><div class="content-panel astro-lwg5oi3t"><div class="sl-container astro-lwg5oi3t"><div class="page-title-with-layout astro-wntduezw"><h1 id="_top" class="astro-ttvjxalp">OmniRoute MCP Server Documentation</h1><div class="hagilight-content-width-toggle" role="group" aria-label="コンテンツ幅"><button type="button" data-hagilight-content-width-choice="wide" aria-pressed="true">広い</button><button type="button" data-hagilight-content-width-choice="narrow" aria-pressed="false">狭い</button></div><script type="module" src="/_astro/ContentLayoutToggle.astro_astro_type_script_index_0_lang.Dh0f1nFf.js"></script></div></div></div><div class="content-panel astro-lwg5oi3t"><div class="sl-container astro-lwg5oi3t"><div class="sl-markdown-content"><div class="sl-heading-wrapper level-h2"><h2 id="必須ツール14-フェーズ-1">必須ツール（14）— フェーズ 1</h2><a class="sl-anchor-link" href="#必須ツール14-フェーズ-1"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “必須ツール（14）— フェーズ 1”</span></a></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">ツール</th>
+<th style="text-align: left">スコープ</th>
+<th style="text-align: left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_get_health</code></td>
+<td style="text-align: left"><code dir="auto">read:health</code></td>
+<td style="text-align: left">稼働時間、メモリ、サーキットブレーカー、レート制限、キャッシュ統計</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_list_combos</code></td>
+<td style="text-align: left"><code dir="auto">read:combos</code></td>
+<td style="text-align: left">設定済みのすべてのコンボと戦略（メトリクスは任意）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_get_combo_metrics</code></td>
+<td style="text-align: left"><code dir="auto">read:combos</code></td>
+<td style="text-align: left">特定のコンボのパフォーマンスメトリクス</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_switch_combo</code></td>
+<td style="text-align: left"><code dir="auto">write:combos</code></td>
+<td style="text-align: left">コンボを有効化または無効化</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_create_combo</code></td>
+<td style="text-align: left"><code dir="auto">write:combos</code></td>
+<td style="text-align: left">既存のコンボ API を通じて検証済みのコンボを作成</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_check_quota</code></td>
+<td style="text-align: left"><code dir="auto">read:quota</code></td>
+<td style="text-align: left">使用済み／合計クォータ、残量の割合、リセット時刻、トークンの状態</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_route_request</code></td>
+<td style="text-align: left"><code dir="auto">execute:completions</code></td>
+<td style="text-align: left">OmniRoute のルーティングを通じてチャット補完を送信</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_cost_report</code></td>
+<td style="text-align: left"><code dir="auto">read:usage</code></td>
+<td style="text-align: left">期間別（セッション／日／週／月）のコストレポート</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_list_models_catalog</code></td>
+<td style="text-align: left"><code dir="auto">read:models</code></td>
+<td style="text-align: left">機能、ステータス、価格を含む完全なモデルカタログ</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_radar_catalog</code></td>
+<td style="text-align: left"><code dir="auto">read:radar</code></td>
+<td style="text-align: left">ローカルで署名された Radar カタログ（プロバイダー／ファミリーによるフィルターは任意）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_tool_search</code></td>
+<td style="text-align: left"><code dir="auto">read:tools</code></td>
+<td style="text-align: left">登録済みの MCP カタログからツールを検索</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_web_search</code></td>
+<td style="text-align: left"><code dir="auto">execute:search</code></td>
+<td style="text-align: left">設定済みの検索プロバイダーを通じて Web を検索。X/Twitter は対象外。</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_x_search</code></td>
+<td style="text-align: left"><code dir="auto">execute:search</code></td>
+<td style="text-align: left">xAI/SuperGrok を通じて X を検索。または、Xquik API の結果には <code dir="auto">xquik-search</code> を選択。選択したバックエンドの認証情報が必要。</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_web_fetch</code></td>
+<td style="text-align: left"><code dir="auto">execute:search</code></td>
+<td style="text-align: left">設定済みの取得プロバイダーを通じて Web コンテンツを取得</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="高度なツール-11--フェーズ-2">高度なツール (11) — フェーズ 2</h2><a class="sl-anchor-link" href="#高度なツール-11--フェーズ-2"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “高度なツール (11) — フェーズ 2”</span></a></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">ツール</th>
+<th style="text-align: left">スコープ</th>
+<th style="text-align: left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_simulate_route</code></td>
+<td style="text-align: left"><code dir="auto">read:health</code>, <code dir="auto">read:combos</code></td>
+<td style="text-align: left">フォールバックツリーを使用したドライランのルーティングシミュレーション</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_set_budget_guard</code></td>
+<td style="text-align: left"><code dir="auto">write:budget</code></td>
+<td style="text-align: left">劣化／ブロック／アラートのアクションを備えたセッション予算ガード</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_set_routing_strategy</code></td>
+<td style="text-align: left"><code dir="auto">write:combos</code></td>
+<td style="text-align: left">実行時にコンボ戦略（優先順位／重み付き／自動など）を更新</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_set_resilience_profile</code></td>
+<td style="text-align: left"><code dir="auto">write:resilience</code></td>
+<td style="text-align: left"><code dir="auto">aggressive</code>／<code dir="auto">balanced</code>／<code dir="auto">conservative</code> のレジリエンスプリセットを適用</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_test_combo</code></td>
+<td style="text-align: left"><code dir="auto">execute:completions</code>, <code dir="auto">read:combos</code></td>
+<td style="text-align: left">実際のアップストリーム呼び出しを使用して、コンボ内のすべてのプロバイダーをライブテスト</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_get_provider_metrics</code></td>
+<td style="text-align: left"><code dir="auto">read:health</code></td>
+<td style="text-align: left">p50／p95／p99 レイテンシーおよびサーキットブレーカーの状態を含むプロバイダー別メトリクス</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_best_combo_for_task</code></td>
+<td style="text-align: left"><code dir="auto">read:combos</code>, <code dir="auto">read:health</code></td>
+<td style="text-align: left">予算／レイテンシーの制約に基づき、タスク種別ごとにコンボを推奨</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_explain_route</code></td>
+<td style="text-align: left"><code dir="auto">read:health</code>, <code dir="auto">read:usage</code></td>
+<td style="text-align: left">リクエストが特定のプロバイダーにルーティングされた理由を説明（スコアリング要因＋フォールバック）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_get_session_snapshot</code></td>
+<td style="text-align: left"><code dir="auto">read:usage</code></td>
+<td style="text-align: left">完全なセッションスナップショット：コスト、トークン、上位モデル／プロバイダー、エラー、予算ガード</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_db_health_check</code></td>
+<td style="text-align: left"><code dir="auto">read:health</code>, <code dir="auto">write:resilience</code></td>
+<td style="text-align: left">壊れたコンボ参照／孤立行などのデータベースドリフトを診断（およびオプションで自動修復）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_sync_pricing</code></td>
+<td style="text-align: left"><code dir="auto">pricing:write</code></td>
+<td style="text-align: left">外部ソース（LiteLLM）から料金データを同期。<code dir="auto">dryRun</code> をサポート</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="キャッシュツール-2">キャッシュツール (2)</h2><a class="sl-anchor-link" href="#キャッシュツール-2"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “キャッシュツール (2)”</span></a></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">ツール</th>
+<th style="text-align: left">スコープ</th>
+<th style="text-align: left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_cache_stats</code></td>
+<td style="text-align: left"><code dir="auto">read:cache</code></td>
+<td style="text-align: left">セマンティックキャッシュ、プロンプトキャッシュ、冪等性の統計</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_cache_flush</code></td>
+<td style="text-align: left"><code dir="auto">write:cache</code></td>
+<td style="text-align: left">グローバル、またはシグネチャ／モデル別にキャッシュをフラッシュ</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="圧縮ツール-13">圧縮ツール (13)</h2><a class="sl-anchor-link" href="#圧縮ツール-13"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “圧縮ツール (13)”</span></a></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">ツール</th>
+<th style="text-align: left">スコープ</th>
+<th style="text-align: left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_compression_status</code></td>
+<td style="text-align: left"><code dir="auto">read:compression</code></td>
+<td style="text-align: left">圧縮設定、分析サマリー、キャッシュ考慮型の統計（<code dir="auto">analytics.mcpDescriptionCompression</code> メタデータを含む）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_compression_configure</code></td>
+<td style="text-align: left"><code dir="auto">write:compression</code></td>
+<td style="text-align: left">圧縮モード、しきい値、目標比率、システムプロンプトの保持、MCP 説明圧縮の切り替えを設定</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_set_compression_engine</code></td>
+<td style="text-align: left"><code dir="auto">write:compression</code></td>
+<td style="text-align: left">アクティブなエンジン（off/caveman/rtk/stacked）と Caveman/RTK の強度を選択</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_list_compression_combos</code></td>
+<td style="text-align: left"><code dir="auto">read:compression</code></td>
+<td style="text-align: left">名前付き圧縮コンボとそのエンジンパイプラインを一覧表示</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_compression_combo_stats</code></td>
+<td style="text-align: left"><code dir="auto">read:compression</code></td>
+<td style="text-align: left">圧縮コンボおよびエンジン別にグループ化された分析</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_ccr_store</code></td>
+<td style="text-align: left"><code dir="auto">write:compression</code></td>
+<td style="text-align: left">呼び出し元ごとに分離されたコンテンツを、容量制限付きのインメモリ CCR ストアに保存し、マーカーと <code dir="auto">ccr://</code> 参照を返す</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_ccr_retrieve</code></td>
+<td style="text-align: left"><code dir="auto">read:compression</code></td>
+<td style="text-align: left">CCR コンテンツを完全取得、または先頭、末尾、行、grep、統計モードで取得</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_ccr_inspect</code></td>
+<td style="text-align: left"><code dir="auto">read:compression</code></td>
+<td style="text-align: left">コンテンツを返さずに、呼び出し元が所有する CCR メタデータを検査</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_ccr_list</code></td>
+<td style="text-align: left"><code dir="auto">read:compression</code></td>
+<td style="text-align: left">呼び出し元が所有する CCR ブロックのメタデータをページネーション付きで一覧表示</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_ccr_delete</code></td>
+<td style="text-align: left"><code dir="auto">write:compression</code></td>
+<td style="text-align: left">呼び出し元が所有する CCR ブロックを削除</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_ccr_stats</code></td>
+<td style="text-align: left"><code dir="auto">read:compression</code></td>
+<td style="text-align: left">呼び出し元スコープのメモリ使用量、ライフサイクルカウンター、ストア制限を報告</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_rtk_discover</code></td>
+<td style="text-align: left"><code dir="auto">read:compression</code></td>
+<td style="text-align: left">オプトインされた RTK 出力サンプル内の繰り返しノイズを検出</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_rtk_learn</code></td>
+<td style="text-align: left"><code dir="auto">read:compression</code></td>
+<td style="text-align: left">オプトインされたサンプルからレビュー可能な RTK フィルタードラフトを生成</td>
+</tr>
+</tbody>
+</table>
+<p>CCR エントリはインメモリ専用であり、再起動すると消失します。各ブロックの上限は 2 MiB、各
+プリンシパルの上限は 16 MiB、グローバルストアの上限は 64 MiB です。エントリのデフォルト TTL は 24 時間（最大
+7 日間）です。MCP による完全取得は 256 KiB に制限されます。それより大きいブロックも、
+範囲指定モードおよび grep モードで引き続き取得できます。保存、取得、一覧表示、検査、削除、統計は、
+認証済み API キーのプリンシパルごとに分離されます。監査レコードにはハッシュとサイズのメタデータのみが含まれ、コンテンツは含まれません。</p>
+<p><code dir="auto">omniroute_compression_status</code> は、MCP の説明圧縮を
+<code dir="auto">analytics.mcpDescriptionCompression</code> の下に個別に報告します。これらの値は、MCP で一覧取得可能な
+説明（<code dir="auto">tools</code>、<code dir="auto">prompts</code>、<code dir="auto">resources</code>、<code dir="auto">resourceTemplates</code>）のメタデータサイズ推定値です。プロバイダーの使用量
+記録ではなく、<code dir="auto">source: "mcp_metadata_estimate"</code> としてマークされます。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="mcp-アクセシビリティツリーフィルター-v380">MCP アクセシビリティツリーフィルター (v3.8.0)</h3><a class="sl-anchor-link" href="#mcp-アクセシビリティツリーフィルター-v380"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “MCP アクセシビリティツリーフィルター (v3.8.0)”</span></a></div>
+<p>上記の圧縮ツールとは別に、OmniRoute には、MCP のブラウザ／アクセシビリティツールの<strong>ツール結果</strong>をエージェントへ返す前に圧縮する、実行後フィルターが含まれています。このフィルター自体はツールではありません。冗長なアクセシビリティツリーまたはブラウザスナップショットのテキスト（2,000文字以上）を含む任意のツール結果に対して透過的に実行されます。</p>
+<p>主な動作:</p>
+<ul>
+<li>30行以上連続して繰り返される兄弟行を、先頭＋末尾の要約にまとめる</li>
+<li>Playwright／computer-use に必要な <code dir="auto">[ref=eXX]</code> アンカーを保持する</li>
+<li>サイズが過大なテキスト（50,000文字超）を、ナビゲーションヒント付きで強制的に切り詰める</li>
+<li>想定削減率: ブラウザスナップショットのペイロードで <strong>60～80%</strong></li>
+</ul>
+<p>設定: グローバル設定の <code dir="auto">compression.mcpAccessibility</code>（マイグレーション 056）。
+実装: <code dir="auto">open-sse/services/compression/engines/mcpAccessibility/</code>。
+完全なドキュメント: <a href="/ja-JP/compression/compression-engines/#mcp-accessibility-tree-filter">圧縮エンジン — MCP アクセシビリティツリーフィルター</a>。</p>
+<p>これらのツールの基盤となるランタイム圧縮モデルについては、<a href="/ja-JP/compression/compression-engines/">圧縮エンジン</a>および<a href="/ja-JP/compression/rtk-compression/">RTK 圧縮</a>を参照してください。</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="1proxy-ツール-3">1Proxy ツール (3)</h2><a class="sl-anchor-link" href="#1proxy-ツール-3"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “1Proxy ツール (3)”</span></a></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">ツール</th>
+<th style="text-align: left">スコープ</th>
+<th style="text-align: left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_oneproxy_fetch</code></td>
+<td style="text-align: left"><code dir="auto">read:proxies</code></td>
+<td style="text-align: left">1proxy マーケットプレイスから無料プロキシを取得（プロトコル／国／品質／件数のフィルターに対応）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_oneproxy_rotate</code></td>
+<td style="text-align: left"><code dir="auto">read:proxies</code></td>
+<td style="text-align: left">指定した戦略（<code dir="auto">random</code> / <code dir="auto">quality</code> / <code dir="auto">sequential</code>）で次に利用可能なプロキシを取得</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_oneproxy_stats</code></td>
+<td style="text-align: left"><code dir="auto">read:proxies</code></td>
+<td style="text-align: left">プールの統計、同期ステータス、プロトコル別および国別の分布</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="メモリツール-3">メモリツール (3)</h2><a class="sl-anchor-link" href="#メモリツール-3"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “メモリツール (3)”</span></a></div>
+<p><code dir="auto">open-sse/mcp-server/tools/memoryTools.ts</code> で定義されています。認証／スコープは標準の MCP スコープパイプラインを通じて適用されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">ツール</th>
+<th style="text-align: left">スコープ</th>
+<th style="text-align: left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_memory_search</code></td>
+<td style="text-align: left"><code dir="auto">read:memory</code></td>
+<td style="text-align: left">トークン予算を適用し、クエリ／タイプ／API キーでメモリを検索</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_memory_add</code></td>
+<td style="text-align: left"><code dir="auto">write:memory</code></td>
+<td style="text-align: left">新しいメモリエントリ（<code dir="auto">factual</code> / <code dir="auto">episodic</code> / <code dir="auto">procedural</code> / <code dir="auto">semantic</code>）を追加</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_memory_clear</code></td>
+<td style="text-align: left"><code dir="auto">write:memory</code></td>
+<td style="text-align: left">API キーに関連するメモリを消去。タイプまたは <code dir="auto">olderThan</code> タイムスタンプによる絞り込みも可能</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="スキルツール-4">スキルツール (4)</h2><a class="sl-anchor-link" href="#スキルツール-4"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “スキルツール (4)”</span></a></div>
+<p><code dir="auto">open-sse/mcp-server/tools/skillTools.ts</code> で定義されています。<code dir="auto">src/lib/skills/registry</code> と <code dir="auto">src/lib/skills/executor</code> を基盤として使用します。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">ツール</th>
+<th style="text-align: left">スコープ</th>
+<th style="text-align: left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_skills_list</code></td>
+<td style="text-align: left"><code dir="auto">read:skills</code></td>
+<td style="text-align: left">登録済みスキルを一覧表示。API キー、名前、または有効状態による任意の絞り込みが可能</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_skills_enable</code></td>
+<td style="text-align: left"><code dir="auto">write:skills</code></td>
+<td style="text-align: left">ID を指定して特定のスキルを有効化または無効化</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_skills_execute</code></td>
+<td style="text-align: left"><code dir="auto">execute:skills</code></td>
+<td style="text-align: left">指定された入力でスキルを実行し、実行記録を返す</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_skills_executions</code></td>
+<td style="text-align: left"><code dir="auto">read:skills</code></td>
+<td style="text-align: left">最近のスキル実行履歴を一覧表示</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="notion-コンテキストソース-6">Notion コンテキストソース (6)</h2><a class="sl-anchor-link" href="#notion-コンテキストソース-6"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Notion コンテキストソース (6)”</span></a></div>
+<p><code dir="auto">open-sse/mcp-server/tools/notionTools.ts</code> で定義されています。トークンは <code dir="auto">src/lib/db/notion.ts</code> を介して <code dir="auto">key_value</code> テーブルに保存されます。REST クライアントは <code dir="auto">src/lib/notion/api.ts</code> にあります。設定 API は <code dir="auto">src/app/api/settings/notion/route.ts</code> にあります。ダッシュボード UI は <code dir="auto">src/app/(dashboard)/dashboard/endpoint/components/NotionSourceCard.tsx</code> にあります。</p>
+<p>Endpoint ダッシュボードの <strong>コンテキストソース</strong> タブ、または REST API を使用して Notion インテグレーショントークンを設定します。</p>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.w36nc.css"><script type="module" src="/_astro/ec.0vx5m.js"></script><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">ターミナルウィンドウ</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># トークンを設定</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">curl</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">-X</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">POST</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">http://localhost:20128/api/settings/notion</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">-H</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">Content-Type: application/json</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#82AAFF;--1:#3B61B0">-d</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">{"token": "ntn_..."}</span><span style="--0:#D9F5DD;--1:#111111">'</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># ステータスを確認</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">curl</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">http://localhost:20128/api/settings/notion</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># 接続を解除</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">curl</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">-X</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">DELETE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">http://localhost:20128/api/settings/notion</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="クリップボードにコピー" data-copied="コピーしました！" data-code="curl -X POST http://localhost:20128/api/settings/notion \  -H &quot;Content-Type: application/json&quot; \  -d &#x27;{&quot;token&quot;: &quot;ntn_...&quot;}&#x27;curl http://localhost:20128/api/settings/notioncurl -X DELETE http://localhost:20128/api/settings/notion"><div></div></button></div></figure></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">ツール</th>
+<th style="text-align: left">スコープ</th>
+<th style="text-align: left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">notion_search</code></td>
+<td style="text-align: left"><code dir="auto">read:notion</code></td>
+<td style="text-align: left">すべてのページとデータベースを対象に全文検索</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">notion_get_page</code></td>
+<td style="text-align: left"><code dir="auto">read:notion</code></td>
+<td style="text-align: left">ID を指定してページとそのプロパティを取得</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">notion_list_block_children</code></td>
+<td style="text-align: left"><code dir="auto">read:notion</code></td>
+<td style="text-align: left">ページまたはブロックの子ブロックを一覧表示</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">notion_query_database</code></td>
+<td style="text-align: left"><code dir="auto">read:notion</code></td>
+<td style="text-align: left">フィルター、並べ替え、ページネーションを使用してデータベースを照会</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">notion_get_database</code></td>
+<td style="text-align: left"><code dir="auto">read:notion</code></td>
+<td style="text-align: left">ID を指定してデータベーススキーマを取得</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">notion_append_blocks</code></td>
+<td style="text-align: left"><code dir="auto">write:notion</code></td>
+<td style="text-align: left">親ブロックに子ブロックを追加（1 リクエストあたり最大 100 個）</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="エージェントスキルカタログツール3">エージェントスキルカタログツール（3）</h2><a class="sl-anchor-link" href="#エージェントスキルカタログツール3"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “エージェントスキルカタログツール（3）”</span></a></div>
+<p><code dir="auto">open-sse/mcp-server/tools/agentSkillTools.ts</code> で定義されています。<code dir="auto">src/lib/agentSkills/catalog</code> を基盤としています。これらのツールは、45件のエージェントスキルドキュメントカタログをMCPクライアントおよび外部エージェントに公開します。スコープ：<code dir="auto">read:catalog</code>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">ツール</th>
+<th style="text-align: left">スコープ</th>
+<th style="text-align: left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_agent_skills_list</code></td>
+<td style="text-align: left"><code dir="auto">read:catalog</code></td>
+<td style="text-align: left">45件のエージェントスキルをすべて一覧表示します。オプションで<code dir="auto">category</code>（api|cli）および<code dir="auto">area</code>フィルターを指定でき、メタデータとカバレッジを返します</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_agent_skills_get</code></td>
+<td style="text-align: left"><code dir="auto">read:catalog</code></td>
+<td style="text-align: left">正規<code dir="auto">id</code>を使用して、単一スキルの完全なメタデータとSKILL.mdの内容を取得します</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">omniroute_agent_skills_coverage</code></td>
+<td style="text-align: left"><code dir="auto">read:catalog</code></td>
+<td style="text-align: left">カバレッジ統計：23件のAPI、21件のCLI、1件のconfigスキルのうち、カタログ総数に対してファイルシステム上にSKILL.mdファイルが存在する数を示します</td>
+</tr>
+</tbody>
+</table>
+<p>完全なカタログと外部エージェントによる利用方法については、<a href="/ja-JP/frameworks/agent-skills/">AGENT-SKILLS.md</a>を参照してください。</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="関連フレームワークv380">関連フレームワーク（v3.8.0）</h2><a class="sl-anchor-link" href="#関連フレームワークv380"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “関連フレームワーク（v3.8.0）”</span></a></div>
+<p>上記のMCPツール一覧（<code dir="auto">countUniqueMcpTools()</code>で算出された110個の一意なツール）は、意図的に
+ランタイムのルーティング、キャッシュ、圧縮、メモリ、スキル、プロキシ、コンテキストソース操作に限定されています。v3.8.0では、
+隣接する2つのフレームワークがMCPサーバーとともに提供されており、それぞれ個別にドキュメント化されています。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="クラウドエージェント">クラウドエージェント</h3><a class="sl-anchor-link" href="#クラウドエージェント"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “クラウドエージェント”</span></a></div>
+<p>クラウドエージェントは、LLMプロバイダーに使用されるものと同じ接続モデルを通じて
+OmniRouteに統合された、プロセス外のAIコーディングエージェント（codex-cloud、cursor-cloud、devin、jules）です。これらは
+独自のRESTインターフェース（<code dir="auto">/api/v1/agents/*</code>）を介して公開され、MCPツールカタログには<strong>含まれません</strong>
+— クラウドエージェントを呼び出してもMCPスコープは消費されません。</p>
+<ul>
+<li>実装：<code dir="auto">src/lib/cloudAgent/</code>（<code dir="auto">registry.ts</code>、<code dir="auto">agents/codex.ts</code>、<code dir="auto">agents/cursor.ts</code>、<code dir="auto">agents/devin.ts</code>、<code dir="auto">agents/jules.ts</code>）。</li>
+<li>ライフサイクル：<code dir="auto">createTask</code>、<code dir="auto">getStatus</code>、<code dir="auto">approvePlan</code>、<code dir="auto">sendMessage</code>、<code dir="auto">listSources</code>。</li>
+<li>ドキュメント：<a href="/ja-JP/frameworks/cloud-agent/">docs/frameworks/CLOUD_AGENT.md</a>。</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="ガードレール">ガードレール</h3><a class="sl-anchor-link" href="#ガードレール"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “ガードレール”</span></a></div>
+<p>ガードレールは、チャットパイプライン内で適用される実行前後のフィルター（vision-bridge、pii-masker、prompt-injection）です。
+MCPツール／ルート層に到達する前に実行され、構造化された違反情報を監査パイプラインに送出します。MCPツールとして呼び出されるものではありません。</p>
+<ul>
+<li>実装：<code dir="auto">src/lib/guardrails/</code>。</li>
+<li>ドキュメント：<a href="/ja-JP/security/guardrails/">docs/security/GUARDRAILS.md</a>。</li>
+</ul>
+<p>ブロックされたように見えるMCP呼び出しをデバッグする際は、MCP監査ログ
+（<code dir="auto">scope_denied:*</code>エントリ）とガードレールの監査証跡の両方を確認してください。リクエストは、
+MCPスコープ適用層に到達する<strong>前に</strong>ガードレールによって拒否される場合があります。</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="rest-apiエンドポイント">REST APIエンドポイント</h2><a class="sl-anchor-link" href="#rest-apiエンドポイント"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “REST APIエンドポイント”</span></a></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">エンドポイント</th>
+<th style="text-align: left">メソッド</th>
+<th style="text-align: left">説明</th>
+<th style="text-align: left">認証</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">/api/mcp/status</code></td>
+<td style="text-align: left"><code dir="auto">GET</code></td>
+<td style="text-align: left">サーバー状態：ハートビート、HTTPトランスポートの状態、監査アクティビティの概要</td>
+<td style="text-align: left">管理（セッション／管理者）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">/api/mcp/tools</code></td>
+<td style="text-align: left"><code dir="auto">GET</code></td>
+<td style="text-align: left">ツールカタログ（名前、説明、スコープ、フェーズ、ソースエンドポイント）</td>
+<td style="text-align: left">管理</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">/api/mcp/sse</code></td>
+<td style="text-align: left"><code dir="auto">GET</code> / <code dir="auto">POST</code></td>
+<td style="text-align: left">SSEトランスポートエンドポイント（<code dir="auto">mcpEnabled</code> + <code dir="auto">mcpTransport === "sse"</code>によって制御）</td>
+<td style="text-align: left">APIキー + スコープ</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">/api/mcp/stream</code></td>
+<td style="text-align: left"><code dir="auto">POST</code>/<code dir="auto">GET</code>/<code dir="auto">DELETE</code></td>
+<td style="text-align: left">ストリーミング可能なHTTPトランスポート（<code dir="auto">mcp-session-id</code>ヘッダーを使用し、<code dir="auto">DELETE</code>でセッションを終了）</td>
+<td style="text-align: left">APIキー + スコープ</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">/api/mcp/audit</code></td>
+<td style="text-align: left"><code dir="auto">GET</code></td>
+<td style="text-align: left"><code dir="auto">mcp_tool_audit</code>からの監査ログエントリ（フィルター：<code dir="auto">limit</code>、<code dir="auto">offset</code>、<code dir="auto">tool</code>、<code dir="auto">success</code>、<code dir="auto">apiKeyId</code>）</td>
+<td style="text-align: left">管理</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">/api/mcp/audit/stats</code></td>
+<td style="text-align: left"><code dir="auto">GET</code></td>
+<td style="text-align: left">集計された監査統計（<code dir="auto">totalCalls</code>、<code dir="auto">successRate</code>、<code dir="auto">avgDurationMs</code>、上位ツール）</td>
+<td style="text-align: left">管理</td>
+</tr>
+</tbody>
+</table>
+<p>ソースファイル：<code dir="auto">src/app/api/mcp/{status,tools,sse,stream,audit,audit/stats}/route.ts</code>。</p>
+<p>SSEとストリーミング可能なHTTPトランスポートはどちらも、設定でMCPサーバーが有効化（<code dir="auto">mcpEnabled</code>）され、適切な<code dir="auto">mcpTransport</code>が選択されるまでブロックされます。誤ったトランスポートが設定されている場合、ルートは設定を切り替えるためのヒントとともにHTTP 400を返します。</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="認証とスコープ">認証とスコープ</h2><a class="sl-anchor-link" href="#認証とスコープ"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “認証とスコープ”</span></a></div>
+<p>MCP ツールは、呼び出し元からスコープ文字列を読み取ります。このチェックは、3つの独立した名前空間のうちの1つです。あるチェッカーがパスしても、他のチェッカーがパスするとは限りません。ルールは<a href="#three-scope-namespaces">3つのスコープ名前空間</a>にあります。ツールカタログは<a href="#mcp-tool-scopes">MCPツールスコープ</a>にあります。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="3つのスコープ名前空間">3つのスコープ名前空間</h3><a class="sl-anchor-link" href="#3つのスコープ名前空間"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “3つのスコープ名前空間”</span></a></div>
+<p>APIキーの<code dir="auto">manage</code>、MCPツールの<code dir="auto">read:compression</code>、<code dir="auto">oma_live_…</code>アクセストークンの<code dir="auto">read</code>は、それぞれ異なる許可です。<code dir="auto">read</code>アクセストークンをミューティング管理ルートに送信する呼び出し元は、HTTP 403 <code dir="auto">Access token scope 'read' is insufficient; 'write' required.</code>を受け取ります。このランクは<code dir="auto">scopeSatisfies</code>です。これはMCPテーブルを参照せず、MCPマッチャーもこれを参照しません。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名前空間</th>
+<th style="text-align: left">資格情報</th>
+<th style="text-align: left">チェッカー</th>
+<th style="text-align: left">許可されるもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left">APIキー管理</td>
+<td style="text-align: left"><code dir="auto">api_keys.scopes</code></td>
+<td style="text-align: left"><code dir="auto">hasManageScope</code></td>
+<td style="text-align: left">そのBearerキーの管理REST</td>
+</tr>
+<tr>
+<td style="text-align: left">APIキー追加</td>
+<td style="text-align: left">同じ配列、正確な文字列1つ</td>
+<td style="text-align: left">下記のヘルパー</td>
+<td style="text-align: left">その1つの機能のみ</td>
+</tr>
+<tr>
+<td style="text-align: left">MCPツールスコープ</td>
+<td style="text-align: left">同じ配列、それ以外はMCP <code dir="auto">_meta</code>、それ以外は <code dir="auto">OMNIROUTE_MCP_SCOPES</code></td>
+<td style="text-align: left"><code dir="auto">scopeMatches</code></td>
+<td style="text-align: left">そのツール（強制が有効な場合）</td>
+</tr>
+<tr>
+<td style="text-align: left">アクセストークン</td>
+<td style="text-align: left"><code dir="auto">oma_live_…</code></td>
+<td style="text-align: left"><code dir="auto">scopeSatisfies</code></td>
+<td style="text-align: left">そのランクを必要とする管理ルートのメソッドとパス</td>
+</tr>
+</tbody>
+</table>
+<p>各資格情報のミントは、<a href="/ja-JP/guides/management-auth/">管理認証</a>で説明されています。</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="apiキーのスコープ">APIキーのスコープ</h4><a class="sl-anchor-link" href="#apiキーのスコープ"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “APIキーのスコープ”</span></a></div>
+<p>1つの<code dir="auto">api_keys.scopes</code>配列が2つのジョブに供給されます。これらは異なる関数を使用します。</p>
+<p><strong>管理REST。</strong> <code dir="auto">manage</code>と<code dir="auto">admin</code>は<code dir="auto">MANAGEMENT_API_KEY_SCOPES</code> (<code dir="auto">src/shared/constants/managementScopes.ts</code>)のメンバーです。<code dir="auto">hasManageScope</code>は、そのキーの管理ルートを認証するものです。<code dir="auto">admin</code>は、それらのルートで管理可能です。ここでの<code dir="auto">admin</code>という単語は、アクセストークンのランクではなく、MCPツールスコープに展開されません。</p>
+<p><strong>追加文字列。</strong> それぞれが正確なメンバーシップテストであり、それぞれが<code dir="auto">MANAGEMENT_API_KEY_SCOPES</code>の外に留まります。</p>
+<p>| スコープ | 許可されるもの<br>
+| <code dir="auto">mcp:connect</code> | 非ループバックの<code dir="auto">/api/mcp/</code> LOCAL_ONLYカーブアウトのみ (<code dir="auto">hasMcpConnectOrManageScope</code>)。<code dir="auto">manage</code>または<code dir="auto">admin</code>を持つキーもそのカーブアウトを通過します。 |
+| <code dir="auto">self:usage</code> | このキーの<code dir="auto">GET /api/v1/me/status</code> (<code dir="auto">src/app/api/v1/me/status/route.ts</code>)。<code dir="auto">POST /api/keys</code>は作成時にこのスコープを追加します (<code dir="auto">normalizeSelfServiceScopesForCreate</code>)。 |
+| <code dir="auto">self:account-quota</code> | そのステータスペイロード内のアップストリームアカウントクォータ (<code dir="auto">src/lib/usage/apiKeySelfService.ts</code>)。ステータスルートは引き続き<code dir="auto">self:usage</code>を必要とします。 |
+| <code dir="auto">policy:bypass-provider-quota</code> | このキーの推論呼び出しは、プロバイダー割り当てポリシーをスキップします (<code dir="auto">src/sse/handlers/chat.ts</code>の<code dir="auto">hasProviderQuotaBypassScope</code>)。 |</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="マッチング">マッチング</h4><a class="sl-anchor-link" href="#マッチング"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “マッチング”</span></a></div>
+<p>カタログは<a href="#mcp-tool-scopes">MCPツールスコープ</a>の下の表です。<code dir="auto">src/shared/constants/mcpScopes.ts</code>の<code dir="auto">MCP_SCOPE_LIST</code>をそのカタログとして扱わないでください。それは元の型付きサブセットです。後のツールは、その隣にさらにスコープを宣言します (<code dir="auto">read:notion</code>、<code dir="auto">read:skills</code>、<code dir="auto">read:local-corpus</code>、および残りの表)。</p>
+<p><code dir="auto">open-sse/mcp-server/scopeEnforcement.ts</code>の<code dir="auto">evaluateToolScopes</code>は、すべての必須スコープが許可されたスコープのいずれかに一致する場合に呼び出しを許可します。</p>
+<ul>
+<li><code dir="auto">*</code>は、すべての必須スコープに一致します。</li>
+<li><code dir="auto">*</code>で終わる許可スコープは、アスタリスクの前のプレフィックスで始まる必須スコープに一致します。<code dir="auto">read:*</code>は<code dir="auto">read:compression</code>に一致します。</li>
+<li>その他の許可スコープは、同一の必須文字列にのみ一致します。</li>
+</ul>
+<p>スコープが<code dir="auto">["manage"]</code>であるキーは、<code dir="auto">read:compression</code>の<code dir="auto">scopeMatches</code>に失敗します。同じ呼び出しは、<code dir="auto">admin</code>、<code dir="auto">mcp:connect</code>、<code dir="auto">read</code>、<code dir="auto">write</code>が唯一の許可文字列である場合にも失敗します。MCPツールスコープには、末尾の<code dir="auto">*</code>を超える階層はありません。</p>
+<p>強制は<code dir="auto">OMNIROUTE_MCP_ENFORCE_SCOPES=true</code>でない限りオフです（デフォルトは<code dir="auto">false</code>）。オフの場合、<code dir="auto">evaluateToolScopes</code>は呼び出しを許可し、カタログをスキップします。オンの場合、HTTPはBearerキーの<code dir="auto">api_keys.scopes</code>を<code dir="auto">authInfo</code>として使用します（<a href="#per-key-http-scope-binding-7895">キーごとのHTTPスコープバインディング</a>を参照）。キーのスコープが解決されない場合、許可されたセットはMCP <code dir="auto">_meta</code>、次に<code dir="auto">OMNIROUTE_MCP_SCOPES</code>にフォールスルーします。</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="アクセストークンのスコープ">アクセストークンのスコープ</h4><a class="sl-anchor-link" href="#アクセストークンのスコープ"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “アクセストークンのスコープ”</span></a></div>
+<p><code dir="auto">oma_live_…</code>トークン (<code dir="auto">src/lib/accessTokens/scopes.ts</code>)は、<code dir="auto">read</code>、<code dir="auto">write</code>、または<code dir="auto">admin</code>を運びます。<code dir="auto">scopeSatisfies</code>はランクです。<code dir="auto">admin</code>は<code dir="auto">write</code>と<code dir="auto">read</code>をカバーし、<code dir="auto">write</code>は<code dir="auto">read</code>をカバーします。不明なスコープは何もカバーしません。</p>
+<p><code dir="auto">evaluateAccessTokenAuth</code> (<code dir="auto">src/server/authz/accessTokenAuth.ts</code>)は、そのランクを<code dir="auto">inferRequiredScope</code> (<code dir="auto">src/server/authz/accessScopes.ts</code>)と比較します。</p>
+<ul>
+<li><code dir="auto">GET</code>、<code dir="auto">HEAD</code>、<code dir="auto">OPTIONS</code>は<code dir="auto">read</code>を必要とします。</li>
+<li>その他のメソッドは<code dir="auto">write</code>を必要とします。</li>
+<li><code dir="auto">ADMIN_SCOPE_PREFIXES</code>内のパスは、すべてのメソッドに対して<code dir="auto">admin</code>を必要とします。<code dir="auto">/api/mcp</code>はこのリストにあるため、<code dir="auto">write</code>アクセストークンはMCP HTTPサーフェスを呼び出すことができません。</li>
+<li><code dir="auto">ADMIN_MUTATION_PREFIXES</code>内のパスは、ミューテーションに対してのみ<code dir="auto">admin</code>を必要とします。</li>
+</ul>
+<p><code dir="auto">PATCH /api/keys/{id}</code> はミューテーションであり、それらの管理者リストには含まれていないため、<code dir="auto">read</code> トークンは 403 <code dir="auto">Access token scope 'read' is insufficient; 'write' required.</code> を受け取ります。<code dir="auto">write</code> または <code dir="auto">admin</code> アクセストークンはそのルートを満たします。ダッシュボード JWT、ループバック CLI の machine-id トークン、および <code dir="auto">manage</code> または <code dir="auto">admin</code> を持つ API キーは、他のブランチを通り、このランクによって制限されません。</p>
+<p><code dir="auto">/api/mcp</code> に対して <code dir="auto">scopeSatisfies</code> を通過するアクセストークンは、管理ゲートをクリアしたにすぎません。ツール呼び出しは、引き続き API キーのスコープに対して <code dir="auto">scopeMatches</code> を実行します。アクセストークンのランクは <code dir="auto">scopeMatches</code> の入力ではありません。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="mcpツールのスコープ">MCPツールのスコープ</h3><a class="sl-anchor-link" href="#mcpツールのスコープ"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “MCPツールのスコープ”</span></a></div>
+<p>スコープの強制は <code dir="auto">open-sse/mcp-server/scopeEnforcement.ts</code> に一元化されています。各ツールには特定のスコープが必要です。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">スコープ</th>
+<th style="text-align: left">ツール</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">read:health</code></td>
+<td style="text-align: left"><code dir="auto">get_health</code>, <code dir="auto">get_provider_metrics</code>, <code dir="auto">simulate_route</code>, <code dir="auto">explain_route</code>, <code dir="auto">best_combo_for_task</code>, <code dir="auto">db_health_check</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:combos</code></td>
+<td style="text-align: left"><code dir="auto">list_combos</code>, <code dir="auto">get_combo_metrics</code>, <code dir="auto">simulate_route</code>, <code dir="auto">best_combo_for_task</code>, <code dir="auto">test_combo</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">write:combos</code></td>
+<td style="text-align: left"><code dir="auto">switch_combo</code>, <code dir="auto">set_routing_strategy</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:quota</code></td>
+<td style="text-align: left"><code dir="auto">check_quota</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:usage</code></td>
+<td style="text-align: left"><code dir="auto">cost_report</code>, <code dir="auto">get_session_snapshot</code>, <code dir="auto">explain_route</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:models</code></td>
+<td style="text-align: left"><code dir="auto">list_models_catalog</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">execute:completions</code></td>
+<td style="text-align: left"><code dir="auto">route_request</code>, <code dir="auto">test_combo</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">execute:search</code></td>
+<td style="text-align: left"><code dir="auto">web_search</code>, <code dir="auto">x_search</code>, <code dir="auto">web_fetch</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">write:budget</code></td>
+<td style="text-align: left"><code dir="auto">set_budget_guard</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">write:resilience</code></td>
+<td style="text-align: left"><code dir="auto">set_resilience_profile</code>, <code dir="auto">db_health_check</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">pricing:write</code></td>
+<td style="text-align: left"><code dir="auto">sync_pricing</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:cache</code></td>
+<td style="text-align: left"><code dir="auto">cache_stats</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">write:cache</code></td>
+<td style="text-align: left"><code dir="auto">cache_flush</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:compression</code></td>
+<td style="text-align: left"><code dir="auto">compression_status</code>, <code dir="auto">list_compression_combos</code>, <code dir="auto">compression_combo_stats</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">write:compression</code></td>
+<td style="text-align: left"><code dir="auto">compression_configure</code>, <code dir="auto">set_compression_engine</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:proxies</code></td>
+<td style="text-align: left"><code dir="auto">oneproxy_fetch</code>, <code dir="auto">oneproxy_rotate</code>, <code dir="auto">oneproxy_stats</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:notion</code></td>
+<td style="text-align: left"><code dir="auto">notion_search</code>, <code dir="auto">notion_get_page</code>, <code dir="auto">notion_list_block_children</code>, <code dir="auto">notion_query_database</code>, <code dir="auto">notion_get_database</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">write:notion</code></td>
+<td style="text-align: left"><code dir="auto">notion_append_blocks</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:memory</code></td>
+<td style="text-align: left"><code dir="auto">memory_search</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">write:memory</code></td>
+<td style="text-align: left"><code dir="auto">memory_add</code>, <code dir="auto">memory_clear</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:skills</code></td>
+<td style="text-align: left"><code dir="auto">skills_list</code>, <code dir="auto">skills_executions</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">write:skills</code></td>
+<td style="text-align: left"><code dir="auto">skills_enable</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">execute:skills</code></td>
+<td style="text-align: left"><code dir="auto">skills_execute</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:catalog</code></td>
+<td style="text-align: left"><code dir="auto">agent_skills_list</code>, <code dir="auto">agent_skills_get</code>, <code dir="auto">agent_skills_coverage</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:tools</code></td>
+<td style="text-align: left"><code dir="auto">omniroute_tool_search</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:radar</code></td>
+<td style="text-align: left"><code dir="auto">omniroute_radar_catalog</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:gamification</code></td>
+<td style="text-align: left"><code dir="auto">gamification_profile</code>, <code dir="auto">gamification_rank</code>, <code dir="auto">gamification_leaderboard</code>, <code dir="auto">gamification_badges</code>, <code dir="auto">gamification_servers</code>, <code dir="auto">gamification_anomalies</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">write:gamification</code></td>
+<td style="text-align: left"><code dir="auto">gamification_invite</code>, <code dir="auto">gamification_transfer</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:plugins</code></td>
+<td style="text-align: left"><code dir="auto">plugin_list</code>, <code dir="auto">plugin_executions</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">write:plugins</code></td>
+<td style="text-align: left"><code dir="auto">plugin_scan</code>, <code dir="auto">plugin_install</code>, <code dir="auto">plugin_uninstall</code>, <code dir="auto">plugin_activate</code>, <code dir="auto">plugin_deactivate</code>, <code dir="auto">plugin_configure</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:obsidian</code></td>
+<td style="text-align: left">13個の読み取りツール — <code dir="auto">obsidian_list_vault</code>, <code dir="auto">obsidian_read_note</code>, <code dir="auto">obsidian_search_simple</code>, <code dir="auto">obsidian_search_structured</code>, <code dir="auto">obsidian_get_periodic_note</code>, <code dir="auto">obsidian_sync_status</code>, …</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">write:obsidian</code></td>
+<td style="text-align: left">9個の書き込みツール — <code dir="auto">obsidian_write_note</code>, <code dir="auto">obsidian_append_note</code>, <code dir="auto">obsidian_patch_note</code>, <code dir="auto">obsidian_move_note</code>, <code dir="auto">obsidian_delete_note</code>, <code dir="auto">obsidian_sync_trigger</code>, …</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read:local-corpus</code></td>
+<td style="text-align: left"><code dir="auto">local_corpus_search</code>, <code dir="auto">local_corpus_read</code>, <code dir="auto">local_corpus_status</code></td>
+</tr>
+</tbody>
+</table>
+<p>ワイルドカードスコープがサポートされています:<code dir="auto">read:*</code>はすべての読み取りスコープを付与し、<code dir="auto">*</code>は完全なアクセスを付与します。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="mcpconnect--ルート機能の絞り込み-7895"><code dir="auto">mcp:connect</code> — ルート機能の絞り込み (#7895)</h3><a class="sl-anchor-link" href="#mcpconnect--ルート機能の絞り込み-7895"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “mcp:connect — ルート機能の絞り込み (#7895)”</span></a></div>
+<p>非ループバックからHTTP/SSE MCPトランスポート（<code dir="auto">/api/mcp/*</code>）に到達するには、<code dir="auto">/api/mcp/</code> LOCAL_ONLYの特別許可（<code dir="auto">docs/security/ROUTE_GUARD_TIERS.md</code>を参照）が必要です。これまで、この特別許可は完全な<code dir="auto">manage</code>/<code dir="auto">admin</code>スコープのAPIキーのみを受け入れていましたが、これはMCPとの通信のみを必要とする呼び出し元にとっては広すぎました。<code dir="auto">src/shared/constants/managementScopes.ts</code>は現在<code dir="auto">MCP_CONNECT_SCOPE = "mcp:connect"</code>をエクスポートしています。これは、<code dir="auto">SELF_USAGE_SCOPE</code>と同じ前例を持つ、追加的で狭いスコープであり、<code dir="auto">src/server/authz/policies/management.ts</code>における<code dir="auto">/api/mcp/</code>バイパスのみを承認します。他の管理ルートアクセスは一切付与せず、意図的に<code dir="auto">MANAGEMENT_API_KEY_SCOPES</code>から除外されています。<code dir="auto">manage</code>/<code dir="auto">admin</code>を持つキーは引き続き特別許可をそのまま通過します。<code dir="auto">mcp:connect</code>は、リモートのMCP専用呼び出し元向けの低権限の代替手段であり、<code dir="auto">hasMcpConnectOrManageScope()</code>を介してチェックされます。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="キーごとのhttpスコープバインディング-7895">キーごとのHTTPスコープバインディング (#7895)</h3><a class="sl-anchor-link" href="#キーごとのhttpスコープバインディング-7895"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “キーごとのHTTPスコープバインディング (#7895)”</span></a></div>
+<p>HTTP/SSEでは、<code dir="auto">open-sse/mcp-server/httpTransport.ts</code>が<code dir="auto">resolveMcpCallerAuthInfo()</code>（<code dir="auto">open-sse/mcp-server/httpAuthContext.ts</code>）を介して呼び出し元の実際の<code dir="auto">api_keys.scopes</code>を解決し、MCP SDKの<code dir="auto">transport.handleRequest(req, { authInfo })</code>に渡すようになりました。これにより、各ツール呼び出しに到達する<code dir="auto">extra.authInfo.scopes</code>は、Bearerキー自身のスコープを反映します。<code dir="auto">scopeEnforcement.ts</code>の<code dir="auto">resolveCallerScopeContext()</code>は、すでに<code dir="auto">_meta</code>および<code dir="auto">OMNIROUTE_MCP_SCOPES</code>環境フォールバックよりも<code dir="auto">authInfo</code>を優先していました。今回の変更は、これまでHTTP経由で供給されていなかった、その最初の最高優先度のソースにデータを投入するだけです。APIキーが解決されない場合（ヘッダーなし、無効なキー）、<code dir="auto">authInfo</code>は<code dir="auto">undefined</code>のままであり、解決は既存の<code dir="auto">meta</code>/環境チェーンにそのままフォールバックします。これは<code dir="auto">OMNIROUTE_MCP_ENFORCE_SCOPES</code>のデフォルトを反転させるものではありません。強制は依然として明示的に有効にする必要があります。この変更は、有効になった場合にキーごとのパスが優先されるようにするだけです。stdioには呼び出し元ごとのIDがないため（<code dir="auto">mcpCallerIdentity.ts</code>を参照）、影響を受けません。これは<code dir="auto">_meta</code>/環境フォールバックチェーンにとどまります。</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="環境変数">環境変数</h2><a class="sl-anchor-link" href="#環境変数"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “環境変数”</span></a></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">変数</th>
+<th style="text-align: left">デフォルト</th>
+<th style="text-align: left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">OMNIROUTE_BASE_URL</code></td>
+<td style="text-align: left"><code dir="auto">http://localhost:20128</code></td>
+<td style="text-align: left">MCP サーバーが OmniRoute の内部 API を呼び出す際に使用するベース URL</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">OMNIROUTE_API_KEY</code></td>
+<td style="text-align: left">（空）</td>
+<td style="text-align: left">内部 API 呼び出しに <code dir="auto">Authorization: Bearer</code> として転送される API キー</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">OMNIROUTE_MCP_ENFORCE_SCOPES</code></td>
+<td style="text-align: left"><code dir="auto">false</code>（<code dir="auto">"true"</code> のみ有効化）</td>
+<td style="text-align: left">有効にすると、必要なスコープがない場合はツール呼び出しを拒否し、監査ログに <code dir="auto">scope_denied:&lt;reason&gt;</code> を記録</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">OMNIROUTE_MCP_SCOPES</code></td>
+<td style="text-align: left">（空）</td>
+<td style="text-align: left">デフォルトで「利用可能」とみなされるスコープのカンマ区切り許可リスト（呼び出し元が独自のスコープを指定しない場合に使用）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">OMNIROUTE_MCP_COMPRESS_DESCRIPTIONS</code></td>
+<td style="text-align: left">（未設定 = オン）</td>
+<td style="text-align: left"><code dir="auto">0/false/off/no</code> に設定すると、登録時の MCP 説明圧縮を無効化</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">OMNIROUTE_MCP_DESCRIPTION_COMPRESSION</code></td>
+<td style="text-align: left">（未設定 = オン）</td>
+<td style="text-align: left">上記と同じ切り替え機能の代替エイリアス</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">OMNIROUTE_MCP_FETCH_TIMEOUT_MS</code></td>
+<td style="text-align: left"><code dir="auto">10000</code></td>
+<td style="text-align: left">内部管理情報の読み取り（ヘルス、レジリエンス、コンボ、クォータ、使用量）を中断するまでの時間</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">OMNIROUTE_MCP_UPSTREAM_TIMEOUT_MS</code></td>
+<td style="text-align: left"><code dir="auto">60000</code></td>
+<td style="text-align: left">プロバイダーからの応答を待つホップ（<code dir="auto">route_request</code>、<code dir="auto">web_search</code>、<code dir="auto">web_fetch</code>）を中断するまでの時間</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">MCP_TOOL_DENY</code></td>
+<td style="text-align: left">（未設定 = フィルターなし）</td>
+<td style="text-align: left"><code dir="auto">tools/list</code> から除外するツール名のカンマ区切りリスト（ツール数の削減 — 下記参照）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">MCP_TOOL_ALLOW</code></td>
+<td style="text-align: left">（未設定 = フィルターなし）</td>
+<td style="text-align: left">排他的に保持するツール名のカンマ区切りリスト（許可リストモード — 下記参照）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">DATA_DIR</code></td>
+<td style="text-align: left"><code dir="auto">~/.omniroute</code></td>
+<td style="text-align: left">ハートビートファイルは <code dir="auto">${DATA_DIR}/runtime/mcp-heartbeat.json</code> に書き込まれる</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="説明の圧縮">説明の圧縮</h2><a class="sl-anchor-link" href="#説明の圧縮"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “説明の圧縮”</span></a></div>
+<p>MCP のツール、プロンプト、およびリソースのレジストリでは、クライアントに公開されるメタデータの量（したがってプロンプトのコンテキストコスト）を削減するため、登録時または一覧取得時に説明を圧縮できます。実装は <code dir="auto">open-sse/mcp-server/descriptionCompressor.ts</code> にあり、<code dir="auto">createMcpServer()</code> 内の <code dir="auto">compressMcpRegistryMetadata</code> を介して MCP サーバーに組み込まれています。</p>
+<ul>
+<li>圧縮では、構造的な内容が変更されないように保持対象ブロック（コードスパン、フェンス付きブロックなど）を抽出したうえで、Caveman ルールセット（<code dir="auto">getRulesForContext("all", "full")</code>）を使用して説明テキストを処理します。</li>
+<li>デプロイごとに、<code dir="auto">key_value</code> 設定テーブルの <code dir="auto">compression.mcpDescriptionCompressionEnabled</code> 値（デフォルト：有効）で切り替えられます。UI では <strong>Analytics → MCP description compression</strong> として表示されます。</li>
+<li>プロセス全体では、<code dir="auto">OMNIROUTE_MCP_COMPRESS_DESCRIPTIONS=false</code> または <code dir="auto">OMNIROUTE_MCP_DESCRIPTION_COMPRESSION=false</code> のいずれかで切り替えられます。</li>
+<li>リアルタイム統計は、<code dir="auto">analytics.mcpDescriptionCompression</code> 配下の <code dir="auto">omniroute_compression_status</code> を介して公開され、実際のプロバイダー使用量のレシートと区別するために <code dir="auto">source: "mcp_metadata_estimate"</code> がタグ付けされます。</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="ツール数の削減f43">ツール数の削減（F4.3）</h2><a class="sl-anchor-link" href="#ツール数の削減f43"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “ツール数の削減（F4.3）”</span></a></div>
+<p>説明の圧縮では各ツールのメタデータを縮小しますが、<strong>ツール数の削減</strong>ではさらに一歩進め、通知するツールの_数そのもの_を減らします。<code dir="auto">tools/list</code> マニフェストで公開するツールを減らすことで、クライアントのモデルがツールカタログに対して支払うリクエストごとのトークンコスト（「レイヤー5」の圧縮）を削減します。実装は <code dir="auto">open-sse/mcp-server/toolCardinality.ts</code> の純粋かつステートレスなフィルター（<code dir="auto">reduceToolManifest</code>）であり、<code dir="auto">createMcpServer()</code>（<code dir="auto">open-sse/mcp-server/server.ts</code>）の登録ループに組み込まれています。</p>
+<p><strong>オプトイン方式で、デフォルトでは無効です。</strong> このフィルターは、2つの環境変数のうち少なくとも1つが設定されている場合にのみ実行されます。どちらも設定されていない場合、110個のツールがすべて変更なしで通知されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">変数</th>
+<th style="text-align: left">モード</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">MCP_TOOL_DENY</code></td>
+<td style="text-align: left">ブラックリスト — <code dir="auto">tools/list</code> から常に除外するツール名をカンマ区切りで指定</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">MCP_TOOL_ALLOW</code></td>
+<td style="text-align: left">許可リスト — ツール名をカンマ区切りで指定し、指定したツールのみを残して、それ以外は除外</td>
+</tr>
+</tbody>
+</table>
+<p><code dir="auto">deny</code> は <code dir="auto">allow</code> より優先されます。名前はカンマで区切られ、前後の空白は除去され、空のエントリは無視されます。例：</p>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">ターミナルウィンドウ</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># カタログから2つのツールを除外</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">MCP_TOOL_DENY</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">omniroute_get_health,omniroute_list_combos</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">omniroute</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--mcp</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># ルーティングとクォータのツールのみを通知（許可リストモード）</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">MCP_TOOL_ALLOW</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">omniroute_route_request,omniroute_check_quota</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">omniroute</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--mcp</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="クリップボードにコピー" data-copied="コピーしました！" data-code="MCP_TOOL_DENY=&quot;omniroute_get_health,omniroute_list_combos&quot; omniroute --mcpMCP_TOOL_ALLOW=&quot;omniroute_route_request,omniroute_check_quota&quot; omniroute --mcp"><div></div></button></div></figure></div>
+<p><strong>フィルタリングされたツールの削除方法：</strong> 登録自体は常に成功します。その後、プロファイルによって拒否されたツールに対して、MCP SDKハンドル上で <code dir="auto">.disable()</code> が呼び出されます。これにより、そのツールは <code dir="auto">tools/list</code> に表示されなくなりますが、接続構成は維持されます（再登録せずに明確な有効化／無効化が可能です）。プロファイルパーサーは <code dir="auto">readMcpToolProfileFromEnv(process.env)</code> で、両方の変数が空の場合は <code dir="auto">null</code>（フィルタリングなし）を返します。</p>
+<p><code dir="auto">reduceToolManifest</code> の背後にある、より高機能な <code dir="auto">ToolProfile</code> の構造では、スコープの共通部分によるフィルタリング（<code dir="auto">allowScopes</code>。<code dir="auto">read:*</code> 形式のワイルドカードマッチングに対応）と、決定論的な <code dir="auto">maxTools</code> 上限もサポートしています。ただし、この2つの設定には登録時に完全なマニフェストが必要であり、現時点では環境変数を通じて<strong>公開されていません</strong>（<code dir="auto">tools/list</code> レベルのフックは、追跡中のフォローアップ項目です）。<code dir="auto">estimateManifestTokens()</code> を使用すると、削減前後のマニフェストのトークンコストを比較できます。</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="ランタイムハートビート">ランタイムハートビート</h2><a class="sl-anchor-link" href="#ランタイムハートビート"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “ランタイムハートビート”</span></a></div>
+<p>stdioトランスポートは、5秒ごとに稼働状態を <code dir="auto">${DATA_DIR}/runtime/mcp-heartbeat.json</code> に永続化します。ダッシュボード（<code dir="auto">/api/mcp/status</code>）は、このファイルとPIDの稼働状態を読み取り、<code dir="auto">online</code> を判定します。一方、HTTPトランスポートは、プロセス内の <code dir="auto">getMcpHttpStatus()</code> から状態を報告します（ファイルへの書き込みはありません）。</p>
+<p>ハートビートのスナップショットには、次の情報が含まれます：</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="json"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">"pid"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#F78C6C;--1:#AA0982">12345</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">"startedAt"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">2026-05-13T12:34:56.000Z</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">"lastHeartbeatAt"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">2026-05-13T12:35:01.000Z</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">"version"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">1.8.1</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">"transport"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">stdio</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">"scopesEnforced"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#FF6A83;--1:#A24848">false</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">"allowedScopes"</span><span style="--0:#D6DEEB;--1:#403F53">: [],</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">"toolCount"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#F78C6C;--1:#AA0982">110</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="クリップボードにコピー" data-copied="コピーしました！" data-code="{  &quot;pid&quot;: 12345,  &quot;startedAt&quot;: &quot;2026-05-13T12:34:56.000Z&quot;,  &quot;lastHeartbeatAt&quot;: &quot;2026-05-13T12:35:01.000Z&quot;,  &quot;version&quot;: &quot;1.8.1&quot;,  &quot;transport&quot;: &quot;stdio&quot;,  &quot;scopesEnforced&quot;: false,  &quot;allowedScopes&quot;: [],  &quot;toolCount&quot;: 110}"><div></div></button></div></figure></div>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="監査ログ">監査ログ</h2><a class="sl-anchor-link" href="#監査ログ"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “監査ログ”</span></a></div>
+<p>すべてのツール呼び出しは、<code dir="auto">open-sse/mcp-server/audit.ts</code> によってSQLiteの <code dir="auto">mcp_tool_audit</code> テーブルへ記録されます：</p>
+<ul>
+<li>ツール名、引数（ツールごとの <code dir="auto">auditLevel</code> に従ってハッシュ化／切り詰め）、結果</li>
+<li>所要時間（ミリ秒）、成功／失敗フラグ、エラーメッセージ（該当する場合）</li>
+<li>APIキーハッシュ、タイムスタンプ</li>
+<li>スコープ拒否は、不足しているスコープのリストとともに <code dir="auto">scope_denied:&lt;reason&gt;</code> として記録</li>
+</ul>
+<p>最近の呼び出しを確認するには、ダッシュボード、または <code dir="auto">/api/mcp/audit</code> および <code dir="auto">/api/mcp/audit/stats</code> RESTエンドポイントを使用してください。</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="ファイル">ファイル</h2><a class="sl-anchor-link" href="#ファイル"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “ファイル”</span></a></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">ファイル</th>
+<th style="text-align: left">目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/server.ts</code></td>
+<td style="text-align: left">MCP サーバーファクトリ、stdio エントリーポイント、スコープ付きツール登録</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/httpTransport.ts</code></td>
+<td style="text-align: left">SSE + Streamable HTTP トランスポート（セッション管理）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/scopeEnforcement.ts</code></td>
+<td style="text-align: left">ツールスコープの評価と呼び出し元の解決</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/audit.ts</code></td>
+<td style="text-align: left">ツール呼び出しの監査ログ（<code dir="auto">mcp_tool_audit</code>）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/runtimeHeartbeat.ts</code></td>
+<td style="text-align: left">stdio ハートビートライター（<code dir="auto">mcp-heartbeat.json</code>）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/descriptionCompressor.ts</code></td>
+<td style="text-align: left">ツール／プロンプト／リソースレジストリ向けの説明圧縮</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/schemas/tools.ts</code></td>
+<td style="text-align: left">Zod スキーマ + ツールレジストリ（<code dir="auto">MCP_TOOLS</code>、45 エントリ）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/tools/advancedTools.ts</code></td>
+<td style="text-align: left">フェーズ 2 + キャッシュ + 1proxy ツールハンドラー</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/tools/compressionTools.ts</code></td>
+<td style="text-align: left">圧縮ツールハンドラー</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/tools/memoryTools.ts</code></td>
+<td style="text-align: left">メモリツール定義（3 ツール）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/tools/skillTools.ts</code></td>
+<td style="text-align: left">スキルツール定義（4 ツール）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/tools/notionTools.ts</code></td>
+<td style="text-align: left">Notion コンテキストソースツール定義（6 ツール）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/tools/gamificationTools.ts</code></td>
+<td style="text-align: left">ゲーミフィケーションツール定義（8 ツール）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">open-sse/mcp-server/tools/pluginTools.ts</code></td>
+<td style="text-align: left">プラグイン登録および管理ツール（8 ツール）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">src/app/api/mcp/status/route.ts</code></td>
+<td style="text-align: left"><code dir="auto">/api/mcp/status</code> エンドポイント</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">src/app/api/mcp/tools/route.ts</code></td>
+<td style="text-align: left"><code dir="auto">/api/mcp/tools</code> エンドポイント</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">src/app/api/mcp/sse/route.ts</code></td>
+<td style="text-align: left"><code dir="auto">/api/mcp/sse</code> SSE トランスポートルート</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">src/app/api/mcp/stream/route.ts</code></td>
+<td style="text-align: left"><code dir="auto">/api/mcp/stream</code> Streamable HTTP トランスポートルート</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">src/app/api/mcp/audit/route.ts</code></td>
+<td style="text-align: left"><code dir="auto">/api/mcp/audit</code> 監査ログクエリ</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">src/app/api/mcp/audit/stats/route.ts</code></td>
+<td style="text-align: left"><code dir="auto">/api/mcp/audit/stats</code> 集約監査メトリクス</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">src/lib/notion/api.ts</code></td>
+<td style="text-align: left">Notion REST API クライアント（再試行、タイムアウト、エラー分類）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">src/lib/db/notion.ts</code></td>
+<td style="text-align: left">Notion トークンの永続化（<code dir="auto">key_value</code> テーブル）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">src/app/api/settings/notion/route.ts</code></td>
+<td style="text-align: left">Notion 設定 API（GET/POST/DELETE）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">src/app/(dashboard)/dashboard/endpoint/components/NotionSourceCard.tsx</code></td>
+<td style="text-align: left">Notion トークン管理 UI</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">tests/unit/notion-api.test.ts</code></td>
+<td style="text-align: left">Notion API クライアントテスト（7 件）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">tests/unit/notion-tools.test.ts</code></td>
+<td style="text-align: left">Notion ツールのスコープ適用テスト（10 件）</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">tests/unit/db/notion.test.mjs</code></td>
+<td style="text-align: left">Notion DB モジュールテスト（3 件）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/diegosouzapw/OmniRoute/blob/a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3/docs/i18n/ja/docs/frameworks/MCP-SERVER.md">undefined (a58000c7685f)</a></p>
+</div><section class="hagilight-article-promotion astro-hrtshdxc" aria-labelledby="hagilight-article-promotion-title"><div class="hagilight-article-promotion__pitch astro-hrtshdxc"><div class="hagilight-article-promotion__intro astro-hrtshdxc"><h2 id="hagilight-article-promotion-title" class="astro-hrtshdxc">HagiCode</h2><p class="hagilight-article-promotion__lead astro-hrtshdxc">HagiCode はエージェント型コーディングワークスペースです。豊富で便利な UI インタラクションにより、計画・エージェント実行・プロジェクト作業を始めやすく、進めやすくし、開発をより魅力的な体験にします。</p><p class="hagilight-article-promotion__tagline astro-hrtshdxc">豊富で便利な UI インタラクションで、計画からプロジェクト作業までを分かりやすく進められます。</p><div class="hagilight-article-promotion__actions astro-hrtshdxc"><a class="hagilight-article-promotion__cta hagilight-article-promotion__cta--primary astro-hrtshdxc" href="https://www.hagicode.com/ja-JP/" data-ga-category="navigation" data-ga-label="home" data-ga-location="article_promotion"><picture class="hagilight-article-promotion__cta-avatar astro-hrtshdxc" data-random-fan="[&quot;cat-head-gallery/g002-ukiyo-e-01.avif&quot;,&quot;cat-head-gallery/g003-watercolor-wash-02.avif&quot;,&quot;cat-head-gallery/g004-pixel-art-03.avif&quot;,&quot;cat-head-gallery/g005-oil-impasto-06.avif&quot;,&quot;cat-head-gallery/g006-paper-cut-layers-07.avif&quot;,&quot;cat-head-gallery/g008-low-poly-07.avif&quot;,&quot;cat-head-gallery/g009-claymation-07.avif&quot;,&quot;cat-head-gallery/g010-neon-line-07.avif&quot;,&quot;cat-head-gallery/g016-bauhaus-geometry-06.avif&quot;,&quot;cat-head-gallery/g017-cyanotype-06.avif&quot;,&quot;cat-head-gallery/g020-origami-03.avif&quot;,&quot;cat-head-gallery/g022-blueprint-03.avif&quot;,&quot;cat-head-gallery/g023-chalk-pastel-10.avif&quot;,&quot;cat-head-gallery/g025-voxel-03.avif&quot;,&quot;cat-head-gallery/g031-illuminated-manuscript-04.avif&quot;,&quot;cat-head-gallery/g034-vaporwave-04.avif&quot;,&quot;cat-head-gallery/g035-synthwave-chrome-09.avif&quot;,&quot;cat-head-gallery/g038-frosted-glass-02.avif&quot;,&quot;cat-head-gallery/g039-needle-felt-09.avif&quot;,&quot;cat-head-gallery/g041-glossy-balloon-05.avif&quot;,&quot;cat-head-gallery/g042-blue-white-porcelain-05.avif&quot;,&quot;cat-head-gallery/g043-glazed-ceramic-06.avif&quot;,&quot;cat-head-gallery/g045-impressionist-08.avif&quot;,&quot;cat-head-gallery/g047-fauvist-09.avif&quot;,&quot;cat-head-gallery/g048-cubist-10.avif&quot;,&quot;cat-head-gallery/g051-naive-folk-art-07.avif&quot;,&quot;cat-head-gallery/g056-wax-print-fabric-07.avif&quot;,&quot;cat-head-gallery/g058-red-paper-cut-10.avif&quot;,&quot;cat-head-gallery/g060-kawaii-pastel-01.avif&quot;,&quot;cat-head-gallery/g061-retro-90s-anime-01.avif&quot;,&quot;cat-head-gallery/g062-shoujo-sparkle-08.avif&quot;,&quot;cat-head-gallery/g065-saturday-cartoon-09.avif&quot;,&quot;cat-head-gallery/g067-pixar-style-3d-03.avif&quot;,&quot;cat-head-gallery/g068-toon-shaded-3d-04.avif&quot;,&quot;cat-head-gallery/g069-ps1-lowpoly-06.avif&quot;,&quot;cat-head-gallery/g070-matte-clay-render-07.avif&quot;,&quot;cat-head-gallery/g071-y2k-chrome-08.avif&quot;,&quot;cat-head-gallery/g072-glossy-3d-icon-08.avif&quot;,&quot;cat-head-gallery/g073-marble-bust-08.avif&quot;,&quot;cat-head-gallery/g075-wood-carving-10.avif&quot;,&quot;cat-head-gallery/g076-carved-jade-10.avif&quot;,&quot;cat-head-gallery/g078-toy-brick-02.avif&quot;,&quot;cat-head-gallery/g079-designer-vinyl-toy-02.avif&quot;,&quot;cat-head-gallery/g081-patchwork-quilt-03.avif&quot;,&quot;cat-head-gallery/g083-warhol-silkscreen-04.avif&quot;,&quot;cat-head-gallery/g088-vintage-lithograph-02.avif&quot;,&quot;cat-head-gallery/g090-alcohol-marker-09.avif&quot;,&quot;cat-head-gallery/g091-painterly-concept-art-09.avif&quot;,&quot;cat-head-gallery/g092-gradient-minimal-09.avif&quot;,&quot;cat-head-gallery/g095-constellation-map-09.avif&quot;]"><source srcset="/_astro/cat-head.Bs0ee_DA_Z1HnUtp.avif 96w, /_astro/cat-head.Bs0ee_DA_Z1sjoGX.avif 192w" type="image/avif" sizes="52px"><source srcset="/_astro/cat-head.Bs0ee_DA_ZnYURv.webp 96w, /_astro/cat-head.Bs0ee_DA_Z19SCba.webp 192w" type="image/webp" sizes="52px"><img src="/_astro/cat-head.Bs0ee_DA_14vqcf.jpeg" srcset="/_astro/cat-head.Bs0ee_DA_ZLGtLS.jpeg 96w, /_astro/cat-head.Bs0ee_DA_1NoRXD.jpeg 192w" alt sizes="52px" loading="lazy" decoding="async" width="1200" height="1200" class="astro-hrtshdxc"></picture><span class="astro-hrtshdxc">HagiCode を見る</span><svg class="hagilight-article-promotion__arrow astro-hrtshdxc" aria-hidden="true" focusable="false" viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h11M11 5l5 5-5 5" class="astro-hrtshdxc"></path></svg></a><a class="hagilight-article-promotion__cta hagilight-article-promotion__cta--secondary astro-hrtshdxc" href="https://docs.hagicode.com/ja-JP/product-overview/" data-ga-category="navigation" data-ga-label="productDocs" data-ga-location="article_promotion">ドキュメントを読む</a></div></div><ul class="hagilight-article-promotion__features astro-hrtshdxc" aria-label="HagiCode"><li class="astro-hrtshdxc"><span class="hagilight-article-promotion__icon astro-hrtshdxc" aria-hidden="true" style="--hagilight-pillar-icon: url(/_astro/pillar-smart.DAOAYOW6.svg)"></span><strong class="astro-hrtshdxc">スマート</strong><span class="hagilight-article-promotion__feature-text astro-hrtshdxc">OpenSpec ワークフローが意図を、提案・設計・タスクから変更のリリースまで実行可能な道筋にします。</span></li><li class="astro-hrtshdxc"><span class="hagilight-article-promotion__icon astro-hrtshdxc" aria-hidden="true" style="--hagilight-pillar-icon: url(/_astro/pillar-efficient.fRriWHtK.svg)"></span><strong class="astro-hrtshdxc">効率的</strong><span class="hagilight-article-promotion__feature-text astro-hrtshdxc">マルチエージェント実行で調査・実装・レビューを並行して進め、複数リポジトリや使い慣れた Agent CLI にも対応します。</span></li><li class="astro-hrtshdxc"><span class="hagilight-article-promotion__icon astro-hrtshdxc" aria-hidden="true" style="--hagilight-pillar-icon: url(/_astro/pillar-fun.CqXYOQWh.svg)"></span><strong class="astro-hrtshdxc">興味深い</strong><span class="hagilight-article-promotion__feature-text astro-hrtshdxc">豊富で便利な UI インタラクションにより、計画・エージェント実行・プロジェクト作業を始めやすく、進めやすくします。</span></li></ul></div><script type="module" src="/_astro/ArticlePromotionPicker.astro_astro_type_script_index_0_lang.DPK0WrHw.js"></script><div class="hagilight-article-promotion__closing astro-hrtshdxc"><div class="hagilight-article-promotion__windows astro-hrtshdxc"><h3 id="hagilight-article-promotion-windows-title" class="hagilight-article-promotion__windows-label astro-hrtshdxc">Windows 版をダウンロード</h3><div class="hagilight-article-promotion__windows-actions astro-hrtshdxc"><ms-store-badge productid="9N3PM0N3SVDW" productname="HagiCode" window-mode="direct" theme="auto" size="large" animation="on" language="ja" aria-label="Microsoft Store で HagiCode を開く" title="Microsoft Store で HagiCode を開く" data-ga-category="store" data-ga-label="microsoftStore" data-ga-location="article_promotion" data-ga-url="https://apps.microsoft.com/detail/9N3PM0N3SVDW" class="astro-hrtshdxc"><a class="hagilight-article-promotion__store-fallback astro-hrtshdxc" href="https://apps.microsoft.com/detail/9N3PM0N3SVDW" aria-label="Microsoft Store で HagiCode を開く" title="Microsoft Store で HagiCode を開く">Microsoft Store で入手</a></ms-store-badge><a class="hagilight-article-promotion__downloads astro-hrtshdxc" href="https://www.hagicode.com/ja-JP/desktop/" data-ga-category="download" data-ga-label="downloadClient" data-ga-location="article_promotion"><span class="astro-hrtshdxc">すべてのダウンロード</span><svg class="hagilight-article-promotion__arrow astro-hrtshdxc" aria-hidden="true" focusable="false" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h11M11 5l5 5-5 5" class="astro-hrtshdxc"></path></svg></a></div></div><div class="hagilight-article-promotion__share astro-hrtshdxc"><h3 id="hagilight-article-promotion-share-title" class="astro-hrtshdxc">HagiCode を共有</h3><p class="hagilight-article-promotion__share-text astro-hrtshdxc">HagiCode は豊富で便利な UI インタラクションにより、計画・エージェント実行・プロジェクト作業を進めやすくします：https://www.hagicode.com/</p></div></div></section><script type="module" src="https://get.microsoft.com/badge/ms-store-badge.bundled.js"></script><footer class="sl-flex astro-octabiqj"><div class="meta sl-flex astro-octabiqj"></div><div class="pagination-links print:hidden astro-ysueks2u" dir="ltr"><a href="/ja-JP/frameworks/log-export/" rel="prev" class="astro-ysueks2u"><svg aria-hidden="true" class="astro-ysueks2u astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-ysueks2u">前のページ<br class="astro-ysueks2u"><span class="link-title astro-ysueks2u">Log export</span></span></a><a href="/ja-JP/frameworks/memory/" rel="next" class="astro-ysueks2u"><svg aria-hidden="true" class="astro-ysueks2u astro-qqhptvga" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-ysueks2u">次のページ<br class="astro-ysueks2u"><span class="link-title astro-ysueks2u">Memory System</span></span></a></div></footer><div class="hagilight-brand-host astro-dwwngyvw"><section class="hagilight-brand astro-74pic7j3" lang="ja-JP" aria-labelledby="hagilight-brand-title"><div class="hagilight-brand__lead astro-74pic7j3"><div class="hagilight-brand__title astro-74pic7j3"><picture class="hagilight-brand__avatar astro-74pic7j3" data-random-fan="[&quot;cat-head-gallery/g002-ukiyo-e-01.avif&quot;,&quot;cat-head-gallery/g003-watercolor-wash-02.avif&quot;,&quot;cat-head-gallery/g004-pixel-art-03.avif&quot;,&quot;cat-head-gallery/g005-oil-impasto-06.avif&quot;,&quot;cat-head-gallery/g006-paper-cut-layers-07.avif&quot;,&quot;cat-head-gallery/g008-low-poly-07.avif&quot;,&quot;cat-head-gallery/g009-claymation-07.avif&quot;,&quot;cat-head-gallery/g010-neon-line-07.avif&quot;,&quot;cat-head-gallery/g016-bauhaus-geometry-06.avif&quot;,&quot;cat-head-gallery/g017-cyanotype-06.avif&quot;,&quot;cat-head-gallery/g020-origami-03.avif&quot;,&quot;cat-head-gallery/g022-blueprint-03.avif&quot;,&quot;cat-head-gallery/g023-chalk-pastel-10.avif&quot;,&quot;cat-head-gallery/g025-voxel-03.avif&quot;,&quot;cat-head-gallery/g031-illuminated-manuscript-04.avif&quot;,&quot;cat-head-gallery/g034-vaporwave-04.avif&quot;,&quot;cat-head-gallery/g035-synthwave-chrome-09.avif&quot;,&quot;cat-head-gallery/g038-frosted-glass-02.avif&quot;,&quot;cat-head-gallery/g039-needle-felt-09.avif&quot;,&quot;cat-head-gallery/g041-glossy-balloon-05.avif&quot;,&quot;cat-head-gallery/g042-blue-white-porcelain-05.avif&quot;,&quot;cat-head-gallery/g043-glazed-ceramic-06.avif&quot;,&quot;cat-head-gallery/g045-impressionist-08.avif&quot;,&quot;cat-head-gallery/g047-fauvist-09.avif&quot;,&quot;cat-head-gallery/g048-cubist-10.avif&quot;,&quot;cat-head-gallery/g051-naive-folk-art-07.avif&quot;,&quot;cat-head-gallery/g056-wax-print-fabric-07.avif&quot;,&quot;cat-head-gallery/g058-red-paper-cut-10.avif&quot;,&quot;cat-head-gallery/g060-kawaii-pastel-01.avif&quot;,&quot;cat-head-gallery/g061-retro-90s-anime-01.avif&quot;,&quot;cat-head-gallery/g062-shoujo-sparkle-08.avif&quot;,&quot;cat-head-gallery/g065-saturday-cartoon-09.avif&quot;,&quot;cat-head-gallery/g067-pixar-style-3d-03.avif&quot;,&quot;cat-head-gallery/g068-toon-shaded-3d-04.avif&quot;,&quot;cat-head-gallery/g069-ps1-lowpoly-06.avif&quot;,&quot;cat-head-gallery/g070-matte-clay-render-07.avif&quot;,&quot;cat-head-gallery/g071-y2k-chrome-08.avif&quot;,&quot;cat-head-gallery/g072-glossy-3d-icon-08.avif&quot;,&quot;cat-head-gallery/g073-marble-bust-08.avif&quot;,&quot;cat-head-gallery/g075-wood-carving-10.avif&quot;,&quot;cat-head-gallery/g076-carved-jade-10.avif&quot;,&quot;cat-head-gallery/g078-toy-brick-02.avif&quot;,&quot;cat-head-gallery/g079-designer-vinyl-toy-02.avif&quot;,&quot;cat-head-gallery/g081-patchwork-quilt-03.avif&quot;,&quot;cat-head-gallery/g083-warhol-silkscreen-04.avif&quot;,&quot;cat-head-gallery/g088-vintage-lithograph-02.avif&quot;,&quot;cat-head-gallery/g090-alcohol-marker-09.avif&quot;,&quot;cat-head-gallery/g091-painterly-concept-art-09.avif&quot;,&quot;cat-head-gallery/g092-gradient-minimal-09.avif&quot;,&quot;cat-head-gallery/g095-constellation-map-09.avif&quot;]"><source type="image/avif" srcset="/_astro/avatar.BPGAI8am.avif" class="astro-74pic7j3"><source type="image/webp" srcset="/_astro/avatar.BBqcj7YN.webp" class="astro-74pic7j3"><img src="/_astro/avatar.BBqcj7YN.webp" width="64" height="64" alt aria-hidden="true" loading="lazy" decoding="async" class="astro-74pic7j3"></picture><h2 class="hagilight-brand__headline astro-74pic7j3" id="hagilight-brand-title">アイデアを、出荷できるソフトウェアへ。</h2></div><div class="hagilight-brand__body astro-74pic7j3"><p class="hagilight-brand__summary astro-74pic7j3">HagiCode はエージェント型コーディングワークスペースです。OpenSpec ワークフローで変更を計画し、マルチエージェント実行で進め、Hero Scenario で長い作業の進み具合を見える化して、アイデアを出荷できるソフトウェアにします。</p><div class="hagilight-brand__actions astro-74pic7j3"><a class="hagilight-brand__primary astro-74pic7j3" href="https://www.hagicode.com/ja-JP/desktop/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=downloadClient&amp;utm_content=footer_brand" data-ga-category="download" data-ga-label="downloadClient" data-ga-location="footer_brand"><span class="astro-74pic7j3">HagiCode をダウンロード</span><svg class="hagilight-brand__arrow astro-74pic7j3" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M2.5 8h10M8.5 3.5 13 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="astro-74pic7j3"></path></svg></a><a class="hagilight-brand__secondary astro-74pic7j3" href="https://docs.hagicode.com/ja-JP/product-overview/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=productDocs&amp;utm_content=footer_brand" data-ga-category="navigation" data-ga-label="productDocs" data-ga-location="footer_brand">製品ドキュメント</a></div></div></div><dl class="hagilight-brand__pillars astro-74pic7j3"><div class="hagilight-brand__pillar astro-74pic7j3" data-pillar="smart" style="--hagilight-brand-i: 0"><dt class="astro-74pic7j3">スマート</dt><dd class="astro-74pic7j3">OpenSpec ワークフローが、意図を提案からリリースまでの実行可能な道筋にします。</dd></div><div class="hagilight-brand__pillar astro-74pic7j3" data-pillar="efficient" style="--hagilight-brand-i: 1"><dt class="astro-74pic7j3">効率的</dt><dd class="astro-74pic7j3">マルチエージェント実行で、調査・実装・レビューを並行して進めます。</dd></div><div class="hagilight-brand__pillar astro-74pic7j3" data-pillar="fun" style="--hagilight-brand-i: 2"><dt class="astro-74pic7j3">楽しい</dt><dd class="astro-74pic7j3">使いやすい UI で、計画・Agent 実行・プロジェクト作業を進めやすくします。</dd></div></dl><script type="module" src="/_astro/FooterAvatarPicker.astro_astro_type_script_index_0_lang.DPK0WrHw.js"></script></section></div><div class="hagilight-site-links astro-dwwngyvw"><div class="hagilight-cols astro-dwwngyvw"><nav class="hagilight-col astro-dwwngyvw" data-column="start" style="--hagilight-col-i: 0" aria-labelledby="hagilight-col-start"><h2 id="hagilight-col-start" class="astro-dwwngyvw">はじめる</h2><ul class="astro-dwwngyvw"><li class="astro-dwwngyvw"><a href="https://www.hagicode.com/ja-JP/desktop/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=downloadClient&amp;utm_content=footer" data-ga-category="download" data-ga-label="downloadClient" data-ga-location="footer" class="astro-dwwngyvw">HagiCode をダウンロード</a></li><li class="astro-dwwngyvw"><a href="https://apps.microsoft.com/detail/9N3PM0N3SVDW" target="_blank" rel="noopener noreferrer" data-ga-category="store" data-ga-label="microsoftStore" data-ga-location="footer" class="astro-dwwngyvw">HagiCode for Windows をダウンロード</a></li><li class="astro-dwwngyvw"><a href="https://docs.hagicode.com/ja-JP/installation/docker-compose/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=dockerCompose&amp;utm_content=footer" data-ga-category="navigation" data-ga-label="dockerCompose" data-ga-location="footer" class="astro-dwwngyvw">Docker Compose インストール</a></li><li class="astro-dwwngyvw"><a href="https://docs.hagicode.com/ja-JP/product-overview/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=productDocs&amp;utm_content=footer" data-ga-category="navigation" data-ga-label="productDocs" data-ga-location="footer" class="astro-dwwngyvw">製品ドキュメント</a></li><li class="astro-dwwngyvw"><a href="https://www.hagicode.com/ja-JP/about/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=about&amp;utm_content=footer" class="astro-dwwngyvw">HagiCode について</a></li><li class="astro-dwwngyvw"><a href="https://www.hagicode.com/ja-JP/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=hagicode-main&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">HagiCode 公式サイト</a></li></ul></nav><nav class="hagilight-col astro-dwwngyvw" data-column="learn" style="--hagilight-col-i: 1" aria-labelledby="hagilight-col-learn"><h2 id="hagilight-col-learn" class="astro-dwwngyvw">学ぶ・ドキュメント</h2><ul class="astro-dwwngyvw"><li class="astro-dwwngyvw"><a href="https://docs.hagicode.com/ja-JP/blog/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=blogPosts&amp;utm_content=footer" data-ga-category="navigation" data-ga-label="blogPosts" data-ga-location="footer" class="astro-dwwngyvw">ブログ記事</a></li><li class="astro-dwwngyvw"><a href="https://openspec.hagicode.com/ja-JP/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=openspec-docs&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">OpenSpec ドキュメント</a></li><li class="astro-dwwngyvw"><a href="https://fullstack.hagicode.com/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=fullstack-tutorial&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">HagiCode Fullstack</a></li><li class="astro-dwwngyvw"><a href="https://impeccable.hagicode.com/ja-JP/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=impeccable-site&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">Impeccable Commands</a></li><li class="astro-dwwngyvw"><a href="https://awesome.hagicode.com/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=awesome-sites&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">Awesome Sites</a></li><li class="astro-dwwngyvw"><a href="https://design.hagicode.com/ja-JP/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=awesome-design-gallery&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">Awesome Design MD</a></li></ul></nav><nav class="hagilight-col astro-dwwngyvw" data-column="build" style="--hagilight-col-i: 2" aria-labelledby="hagilight-col-build"><h2 id="hagilight-col-build" class="astro-dwwngyvw">ツールとリソース</h2><ul class="astro-dwwngyvw"><li class="astro-dwwngyvw"><a href="https://tasks.hagicode.com/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=hagitask&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">HagiTask</a></li><li class="astro-dwwngyvw"><a href="https://builder.hagicode.com/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=compose-builder&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">Docker Compose Builder</a></li><li class="astro-dwwngyvw"><a href="https://soul.hagicode.com/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=soul-builder&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">Soul Builder</a></li><li class="astro-dwwngyvw"><a href="https://trait.hagicode.com/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=trait-builder&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">Trait Builder</a></li><li class="astro-dwwngyvw"><a href="https://cost.hagicode.com/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=costCalculator&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">AI に置き換えられるか診断</a></li><li class="astro-dwwngyvw"><a href="https://gallery.hagicode.com/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=gallery&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">HagiCode Gallery</a></li><li class="astro-dwwngyvw"><a href="https://index.hagicode.com/data/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=index-data&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">Index Data Mirror</a></li></ul></nav><nav class="hagilight-col astro-dwwngyvw" data-column="community" style="--hagilight-col-i: 3" aria-labelledby="hagilight-col-community"><h2 id="hagilight-col-community" class="astro-dwwngyvw">コミュニティとサポート</h2><ul class="astro-dwwngyvw"><li class="astro-dwwngyvw"><a href="https://github.com/HagiCode-org/site" target="_blank" rel="noopener" data-ga-category="community" data-ga-label="github" data-ga-location="footer" class="astro-dwwngyvw">GitHub</a></li><li class="astro-dwwngyvw"><a href="https://discord.gg/qY662sJK" target="_blank" rel="noopener noreferrer" data-ga-category="community" data-ga-label="discord" data-ga-location="footer" class="astro-dwwngyvw">Discord</a></li><li class="astro-dwwngyvw"><a href="https://github.com/HagiCode-org/site/issues" target="_blank" rel="noopener" data-ga-category="community" data-ga-label="issueFeedback" data-ga-location="footer" class="astro-dwwngyvw">問題の報告</a></li><li class="astro-dwwngyvw"><a href="mailto:support@hagicode.com" class="astro-dwwngyvw">連絡先メール</a></li><li class="astro-dwwngyvw"><a href="https://qm.qq.com/q/Fwb0o094kw" target="_blank" rel="noopener noreferrer" class="astro-dwwngyvw">QQ グループ 610394020</a></li><li class="astro-dwwngyvw"><a href="https://newbe.hagicode.com/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=newbe-blog&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">newbe</a></li><li class="astro-dwwngyvw"><a href="https://status.hagicode.com/?utm_source=omniroute-docs&amp;utm_medium=footer&amp;utm_campaign=status-page&amp;utm_content=footer" target="_blank" rel="noopener" class="astro-dwwngyvw">HagiCode Status</a></li></ul></nav></div><div class="hagilight-footer__base astro-dwwngyvw"><nav class="hagilight-footer__feeds astro-dwwngyvw" aria-label="配信とサイトマップ"><a href="https://omniroute.hagicode.com/rss.xml" class="astro-dwwngyvw">RSS 配信</a><a href="https://omniroute.hagicode.com/rss.ja-JP.xml" class="astro-dwwngyvw">現在の言語 RSS</a><a href="/sitemap-index.xml" class="astro-dwwngyvw">サイトマップ</a></nav><nav class="hagilight-filings astro-dwwngyvw" aria-label="登録情報を表示"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" aria-label="ICP 登録情報を表示" class="astro-dwwngyvw">ICP届出 闽ICP备2026004153号-1</a><a href="http://www.beian.gov.cn/portal/registerSystemInfo" target="_blank" rel="noopener noreferrer" aria-label="公安登録情報を表示" class="astro-dwwngyvw">公安届出 闽公网安备35011102351148号</a><button type="button" class="hagilight-consent-entry astro-dwwngyvw" data-consent-preferences>Cookie設定</button></nav></div></div><p class="hagilight-copyright astro-dwwngyvw"><span>© 2026 HagiCode</span> | <span class="hagilight-copyright__attribution astro-dwwngyvw">Powered By hagilight-starlight@0.20.0</span> | <span class="hagilight-copyright__build astro-dwwngyvw" data-build-field="branch">Branch: main</span> | <span class="hagilight-copyright__build astro-dwwngyvw" data-build-field="commit" title="5288fdb2edfcb6a8d8f532572b520660617afab0" data-build-commit="5288fdb2edfcb6a8d8f532572b520660617afab0">Commit: 5288fdb</span> | <span class="hagilight-copyright__build astro-dwwngyvw" data-build-field="builtAt">Built: <time datetime="2026-10-31T07:25:58Z" class="astro-dwwngyvw">2026-10-31T07:25:58Z</time></span></p><hagilight-promoto-banner class="hagilight-promoto" data-locale="ja-JP" data-site-id="omniroute-docs" hidden="true"><section class="hagilight-promoto__shell" data-promoto-shell hidden aria-label="Featured promotion"><div class="hagilight-promoto__viewport"><div class="hagilight-promoto__track" data-promoto-track></div></div><nav class="hagilight-promoto__controls" data-promoto-controls aria-label="Promotion controls" hidden><button type="button" class="hagilight-promoto__control" data-promoto-previous aria-label="Previous promotion"><svg class="hagilight-promoto__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 6l-6 6 6 6"></path></svg></button><span class="hagilight-promoto__count" data-promoto-count aria-label="Promotion progress"></span><button type="button" class="hagilight-promoto__control" data-promoto-next aria-label="Next promotion"><svg class="hagilight-promoto__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6"></path></svg></button><button type="button" class="hagilight-promoto__control" data-promoto-pause aria-pressed="false" aria-label="Pause automatic promotion rotation"><svg class="hagilight-promoto__icon hagilight-promoto__icon--pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6v12M15 6v12"></path></svg><svg class="hagilight-promoto__icon hagilight-promoto__icon--play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z"></path></svg></button></nav><button type="button" class="hagilight-promoto__dismiss" data-promoto-dismiss aria-label="Dismiss promotion"><svg class="hagilight-promoto__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"></path></svg></button><span class="hagilight-promoto__progress" data-promoto-progress aria-hidden="true"></span><span class="hagilight-promoto__status" data-promoto-status aria-live="polite"></span></section></hagilight-promoto-banner><script type="module" src="/_astro/PromotoBanner.astro_astro_type_script_index_0_lang.Bqtf5HtZ.js"></script><script type="application/json" data-hagilight-analytics="fiftyOneLa">{"siteId":"L6b88a5yK4h2Xnci"}</script><script type="module" src="/_astro/Analytics51LA.astro_astro_type_script_index_0_lang.BUyC1NdD.js"></script><script type="application/json" id="hagilight-consent-config">{"policyVersion":"1","privacyUrl":null,"providers":["googleAnalytics","fiftyOneLa","posthog"],"locale":"ja-JP"}</script><div class="hagilight-consent-host"><section class="hagilight-consent" data-hagilight-consent data-state="undecided" role="region" aria-labelledby="hagilight-consent-title" hidden><h2 class="hagilight-consent__title" id="hagilight-consent-title">Cookieと分析</h2><p class="hagilight-consent__intro">HagiCodeは、このサイトの利用状況を把握するために分析を使用します。選択するまで、分析サービスは読み込まれません。</p><p class="hagilight-consent__choice" data-consent-choice data-choice-granted="許可済み" data-choice-denied="拒否済み" data-choice-undecided="未選択">現在の選択: <span data-consent-choice-value>未選択</span></p><div class="hagilight-consent__actions"><button type="button" class="hagilight-consent__button" data-consent-accept>分析を許可</button><button type="button" class="hagilight-consent__button" data-consent-reject>拒否</button></div><button type="button" class="hagilight-consent__toggle" data-consent-toggle aria-expanded="false" aria-controls="hagilight-consent-details">詳細</button><div class="hagilight-consent__details" id="hagilight-consent-details" data-consent-details hidden><section class="hagilight-consent__category hagilight-consent__category--necessary"><h3>必須：常にオン</h3><p>サイトの動作と、言語やテーマなどの選択内容の保存に必要です。</p><ul><li><code>hagicode_consent</code> <span>cookie</span></li><li><code>hagicode:consent</code> <span>localStorage</span></li><li><code>hagicode:site-locale</code> <span>localStorage</span></li><li><code>starlight-route</code> <span>localStorage</span></li><li><code>hagicode_locale_monitor</code> <span>cookie</span></li><li><code>hagicode:locale-monitor</code> <span>localStorage</span></li><li><code>hagilight-theme</code> <span>localStorage</span></li><li><code>starlight-theme</code> <span>localStorage</span></li><li><code>hagilight-content-width</code> <span>localStorage</span></li><li><code>hagilight:promoto-banner:dismissed-signature</code> <span>localStorage</span></li></ul></section><section class="hagilight-consent__category hagilight-consent__category--analytics"><h3>分析：許可するまでオフ</h3><p>セッションリプレイ（提供元がセッションを記録する場合）は分析に含まれます。画面を録画する提供元はありません。 (Google Analytics, 51LA, PostHog)</p><ul><li><code>_ga</code> <span>cookie</span></li><li><code>_ga_&lt;id&gt;</code> <span>cookie</span></li><li><code>ph_&lt;key&gt;_posthog</code> <span>cookie</span></li><li><code>ph_&lt;key&gt;_posthog</code> <span>localStorage</span></li><li><code>__ph_opt_in_out_&lt;key&gt;</code> <span>localStorage</span></li><li><code>ph_&lt;key&gt;_session_registered_properties</code> <span>sessionStorage</span></li><li><code>ph_&lt;key&gt;_primary_window_exists</code> <span>sessionStorage</span></li></ul></section><p class="hagilight-consent__withdraw">いつでも「Cookie設定」から変更できます。</p></div></section></div><script type="module" src="/_astro/CookieConsent.astro_astro_type_script_index_0_lang.BqLtKDOu.js"></script></div></div></main></div></div></div></div></body></html>
