@@ -345,3 +345,4 @@
 {"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"promote","id":"sqlite","kind":"doNotTranslate","docs":2,"version":35,"doc":"docs/README.md"}
 {"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"confirm","id":"cooldown","target":"冷却","docs":2,"by":"use","version":35,"doc":"docs/README.md"}
 {"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"promote","id":"cooldown","target":"冷却","docs":2,"docNames":["docs/diagrams/README.md","docs/README.md"],"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:47:08.000Z","run":"20261030-1846","op":"human-decision","id":"gate","kind":"doNotTranslate","was":"闸门","version":36,"note":"user ruled: obvious technical words keep original in every language"}

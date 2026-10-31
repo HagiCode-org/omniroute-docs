@@ -66,7 +66,7 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [REPOSITORY_MAP.md](architecture/REPOSITORY_MAP.md) — 按目录逐一导航的指南。
 - [AUTHZ_GUIDE.md](architecture/AUTHZ_GUIDE.md) — 授权管线（路由分类器 + 策略引擎）。
 - [RESILIENCE_GUIDE.md](architecture/RESILIENCE_GUIDE.md) — 提供者断路器、连接冷却与模型锁定。
-- [QUALITY_GATES.md](architecture/QUALITY_GATES.md) — 质量门禁脚本与 CI 任务清单。
+- [QUALITY_GATES.md](architecture/QUALITY_GATES.md) — quality-gate 脚本与 CI 任务清单。
 - [MONITORING_SECTIONS.md](architecture/MONITORING_SECTIONS.md) — 监控/成本仪表盘的导航。
 - [cluster-decisions.md](architecture/cluster-decisions.md) — 可选的 sidecar/集群配置决策。
 - [DESIGN_SYSTEM.md](architecture/DESIGN_SYSTEM.md) — 设计系统与视觉识别。
@@ -98,10 +98,10 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [MCP-SERVER.md](frameworks/MCP-SERVER.md) — Model Context Protocol 服务器。
 - [A2A-SERVER.md](frameworks/A2A-SERVER.md) — Agent-to-Agent（A2A）JSON-RPC 服务器。
 - [ACP.md](frameworks/ACP.md) — Agent Client Protocol（智能体客户端协议）。
-- [AGENT_PROTOCOLS_GUIDE.md](frameworks/AGENT_PROTOCOLS_GUIDE.md) — A2A / ACP / 云智能体概览。
+- [AGENT_PROTOCOLS_GUIDE.md](frameworks/AGENT_PROTOCOLS_GUIDE.md) — A2A / ACP / 云端智能体概览。
 - [AGENTBRIDGE.md](frameworks/AGENTBRIDGE.md) — IDE 智能体桥接。
 - [AGENT-SKILLS.md](frameworks/AGENT-SKILLS.md) — 智能体技能目录。
-- [CLOUD_AGENT.md](frameworks/CLOUD_AGENT.md) — 云智能体运行时与提供者。
+- [CLOUD_AGENT.md](frameworks/CLOUD_AGENT.md) — 云端智能体运行时与提供者。
 - [SKILLS.md](frameworks/SKILLS.md) — Skills 框架（沙箱化扩展）。
 - [MEMORY.md](frameworks/MEMORY.md) — 持久化记忆（FTS5 + Qdrant）。
 - [WEBHOOKS.md](frameworks/WEBHOOKS.md) — Webhook 事件与分发。
@@ -146,7 +146,7 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [AGENTROUTER_WAF.md](security/AGENTROUTER_WAF.md) — agentrouter.org 的 WAF。
 - [CORS.md](security/CORS.md) — CORS 配置与安全。
 - [MITM-TPROXY-DECRYPT.md](security/MITM-TPROXY-DECRYPT.md) — 透明 MITM 解密。
-- [SUPPLY_CHAIN.md](security/SUPPLY_CHAIN.md) — 供应链门禁（SLSA、SBOM、Trivy、osv-scanner、Scorecard）。
+- [SUPPLY_CHAIN.md](security/SUPPLY_CHAIN.md) — 供应链 gate（SLSA、SBOM、Trivy、osv-scanner、Scorecard）。
 - [SOCKET_DEV_FINDINGS.md](security/SOCKET_DEV_FINDINGS.md) — 供应链发现项的证明记录。
 
 ## compression/
@@ -186,7 +186,7 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [BRANCHING_MODEL.md](ops/BRANCHING_MODEL.md) — 分支与发布模型。
 - [MERGE_TRAIN.md](ops/MERGE_TRAIN.md) — 合并队列与手动 merge-train 运行手册。
 - [HOMOLOGATION.md](ops/HOMOLOGATION.md) — 一致性验证套件（`npm run homolog`）。
-- [QUALITY_GATE_PLAYBOOK.md](ops/QUALITY_GATE_PLAYBOOK.md) — 质量门禁操作手册。
+- [QUALITY_GATE_PLAYBOOK.md](ops/QUALITY_GATE_PLAYBOOK.md) — quality-gate 操作手册。
 - [RUNNER_BOX.md](ops/RUNNER_BOX.md) — 自托管 runner 主机的运维。
 - [BRANCH_PROTECTION_MAIN.md](ops/BRANCH_PROTECTION_MAIN.md) — `main` 分支保护。
 - [CONTRIBUTION_GOLDEN_PATH.md](ops/CONTRIBUTION_GOLDEN_PATH.md) — 贡献的标准流程（按变更类型执行针对性检查）。

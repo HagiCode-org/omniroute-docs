@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": 35,
-  "updatedAt": "2026-10-31T01:33:34.123Z",
+  "version": 36,
+  "updatedAt": "2026-10-31T01:46:58.819Z",
   "doNotTranslate": [
     {
       "term": "OmniRoute",
@@ -200,6 +200,12 @@
       "note": "数据库名，保留原写法",
       "origin": "auto",
       "locked": false
+    },
+    {
+      "term": "gate",
+      "note": "人工裁决 2026-10-30:gate 属于明显的技术词,任何语言都保留原文(含 quality-gate、supply-chain gates 等复合写法)",
+      "origin": "human",
+      "locked": true
     }
   ],
   "terms": [
@@ -580,26 +586,6 @@
       "lastSeen": {
         "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
         "run": "run3"
-      },
-      "conflicts": []
-    },
-    {
-      "id": "gate",
-      "source": "gate",
-      "target": "闸门",
-      "alt": [],
-      "note": "质量闸门（release-acceptance gate）",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
-      "occurrences": 2,
-      "firstSeen": {
-        "doc": "docs/architecture/QUALITY_EVIDENCE_CONTRACT.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/ops/HARD_RULES_DETAIL.md",
-        "run": "20261030-run2"
       },
       "conflicts": []
     },

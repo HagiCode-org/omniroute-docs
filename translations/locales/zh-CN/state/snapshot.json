@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "locale": "zh-CN",
-  "updatedAt": "2026-10-31T01:33:34.125Z",
-  "lastRun": "20261030-1832",
+  "updatedAt": "2026-10-31T01:47:14.941Z",
+  "lastRun": "20261030-1846",
   "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
-  "glossaryVersion": 35,
-  "glossarySha256": "30d75bbcc1bcc40f755e449a52b0d660787630fb1ff2b6c420d0b1cf42f1371e",
+  "glossaryVersion": 36,
+  "glossarySha256": "2f03b08e7eea1927219f2d764a613c09bf7e44ef107bb08f4b73ad49ebd26629",
   "docs": {
     "docs/guides/CLI-COMPANION.md": {
       "status": "done",
@@ -73,20 +73,20 @@
       "sourceSha256": "301ad78a0c25241018eb6f10c82be90bc1a41fbcaf0a0c48236e79d0cf9e2ff9",
       "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
       "translationPath": "translations/locales/zh-CN/content/docs/README.md",
-      "translationSha256": "77198d885684c9550e014736d8f49414379127ff5ac79a1a1ad30ccb0e218361",
-      "glossaryVersion": 34,
+      "translationSha256": "db13e3a4e3b0e6e89a8769af733211509dec7ad4930c4b7aec0565864d9dbcb1",
+      "glossaryVersion": 36,
       "attempts": 1,
-      "runId": "20261030-1832",
-      "doneAt": "2026-10-31T01:33:34.120Z",
+      "runId": "20261030-1846",
+      "doneAt": "2026-10-31T01:47:14.941Z",
       "reviewedAt": null,
       "flags": [
-        "glossary: preferred rendering used fewer times than the source term occurs (Cloud Agent 2/0, Context 5/4, gate 2/0, Guardrail 3/2, profile 1/0, prompt 2/1); these renderings are in unchanged previous text kept byte for byte in incremental mode",
-        "glossary: preferred rendering used fewer times than the term occurs in the source: Cloud Agent → 云端智能体 (source ×2, translation ×0)"
+        "edit: gate kept in English per human ruling; 云智能体 → 云端智能体",
+        "glossary: preferred rendering used fewer times than the term occurs in the source: Context → 上下文 (source ×5, translation ×4); Guar"
       ],
       "note": "",
-      "model": "haiku",
+      "model": "opus-main",
       "retries": 0,
-      "seconds": 100,
+      "seconds": 120,
       "termTargets": {
         "agent": "智能体",
         "circuit-breaker": "断路器",
@@ -102,7 +102,6 @@
         "eval-suite": "评估套件",
         "factor": "因素",
         "free-tier": "免费层",
-        "gate": "闸门",
         "guardrail": "护栏",
         "locale": "语言环境",
         "merge-queue": "合并队列",
