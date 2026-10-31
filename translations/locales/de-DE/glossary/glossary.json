@@ -1,0 +1,884 @@
+{
+  "schema": 1,
+  "version": 1,
+  "updatedAt": "2026-10-31T01:57:33.574Z",
+  "doNotTranslate": [
+    {
+      "term": "gateway",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "proxy",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "endpoint",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "profile",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "prompt",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "locale",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "manifest",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "harness",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "relay",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "circuit breaker",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "canary",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "smoke test",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "loopback",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "readback",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "sentinel",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "worktree",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "subagent",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "fallback",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "cooldown",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "connection cooldown",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "opt-in",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "forward-port",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "whitelist",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "blacklist",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "launcher",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "composer",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "clipboard",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "bootstrap token",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "dashboard",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "compare-and-swap",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "guardrail",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "provenance",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "receipt",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "probe",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "fixtures",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "reducer",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "producer",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "agent",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "coding agent",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Cloud Agent",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "self-hosted",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "headless mode",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "prompt compression",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "gate",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Kubernetes",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Helm",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Kustomize",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Ingress",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Docker Compose",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Azure",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Perplexity",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Notion",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Obsidian",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Qdrant",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Fumadocs",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Electron",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Termux",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Caddy",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Playwright",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Chromium",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Groq",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Clerk",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Mergify",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Conditional Access",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Trusted Publishing",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "OmniRoute",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "HagiCode",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Aider",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Anthropic",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Antigravity",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Claude",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Codex",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Copilot",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Cursor",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Docker",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Gemini",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Goose",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Kiro",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "LiteLLM",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Ollama",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "OpenAI",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "OpenCode",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Qwen",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "sidecar",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Traefik",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Claude Code",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "ChatGPT",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "VS Code",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "worktree",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "ZCode",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "GLM",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "GitHub",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Grok Build",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Radar",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Auto",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Redis",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Cloudflare",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "SQLite",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "gate",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "fallback",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "whitelist",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "probe",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "fixtures",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "reducer",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "producer",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "subagent",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "opt-in",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "forward-port",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "launcher",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "composer",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "clipboard",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "bootstrap token",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Kubernetes",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Helm",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Kustomize",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Ingress",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Docker Compose",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Azure",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Perplexity",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Notion",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Obsidian",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Qdrant",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Fumadocs",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Electron",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Termux",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Caddy",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Playwright",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Chromium",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Groq",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Mergify",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Clerk",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "LMSYS",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "StackSocial",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Bifrost",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "CLIProxyAPI",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "9Router",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "OmniConductor",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "OmniCopilot",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Grok CLI",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "OpenCode Go",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "ChatPlayground",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Cloud Sync",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Agent Card",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Conditional Access",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "Trusted Publishing",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "reverse proxy",
+      "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    }
+  ],
+  "terms": []
+}
