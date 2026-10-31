@@ -300,3 +300,48 @@
 {"ts":"2026-10-30T21:04:46.338Z","run":"20261030-run2","op":"promote","id":"grok-build","kind":"doNotTranslate","docs":2,"version":34,"doc":"docs/providers/grok-cli-media.md"}
 {"ts":"2026-10-30T21:04:46.338Z","run":"20261030-run2","op":"reject","id":"grok-imagine","target":null,"reason":"not-in-source: the term does not occur in the document's prose","version":34,"doc":"docs/providers/grok-cli-media.md"}
 {"ts":"2026-10-30T21:04:46.338Z","run":"20261030-run2","op":"reject","id":"xai","target":null,"reason":"identifier: looks like a path, flag or code symbol","version":34,"doc":"docs/providers/grok-cli-media.md"}
+{"ts":"2026-10-31T01:32:16.797Z","run":"20261030-1832","op":"stage","id":"api-bridge","target":"API 桥接器","version":34,"doc":"docs/security/INFERENCE_AUTH_POSTURE.md"}
+{"ts":"2026-10-31T01:33:02.060Z","run":"20261030-1832","op":"stage","id":"self-host-carrier","target":"自托管载体","version":34,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-31T01:33:02.060Z","run":"20261030-1832","op":"reject","id":"onboarding-wizard","target":"引导向导","reason":"not-in-source: the term does not occur in the document's prose","version":34,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-31T01:33:02.060Z","run":"20261030-1832","op":"stage","id":"redis","target":null,"version":34,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-31T01:33:02.060Z","run":"20261030-1832","op":"stage","id":"caddy","target":null,"version":34,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-31T01:33:02.060Z","run":"20261030-1832","op":"stage","id":"cloudflare","target":null,"version":34,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-31T01:33:02.060Z","run":"20261030-1832","op":"stage","id":"playwright","target":null,"version":34,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-31T01:33:02.060Z","run":"20261030-1832","op":"stage","id":"chromium","target":null,"version":34,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-31T01:33:02.060Z","run":"20261030-1832","op":"reject","id":"next.js","target":null,"reason":"identifier: looks like a path, flag or code symbol","version":34,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-31T01:33:02.060Z","run":"20261030-1832","op":"stage","id":"sqlite","target":null,"version":34,"doc":"docs/getting-started/SELF_HOST_GUIDE.md"}
+{"ts":"2026-10-31T01:33:11.563Z","run":"20261030-1832","op":"stage","id":"fair-share","target":"公平份额","version":34,"doc":"docs/diagrams/README.md"}
+{"ts":"2026-10-31T01:33:11.563Z","run":"20261030-1832","op":"stage","id":"signup-credits","target":"注册赠送额度","version":34,"doc":"docs/diagrams/README.md"}
+{"ts":"2026-10-31T01:33:11.563Z","run":"20261030-1832","op":"stage","id":"breaker","target":"熔断器","version":34,"doc":"docs/diagrams/README.md"}
+{"ts":"2026-10-31T01:33:11.563Z","run":"20261030-1832","op":"stage","id":"cooldown","target":"冷却","version":34,"doc":"docs/diagrams/README.md"}
+{"ts":"2026-10-31T01:33:11.563Z","run":"20261030-1832","op":"stage","id":"groq","target":null,"version":34,"doc":"docs/diagrams/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"stage","id":"traffic-inspector","target":"流量检查器","version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"stage","id":"plugin-marketplace","target":"插件市场","version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"stage","id":"context-source","target":"上下文源","version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"stage","id":"bifrost","target":null,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"stage","id":"cliproxyapi","target":null,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"stage","id":"9router","target":null,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"stage","id":"termux","target":null,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"stage","id":"electron","target":null,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"stage","id":"notion","target":null,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"stage","id":"obsidian","target":null,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"stage","id":"qdrant","target":null,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"stage","id":"fumadocs","target":null,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"confirm","id":"radar","target":null,"docs":2,"by":"use","version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"promote","id":"radar","kind":"doNotTranslate","docs":2,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"confirm","id":"connection-cooldown","target":"连接冷却","docs":2,"by":"use","version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"promote","id":"connection-cooldown","target":"连接冷却","docs":2,"docNames":["docs/routing/EMPTY_TURNS.md","docs/README.md"],"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"confirm","id":"embedded-service","target":"内嵌服务","docs":2,"by":"use","version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"promote","id":"embedded-service","target":"内嵌服务","docs":2,"docNames":["docs/architecture/MODIFICATION_SCENARIOS.md","docs/README.md"],"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"confirm","id":"eval-suite","target":"评估套件","docs":2,"by":"use","version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"promote","id":"eval-suite","target":"评估套件","docs":2,"docNames":["docs/architecture/MODIFICATION_SCENARIOS.md","docs/README.md"],"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"confirm","id":"auto","target":null,"docs":2,"by":"use","version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"promote","id":"auto","kind":"doNotTranslate","docs":2,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"confirm","id":"redis","target":null,"docs":2,"by":"use","version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"promote","id":"redis","kind":"doNotTranslate","docs":2,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"confirm","id":"cloudflare","target":null,"docs":2,"by":"use","version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"promote","id":"cloudflare","kind":"doNotTranslate","docs":2,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"confirm","id":"sqlite","target":null,"docs":2,"by":"use","version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"promote","id":"sqlite","kind":"doNotTranslate","docs":2,"version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"confirm","id":"cooldown","target":"冷却","docs":2,"by":"use","version":35,"doc":"docs/README.md"}
+{"ts":"2026-10-31T01:33:34.123Z","run":"20261030-1832","op":"promote","id":"cooldown","target":"冷却","docs":2,"docNames":["docs/diagrams/README.md","docs/README.md"],"version":35,"doc":"docs/README.md"}

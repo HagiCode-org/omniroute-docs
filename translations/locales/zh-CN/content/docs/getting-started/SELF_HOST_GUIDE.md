@@ -1,7 +1,7 @@
 ---
 title: "🚀 自托管指南 — OmniRoute（零月费自托管 / zero-fee self-host）"
-version: 3.8.52
-lastUpdated: 2026-10-05
+version: 3.8.51
+lastUpdated: 2026-09-14
 ---
 
 # 🚀 自托管指南 — OmniRoute
@@ -9,13 +9,7 @@ lastUpdated: 2026-10-05
 > **TL;DR** — 三条命令、一个本地端点、零月费。没有 SaaS 计费、没有多租户隔离，
 > 也没有托管的提示词处理环节。你的提示词会直接发送到你所选的提供者。
 
-> **版本说明：** 此流程适用于 **v3.8.51** 及以上版本。它使用的两个文件（`docker-compose.selfhost.yml` 和 `.env.selfhost.example`）不在 v3.8.50 或更早的任何标签中。在 v3.8.50 上，请改用 Docker 指南中的单容器 [`docker run` 流程](../guides/DOCKER_GUIDE.md#quick-run)。
-
 ```bash
-mkdir omniroute && cd omniroute
-BASE=https://raw.githubusercontent.com/diegosouzapw/OmniRoute/v3.8.51
-curl -fsSLO "$BASE/docker-compose.selfhost.yml"
-curl -fsSLO "$BASE/.env.selfhost.example"
 cp .env.selfhost.example .env      # then edit the 2 lines marked "EDIT ME"
 docker compose -f docker-compose.selfhost.yml up -d
 open http://127.0.0.1:20128
@@ -44,25 +38,15 @@ OmniRoute 自带一个功能完备的 `docker-compose.yml`，它提供了多个�
 - 约 2 GB 可用内存（参见 [容器资源配置](#容器资源配置)）。
 - 来自任一受支持提供者的 API 密钥（OpenAI、Anthropic、Google，或 [150+ 个免费层](./FREE-TIERS-GUIDE.md) 中的任一提供者）。
 
-无需构建工具链、无需 Node、无需 git clone：你只需下载两个文件（Compose 文件和环境变量模板，见步骤 1），镜像随后自动拉取。
+无需构建工具链、无需 Node、无需 git clone，直接拉取镜像即可。
 
 ---
 
 ## 步骤 1 — 配置（1 分钟）
 
-将两个自托管文件下载到一个空目录中，并固定到发布标签，然后从模板创建 `.env`：
-
 ```bash
-mkdir omniroute && cd omniroute
-BASE=https://raw.githubusercontent.com/diegosouzapw/OmniRoute/v3.8.51
-curl -fsSLO "$BASE/docker-compose.selfhost.yml"
-curl -fsSLO "$BASE/.env.selfhost.example"
 cp .env.selfhost.example .env
 ```
-
-（如果你是在 v3.8.51 或更高版本的 git 克隆中操作，两个文件都位于仓库根目录，直接运行 `cp` 即可。）
-
-Compose 文件读取的是**与 `docker-compose.selfhost.yml` 同目录的 `./.env`**（`env_file: .env`）。它**不会**读取 `~/.omniroute/.env`：该文件属于 npm CLI 安装（`omniroute` 命令，参见 [本地二进制构建](#本地二进制构建可选)），对 Docker 流程没有任何作用。
 
 在 `.env` 中恰好修改**两行**：
 
@@ -71,10 +55,10 @@ REQUIRE_API_KEY=true          # was false — lock the endpoint down
 APP_BIND_HOST=127.0.0.1       # keep loopback; see "Exposing" only if needed
 ```
 
-`REQUIRE_API_KEY=true` 会使 `/v1` 请求需要 API 密钥（已登录的仪表盘会话同样可用），并且只要存在登录密码，仪表盘也需要登录。首次访问时，你需要在仪表盘的引导向导中创建登录密码；如果跳过这一步，即使设置了 `REQUIRE_API_KEY=true`，仪表盘登录也会被关闭。Docker 的端口转发会让容器认为你的浏览器并非本机访问，因此提交密码后，向导会要求输入一次性的引导令牌（bootstrap token），该令牌会在此时由容器打印到日志中：
+`REQUIRE_API_KEY=true` 让每个 `/v1` 请求和仪表盘都需要 API 密钥或登录。首次启动时，仪表盘会自动生成一个 `INITIAL_PASSWORD`，请从日志中读取：
 
 ```bash
-docker logs omniroute | grep BOOTSTRAP
+docker logs omniroute | grep -i password
 ```
 
 其他变量（`DASHBOARD_PORT`、`API_PORT`、`LIVE_WS_PORT`、`OMNIROUTE_MEMORY_MB`）已有合理的默认值。除非你确实需要修改，否则请保持不变。
@@ -158,7 +142,7 @@ npm install -g omniroute
 omniroute
 ```
 
-这会直接在宿主机上运行 Next.js 独立（standalone）服务器，端口与容器方式相同。它的数据和 `.env` 默认保存在 `~/.omniroute` 中（当 `~/.omniroute` 不存在时：Windows 上为 `%APPDATA%\omniroute`，设置了 XDG 配置目录变量时则为 `$XDG_CONFIG_HOME/omniroute`；`$DATA_DIR` 可覆盖以上所有位置），而不是 Docker 流程挂载的 `./data` 目录。当你无法运行 Docker 时（例如受限较多的虚拟机），可以使用它。上文的容器方式是推荐的默认方案，因为它内置了镜像测试时所用的确切运行时。
+这会直接在宿主机上运行 Next.js 独立（standalone）服务器，端口相同，并使用相同的 `DATA_DIR`（默认为 `./data`）。当你无法运行 Docker 时（例如受限较多的虚拟机），可以使用它。上文的容器方式是推荐的默认方案，因为它内置了镜像测试时所用的确切运行时。
 
 从源码构建（仅用于开发，不是部署路径）：
 
@@ -176,7 +160,7 @@ npm run build && npm start
 **切勿**在 `REQUIRE_API_KEY=false` 的情况下设置 `APP_BIND_HOST=0.0.0.0`。这会在每个局域网或广域网接口上发布一个开放的 `/v1` 代理，网络上的任何人都可以耗尽你的提供者配额。顺序是固定的：
 
 1. 在 `.env` 中设置 `REQUIRE_API_KEY=true`。
-2. 在引导向导中创建登录密码（参见上文），然后登录。
+2. 读取日志中的 `INITIAL_PASSWORD` 并登录。
 3. *只有在此之后*，才设置 `APP_BIND_HOST=0.0.0.0`（或者在前面放置一个强制身份验证的反向代理，并保持回环地址）。
 
 如需启用 TLS 或使用域名，请在前面运行 Caddy 或 Traefik，并将 `APP_BIND_HOST` 保持为 `127.0.0.1`。可参阅 [DOCKER_GUIDE 中的 Caddy HTTPS](../guides/DOCKER_GUIDE.md#docker-compose-with-caddy-https-auto-tls) 和 [DOCKER_GUIDE 中的 Cloudflare Quick Tunnel](../guides/DOCKER_GUIDE.md#cloudflare-quick-tunnel) 两节，其中有可直接复制粘贴的反向代理配置。
@@ -205,18 +189,6 @@ npm run build && npm start
 ## 常见问题
 
 <details>
-<summary><code>cp: cannot stat '.env.selfhost.example': No such file or directory</code></summary>
-
-当前目录中没有自托管文件。请先下载它们（参见 [步骤 1](#步骤-1--配置1-分钟)）；这些文件从 v3.8.51 开始提供，因此带标签固定的 URL 在 v3.8.50 或更早版本中并不存在。在 v3.8.50 上，请使用 [`docker run` 流程](../guides/DOCKER_GUIDE.md#quick-run)。
-</details>
-
-<details>
-<summary>编辑了 <code>~/.omniroute/.env</code> 但没有任何变化</summary>
-
-该文件只会被 npm CLI 安装读取。Docker 流程读取的是与 `docker-compose.selfhost.yml` 同目录的 `.env`。请编辑那个文件，然后重新执行 `docker compose -f docker-compose.selfhost.yml up -d`。
-</details>
-
-<details>
 <summary><code>docker compose up</code> 只会启动 Redis</summary>
 
 你运行的是**完整的** `docker-compose.yml`，其中的应用服务受配置档控制。若要使用一条命令的方式，请使用自托管文件：
@@ -241,25 +213,6 @@ docker compose -f docker-compose.selfhost.yml up -d
 <summary>编码智能体运行时出现 <code>FATAL ERROR: Reached heap limit</code></summary>
 
 请在 `.env` 中提高 `OMNIROUTE_MEMORY_MB`（例如 `4096`），然后执行 `docker compose -f docker-compose.selfhost.yml up -d`。参见 [容器资源配置](#容器资源配置)。
-</details>
-
-<details>
-<summary><code>EACCES: permission denied</code> 写入 <code>/app/data</code> 时报错</summary>
-
-`docker-compose.selfhost.yml` 默认以 `./data:/app/data` 方式绑定挂载，因此容器会继承宿主机目录的属主。部分托管部署平台以 root 身份运行 Docker 守护进程，而容器进程以非特权用户运行，这可能导致首次写入时出现 `EACCES`。
-
-在不改变文档默认配置的前提下，有两种修复方式：
-
-- **对宿主机目录执行 `chown`**，使其属于容器用户，让绑定挂载可写。镜像以 `node` 用户（UID/GID 1000）运行：`sudo chown -R 1000:1000 ./data`。
-- **改用 Docker 管理的命名卷**，而不是绑定挂载：在 `docker-compose.selfhost.yml` 中注释掉 `- ./data:/app/data` 这一行，取消其正下方备选项 `- omniroute-data:/app/data` 的注释，并取消顶层 `volumes:` 下 `omniroute-data:` 条目的注释。注意这会改变数据的存放位置：
-  - 新的命名卷初始为**空**。如果是已有安装，请先把 `./data` 复制进去，否则 OmniRoute 会以全新实例启动；
-  - `bin/snapshot-data.sh` 和 `bin/restore-data.sh` 直接读写宿主机上的 `./data`，因此除非你另行备份，否则它们看不到命名卷中的内容，例如：
-
-    ```bash
-    docker run --rm -v omniroute-data:/data -v "$PWD":/backup alpine \
-      tar czf /backup/omniroute-data.tar.gz -C /data .
-    ```
-
 </details>
 
 <details>
@@ -300,7 +253,7 @@ docker compose --profile web up -d
 在暴露到回环地址之外之前：
 
 - [ ] 在 `.env` 中设置 `REQUIRE_API_KEY=true`
-- [ ] 在引导向导中为仪表盘登录设置一个强且唯一的密码
+- [ ] 将 `INITIAL_PASSWORD` 轮换为一个强且唯一的值
 - [ ] `APP_BIND_HOST` 保持为 `127.0.0.1`，*除非*位于强制身份验证的反向代理之后
 - [ ] 由前端的 Caddy/Traefik/Cloudflare 终止 TLS（切勿在广域网上使用明文 HTTP）
 - [ ] Redis 未发布到宿主机（自托管 Compose 已强制执行此项）

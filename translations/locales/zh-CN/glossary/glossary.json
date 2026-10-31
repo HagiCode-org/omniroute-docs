@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": 34,
-  "updatedAt": "2026-10-30T21:04:46.338Z",
+  "version": 35,
+  "updatedAt": "2026-10-31T01:33:34.123Z",
   "doNotTranslate": [
     {
       "term": "OmniRoute",
@@ -168,6 +168,36 @@
     {
       "term": "Grok Build",
       "note": "产品名",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "Radar",
+      "note": "功能名,保留英文",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "Auto",
+      "note": "Copilot 自动选模型在目录中的模型名 (auto)，保留英文",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "Redis",
+      "note": "产品名，保留原写法",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "Cloudflare",
+      "note": "平台名，保留原写法",
+      "origin": "auto",
+      "locked": false
+    },
+    {
+      "term": "SQLite",
+      "note": "数据库名，保留原写法",
       "origin": "auto",
       "locked": false
     }
@@ -374,6 +404,26 @@
       "conflicts": []
     },
     {
+      "id": "connection-cooldown",
+      "source": "connection cooldown",
+      "target": "连接冷却",
+      "alt": [],
+      "note": "scope: one connection, account or key",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/routing/EMPTY_TURNS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "conflicts": []
+    },
+    {
       "id": "context",
       "source": "Context",
       "target": "上下文",
@@ -390,6 +440,26 @@
       "lastSeen": {
         "doc": "docs/guides/CLI-SMOKE-TESTS.md",
         "run": "20261026-2333"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "cooldown",
+      "source": "cooldown",
+      "target": "冷却",
+      "alt": [],
+      "note": "密钥冷却 (connection cooldown)",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
       },
       "conflicts": []
     },
@@ -414,6 +484,26 @@
       "conflicts": []
     },
     {
+      "id": "embedded-service",
+      "source": "Embedded Service",
+      "target": "内嵌服务",
+      "alt": [],
+      "note": "src/lib/services 下的内嵌服务（installers、bootstrap、SERVICES[]）",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "conflicts": []
+    },
+    {
       "id": "endpoint",
       "source": "endpoint",
       "target": "端点",
@@ -430,6 +520,26 @@
       "lastSeen": {
         "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
         "run": "run3"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "eval-suite",
+      "source": "Eval suite",
+      "target": "评估套件",
+      "alt": [],
+      "note": "src/lib/evals",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 2,
+      "firstSeen": {
+        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
+        "run": "20261030-run2"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
       },
       "conflicts": []
     },

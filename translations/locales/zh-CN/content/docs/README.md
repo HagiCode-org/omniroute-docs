@@ -34,14 +34,12 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [TIERS.md](guides/TIERS.md) — OmniRoute 层级说明（用户指南）。
 - [USAGE_QUOTA_GUIDE.md](guides/USAGE_QUOTA_GUIDE.md) — 用量、配额与支出跟踪。
 - [COST_TRACKING.md](guides/COST_TRACKING.md) — 成本与支出跟踪。
-- [TEAM_COST_CENTERS.md](guides/TEAM_COST_CENTERS.md) — 团队计费归因、报告与软性共享预算。
 - [FREE_PROVIDER_RANKINGS.md](guides/FREE_PROVIDER_RANKINGS.md) — 免费提供者排名（Arena ELO）。
 - [DOCKER_GUIDE.md](guides/DOCKER_GUIDE.md) — 在 Docker 中运行 OmniRoute，包括编码智能体的运行时内存占用。
 - [ELECTRON_GUIDE.md](guides/ELECTRON_GUIDE.md) — 桌面端（Electron）构建。
 - [TERMUX_GUIDE.md](guides/TERMUX_GUIDE.md) — 通过 Termux 在 Android 上运行。
 - [PWA_GUIDE.md](guides/PWA_GUIDE.md) — 将仪表盘安装为 PWA。
 - [REMOTE-MODE.md](guides/REMOTE-MODE.md) — 远程暴露 OmniRoute 及限定范围的令牌。
-- [HEADLESS.md](guides/HEADLESS.md) — 无头模式：仅保留代理引擎，不含仪表盘（`OMNIROUTE_HEADLESS=1` / `serve --headless`）。
 - [CLI-INTEGRATIONS.md](guides/CLI-INTEGRATIONS.md) — `setup-*` CLI 集成的总表。
 - [OPENCODE-V2-PLUGIN.md](guides/OPENCODE-V2-PLUGIN.md) — 安装并配置 OpenCode v2 插件。
 - [CLAUDE-CODE-CONFIGURATION.md](guides/CLAUDE-CODE-CONFIGURATION.md) — 在 OmniRoute 中使用 Claude Code CLI。
@@ -127,7 +125,7 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 
 组合路由、评分与回放。
 
-- [AUTO-COMBO.md](routing/AUTO-COMBO.md) — Auto-Combo（多因素评分，20 种策略）。
+- [AUTO-COMBO.md](routing/AUTO-COMBO.md) — Auto-Combo（多因素评分，19 种策略）。
 - [QUOTA_SHARE.md](routing/QUOTA_SHARE.md) — 配额共享引擎。
 - [REASONING_REPLAY.md](routing/REASONING_REPLAY.md) — 推理回放缓存。
 - [REASONING_ROUTING.md](routing/REASONING_ROUTING.md) — 推理路由规则（effort/budget 规则引擎）。
@@ -186,7 +184,6 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [RELEASE_CHECKLIST.md](ops/RELEASE_CHECKLIST.md) — 发布流程检查清单。
 - [RELEASE_GREEN.md](ops/RELEASE_GREEN.md) — 保持 PR 队列与发布分支处于通过状态。
 - [BRANCHING_MODEL.md](ops/BRANCHING_MODEL.md) — 分支与发布模型。
-- [RELEASE_STRATEGY.md](ops/RELEASE_STRATEGY.md) — LTS 轨道：分支、npm 渠道、向前移植（forward-port）、轨道标签。
 - [MERGE_TRAIN.md](ops/MERGE_TRAIN.md) — 合并队列与手动 merge-train 运行手册。
 - [HOMOLOGATION.md](ops/HOMOLOGATION.md) — 一致性验证套件（`npm run homolog`）。
 - [QUALITY_GATE_PLAYBOOK.md](ops/QUALITY_GATE_PLAYBOOK.md) — 质量门禁操作手册。
@@ -194,7 +191,6 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [BRANCH_PROTECTION_MAIN.md](ops/BRANCH_PROTECTION_MAIN.md) — `main` 分支保护。
 - [CONTRIBUTION_GOLDEN_PATH.md](ops/CONTRIBUTION_GOLDEN_PATH.md) — 贡献的标准流程（按变更类型执行针对性检查）。
 - [COVERAGE_PLAN.md](ops/COVERAGE_PLAN.md) — 测试覆盖率计划。
-- [LTS_GO_NO_GO.md](ops/LTS_GO_NO_GO.md) — 3.9.0 LTS GO/NO-GO 检查清单（轨道门禁与收尾测试组）。
 - [DATABASE_GUIDE.md](ops/DATABASE_GUIDE.md) — 数据库结构与运维。
 - [SQLITE_RUNTIME.md](ops/SQLITE_RUNTIME.md) — SQLite 驱动解析链。
 - [REDIS_PRODUCTION_CONFIG.md](ops/REDIS_PRODUCTION_CONFIG.md) — Redis 生产环境配置。

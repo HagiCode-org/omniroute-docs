@@ -471,24 +471,6 @@
       }
     },
     {
-      "id": "radar",
-      "source": "Radar",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "功能名,保留英文",
-      "docs": [
-        "docs/guides/HEADLESS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/guides/HEADLESS.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/guides/HEADLESS.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
       "id": "omniconductor",
       "source": "OmniConductor",
       "target": null,
@@ -1065,24 +1047,6 @@
       }
     },
     {
-      "id": "connection-cooldown",
-      "source": "connection cooldown",
-      "target": "连接冷却",
-      "kind": "term",
-      "note": "scope: one connection, account or key",
-      "docs": [
-        "docs/routing/EMPTY_TURNS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/routing/EMPTY_TURNS.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/routing/EMPTY_TURNS.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
       "id": "selector-group",
       "source": "selector group",
       "target": "选择器组",
@@ -1403,42 +1367,6 @@
       },
       "lastSeen": {
         "doc": "docs/ops/KUBERNETES_DEPLOYMENT_GUIDE.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "embedded-service",
-      "source": "Embedded Service",
-      "target": "内嵌服务",
-      "kind": "term",
-      "note": "src/lib/services 下的内嵌服务（installers、bootstrap、SERVICES[]）",
-      "docs": [
-        "docs/architecture/MODIFICATION_SCENARIOS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
-        "run": "20261030-run2"
-      }
-    },
-    {
-      "id": "eval-suite",
-      "source": "Eval suite",
-      "target": "评估套件",
-      "kind": "term",
-      "note": "src/lib/evals",
-      "docs": [
-        "docs/architecture/MODIFICATION_SCENARIOS.md"
-      ],
-      "firstSeen": {
-        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
-        "run": "20261030-run2"
-      },
-      "lastSeen": {
-        "doc": "docs/architecture/MODIFICATION_SCENARIOS.md",
         "run": "20261030-run2"
       }
     },
@@ -1875,21 +1803,381 @@
       }
     },
     {
-      "id": "auto",
-      "source": "Auto",
-      "target": null,
-      "kind": "doNotTranslate",
-      "note": "Copilot 自动选模型在目录中的模型名 (auto)，保留英文",
+      "id": "api-bridge",
+      "source": "API bridge",
+      "target": "API 桥接器",
+      "kind": "term",
+      "note": "OmniRoute component bound by API_HOST; named surface in the startup warning",
       "docs": [
-        "docs/providers/GITHUB-COPILOT.md"
+        "docs/security/INFERENCE_AUTH_POSTURE.md"
       ],
       "firstSeen": {
-        "doc": "docs/providers/GITHUB-COPILOT.md",
-        "run": "20261030-run2"
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261030-1832"
       },
       "lastSeen": {
-        "doc": "docs/providers/GITHUB-COPILOT.md",
-        "run": "20261030-run2"
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "self-host-carrier",
+      "source": "self-host carrier",
+      "target": "自托管载体",
+      "kind": "term",
+      "note": "OmniRoute 自托管产品形态的载体（packaged container/binary）",
+      "docs": [
+        "docs/getting-started/SELF_HOST_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "caddy",
+      "source": "Caddy",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "反向代理产品名，保留原写法",
+      "docs": [
+        "docs/getting-started/SELF_HOST_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "playwright",
+      "source": "Playwright",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "产品名，保留原写法",
+      "docs": [
+        "docs/getting-started/SELF_HOST_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "chromium",
+      "source": "Chromium",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "浏览器名，保留原写法",
+      "docs": [
+        "docs/getting-started/SELF_HOST_GUIDE.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "fair-share",
+      "source": "fair-share",
+      "target": "公平份额",
+      "kind": "term",
+      "note": "密钥池公平份额配额 (key-pool fair-share quota)",
+      "docs": [
+        "docs/diagrams/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "signup-credits",
+      "source": "signup credits",
+      "target": "注册赠送额度",
+      "kind": "term",
+      "note": "免费层注册赠送额度,与 free tier 配套",
+      "docs": [
+        "docs/diagrams/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "breaker",
+      "source": "breaker",
+      "target": "熔断器",
+      "kind": "term",
+      "note": "熔断器状态 (CLOSED/OPEN/HALF-OPEN),即 provider circuit breaker",
+      "docs": [
+        "docs/diagrams/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "groq",
+      "source": "Groq",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "提供者名,保留原写法",
+      "docs": [
+        "docs/diagrams/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/diagrams/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "traffic-inspector",
+      "source": "traffic inspector",
+      "target": "流量检查器",
+      "kind": "term",
+      "note": "流量检查器（MITM）功能名",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "plugin-marketplace",
+      "source": "plugin marketplace",
+      "target": "插件市场",
+      "kind": "term",
+      "note": "CLI 插件市场功能名",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "context-source",
+      "source": "context source",
+      "target": "上下文源",
+      "kind": "term",
+      "note": "Notion/Obsidian 等上下文源的统称",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "bifrost",
+      "source": "Bifrost",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "第三方网关产品名",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "cliproxyapi",
+      "source": "CLIProxyAPI",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "第三方代理产品名",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "9router",
+      "source": "9Router",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "内嵌 sidecar 服务产品名",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "termux",
+      "source": "Termux",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "Android 终端环境产品名",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "electron",
+      "source": "Electron",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "桌面端框架名",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "notion",
+      "source": "Notion",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "第三方产品名",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "obsidian",
+      "source": "Obsidian",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "第三方产品名",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "qdrant",
+      "source": "Qdrant",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "向量数据库产品名",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      }
+    },
+    {
+      "id": "fumadocs",
+      "source": "Fumadocs",
+      "target": null,
+      "kind": "doNotTranslate",
+      "note": "文档框架产品名",
+      "docs": [
+        "docs/README.md"
+      ],
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
+      },
+      "lastSeen": {
+        "doc": "docs/README.md",
+        "run": "20261030-1832"
       }
     }
   ]
