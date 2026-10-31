@@ -1,11 +1,4 @@
 {
-  "schema": 1,
-  "locale": "zh-CN",
-  "updatedAt": "2026-10-31T01:54:02.262Z",
-  "lastRun": "20261030-1850",
-  "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
-  "glossaryVersion": 39,
-  "glossarySha256": "d7715dfb7d60fab70e6cda2a1d0084ff7d889afdac9cf57e38bc4b1fc8705569",
   "docs": {
     "docs/guides/CLI-COMPANION.md": {
       "status": "done_flagged",
@@ -66,11 +59,11 @@
       "sourceSha256": "43df8a749887c5f60054be622b8d79001fe89ecf7fcc151e241a7cc2ca53f6a4",
       "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
       "translationPath": "translations/locales/zh-CN/content/docs/guides/CLI-MANUAL-MODELS.md",
-      "translationSha256": "d3f0256b869084fefec0292c3bb000ad9573228ac559dde75f2fba28c9969428",
+      "translationSha256": "f75ccbf4d853e7f40345f921ed05abeed5b7d14adea71e30ac4be30cd082b1ba",
       "glossaryVersion": 39,
       "attempts": 1,
-      "runId": "20261030-1850",
-      "doneAt": "2026-10-31T01:54:02.262Z",
+      "runId": "20261030-2359-keepen",
+      "doneAt": "2026-10-31T07:00:51.869Z",
       "reviewedAt": null,
       "flags": [
         "terms: keep-English policy applied (human ruling 2026-10-30)"
@@ -95,11 +88,11 @@
       "sourceSha256": "301ad78a0c25241018eb6f10c82be90bc1a41fbcaf0a0c48236e79d0cf9e2ff9",
       "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
       "translationPath": "translations/locales/zh-CN/content/docs/README.md",
-      "translationSha256": "9a431313e3f03dd36adf227f331f502c34098940abaa50336292c0a06331e3cd",
-      "glossaryVersion": 38,
+      "translationSha256": "01fe25192914616a788ba77465c3a7b1d5194b9309724bd4fbc46d6600ba223c",
+      "glossaryVersion": 39,
       "attempts": 1,
-      "runId": "20261030-1850",
-      "doneAt": "2026-10-31T01:53:29.243Z",
+      "runId": "20261030-2359-keepen",
+      "doneAt": "2026-10-31T07:00:51.905Z",
       "reviewedAt": null,
       "flags": [
         "terms: keep-English policy applied (human ruling 2026-10-30)",
@@ -145,11 +138,11 @@
       "sourceSha256": "8e25978787404f0f71e4d24e0b0aeebff45f107fdb5bf1473621607b3e52ab61",
       "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
       "translationPath": "translations/locales/zh-CN/content/docs/getting-started/SELF_HOST_GUIDE.md",
-      "translationSha256": "eec42dc4cf4f7f780cc594f4adcae93b436f800a2256e8773ba994a9e4990fb1",
-      "glossaryVersion": 38,
+      "translationSha256": "6341bace9ff2bcc8057884802bbb4db0d0275ce4d78bcd6da7d78a2390caa3a6",
+      "glossaryVersion": 39,
       "attempts": 1,
-      "runId": "20261030-1850",
-      "doneAt": "2026-10-31T01:53:28.106Z",
+      "runId": "20261030-2359-keepen",
+      "doneAt": "2026-10-31T07:00:51.936Z",
       "reviewedAt": null,
       "flags": [
         "terms: keep-English policy applied (human ruling 2026-10-30)",
@@ -259,11 +252,11 @@
       "sourceSha256": "1bd42a4bf85da55527f3efbf0f04f993791ef572cec0a0ea02b0f9e55a5667c0",
       "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
       "translationPath": "translations/locales/zh-CN/content/docs/reference/OPENCODE-SESSION-IDENTITY.md",
-      "translationSha256": "7582cbde4072435f311ecea58b32ca8353a9d65da7972cca8b6f7d25cfc84351",
-      "glossaryVersion": 8,
+      "translationSha256": "6b75cf815649a9fe90532a8ac625aef5f5a2be97ecb0177492f4f906885cd787",
+      "glossaryVersion": 39,
       "attempts": 1,
-      "runId": "20261030-1332",
-      "doneAt": "2026-10-30T20:33:02.834Z",
+      "runId": "20261030-2359-keepen",
+      "doneAt": "2026-10-31T07:00:51.968Z",
       "reviewedAt": null,
       "flags": [],
       "note": "",
@@ -301,11 +294,11 @@
       "sourceSha256": "52cf72e6ab3d362d2cc8099b517845745e92faf785bac7f38611e49c4225b80b",
       "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
       "translationPath": "translations/locales/zh-CN/content/docs/security/INFERENCE_AUTH_POSTURE.md",
-      "translationSha256": "13cd10c5d7ba45740faf9d928aa87e74512a040bcf90b57c6853b228270b3b31",
-      "glossaryVersion": 38,
+      "translationSha256": "db7eb476f7839a5bcf5d82de72125544bf988f2bdc866967994bca806bb16005",
+      "glossaryVersion": 39,
       "attempts": 1,
-      "runId": "20261030-1850",
-      "doneAt": "2026-10-31T01:53:50.623Z",
+      "runId": "20261030-2359-keepen",
+      "doneAt": "2026-10-31T07:00:52.000Z",
       "reviewedAt": null,
       "flags": [
         "terms: keep-English policy applied (human ruling 2026-10-30)",
@@ -1281,5 +1274,12 @@
         "proxy": "代理"
       }
     }
-  }
+  },
+  "schema": 1,
+  "locale": "zh-CN",
+  "updatedAt": "2026-10-31T07:00:52.000Z",
+  "lastRun": "20261030-2359-keepen",
+  "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+  "glossaryVersion": 39,
+  "glossarySha256": "d7715dfb7d60fab70e6cda2a1d0084ff7d889afdac9cf57e38bc4b1fc8705569"
 }

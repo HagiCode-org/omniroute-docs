@@ -205,7 +205,7 @@ docker compose -f docker-compose.selfhost.yml up -d
 
 - 检查 Redis 是否已启动：`docker inspect --format '{{.State.Health.Status}}' omniroute-redis`
 - 检查应用日志：`docker logs omniroute`
-- 健康检查会探测 `/healthz`，并允许 20 秒的启动期。首次启动较慢（冷启动迁移）可能需要更长时间；如果磁盘较慢，请在 Compose 文件中调大 `start_period`。
+- 健康检查会 probe `/healthz`，并允许 20 秒的启动期。首次启动较慢（冷启动迁移）可能需要更长时间；如果磁盘较慢，请在 Compose 文件中调大 `start_period`。
 
 </details>
 

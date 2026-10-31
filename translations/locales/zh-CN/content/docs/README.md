@@ -71,7 +71,7 @@ OmniRoute 文档集的导航索引。主题按用途分组，便于你快速找�
 - [cluster-decisions.md](architecture/cluster-decisions.md) — 可选的 sidecar/cluster profile 决策。
 - [DESIGN_SYSTEM.md](architecture/DESIGN_SYSTEM.md) — 设计系统与视觉识别。
 - [ROUTER_BACKENDS.md](architecture/ROUTER_BACKENDS.md) — 路由后端与内嵌服务的架构约定（ADR）。
-- [admission-lanes.md](architecture/admission-lanes.md) — 两套准入通道系统及各自受哪些条件约束。
+- [admission-lanes.md](architecture/admission-lanes.md) — 两套准入通道系统及各自受哪些 gate 约束。
 - [persistence-backend-boundary.md](architecture/persistence-backend-boundary.md) — 可插拔的持久化边界（ADR）。
 
 ## reference/
