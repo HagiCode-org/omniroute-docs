@@ -1,1 +1,35 @@
 {"ts":"2026-10-31T01:57:33.582Z","run":"20261030-keepen","op":"human-decision","id":"keep-english","kind":"policy","version":1,"doNotTranslateAdded":146,"termsAdded":[],"note":"人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文"}
+{"ts": "2026-11-11T07:45:52.862Z", "run": "20261110-2341", "version": 2, "doc": "docs/guides/CLI-COMPANION.md", "op": "add", "id": "context", "target": "上下文"}
+{"ts": "2026-11-11T07:45:52.862Z", "run": "20261110-2341", "version": 2, "doc": "docs/guides/CLI-COMPANION.md", "op": "add", "id": "inference", "target": "推論"}
+{"ts": "2026-11-11T07:45:52.862Z", "run": "20261110-2341", "version": 2, "doc": "docs/guides/CLI-COMPANION.md", "op": "add", "id": "credential", "target": "憑證"}
+{"ts": "2026-11-11T07:45:52.862Z", "run": "20261110-2341", "version": 2, "doc": "docs/guides/CLI-COMPANION.md", "op": "add", "id": "terminal", "target": "終端機"}
+{"ts": "2026-11-11T07:45:52.908Z", "run": "20261110-2341", "version": 3, "doc": "docs/guides/CLI-SMOKE-TESTS.md", "op": "add", "id": "provider", "target": "提供者"}
+{"ts": "2026-11-11T07:45:52.908Z", "run": "20261110-2341", "version": 3, "doc": "docs/guides/CLI-SMOKE-TESTS.md", "op": "add", "id": "process", "target": "行程"}
+{"ts": "2026-11-11T07:45:52.942Z", "run": "20261110-2341", "version": 4, "doc": "docs/guides/CLI-MANUAL-MODELS.md", "op": "add", "id": "manual-model", "target": "手動模型"}
+{"ts": "2026-11-11T07:45:52.942Z", "run": "20261110-2341", "version": 4, "doc": "docs/guides/CLI-MANUAL-MODELS.md", "op": "add", "id": "model-catalog", "target": "模型目錄"}
+{"ts": "2026-11-11T07:45:52.942Z", "run": "20261110-2341", "version": 4, "doc": "docs/guides/CLI-MANUAL-MODELS.md", "op": "add", "id": "completion", "target": "自動完成"}
+{"ts": "2026-11-11T07:45:52.942Z", "run": "20261110-2341", "version": 4, "doc": "docs/guides/CLI-MANUAL-MODELS.md", "op": "bump", "id": "inference"}
+{"ts": "2026-11-11T07:45:52.942Z", "run": "20261110-2341", "version": 4, "doc": "docs/guides/CLI-MANUAL-MODELS.md", "op": "bump", "id": "credential"}
+{"ts": "2026-11-11T07:45:52.942Z", "run": "20261110-2341", "version": 4, "doc": "docs/guides/CLI-MANUAL-MODELS.md", "op": "bump", "id": "provider"}
+{"ts": "2026-11-11T07:45:52.977Z", "run": "20261110-2341", "version": 5, "doc": "docs/getting-started/SELF_HOST_GUIDE.md", "op": "add", "id": "image", "target": "映像檔"}
+{"ts": "2026-11-11T07:45:52.977Z", "run": "20261110-2341", "version": 5, "doc": "docs/getting-started/SELF_HOST_GUIDE.md", "op": "add", "id": "port", "target": "連接埠"}
+{"ts": "2026-11-11T07:45:52.977Z", "run": "20261110-2341", "version": 5, "doc": "docs/getting-started/SELF_HOST_GUIDE.md", "op": "add", "id": "build", "target": "建置"}
+{"ts": "2026-11-11T07:45:52.977Z", "run": "20261110-2341", "version": 5, "doc": "docs/getting-started/SELF_HOST_GUIDE.md", "op": "bump", "id": "provider"}
+{"ts": "2026-11-11T07:45:53.010Z", "run": "20261110-2341", "version": 6, "doc": "docs/reference/OPENCODE-SESSION-IDENTITY.md", "op": "add", "id": "session", "target": "工作階段"}
+{"ts": "2026-11-11T07:45:53.010Z", "run": "20261110-2341", "version": 6, "doc": "docs/reference/OPENCODE-SESSION-IDENTITY.md", "op": "add", "id": "conversation", "target": "對話"}
+{"ts": "2026-11-11T07:45:53.010Z", "run": "20261110-2341", "version": 6, "doc": "docs/reference/OPENCODE-SESSION-IDENTITY.md", "op": "bump", "id": "provider"}
+{"ts": "2026-11-11T07:45:53.045Z", "run": "20261110-2341", "version": 7, "doc": "docs/security/CLI-CONFIGURATION.md", "op": "add", "id": "redact", "target": "遮蔽"}
+{"ts": "2026-11-11T07:45:53.045Z", "run": "20261110-2341", "version": 7, "doc": "docs/security/CLI-CONFIGURATION.md", "op": "add", "id": "preview", "target": "預覽"}
+{"ts": "2026-11-11T07:45:53.045Z", "run": "20261110-2341", "version": 7, "doc": "docs/security/CLI-CONFIGURATION.md", "op": "add", "id": "apply", "target": "套用"}
+{"ts": "2026-11-11T07:45:53.045Z", "run": "20261110-2341", "version": 7, "doc": "docs/security/CLI-CONFIGURATION.md", "op": "bump", "id": "credential"}
+{"ts": "2026-11-11T07:45:53.080Z", "run": "20261110-2341", "version": 8, "doc": "docs/security/INFERENCE_AUTH_POSTURE.md", "op": "bump", "id": "inference"}
+{"ts": "2026-11-11T07:45:53.080Z", "run": "20261110-2341", "version": 8, "doc": "docs/security/INFERENCE_AUTH_POSTURE.md", "op": "add", "id": "anonymous", "target": "匿名"}
+{"ts": "2026-11-11T07:45:53.116Z", "run": "20261110-2341", "version": 9, "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md", "op": "add", "id": "provider-adapter", "target": "提供者轉接器"}
+{"ts": "2026-11-11T07:45:53.116Z", "run": "20261110-2341", "version": 9, "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md", "op": "bump", "id": "provider"}
+{"ts": "2026-11-11T07:45:53.116Z", "run": "20261110-2341", "version": 9, "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md", "op": "bump", "id": "session"}
+{"ts": "2026-11-11T07:45:53.116Z", "run": "20261110-2341", "version": 9, "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md", "op": "bump", "id": "credential"}
+{"ts": "2026-11-11T07:45:53.153Z", "run": "20261110-2341", "version": 10, "doc": "docs/routing/DETERMINISTIC_ROUTING.md", "op": "add", "id": "pin", "target": "固定"}
+{"ts": "2026-11-11T07:45:53.153Z", "run": "20261110-2341", "version": 10, "doc": "docs/routing/DETERMINISTIC_ROUTING.md", "op": "add", "id": "deterministic", "target": "確定性"}
+{"ts": "2026-11-11T07:45:53.153Z", "run": "20261110-2341", "version": 10, "doc": "docs/routing/DETERMINISTIC_ROUTING.md", "op": "add", "id": "explainable", "target": "可解釋"}
+{"ts": "2026-11-11T07:45:53.153Z", "run": "20261110-2341", "version": 10, "doc": "docs/routing/DETERMINISTIC_ROUTING.md", "op": "bump", "id": "provider"}
+{"ts": "2026-11-11T07:45:53.153Z", "run": "20261110-2341", "version": 10, "doc": "docs/routing/DETERMINISTIC_ROUTING.md", "op": "bump", "id": "session"}

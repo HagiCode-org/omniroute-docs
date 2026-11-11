@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": 1,
-  "updatedAt": "2026-10-31T01:57:33.582Z",
+  "version": 10,
+  "updatedAt": "2026-11-11T07:45:53.153Z",
   "doNotTranslate": [
     {
       "term": "gateway",
@@ -880,5 +880,446 @@
       "locked": true
     }
   ],
-  "terms": []
+  "terms": [
+    {
+      "id": "anonymous",
+      "source": "anonymous",
+      "target": "匿名",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "apply",
+      "source": "apply",
+      "target": "套用",
+      "alt": [],
+      "note": "apply route",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/security/CLI-CONFIGURATION.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/security/CLI-CONFIGURATION.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "build",
+      "source": "build",
+      "target": "建置",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "completion",
+      "source": "completion",
+      "target": "自動完成",
+      "alt": [],
+      "note": "shell 補全",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "context",
+      "source": "context",
+      "target": "上下文",
+      "alt": [],
+      "note": "CLI 上下文(contexts)",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "conversation",
+      "source": "conversation",
+      "target": "對話",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/reference/OPENCODE-SESSION-IDENTITY.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/reference/OPENCODE-SESSION-IDENTITY.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "credential",
+      "source": "credential",
+      "target": "憑證",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 4,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "deterministic",
+      "source": "deterministic",
+      "target": "確定性",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "explainable",
+      "source": "explainable",
+      "target": "可解釋",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "image",
+      "source": "image",
+      "target": "映像檔",
+      "alt": [],
+      "note": "容器映像",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "inference",
+      "source": "inference",
+      "target": "推論",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 3,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "manual-model",
+      "source": "manual model",
+      "target": "手動模型",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "model-catalog",
+      "source": "model catalog",
+      "target": "模型目錄",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-MANUAL-MODELS.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "pin",
+      "source": "pin",
+      "target": "固定",
+      "alt": [],
+      "note": "pinned provider",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "port",
+      "source": "port",
+      "target": "連接埠",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/getting-started/SELF_HOST_GUIDE.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "preview",
+      "source": "preview",
+      "target": "預覽",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/security/CLI-CONFIGURATION.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/security/CLI-CONFIGURATION.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "process",
+      "source": "process",
+      "target": "行程",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "provider",
+      "source": "provider",
+      "target": "提供者",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 6,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-SMOKE-TESTS.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "provider-adapter",
+      "source": "provider adapter",
+      "target": "提供者轉接器",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "redact",
+      "source": "redact",
+      "target": "遮蔽",
+      "alt": [],
+      "note": "redacted preview",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/security/CLI-CONFIGURATION.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/security/CLI-CONFIGURATION.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "session",
+      "source": "session",
+      "target": "工作階段",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 3,
+      "firstSeen": {
+        "doc": "docs/reference/OPENCODE-SESSION-IDENTITY.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "terminal",
+      "source": "terminal",
+      "target": "終端機",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261110-2341"
+      },
+      "lastSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261110-2341"
+      },
+      "conflicts": []
+    }
+  ]
 }

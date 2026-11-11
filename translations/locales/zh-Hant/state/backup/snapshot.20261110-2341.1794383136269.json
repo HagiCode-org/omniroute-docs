@@ -1,0 +1,81 @@
+{
+  "docs": {
+    "docs/guides/CLI-COMPANION.md": {
+      "status": "done",
+      "sourceSha256": "a1b998eceb890aa3a178281844462773ed9f51ad5edcc33d6c5e2c77a0101f6f",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-Hant/content/docs/guides/CLI-COMPANION.md",
+      "translationSha256": "6d9e50c1726749aeee9ea4999706c49158604e7936de656af2e8a5b81768e10f",
+      "glossaryVersion": 1,
+      "attempts": 1,
+      "runId": "20261110-2341",
+      "doneAt": "2026-11-11T07:45:30.771Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    },
+    "docs/guides/CLI-SMOKE-TESTS.md": {
+      "status": "done",
+      "sourceSha256": "e6c362a9ad1177040449b89fa1b86620dcdec37910b2c2dfc3d85e1283386e24",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-Hant/content/docs/guides/CLI-SMOKE-TESTS.md",
+      "translationSha256": "593731732363e7505a70faaa810f4eceba6287067d9b0cf89cf3963b4e43615b",
+      "glossaryVersion": 1,
+      "attempts": 1,
+      "runId": "20261110-2341",
+      "doneAt": "2026-11-11T07:45:35.798Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    },
+    "docs/guides/CLI-MANUAL-MODELS.md": {
+      "status": "done",
+      "sourceSha256": "43df8a749887c5f60054be622b8d79001fe89ecf7fcc151e241a7cc2ca53f6a4",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-Hant/content/docs/guides/CLI-MANUAL-MODELS.md",
+      "translationSha256": "888373bffb9491c5a619c882f5621c1ba64ffc33443f1b6beb0c2acede6b669f",
+      "glossaryVersion": 1,
+      "attempts": 1,
+      "runId": "20261110-2341",
+      "doneAt": "2026-11-11T07:45:35.917Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    },
+    "docs/getting-started/SELF_HOST_GUIDE.md": {
+      "status": "done",
+      "sourceSha256": "8e25978787404f0f71e4d24e0b0aeebff45f107fdb5bf1473621607b3e52ab61",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-Hant/content/docs/getting-started/SELF_HOST_GUIDE.md",
+      "translationSha256": "1b372a90269b829adc8d3d8a69cd729f6b945e86d6822fdf0e9e8d9945095808",
+      "glossaryVersion": 1,
+      "attempts": 1,
+      "runId": "20261110-2341",
+      "doneAt": "2026-11-11T07:45:36.036Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    },
+    "docs/reference/OPENCODE-SESSION-IDENTITY.md": {
+      "status": "done",
+      "sourceSha256": "1bd42a4bf85da55527f3efbf0f04f993791ef572cec0a0ea02b0f9e55a5667c0",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/zh-Hant/content/docs/reference/OPENCODE-SESSION-IDENTITY.md",
+      "translationSha256": "de0fc42bc7264c8e2cfa9d93a9dac01e8e368ad60861f9c12b0375b75d5a68ae",
+      "glossaryVersion": 1,
+      "attempts": 1,
+      "runId": "20261110-2341",
+      "doneAt": "2026-11-11T07:45:36.156Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    }
+  },
+  "schema": 1,
+  "locale": null,
+  "updatedAt": "2026-11-11T07:45:36.156Z",
+  "lastRun": "20261110-2341",
+  "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+  "glossaryVersion": 1,
+  "glossarySha256": "f011c5cdd54ec1d1a6dd4bb068da2946f4f58dd4ee735cc39f0941b30e76c628"
+}
