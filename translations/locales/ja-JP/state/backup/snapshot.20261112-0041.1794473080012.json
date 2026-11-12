@@ -1,0 +1,55 @@
+{
+  "docs": {
+    "docs/guides/CLI-COMPANION.md": {
+      "status": "done",
+      "sourceSha256": "a1b998eceb890aa3a178281844462773ed9f51ad5edcc33d6c5e2c77a0101f6f",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/ja-JP/content/docs/guides/CLI-COMPANION.md",
+      "translationSha256": "2d0089e905fba6b7167855217d09e3e18ac13845fabc3f3e7dd752d49cc17849",
+      "glossaryVersion": 1,
+      "attempts": 2,
+      "runId": "20261112-0041",
+      "doneAt": "2026-11-12T08:44:39.805Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    },
+    "docs/reference/OPENCODE-SESSION-IDENTITY.md": {
+      "status": "done",
+      "sourceSha256": "1bd42a4bf85da55527f3efbf0f04f993791ef572cec0a0ea02b0f9e55a5667c0",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/ja-JP/content/docs/reference/OPENCODE-SESSION-IDENTITY.md",
+      "translationSha256": "3d9e8a1161e7536f07640e6184773a595d96c5e21b9a94a9933e118e065aa332",
+      "glossaryVersion": 1,
+      "attempts": 2,
+      "runId": "20261112-0041",
+      "doneAt": "2026-11-12T08:44:39.870Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    },
+    "docs/security/INFERENCE_AUTH_POSTURE.md": {
+      "status": "done_flagged",
+      "sourceSha256": "52cf72e6ab3d362d2cc8099b517845745e92faf785bac7f38611e49c4225b80b",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/ja-JP/content/docs/security/INFERENCE_AUTH_POSTURE.md",
+      "translationSha256": "60faec9a9d3e6a016880a9d19a769f48217c8ac75788989b573e867489f1683c",
+      "glossaryVersion": 1,
+      "attempts": 2,
+      "runId": "20261112-0041",
+      "doneAt": "2026-11-12T08:44:39.939Z",
+      "reviewedAt": null,
+      "flags": [
+        "numbers: spelled-out English numerals rendered as digits; no source number missing"
+      ],
+      "note": ""
+    }
+  },
+  "schema": 1,
+  "locale": null,
+  "updatedAt": "2026-11-12T08:44:39.939Z",
+  "lastRun": "20261112-0041",
+  "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+  "glossaryVersion": 1,
+  "glossarySha256": "9bb28eac15648bb6719d79e8c29760f100ebc69dacbb1b7719cf27561d40bedd"
+}

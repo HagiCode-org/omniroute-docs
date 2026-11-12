@@ -33,7 +33,7 @@ providers:
 
 ## プロバイダーの自動ルーティング
 
-優先順位（決定的であり、予測モデルは使いません）：
+優先順位（決定論的であり、予測モデルは使いません）：
 
 1. `x-omniroute-provider: <id>` ヘッダー — プロバイダー ID の完全一致。
 2. `model` のプレフィックス：`provider/model`（スラッシュ）または `provider::model`（ダブルコロン）。
@@ -60,7 +60,7 @@ curl ... -d '{"model":"claude/claude-sonnet","messages":[...]}'
 
 - upstream の 2xx 以外の body は、`parseUpstreamError` + `buildErrorBody` を通して、標準的な OpenAI の `error` 形式に正規化されます（Hard Rule #12 — upstream の生テキストは決して返しません）。
 - ネットワークレベルの障害（接続拒否／DNS／TLS）は、`error.message: "Upstream provider unreachable: …"` を持つ正規化された `502` を返します。
-- upstream へ返送された認証情報／セッションヘッダーは、すべてのレスポンスから除去されます。
+- upstream がエコーした認証情報／セッションヘッダーは、すべてのレスポンスから除去されます。
 
 ## テスト
 
@@ -69,4 +69,4 @@ curl ... -d '{"model":"claude/claude-sonnet","messages":[...]}'
 ## 補足
 
 - self-hosted のモデルは、設計上、クラウド専用の retirement／alias の仕組みを迂回します。迂回はそれらのクラウド側のチェックより前に行われるため、`local/llama3` のような ID が cloud-peer の 410 や alias の書き換えに引っかかることはありません。
-- 決定的なルーティング戦略（fallback／cooldown／cost／latency／blacklist）は M2 のスコープ（`RIC-740`）であり、ここでは gateway 層に注入されます。`strategy:` ブロックで設定します — [DETERMINISTIC_ROUTING.md](./DETERMINISTIC_ROUTING.md) を参照してください。
+- 決定論的ルーティング戦略（fallback／cooldown／cost／latency／blacklist）は M2 のスコープ（`RIC-740`）であり、ここでは gateway 層に注入されます。`strategy:` ブロックで設定します — [DETERMINISTIC_ROUTING.md](./DETERMINISTIC_ROUTING.md) を参照してください。

@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "locale": null,
+  "updatedAt": "2026-11-12T08:44:39.805Z",
+  "lastRun": "20261112-0041",
+  "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+  "glossaryVersion": 1,
+  "glossarySha256": "9bb28eac15648bb6719d79e8c29760f100ebc69dacbb1b7719cf27561d40bedd",
+  "docs": {
+    "docs/guides/CLI-COMPANION.md": {
+      "status": "done",
+      "sourceSha256": "a1b998eceb890aa3a178281844462773ed9f51ad5edcc33d6c5e2c77a0101f6f",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/ja-JP/content/docs/guides/CLI-COMPANION.md",
+      "translationSha256": "2d0089e905fba6b7167855217d09e3e18ac13845fabc3f3e7dd752d49cc17849",
+      "glossaryVersion": 1,
+      "attempts": 2,
+      "runId": "20261112-0041",
+      "doneAt": "2026-11-12T08:44:39.805Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    }
+  }
+}

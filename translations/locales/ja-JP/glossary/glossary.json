@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": 1,
-  "updatedAt": "2026-10-31T01:57:33.580Z",
+  "version": 2,
+  "updatedAt": "2026-11-12T08:45:23.863Z",
   "doNotTranslate": [
     {
       "term": "gateway",
@@ -880,5 +880,52 @@
       "locked": true
     }
   ],
-  "terms": []
+  "terms": [
+    {
+      "id": "redaction",
+      "source": "redaction",
+      "target": "伏せ字処理",
+      "alt": [],
+      "note": "プレビューで機密値を伏せること",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "low",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/security/CLI-CONFIGURATION.md",
+        "run": "20261112-0041"
+      },
+      "lastSeen": {
+        "doc": "docs/security/CLI-CONFIGURATION.md",
+        "run": "20261112-0041"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "upstream",
+      "source": "upstream",
+      "target": "上流",
+      "alt": [],
+      "note": "上流のプロバイダー/サービス側。CLI-COMPANION と OPENCODE-SESSION-IDENTITY は「上流」、routing 配下の 2 文書は英語のまま upstream",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 4,
+      "firstSeen": {
+        "doc": "docs/guides/CLI-COMPANION.md",
+        "run": "20261112-0041"
+      },
+      "lastSeen": {
+        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
+        "run": "20261112-0041"
+      },
+      "conflicts": [
+        {
+          "target": "upstream (kept in English)",
+          "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
+          "run": "20261112-0041"
+        }
+      ]
+    }
+  ]
 }

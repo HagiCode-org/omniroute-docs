@@ -178,7 +178,7 @@ omniroute
 （ロックダウンされた VM など）に使用してください。上記のコンテナ経由の方法は、
 イメージがテストされた実行環境そのものを同梱しているため、推奨の既定です。
 
-ソースからの場合（開発専用であり、デプロイ方法ではありません）:
+ソースからの場合（開発専用であり、デプロイ方法ではありません）：
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git
@@ -212,19 +212,19 @@ TLS やドメインが必要な場合は、Caddy または Traefik を前段で�
 
 ## データ、バックアップ、リセット
 
-- **データディレクトリ**: `./data`（`/app/data` にバインドマウントされます）。すべての SQLite DB、
+- **データディレクトリ**：`./data`（`/app/data` にバインドマウントされます）。すべての SQLite DB、
   マイグレーション、監査証跡、暗号化されたプロバイダーキーはここに保存されます。
-- **バックアップ**: SQLite の自動バックアップは既定で有効です
+- **バックアップ**：SQLite の自動バックアップは既定で有効です
   （`DISABLE_SQLITE_AUTO_BACKUP` は未設定 → 有効）。手動でスナップショットを取るには次を実行します。
   ```bash
   ./bin/snapshot-data.sh
   ```
   復元は `./bin/restore-data.sh` で行います。
-- **dashboard のパスワードのリセット**:
+- **dashboard のパスワードのリセット**：
   ```bash
   docker exec -it omniroute node bin/reset-password.mjs
   ```
-- **ポリシーのリセット**（ルーティング/フェイルオーバー/クォータを工場出荷時の既定値に戻す）:
+- **ポリシーのリセット**（ルーティング/フェイルオーバー/クォータを工場出荷時の既定値に戻す）：
   ```bash
   docker exec -it omniroute node bin/restore-policies.sh
   ```
@@ -250,8 +250,8 @@ docker compose -f docker-compose.selfhost.yml up -d
 <details>
 <summary>ヘルスチェックが <code>starting</code> / <code>unhealthy</code> のままになる</summary>
 
-- Redis が起動しているか確認します： `docker inspect --format '{{.State.Health.Status}}' omniroute-redis`
-- アプリのログを確認します： `docker logs omniroute`
+- Redis が起動しているか確認します：`docker inspect --format '{{.State.Health.Status}}' omniroute-redis`
+- アプリのログを確認します：`docker logs omniroute`
 - ヘルスチェックは `/healthz` を probe し、20 秒の起動猶予期間を設けています。初回起動が遅い場合
   （コールドマイグレーション）はそれより時間がかかることがあります。ディスクが遅い場合は、
   compose ファイルの `start_period` を延ばしてください。
@@ -260,7 +260,7 @@ docker compose -f docker-compose.selfhost.yml up -d
 <details>
 <summary>coding agent の使用中に <code>FATAL ERROR: Reached heap limit</code> が発生する</summary>
 
-`.env` の `OMNIROUTE_MEMORY_MB` を上げ（例： `4096`）、その後
+`.env` の `OMNIROUTE_MEMORY_MB` を上げ（例：`4096`）、その後
 `docker compose -f docker-compose.selfhost.yml up -d` を実行してください。
 [コンテナのサイジング](#コンテナのサイジング)を参照してください。
 </details>
