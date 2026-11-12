@@ -1,1 +1,9 @@
 {"ts":"2026-10-31T01:57:33.580Z","run":"20261030-keepen","op":"human-decision","id":"keep-english","kind":"policy","version":1,"doNotTranslateAdded":146,"termsAdded":[],"note":"人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文"}
+{"ts": "2026-11-12T08:55:11.412Z", "run": "20261112-human", "op": "human-decision", "id": "upstream,self-host", "kind": "doNotTranslate", "version": 2, "note": "extend the 2026-11-12 ja-JP ruling to this locale"}
+{"ts": "2026-11-12T09:00:23.941Z", "run": "20261112-0055", "op": "add", "id": "provider", "version": 3}
+{"ts": "2026-11-12T09:00:23.941Z", "run": "20261112-0055", "op": "add", "id": "tier", "version": 3}
+{"ts": "2026-11-12T09:00:23.941Z", "run": "20261112-0055", "op": "add", "id": "quota", "version": 3}
+{"ts": "2026-11-12T09:00:23.941Z", "run": "20261112-0055", "op": "add", "id": "routing", "version": 3}
+{"ts": "2026-11-12T09:00:23.941Z", "run": "20261112-0055", "op": "add", "id": "strategy", "version": 3}
+{"ts": "2026-11-12T09:00:23.941Z", "run": "20261112-0055", "op": "add", "id": "credential", "version": 3}
+{"ts": "2026-11-12T09:00:23.941Z", "run": "20261112-0055", "op": "add", "id": "redaction", "version": 3}

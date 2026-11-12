@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": 1,
-  "updatedAt": "2026-10-31T01:57:33.574Z",
+  "version": 2,
+  "updatedAt": "2026-11-12T08:55:11.413Z",
   "doNotTranslate": [
     {
       "term": "gateway",
@@ -876,6 +876,18 @@
     {
       "term": "reverse proxy",
       "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "upstream",
+      "note": "人工裁决 2026-11-12(ja-JP 对话裁决的延伸,沿用 2026-10-30「明显技术词任何语言都保留原文」):保留英文",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "self-host",
+      "note": "人工裁决 2026-11-12(ja-JP 对话裁决的延伸,沿用 2026-10-30「明显技术词任何语言都保留原文」):保留英文",
       "origin": "human",
       "locked": true
     }

@@ -1,0 +1,53 @@
+{
+  "docs": {
+    "docs/README.md": {
+      "status": "done",
+      "sourceSha256": "301ad78a0c25241018eb6f10c82be90bc1a41fbcaf0a0c48236e79d0cf9e2ff9",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/ko-KR/content/docs/README.md",
+      "translationSha256": "3a6f5100e72141ed531891f9131bd81a0f26c5bcfb13c2a4d15069c32056d61c",
+      "glossaryVersion": 2,
+      "attempts": 1,
+      "runId": "20261112-0055",
+      "doneAt": "2026-11-12T09:00:05.209Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    },
+    "docs/assets/flags/README.md": {
+      "status": "done",
+      "sourceSha256": "857b97da8c35150c85e74f2964f13f4d73011453400864724b53123bd73f08fa",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/ko-KR/content/docs/assets/flags/README.md",
+      "translationSha256": "4d5169d0cb94a18bc1eef7aeca3cd05b796cc5c38b251e1a6100ec06c743208e",
+      "glossaryVersion": 2,
+      "attempts": 1,
+      "runId": "20261112-0055",
+      "doneAt": "2026-11-12T09:00:05.271Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    },
+    "docs/changelog/fragments/10962.md": {
+      "status": "done",
+      "sourceSha256": "ce3be90158f57ff75c13906e240203b608d10337f50a7fab2ec0222c7d3ce6c6",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/ko-KR/content/docs/changelog/fragments/10962.md",
+      "translationSha256": "0bdeaf105fef46354f1e733cacbd29a01aa24e0c3a59b475914ca635a1b9c9a7",
+      "glossaryVersion": 2,
+      "attempts": 1,
+      "runId": "20261112-0055",
+      "doneAt": "2026-11-12T09:00:05.336Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    }
+  },
+  "schema": 1,
+  "locale": null,
+  "updatedAt": "2026-11-12T09:00:05.336Z",
+  "lastRun": "20261112-0055",
+  "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+  "glossaryVersion": 2,
+  "glossarySha256": "bb220a7e67ea58f5ded240a3f52f9b68bdf3f2ac6269930b272a3554f86c6e48"
+}
