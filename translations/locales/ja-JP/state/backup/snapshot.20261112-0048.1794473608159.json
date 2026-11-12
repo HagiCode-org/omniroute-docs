@@ -5,11 +5,11 @@
       "sourceSha256": "a1b998eceb890aa3a178281844462773ed9f51ad5edcc33d6c5e2c77a0101f6f",
       "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
       "translationPath": "translations/locales/ja-JP/content/docs/guides/CLI-COMPANION.md",
-      "translationSha256": "2d0089e905fba6b7167855217d09e3e18ac13845fabc3f3e7dd752d49cc17849",
-      "glossaryVersion": 1,
+      "translationSha256": "5d70eb8feb2262efe1e1f98e8ef2e265fb5e186f07172e490f901f29f982b9db",
+      "glossaryVersion": 3,
       "attempts": 2,
-      "runId": "20261112-0041",
-      "doneAt": "2026-11-12T08:44:39.805Z",
+      "runId": "20261112-0047",
+      "doneAt": "2026-11-12T08:47:51.033Z",
       "reviewedAt": null,
       "flags": [],
       "note": ""
@@ -19,11 +19,11 @@
       "sourceSha256": "1bd42a4bf85da55527f3efbf0f04f993791ef572cec0a0ea02b0f9e55a5667c0",
       "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
       "translationPath": "translations/locales/ja-JP/content/docs/reference/OPENCODE-SESSION-IDENTITY.md",
-      "translationSha256": "3d9e8a1161e7536f07640e6184773a595d96c5e21b9a94a9933e118e065aa332",
-      "glossaryVersion": 1,
+      "translationSha256": "15124867ff32bb2446e3cd316abaf4cb6a48f220db4167b9beb8c770f5db7bba",
+      "glossaryVersion": 3,
       "attempts": 2,
-      "runId": "20261112-0041",
-      "doneAt": "2026-11-12T08:44:39.870Z",
+      "runId": "20261112-0047",
+      "doneAt": "2026-11-12T08:47:51.173Z",
       "reviewedAt": null,
       "flags": [],
       "note": ""
@@ -89,13 +89,78 @@
       "reviewedAt": null,
       "flags": [],
       "note": ""
+    },
+    "docs/getting-started/SELF_HOST_GUIDE.md": {
+      "status": "done_flagged",
+      "sourceSha256": "8e25978787404f0f71e4d24e0b0aeebff45f107fdb5bf1473621607b3e52ab61",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/ja-JP/content/docs/getting-started/SELF_HOST_GUIDE.md",
+      "translationSha256": "fbe818eecac0d8d14dfed37fad3d46409ab6185d2f5c4345a2232d7e62ac5ffb",
+      "glossaryVersion": 1,
+      "attempts": 2,
+      "runId": "20261112-0041",
+      "doneAt": "2026-11-12T08:44:40.223Z",
+      "reviewedAt": null,
+      "flags": [
+        "numbers: spelled-out English numerals rendered as digits; no source number missing",
+        "review: セルフホスト used for self-host (glossary lists only self-hosted); consistent within doc, left for human ruling"
+      ],
+      "note": ""
+    },
+    "docs/guides/CLI-SMOKE-TESTS.md": {
+      "status": "done_flagged",
+      "sourceSha256": "e6c362a9ad1177040449b89fa1b86620dcdec37910b2c2dfc3d85e1283386e24",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/ja-JP/content/docs/guides/CLI-SMOKE-TESTS.md",
+      "translationSha256": "e637a34e297cbeee5c6ac9f4ae86e5fc7e902512cfc09e5425e14969c222f800",
+      "glossaryVersion": 3,
+      "attempts": 2,
+      "runId": "20261112-0047",
+      "doneAt": "2026-11-12T08:47:51.106Z",
+      "reviewedAt": null,
+      "flags": [
+        "numbers: spelled-out English numerals rendered as digits; no source number missing"
+      ],
+      "note": ""
+    },
+    "docs/guides/CLI-MANUAL-MODELS.md": {
+      "status": "done_flagged",
+      "sourceSha256": "43df8a749887c5f60054be622b8d79001fe89ecf7fcc151e241a7cc2ca53f6a4",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/ja-JP/content/docs/guides/CLI-MANUAL-MODELS.md",
+      "translationSha256": "646c0f827660a633be87c7dc31b9574c13a16aeb2fae32f8c6bafa12e4cee798",
+      "glossaryVersion": 1,
+      "attempts": 2,
+      "runId": "20261112-0041",
+      "doneAt": "2026-11-12T08:45:05.133Z",
+      "reviewedAt": null,
+      "flags": [
+        "numbers: spelled-out English numerals rendered as digits; no source number missing"
+      ],
+      "note": ""
+    },
+    "docs/security/CLI-CONFIGURATION.md": {
+      "status": "done_flagged",
+      "sourceSha256": "1c0098ef49753fb3a8e561428a040bd5643f5608b193b6101e26230207a88325",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/ja-JP/content/docs/security/CLI-CONFIGURATION.md",
+      "translationSha256": "50598655a2c1c09b61bac9d00ee71e32fde426a2da9c3b75ffb1cef867c1937f",
+      "glossaryVersion": 1,
+      "attempts": 2,
+      "runId": "20261112-0041",
+      "doneAt": "2026-11-12T08:45:05.206Z",
+      "reviewedAt": null,
+      "flags": [
+        "review: a space kept after HTTP(S) before Japanese text because the validator forbids a half-width parenthesis next to kana"
+      ],
+      "note": ""
     }
   },
   "schema": 1,
-  "locale": null,
-  "updatedAt": "2026-11-12T08:44:40.154Z",
-  "lastRun": "20261112-0041",
+  "locale": "ja-JP",
+  "updatedAt": "2026-11-12T08:48:03.262Z",
+  "lastRun": "20261112-0047",
   "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
-  "glossaryVersion": 1,
-  "glossarySha256": "9bb28eac15648bb6719d79e8c29760f100ebc69dacbb1b7719cf27561d40bedd"
+  "glossaryVersion": 3,
+  "glossarySha256": "11c9fb8e6715f40c7066883a46585962a8067fa6b9827a7dfbcedc400475810b"
 }

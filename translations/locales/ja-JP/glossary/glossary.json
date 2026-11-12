@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": 3,
-  "updatedAt": "2026-11-12T08:47:50.949Z",
+  "version": 4,
+  "updatedAt": "2026-11-12T08:48:41.172Z",
   "doNotTranslate": [
     {
       "term": "gateway",
@@ -882,6 +882,12 @@
     {
       "term": "upstream",
       "note": "人工裁决 2026-11-12:明显的技术词保留原文,统一用英文 upstream(不再用「上流」)",
+      "origin": "human",
+      "locked": true
+    },
+    {
+      "term": "self-host",
+      "note": "人工裁决 2026-11-12:与 self-hosted 同类,保留英文;日文里用 self-hosted(不用「セルフホスト」)",
       "origin": "human",
       "locked": true
     }

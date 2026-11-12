@@ -1,10 +1,10 @@
 ---
-title: "🚀 セルフホストガイド — OmniRoute（月額ゼロのセルフホスト / zero-fee self-host）"
+title: "🚀 self-hosted ガイド — OmniRoute（月額ゼロの self-hosted / zero-fee self-host）"
 version: 3.8.51
 lastUpdated: 2026-09-14
 ---
 
-# 🚀 セルフホストガイド — OmniRoute
+# 🚀 self-hosted ガイド — OmniRoute
 
 > **TL;DR** — コマンド 3 つ、ローカル endpoint 1 つ、月額費用ゼロ。SaaS の
 > 課金も、マルチテナント分離も、ホスト型の prompt 処理の中継もありません。
@@ -16,7 +16,7 @@ docker compose -f docker-compose.selfhost.yml up -d
 open http://127.0.0.1:20128
 ```
 
-これは OmniRoute の「月額ゼロ + セルフホスト」という製品形態の**セルフホスト版の提供形態**です。
+これは OmniRoute の「月額ゼロ + self-hosted」という製品形態の**self-hosted 版の提供形態**です。
 自分のマシン上で 5 分で動かせる、パッケージ化されたコンテナ／バイナリです。
 
 ---
@@ -27,7 +27,7 @@ OmniRoute には、profile（`base`、`web`、`cli`、`host`、`cliproxyapi`、`
 `docker-compose.yml` が同梱されています。各アプリサービスは profile で制御されているため、
 素の `docker compose up -d` では Redis しか起動しません。
 profile を自分で選べる上級ユーザーにとっては正しい挙動ですが、5 分で始める
-セルフホストの手順としては適切では*ありません*。
+self-hosted の手順としては適切では*ありません*。
 
 `docker-compose.selfhost.yml` は KISS オーバーレイです。**コマンド 1 つ、公開済みイメージ、
 loopback のみ、Redis 同梱、profile の選択なし、ビルド手順なし。**
@@ -36,7 +36,7 @@ loopback のみ、Redis 同梱、profile の選択なし、ビルド手順なし
 
 | 対象 | ここから始める | 移行先 |
 | --- | --- | --- |
-| セルフホストする個人ユーザー | このガイド | — |
+| self-hosted で運用する個人ユーザー | このガイド | — |
 | 上級ユーザー（CLI ツール / Web Cookie 方式のプロバイダー / sidecar） | — | `docker-compose.yml` の profile |
 
 ---
@@ -106,7 +106,7 @@ http://127.0.0.1:20128
 ```
 
 `up -d` から約 300 秒以内に、endpoint がローカルから到達可能になり、ヘルスチェックが
-`healthy` になります。これはセルフホストの issue で定められた受け入れ基準です。
+`healthy` になります。これは self-hosted の issue で定められた受け入れ基準です。
 
 ---
 
@@ -237,7 +237,7 @@ TLS やドメインが必要な場合は、Caddy または Traefik を前段で�
 <summary><code>docker compose up</code> で Redis しか起動しない</summary>
 
 アプリサービスが profile で制御されている**完全版**の `docker-compose.yml` を
-実行しています。コマンド 1 つで済ませるには、セルフホスト用のファイルを使ってください。
+実行しています。コマンド 1 つで済ませるには、self-hosted 用のファイルを使ってください。
 
 ```bash
 docker compose -f docker-compose.selfhost.yml up -d
@@ -269,7 +269,7 @@ docker compose -f docker-compose.selfhost.yml up -d
 <summary>Web Cookie 方式のプロバイダー（Gemini Web、Claude Turnstile）が
 <code>Executable doesn't exist at .../ms-playwright/chromium</code> で失敗する</summary>
 
-`base` イメージには Chromium が含まれていません。セルフホスト用の compose は
+`base` イメージには Chromium が含まれていません。self-hosted 用の compose は
 公開済みの `base` イメージを使用します。Web Cookie 方式のプロバイダーを使うには、
 `web` profile を指定した完全版の compose に切り替えてください
 （Playwright/Chromium が同梱されます）。
@@ -292,19 +292,19 @@ docker compose --profile web up -d
 
 ## これが意図的に含まないもの
 
-セルフホストの KISS 制約に従い、この方法には以下は**含まれません**。
+self-hosted の KISS 制約に従い、この方法には以下は**含まれません**。
 
 - ❌ SaaS の課金 / 従量計測 / プランの階層
 - ❌ マルチテナント分離 / テナントごとの名前空間
 - ❌ ホスト型の prompt 処理の中継（prompt はプロバイダーへ直接送られます）
 - ❌ 組み込み済みの認証情報やシークレット
 
-これは**純粋なローカルのセルフホスト**の提供形態であり、「月額ゼロ + セルフホスト」という約束を
+これは**純粋なローカルの self-hosted**の提供形態であり、「月額ゼロ + self-hosted」という約束を
 現実のものにする、最もシンプルな手段です。
 
 ---
 
-## セキュリティチェックリスト（セルフホスト）
+## セキュリティチェックリスト（self-hosted）
 
 loopback の外へ公開する前に：
 
@@ -312,7 +312,7 @@ loopback の外へ公開する前に：
 - [ ] `INITIAL_PASSWORD` を強力で一意な値にローテーション済み
 - [ ] `APP_BIND_HOST` は、認証を強制する proxy の背後にある場合を除き `127.0.0.1` のまま
 - [ ] TLS は前段の Caddy/Traefik/Cloudflare で終端（WAN 上でプレーンな HTTP は使わない）
-- [ ] Redis がホストに公開されていない（セルフホスト用 compose はすでにこれを強制しています）
+- [ ] Redis がホストに公開されていない（self-hosted 用 compose はすでにこれを強制しています）
 - [ ] `./data` ボリュームを定期的にバックアップ（`bin/snapshot-data.sh`）
 - [ ] プロバイダーキーを、各プロバイダー自身のポリシーに従ってローテーション
 
