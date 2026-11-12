@@ -1,0 +1,67 @@
+{
+  "docs": {
+    "docs/README.md": {
+      "status": "done",
+      "sourceSha256": "301ad78a0c25241018eb6f10c82be90bc1a41fbcaf0a0c48236e79d0cf9e2ff9",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/fr-FR/content/docs/README.md",
+      "translationSha256": "5b7ab2d10b01b8998a2cad01b819b44f0cb222424617ab30cfea458b8d2abc83",
+      "glossaryVersion": 2,
+      "attempts": 1,
+      "runId": "20261112-0101",
+      "doneAt": "2026-11-12T09:06:44.141Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    },
+    "docs/assets/flags/README.md": {
+      "status": "done",
+      "sourceSha256": "857b97da8c35150c85e74f2964f13f4d73011453400864724b53123bd73f08fa",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/fr-FR/content/docs/assets/flags/README.md",
+      "translationSha256": "6a8be3668b2fa82d10daa6712f5f490225a36d680d0436e03ed8493436db073a",
+      "glossaryVersion": 2,
+      "attempts": 1,
+      "runId": "20261112-0101",
+      "doneAt": "2026-11-12T09:06:44.196Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    },
+    "docs/changelog/fragments/10962.md": {
+      "status": "done",
+      "sourceSha256": "ce3be90158f57ff75c13906e240203b608d10337f50a7fab2ec0222c7d3ce6c6",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/fr-FR/content/docs/changelog/fragments/10962.md",
+      "translationSha256": "61934a230ef562b7b80cac19c3fa1c3d6c8a459a4953a4fd413beaaef6fe0b6a",
+      "glossaryVersion": 2,
+      "attempts": 1,
+      "runId": "20261112-0101",
+      "doneAt": "2026-11-12T09:06:44.251Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    },
+    "docs/changelog/fragments/14268.md": {
+      "status": "done",
+      "sourceSha256": "00310e5589b4872049d81d5f345e9e1336174718acb9ce030981d55ca86ac2c4",
+      "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+      "translationPath": "translations/locales/fr-FR/content/docs/changelog/fragments/14268.md",
+      "translationSha256": "5c239ea596113e43b98a0f046259727c16bdff0ca45aa89012e77966ecd00645",
+      "glossaryVersion": 2,
+      "attempts": 1,
+      "runId": "20261112-0101",
+      "doneAt": "2026-11-12T09:06:44.306Z",
+      "reviewedAt": null,
+      "flags": [],
+      "note": ""
+    }
+  },
+  "schema": 1,
+  "locale": null,
+  "updatedAt": "2026-11-12T09:06:44.306Z",
+  "lastRun": "20261112-0101",
+  "sourceRevision": "a58000c7685f4091c7a6fd8ddf3ebce7d2ec67c3",
+  "glossaryVersion": 2,
+  "glossarySha256": "f2843d66efa39d7514322883e26ee6bb9446aa753a8beb75f0fe99fd259968a2"
+}
