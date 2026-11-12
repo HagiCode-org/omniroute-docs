@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": 2,
-  "updatedAt": "2026-11-12T08:55:11.416Z",
+  "version": 3,
+  "updatedAt": "2026-11-12T09:07:18.690Z",
   "doNotTranslate": [
     {
       "term": "gateway",
@@ -892,5 +892,146 @@
       "locked": true
     }
   ],
-  "terms": []
+  "terms": [
+    {
+      "id": "credential",
+      "source": "credential",
+      "target": "credenciales",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 8,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261112-0101"
+      },
+      "lastSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261112-0101"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "provider",
+      "source": "provider",
+      "target": "proveedor",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 9,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261112-0101"
+      },
+      "lastSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261112-0101"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "quota",
+      "source": "quota",
+      "target": "cuota",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 6,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261112-0101"
+      },
+      "lastSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261112-0101"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "redaction",
+      "source": "redaction",
+      "target": "ocultación",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "medium",
+      "occurrences": 1,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261112-0101"
+      },
+      "lastSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261112-0101"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "routing",
+      "source": "routing",
+      "target": "enrutamiento",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 6,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261112-0101"
+      },
+      "lastSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261112-0101"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "strategy",
+      "source": "strategy",
+      "target": "estrategia",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 3,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261112-0101"
+      },
+      "lastSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261112-0101"
+      },
+      "conflicts": []
+    },
+    {
+      "id": "tier",
+      "source": "tier",
+      "target": "nivel",
+      "alt": [],
+      "note": "",
+      "origin": "auto",
+      "locked": false,
+      "confidence": "high",
+      "occurrences": 3,
+      "firstSeen": {
+        "doc": "docs/README.md",
+        "run": "20261112-0101"
+      },
+      "lastSeen": {
+        "doc": "docs/security/INFERENCE_AUTH_POSTURE.md",
+        "run": "20261112-0101"
+      },
+      "conflicts": []
+    }
+  ]
 }
