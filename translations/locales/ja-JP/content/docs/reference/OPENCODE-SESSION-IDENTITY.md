@@ -18,10 +18,10 @@ Claude の JSON エンコードされた `metadata.user_id` からはセッシ�
 
 既存の正規の `ses_` エンコードと、会話フィンガープリントの fallback は変更されません。
 明示的な ID がない場合は、最初のユーザーメッセージとその他の既存のフィンガープリント入力が
-引き続き連続性を決定します。これは新しい認可の境界ではなく、上流のコンテンツ分離の証明でもありません。
+引き続き連続性を決定します。これは新しい認可の境界ではなく、upstream のコンテンツ分離の証明でもありません。
 
 実装は `open-sse/utils/opencodeSessionIdentity.ts`、
 `open-sse/utils/opencodeHeaders.ts`、
 `open-sse/handlers/chatCore/executorClientHeaders.ts` にあります。回帰テストは、
 ネイティブ ID、Claude の metadata、優先順位、無効な値、既存のフィンガープリントの挙動を、
-有料の上流呼び出しなしでカバーしています。
+有料の upstream 呼び出しなしでカバーしています。

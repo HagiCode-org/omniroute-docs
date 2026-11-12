@@ -2,3 +2,4 @@
 {"ts": "2026-11-12T08:45:23.863Z", "run": "20261112-0041", "op": "add", "id": "redaction", "version": 2}
 {"ts": "2026-11-12T08:45:23.863Z", "run": "20261112-0041", "op": "add", "id": "upstream", "version": 2}
 {"ts": "2026-11-12T08:45:23.863Z", "run": "20261112-0041", "op": "conflict", "id": "upstream", "target": "upstream (kept in English)", "version": 2}
+{"ts": "2026-11-12T08:47:50.949Z", "run": "20261112-0047", "op": "human-decision", "id": "upstream", "kind": "doNotTranslate", "version": 3, "note": "人工裁决 2026-11-12:upstream 保留英文;解决 run 20261112-0041 记录的冲突;移除自动条目 upstream→上流"}

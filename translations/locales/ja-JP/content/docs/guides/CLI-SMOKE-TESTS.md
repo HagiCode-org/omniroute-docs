@@ -22,7 +22,7 @@ HOLDがあると終了コード2で終了します。終了コード0にする�
 各ターゲットは、`127.0.0.1`にバインドされた使い捨てのHTTPサーバーに対して`omniroute run`経由で実行され、
 固定の非シークレットなsentinel認証情報を使用します。HOME、XDGディレクトリー、CLIの設定ホーム、
 OmniRouteのデータディレクトリーは一時的なものです。プロバイダーの認証情報、proxy変数、
-ランタイムローダーのフラグ、既存の設定は継承されません。実際の上流の認証情報は必要とされず、
+ランタイムローダーのフラグ、既存の設定は継承されません。実際のupstreamの認証情報は必要とされず、
 受け付けられることもありません。
 
 明示的な`--inherit-isolated-env`harnessオプションは`--inherit-env`を`omniroute run`に転送し、
@@ -56,4 +56,4 @@ node --import tsx/esm --test tests/unit/cli/real-cli-smoke-harness.test.ts tests
 ```
 
 mockはOpenAI Chat CompletionsとResponses APIのJSON/SSEをサポートします。リクエストをプロバイダーに転送することはありません。
-認証情報に依存する上流テストは別個のopt-inの検証のままであり、このharnessでカバーされていると報告してはなりません。
+認証情報に依存するupstreamテストは別個のopt-inの検証のままであり、このharnessでカバーされていると報告してはなりません。

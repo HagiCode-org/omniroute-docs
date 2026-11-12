@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": 2,
-  "updatedAt": "2026-11-12T08:45:23.863Z",
+  "version": 3,
+  "updatedAt": "2026-11-12T08:47:50.949Z",
   "doNotTranslate": [
     {
       "term": "gateway",
@@ -878,6 +878,12 @@
       "note": "人工裁决 2026-10-30:明显的技术词在任何语言里都保留原文",
       "origin": "human",
       "locked": true
+    },
+    {
+      "term": "upstream",
+      "note": "人工裁决 2026-11-12:明显的技术词保留原文,统一用英文 upstream(不再用「上流」)",
+      "origin": "human",
+      "locked": true
     }
   ],
   "terms": [
@@ -900,32 +906,6 @@
         "run": "20261112-0041"
       },
       "conflicts": []
-    },
-    {
-      "id": "upstream",
-      "source": "upstream",
-      "target": "上流",
-      "alt": [],
-      "note": "上流のプロバイダー/サービス側。CLI-COMPANION と OPENCODE-SESSION-IDENTITY は「上流」、routing 配下の 2 文書は英語のまま upstream",
-      "origin": "auto",
-      "locked": false,
-      "confidence": "medium",
-      "occurrences": 4,
-      "firstSeen": {
-        "doc": "docs/guides/CLI-COMPANION.md",
-        "run": "20261112-0041"
-      },
-      "lastSeen": {
-        "doc": "docs/routing/DETERMINISTIC_ROUTING.md",
-        "run": "20261112-0041"
-      },
-      "conflicts": [
-        {
-          "target": "upstream (kept in English)",
-          "doc": "docs/routing/SELF_HOSTED_OPENAI_ENTRY.md",
-          "run": "20261112-0041"
-        }
-      ]
     }
   ]
 }
