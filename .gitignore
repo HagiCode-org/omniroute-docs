@@ -6,3 +6,6 @@ dist/
 !.env.example
 /src/content/docs/
 /public/upstream-assets/
+
+# Local deja session-rule export (auto-extracted from agent sessions; not committed)
+.deja/
