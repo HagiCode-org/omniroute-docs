@@ -26,8 +26,9 @@ Before a pull request: `pnpm run check`, `pnpm run build`, `pnpm test`.
 ## Architecture
 
 - `vendor/OmniRoute/` — git submodule pinned at revision `release/v3.8.51`. The only article source. The importer publishes every English Markdown under upstream `docs/` (excluding `docs/i18n/` translated subdirs) plus the root `README.md` as the home page; canonical slugs preserved by `scripts/upstream-topics.mjs` (see `docs/upstream-route-map.md`).
-- `scripts/import-english.mjs` → `english-source.mjs` (import/validate/rewrite/copy), `upstream-topics.mjs` (route map), `check-translation-baselines.mjs` / `update-translation-reviews.mjs` (review metadata in `src/content/upstream-translation-reviews.json`).
+- `scripts/import-english.mjs` → `english-source.mjs` (import/validate/rewrite/copy), `upstream-topics.mjs` (route map), `check-translation-baselines.mjs` / `update-translation-reviews.mjs` (review metadata in `src/content/upstream-translation-reviews.json`), `check-registry-neutrality.mjs` (`check:registry`).
 - `src/` — site-owned Starlight config (`content.config.ts`), `components/`, `content/`, `i18n/`, `lib/`, `pages/`, `styles/`. Generated pages and assets land under `src/content/docs/` and are Git-ignored.
+- `translations/` — unattended translation state maintained by the `doc-translation` skill; `profile.yaml` is human-owned. Nothing there is published until its wiring into the site build is done separately.
 - `test/` — `built-pages.test.mjs`, `english-source.test.mjs`, `hagilight-discovery.test.mjs` (robots, sitemap and RSS in `dist/`), `locale-navigation.test.mjs`, `workflows.test.mjs`.
 - `.github/gh-pages/` — `esa.jsonc`, `wrangler.jsonc` deployment configs.
 
@@ -52,5 +53,5 @@ Before a pull request: `pnpm run check`, `pnpm run build`, `pnpm test`.
 
 - The repository uses pnpm, pinned in `package.json` `packageManager`. Run `corepack enable` once, then `pnpm install`. `pnpm-lock.yaml` is the only lockfile; do not commit `package-lock.json`.
 - Settings live in `pnpm-workspace.yaml`. `allowBuilds` lists the dependencies whose install scripts may run (reviewed individually, `false` means reviewed and denied); review any new dependency that has an install script and add it there.
-- A local registry mirror belongs in `~/.npmrc` only. Never commit a `registry=` line or a mirror URL; `pnpm run check:registry` (also run in CI) fails on any non-`registry.npmjs.org` `tarball` in the lockfile and on mirror hosts in tracked files.
+- A local registry mirror belongs in `~/.npmrc` only. Never commit a `registry=` line or a mirror URL; `pnpm run check:registry` fails on any non-`registry.npmjs.org` `tarball` in the lockfile and on mirror hosts in tracked files.
 - Undeclared imports fail under pnpm's strict layout: declare the package instead of hoisting it.
